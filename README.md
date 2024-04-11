@@ -1,0 +1,110 @@
+# Godot Game
+
+## Conventions to follow
+- Name your branch after what you're working on. Use lowercase letters and separate words with hyphens. Examples: level1, level2, music-integration
+- Make **draft** pull requests for every branch you make (compare your branch to main)
+  - Undraft them when you are finished
+- Make sure you put files under the appropriate folders (see **File structure** below)
+
+## Other things to keep in mind
+- Make sure all nodes have "Makes sure the object's children are not selectable" on
+- Make sure to use a 32x32 snap grid & make collision rectangles n tilesets n stuff like that 32x32
+- Make sure to reimport all assets with "2D pixel" as the preset!!
+
+## Levels (see [brainstorming document](google.com) for more details)
+- 1:
+- 2:
+- 3:
+- 4:
+- 5:
+
+## File structure
+- core/ #this contains all the stuff
+  - assets/
+    - cutscenes/
+      - ending/
+        - 1.png
+        - 2.png
+        - ...
+      - tv/
+        - 1.png
+        - ...
+    - menu/
+      - main/
+        - bg_main_menu.png
+        - button_start.png
+        - ...
+      - pause/
+        - bg_pause_menu.png
+        - button_resume.png
+        - ...
+      - settings/
+        - bg_settings_menu.png
+        - ...
+    - music/
+      - level1.wav
+      - level2.wav
+      - ...
+    - sounds/
+      - footsteps.wav
+      - ...
+    - sprites/
+      - boss/ #there will probably be more sub-folders for the different animations
+        - boss_idle.png
+        - ...
+      - monsters/ #there will probably be more sub-folders for the different types of monsters & their animations
+        - clock_idle.png
+        - clock_walking_1.png
+        - ...
+      - player/
+        - walking/
+          - player_walking_1.png
+          - player_walking_2.png
+          - ...
+        - jumping/
+          - player_jumping_1.png
+          - player_jumping_2.png
+          - ...
+    - tilesets/
+      - tiles_levels_1-3.png
+      - tiles_levels_4-5.png
+      - tiles_cloud.png
+  - entities/
+    - boss/
+      - Boss.gd
+      - #whatever other script files there are idk
+    - monsters/ #there will probably be more sub-folders for each type of monster
+      - Clock.gd
+      - Spider.gd
+      - ...
+    - player/
+      - Player.tscn
+      - Player.gd
+  - scenes/
+    - cutscenes/ #this is for script files of the cutscenes if there are any.... not rlly sure
+      - CutsceneTV.gd
+      - CutsceneEnding.gd
+    - levels/
+      - Level1.tscn
+      - Level1.gd
+      - Level2.tscn
+      - ...
+    - misc/
+      - DavidBuslegs.tscn
+      - NightmareFuel.tscn
+  - tilesets/
+    - 1-3/
+      - Tileset1-3.tres
+      - Tileset1-3.tscn
+    - 4-5/
+      - Tileset4-5.tres
+      - Tileset4-5.tscn
+    - cloud/
+      - TilesetCloud.tres
+      - TilesetCloud.tscn
+  - ui/ #if there are script files for the menus, they will go here
+    - main/
+    - pause/
+    - settings/
+- releases/ #this contains the stuff people download
+  - #some kinda exe idk
