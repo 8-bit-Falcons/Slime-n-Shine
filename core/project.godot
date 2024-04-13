@@ -1,0 +1,255 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Slime & Shine"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/puzzle_dependencies/plugin.cfg")
+
+[puzzle_dependencies]
+
+types={
+0: {
+"color": Color(0, 0, 0, 1),
+"id": 0,
+"label": "Type 1"
+},
+1: {
+"color": Color(1, 0.470588, 0.419608, 1),
+"id": 1,
+"label": "Talk to character to receive quest"
+},
+2: {
+"color": Color(0.741176, 0.576471, 0.976471, 1),
+"id": 2,
+"label": "Acquire item"
+},
+3: {
+"color": Color(0.45098, 0.94902, 0.501961, 1),
+"id": 3,
+"label": "Type 4"
+},
+4: {
+"color": Color(1, 0.870588, 0.4, 1),
+"id": 4,
+"label": "Type 5"
+}
+}
+boards={
+"10ae34e0d2": {
+"connections": [{
+"from": &"c9ecc30d06",
+"to": &"7b3e684b03"
+}, {
+"from": &"88f4dd7a84",
+"to": &"c9ecc30d06"
+}, {
+"from": &"d806012784",
+"to": &"88f4dd7a84"
+}, {
+"from": &"08985cbb8d",
+"to": &"88f4dd7a84"
+}, {
+"from": &"baf064e913",
+"to": &"08985cbb8d"
+}, {
+"from": &"518543c558",
+"to": &"baf064e913"
+}, {
+"from": &"9db4e15917",
+"to": &"518543c558"
+}, {
+"from": &"e3db7e47c7",
+"to": &"d806012784"
+}, {
+"from": &"7f02a853c6",
+"to": &"e3db7e47c7"
+}, {
+"from": &"5622442928",
+"to": &"d806012784"
+}, {
+"from": &"9db4e15917",
+"to": &"5622442928"
+}, {
+"from": &"dc26cec237",
+"to": &"7f02a853c6"
+}, {
+"from": &"f1c0f316a2",
+"to": &"dc26cec237"
+}, {
+"from": &"454c7bda62",
+"to": &"f1c0f316a2"
+}, {
+"from": &"c9224103fd",
+"to": &"7f02a853c6"
+}, {
+"from": &"6af2286b3c",
+"to": &"c9224103fd"
+}, {
+"from": &"01f631a2a2",
+"to": &"6af2286b3c"
+}, {
+"from": &"29232b9113",
+"to": &"6af2286b3c"
+}, {
+"from": &"be1e10ac05",
+"to": &"9db4e15917"
+}, {
+"from": &"be1e10ac05",
+"to": &"454c7bda62"
+}, {
+"from": &"be1e10ac05",
+"to": &"29232b9113"
+}, {
+"from": &"b7c0b66755",
+"to": &"be1e10ac05"
+}],
+"id": "10ae34e0d2",
+"label": "Puzzles",
+"scroll_offset": Vector2(-1186.89, -14.1693),
+"things": [{
+"id": &"7b3e684b03",
+"position_offset": Vector2(1080, 440),
+"size": Vector2(150, 80),
+"text": "Give cat fish",
+"type": 0
+}, {
+"id": &"c9ecc30d06",
+"position_offset": Vector2(860, 440),
+"size": Vector2(190.386, 84.6602),
+"text": "Talk to kitchen slimes & acquire fish",
+"type": 2
+}, {
+"id": &"88f4dd7a84",
+"position_offset": Vector2(680, 440),
+"size": Vector2(150.002, 80),
+"text": "Clean kitchen",
+"type": 0
+}, {
+"id": &"d806012784",
+"position_offset": Vector2(440, 560),
+"size": Vector2(206.273, 86.9193),
+"text": "Give bathroom slimes markers + acquire mop",
+"type": 2
+}, {
+"id": &"08985cbb8d",
+"position_offset": Vector2(440, 400),
+"size": Vector2(199.425, 84.9424),
+"text": "Talk to garden slimes + acquire bucket",
+"type": 2
+}, {
+"id": &"baf064e913",
+"position_offset": Vector2(260, 400),
+"size": Vector2(150, 80),
+"text": "Pull weeds",
+"type": 0
+}, {
+"id": &"518543c558",
+"position_offset": Vector2(40, 400),
+"size": Vector2(205.918, 88.5434),
+"text": "Ask garden slimes for bucket to receive quest",
+"type": 1
+}, {
+"id": &"9db4e15917",
+"position_offset": Vector2(-280, 460),
+"size": Vector2(217.571, 84.66),
+"text": "Talk to kitchen slimes to receive quest",
+"type": 1
+}, {
+"id": &"e3db7e47c7",
+"position_offset": Vector2(240, 700),
+"size": Vector2(165.533, 86.9902),
+"text": "Open drawer + acquire markers",
+"type": 2
+}, {
+"id": &"7f02a853c6",
+"position_offset": Vector2(-20, 700),
+"size": Vector2(220.675, 90.7878),
+"text": "Shine magnifying glass at key + acquire key",
+"type": 2
+}, {
+"id": &"5622442928",
+"position_offset": Vector2(40, 500),
+"size": Vector2(209.024, 85.4367),
+"text": "Ask bathroom slimes for mop to receive quest ",
+"type": 1
+}, {
+"id": &"dc26cec237",
+"position_offset": Vector2(-280, 640),
+"size": Vector2(234.58, 90.2521),
+"text": "Give science slimes water + acquire magnifying glass",
+"type": 2
+}, {
+"id": &"f1c0f316a2",
+"position_offset": Vector2(-460, 640),
+"size": Vector2(150, 80),
+"text": "Absorb water",
+"type": 2
+}, {
+"id": &"454c7bda62",
+"position_offset": Vector2(-680, 640),
+"size": Vector2(201.261, 87.6891),
+"text": "Talk to science slimes to receive quest",
+"type": 1
+}, {
+"id": &"c9224103fd",
+"position_offset": Vector2(-260, 820),
+"size": Vector2(214.092, 82.0673),
+"text": "Tickle sleeping cat",
+"type": 0
+}, {
+"id": &"6af2286b3c",
+"position_offset": Vector2(-500, 820),
+"size": Vector2(208.924, 86.2023),
+"text": "Combine yarn with stick",
+"type": 0
+}, {
+"id": &"01f631a2a2",
+"position_offset": Vector2(-680, 780),
+"size": Vector2(150, 80.0002),
+"text": "Pick up yarn",
+"type": 2
+}, {
+"id": &"29232b9113",
+"position_offset": Vector2(-680, 860),
+"size": Vector2(150, 80.0002),
+"text": "Pick up stick",
+"type": 2
+}, {
+"id": &"be1e10ac05",
+"position_offset": Vector2(-920, 480),
+"size": Vector2(150, 94.7826),
+"text": "Talk to cat to receive quest",
+"type": 1
+}, {
+"id": &"b7c0b66755",
+"position_offset": Vector2(-1140, 480),
+"size": Vector2(192.074, 93.6455),
+"text": "Combine pencil with paper",
+"type": 0
+}],
+"zoom": 0.967349
+}
+}
+minimap_enabled=true
+minimap_size=Vector2(200, 150)
+snapping_enabled=true
+snapping_distance=20
+current_board_id="10ae34e0d2"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
