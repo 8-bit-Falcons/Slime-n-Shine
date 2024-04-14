@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://cij6120cci4hh"
+path="res://.godot/imported/living_room.dialogue-ae663a2a8131e2408e494bbfad9c5d13.tres"
+
+[deps]
+
+source_file="res://dialogue/living_room.dialogue"
+dest_files=["res://.godot/imported/living_room.dialogue-ae663a2a8131e2408e494bbfad9c5d13.tres"]
+
+[params]
+
+defaults=true
