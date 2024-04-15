@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://h1xxw7b6g6mh"]
+[gd_scene load_steps=9 format=3 uid="uid://nwy5nrmvb35l"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_yucyp"]
 [ext_resource type="Texture2D" uid="uid://pjhvmw6ixgpy" path="res://assets/slimes.png" id="2_vbrr5"]
@@ -55,17 +55,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04gmk"]
-size = Vector2(40, 4)
+size = Vector2(24, 4)
 
 [node name="player" type="CharacterBody2D"]
+position = Vector2(1, 5)
 script = ExtResource("1_yucyp")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(214, 209)
-scale = Vector2(-1.63564, 1.66523)
 sprite_frames = SubResource("SpriteFrames_udolc")
+animation = &"right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(213, 227)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_04gmk")
