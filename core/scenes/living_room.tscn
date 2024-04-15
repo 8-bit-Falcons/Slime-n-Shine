@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=6 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
+[ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_qcgtd"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -8,7 +9,11 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j01xm"]
 gradient = SubResource("Gradient_jhfax")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gne3j"]
+size = Vector2(32, 32)
+
 [node name="LivingRoom" type="Node2D"]
+texture_filter = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -32,8 +37,82 @@ grow_vertical = 2
 texture = SubResource("GradientTexture1D_j01xm")
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 tile_set = ExtResource("1_kv8y8")
 format = 2
 layer_0/name = "Floor"
 layer_0/tile_data = PackedInt32Array(65539, 196609, 3, 131075, 196609, 3, 196611, 262145, 0, 262147, 262145, 0, 327683, 262145, 0, 65540, 196609, 3, 131076, 196609, 3, 196612, 262145, 0, 262148, 262145, 0, 327684, 262145, 0, 65541, 196609, 3, 131077, 196609, 3, 196613, 262145, 0, 262149, 262145, 0, 327685, 262145, 0, 65542, 196609, 3, 131078, 196609, 3, 196614, 262145, 0, 262150, 262145, 0, 327686, 262145, 0, 65543, 196609, 3, 131079, 196609, 3, 196615, 262145, 0, 262151, 262145, 0, 327687, 196609, 1, 65544, 196609, 3, 131080, 196609, 3, 196616, 262145, 0, 262152, 262145, 0, 327688, 262145, 1, 65545, 196609, 3, 131081, 196609, 3, 196617, 262145, 0, 262153, 262145, 0, 327689, 262145, 0, 65546, 196609, 3, 131082, 196609, 3, 196618, 262145, 0, 262154, 262145, 0, 327690, 262145, 0, 65547, 196609, 3, 131083, 196609, 3, 196619, 262145, 0, 262155, 262145, 0, 327691, 262145, 0, 65548, 196609, 3, 131084, 196609, 3, 196620, 262145, 0, 262156, 262145, 0, 327692, 262145, 0, 65549, 196609, 3, 131085, 196609, 3, 196621, 262145, 0, 262157, 262145, 0, 327693, 262145, 0, 393219, 262145, 0, 458755, 262145, 0, 393220, 262145, 0, 458756, 262145, 0, 393221, 262145, 0, 458757, 262145, 0, 393222, 262145, 0, 458758, 262145, 0, 393223, 196609, 2, 458759, 262145, 0, 393224, 262145, 2, 458760, 262145, 0, 393225, 262145, 0, 458761, 262145, 0, 393226, 262145, 0, 458762, 262145, 0, 393227, 262145, 0, 458763, 262145, 0, 393228, 262145, 0, 458764, 262145, 0, 393229, 262145, 0, 458765, 262145, 0, 327681, 262145, 0, 327682, 262145, 0, 196609, 196609, 3, 262145, 196609, 3, 196610, 196609, 3, 262146, 196609, 3, 262158, 262145, 0, 131086, 196609, 3, 196622, 196609, 3, 131087, 196609, 3, 196623, 196609, 3, 524296, 262145, 0, 524297, 262145, 0, 393230, 196609, 3, 393231, 196609, 3, 458766, 196609, 3, 458767, 196609, 3, 524302, 262145, 0, 524303, 262145, 0, 262159, 262145, 0, 524291, 262145, 0, 524292, 262145, 0, 524293, 262145, 0, 524294, 262145, 0, 524295, 262145, 0, 524298, 262145, 0, 524299, 262145, 0, 524300, 262145, 0, 524301, 262145, 0, 589832, 262145, 0, 589833, 262145, 0)
 layer_1/tile_data = PackedInt32Array(131082, 327681, 0, 196618, 327681, 1, 65548, 262145, 3, 262149, 196609, 5)
+
+[node name="player" parent="." instance=ExtResource("2_qcgtd")]
+position = Vector2(167, 217)
+
+[node name="InvisibleWalls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(48, 208)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(80, 208)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(80, 240)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(80, 272)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(112, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(144, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(176, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(208, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(240, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(336, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(368, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(400, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(432, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(464, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(496, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(464, 176)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(496, 176)
+shape = SubResource("RectangleShape2D_gne3j")

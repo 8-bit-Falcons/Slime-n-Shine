@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var maxSpeed = 500
+@export var maxSpeed = 200
 @export var acceleration = 1000
-@export var friction = 2000
+@export var friction = 20000
 
 @onready var axis = Vector2.ZERO
 @onready var sprite_2d = $Sprite2D
@@ -36,14 +36,15 @@ func apply_friction(amount):
 func apply_movement(accel):
 	velocity += accel
 	velocity = velocity.limit_length(maxSpeed)
+	print(velocity)
 	move_left()
 	move_down()
 	
 func move_left():
 	if velocity.x < 0:
-		sprite_2d.animation = "right"
-	elif velocity.x > 0:
 		sprite_2d.animation = "left"
+	elif velocity.x > 0:
+		sprite_2d.animation = "right"
 	
 func move_down():
 	if velocity.y < 0:
