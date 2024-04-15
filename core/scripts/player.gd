@@ -6,10 +6,20 @@ extends CharacterBody2D
 
 @onready var axis = Vector2.ZERO
 @onready var sprite_2d = $Sprite2D
+@onready var dir_anim = $Direction/AnimationPlayer
+@onready var actionable_finder = $Direction/ActionableFinder
+
+var direction = "down"
 
 func _physics_process(delta):
 	move(delta)
 	
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("ui_accept"):
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action()
+			return
 	
 func get_input_axis():
 	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))	
@@ -36,20 +46,25 @@ func apply_friction(amount):
 func apply_movement(accel):
 	velocity += accel
 	velocity = velocity.limit_length(maxSpeed)
-	print(velocity)
 	move_left()
 	move_down()
 	
 func move_left():
 	if velocity.x < 0:
-		sprite_2d.animation = "left"
+		direction = "left"
+		update_anim()
 	elif velocity.x > 0:
-		sprite_2d.animation = "right"
+		direction = "right"
+		update_anim()
 	
 func move_down():
 	if velocity.y < 0:
-		sprite_2d.animation = "back"
+		direction = "up"
+		update_anim()
 	elif velocity.y > 0:
-		sprite_2d.animation = "default"
+		direction = "down"
+		update_anim()
 		
-		
+func update_anim():
+	sprite_2d.animation = direction
+	dir_anim.play(direction)

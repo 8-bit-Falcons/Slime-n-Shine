@@ -1,13 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=12 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_qcgtd"]
+[ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets_new.png" id="3_c2k08"]
+[ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="4_1wb8c"]
+[ext_resource type="Resource" uid="uid://b4t8xmyh130uo" path="res://dialogue/inventory.dialogue" id="5_kslf0"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j01xm"]
 gradient = SubResource("Gradient_jhfax")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o460m"]
+atlas = ExtResource("3_c2k08")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebesy"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch3t0"]
+radius = 3.0
+height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gne3j"]
 size = Vector2(32, 32)
@@ -26,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -35,6 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_j01xm")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -43,6 +60,27 @@ format = 2
 layer_0/name = "Floor"
 layer_0/tile_data = PackedInt32Array(65539, 196609, 3, 131075, 196609, 3, 196611, 262145, 0, 262147, 262145, 0, 327683, 262145, 0, 65540, 196609, 3, 131076, 196609, 3, 196612, 262145, 0, 262148, 262145, 0, 327684, 262145, 0, 65541, 196609, 3, 131077, 196609, 3, 196613, 262145, 0, 262149, 262145, 0, 327685, 262145, 0, 65542, 196609, 3, 131078, 196609, 3, 196614, 262145, 0, 262150, 262145, 0, 327686, 262145, 0, 65543, 196609, 3, 131079, 196609, 3, 196615, 262145, 0, 262151, 262145, 0, 327687, 196609, 1, 65544, 196609, 3, 131080, 196609, 3, 196616, 262145, 0, 262152, 262145, 0, 327688, 262145, 1, 65545, 196609, 3, 131081, 196609, 3, 196617, 262145, 0, 262153, 262145, 0, 327689, 262145, 0, 65546, 196609, 3, 131082, 196609, 3, 196618, 262145, 0, 262154, 262145, 0, 327690, 262145, 0, 65547, 196609, 3, 131083, 196609, 3, 196619, 262145, 0, 262155, 262145, 0, 327691, 262145, 0, 65548, 196609, 3, 131084, 196609, 3, 196620, 262145, 0, 262156, 262145, 0, 327692, 262145, 0, 65549, 196609, 3, 131085, 196609, 3, 196621, 262145, 0, 262157, 262145, 0, 327693, 262145, 0, 393219, 262145, 0, 458755, 262145, 0, 393220, 262145, 0, 458756, 262145, 0, 393221, 262145, 0, 458757, 262145, 0, 393222, 262145, 0, 458758, 262145, 0, 393223, 196609, 2, 458759, 262145, 0, 393224, 262145, 2, 458760, 262145, 0, 393225, 262145, 0, 458761, 262145, 0, 393226, 262145, 0, 458762, 262145, 0, 393227, 262145, 0, 458763, 262145, 0, 393228, 262145, 0, 458764, 262145, 0, 393229, 262145, 0, 458765, 262145, 0, 327681, 262145, 0, 327682, 262145, 0, 196609, 196609, 3, 262145, 196609, 3, 196610, 196609, 3, 262146, 196609, 3, 262158, 262145, 0, 131086, 196609, 3, 196622, 196609, 3, 131087, 196609, 3, 196623, 196609, 3, 524296, 262145, 0, 524297, 262145, 0, 393230, 196609, 3, 393231, 196609, 3, 458766, 196609, 3, 458767, 196609, 3, 524302, 262145, 0, 524303, 262145, 0, 262159, 262145, 0, 524291, 262145, 0, 524292, 262145, 0, 524293, 262145, 0, 524294, 262145, 0, 524295, 262145, 0, 524298, 262145, 0, 524299, 262145, 0, 524300, 262145, 0, 524301, 262145, 0, 589832, 262145, 0, 589833, 262145, 0)
 layer_1/tile_data = PackedInt32Array(131082, 327681, 0, 196618, 327681, 1, 65548, 262145, 3, 262149, 196609, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(319, 221)
+
+[node name="Yarn" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_o460m")
+
+[node name="Actionable" parent="StaticBody2D/Yarn" instance=ExtResource("4_1wb8c")]
+dialogue_resource = ExtResource("5_kslf0")
+dialogue_start = "yarn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Yarn/Actionable"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ebesy")
+debug_color = Color(0.956863, 0, 0.537255, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ch3t0")
 
 [node name="player" parent="." instance=ExtResource("2_qcgtd")]
 position = Vector2(167, 217)

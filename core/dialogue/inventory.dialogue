@@ -1,3 +1,7 @@
 ~ invalid
 You cannot combine these items.
 => END
+
+~ yarn
+You pick up the yarn.
+=> END
