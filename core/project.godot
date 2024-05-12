@@ -19,14 +19,22 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+general/balloon_path="res://addons/dialogue_manager/example_balloon/small_example_balloon.tscn"
+
 [display]
 
-window/size/viewport_width=544
-window/size/viewport_height=352
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/CC362/Downloads/slimeshine.avi"
 
 [editor_plugins]
 
@@ -298,3 +306,5 @@ current_board_id="10ae34e0d2"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
