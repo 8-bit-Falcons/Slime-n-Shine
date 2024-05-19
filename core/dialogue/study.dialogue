@@ -1,13 +1,72 @@
-~ this_is_a_node_title
+~ initiate_quest
+Dew: Oh, perfect timing, {{Global.MC_name}}! [#emotion=neutral]
+You: really? well thank you! i tried really hard! [#emotion=happy]
+Dew: Do you think you could get us some H2O? [#emotion=neutral]
+You: water? what do you need water for? [#emotion=neutral]
+Dew: Ohoho! You are quite a silly one! [#emotion=happy]
+You: oh... i get that a lot... [#emotion=neutral]
+Dew: We have important science to do! [#emotion=neutral]
+Dew: And you can’t spell science without water.
+You: ... [#emotion=neutral]
+Dew: ... [#emotion=neutral]
+You: i trust your expertise in this area, doctor. [#emotion=neutral]
+Dew: As you should, {{Global.MC_name}}. As you should... [#emotion=neutral]
+Dew: But please, no need to call me “Doctor.” You know none of us have PhDs.
+You: you’re right... i apologize... just another silly mistake from silly me... heh. [#emotion=neutral]
+=> END
 
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ quest_incomplete
+Dew: H2Oh my gosh, where is my water? [#emotion=surprised]
+You: i used to love that game! [#emotion=happy]
+Dew: Huh? [#emotion=neutral]
+You: what? [#emotion=neutral]
+Dew: ... [#emotion=neutral]
+You: ... [#emotion=neutral]
+Dew: Um. [#emotion=neutral]
+Dew: Have you acquired the water I requested?
+You: sorry... working on it. [#emotion=neutral]
+=> END
 
+~ water
+You un-absorb the [color=cyan]WATER[/color] for the science slimes.
+Dew: Thanks for the [color=cyan]GOOEY WATER[/color], buddy! [#emotion=neutral]
+You: you're welcome(?) [#emotion=neutral]
+Dew: Yes(!) [#emotion=neutral]
+Dew: Here, as a token of my gratitude, take this [color=cyan]MAGNIFYING GLASS[/color].
+You: oh! thanks! [#emotion=neutral]
+You absorb the [color=cyan]MAGNIFYING GLASS[/color].
+=> END
+
+~ postquest
+Dew: Thank you for your contributions to science! [#emotion=neutral]
+=> END	
+
+~ minus
+FIrst interaction
+Minus: Did you know you can easily sideload games onto your TI-84 by simply connecting it to your computer and transferring over a compatible game file? [#emotion=neutral]
+Minus: That’s today’s tip from Minus Tech Tips! [#emotion=happy]
+(The writer does not know if Linus Tech Tips would say this. The writer does not watch Linus Tech Tips)
+You: wait, what’s a TI-84? [#emotion=neutral]
+(if their name isn’t greg):
+Are you kidding me, Greg?
+You: my name isn't greg [#emotion=neutral]
+(else):
+Are you kidding me, Jan?
+You: my name isn't jan [#emotion=neutral]
+Minus: Who are you talking to? [#emotion=neutral]
+You: 
+After
+Minus: I use Minux btw. [#emotion=neutral]
+=> END 
+
+~ lime
+First interaction
+Lime: Greetings, {{Global.MC_name}}! How’s the unemployment factory treating you? [#emotion=neutral]
+You: honestly, i don’t wanna think about it... [#emotion=sad]
+Lime: Well, you’ve come to the right place! [#emotion=neutral]
+After
+Lime: Let us know if you want to be a test subject! [#emotion=neutral]
+Lime: We’ll just have to fill you in on the risks, and the... benefits.
+(Disclaimer: The 8-bit Falcons do not promote the use of drugs.)
+You: i’ll think about it. [#emotion=neutral]
 => END

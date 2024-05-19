@@ -64,22 +64,6 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
-[sub_resource type="Animation" id="Animation_hmr0h"]
-resource_name = "blink"
-length = 1.6
-loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Balloon/Arrow:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.9, 1.6)
-}
-
 [sub_resource type="Animation" id="Animation_5aihg"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -104,6 +88,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hmr0h"]
+resource_name = "blink"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/Arrow:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.9, 1.6)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0tdso"]
@@ -135,7 +135,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -759.0
-offset_top = -191.0
+offset_top = -212.0
 offset_right = 759.0
 offset_bottom = -27.0
 grow_horizontal = 2
@@ -157,7 +157,7 @@ theme_override_constants/separation = 30
 [node name="Portrait" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 stretch_mode = 4
 

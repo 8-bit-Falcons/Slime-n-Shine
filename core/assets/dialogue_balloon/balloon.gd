@@ -59,11 +59,14 @@ var dialogue_line: DialogueLine:
 		# Determine portrait path
 		var char_title: String = dialogue_line.character.to_lower()
 		var emotion: String = ""
-		if dialogue_line.tags.size() > 1: # We've included a tag to specify the character's title
-			char_title = dialogue_line.tags[0]
-			emotion = dialogue_line.tags[1]
-		elif dialogue_line.tags.size() == 1:
-			emotion = dialogue_line.tags[0]
+		if dialogue_line.get_tag_value("char"):
+			char_title = dialogue_line.get_tag_value("char")
+		if dialogue_line.get_tag_value("emotion"):
+			emotion = dialogue_line.get_tag_value("emotion")
+		for name in Global.slime_to_sprite.keys():
+			if char_title == name:
+				char_title = Global.slime_to_sprite.get(name)
+				break
 		var portrait_path: String = "res://assets/character_portraits/%s/%s.png" % [char_title, emotion]
 			
 		if ResourceLoader.exists(portrait_path):
