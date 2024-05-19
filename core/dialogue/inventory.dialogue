@@ -3,5 +3,20 @@ You cannot combine these items.
 => END
 
 ~ yarn
-You pick up the yarn.
+There is yarn on the ground. \nTake it?
+- Yes
+	You absorb the yarn.
+- No
 => END
+
+~ test
+Banana: Hi [#happy]
+Banana: What's good?
+Meowzers: euhfiuehfiuhifwheufh [#happy]
+You: Hello! [#neutral]
+Banana: Cool! [#neutral]
+Greg: I'm here too [#bathroom_slimes] [#sad]
+YUGU: uhfieuhfewf [#garden_slimes] [#sad]
+You: well [#surprised]
+uhi: hiiiiiiii [#kitchen_slimes] [#happy]
+ewfw: fwefwefw [#science_slimes] [#surprised]

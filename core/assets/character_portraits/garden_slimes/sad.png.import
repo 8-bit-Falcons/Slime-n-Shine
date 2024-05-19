@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3v71rn2bhtra"
-path="res://.godot/imported/tilesets.png-203a1c01616c3a1f244e619b6019c18d.ctex"
+uid="uid://d2nx4wbrpfx28"
+path="res://.godot/imported/sad.png-1f8826d12f10b51b2a6b8828adeab627.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets.png"
-dest_files=["res://.godot/imported/tilesets.png-203a1c01616c3a1f244e619b6019c18d.ctex"]
+source_file="res://assets/character_portraits/garden_slimes/sad.png"
+dest_files=["res://.godot/imported/sad.png-1f8826d12f10b51b2a6b8828adeab627.ctex"]
 
 [params]
 

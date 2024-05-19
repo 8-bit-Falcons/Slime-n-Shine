@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pjhvmw6ixgpy"
-path="res://.godot/imported/slimes.png-919ef08209e14457382f30e3d1b091fc.ctex"
+uid="uid://vmoeirkx5jgj"
+path="res://.godot/imported/neutral.png-d0218541c931e22a31908c61f74e6073.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slimes.png"
-dest_files=["res://.godot/imported/slimes.png-919ef08209e14457382f30e3d1b091fc.ctex"]
+source_file="res://assets/character_portraits/bathroom_slimes/neutral.png"
+dest_files=["res://.godot/imported/neutral.png-d0218541c931e22a31908c61f74e6073.ctex"]
 
 [params]
 

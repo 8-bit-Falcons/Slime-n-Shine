@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nj1wrrmve68n"
-path="res://.godot/imported/tilesets_new.png-ffddc4b62961be6bc6934cf3374d39ca.ctex"
+uid="uid://brepmj87cdfu4"
+path="res://.godot/imported/neutral.png-4366c5378821355f22d625bdb0154424.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets_new.png"
-dest_files=["res://.godot/imported/tilesets_new.png-ffddc4b62961be6bc6934cf3374d39ca.ctex"]
+source_file="res://assets/character_portraits/science_slimes/neutral.png"
+dest_files=["res://.godot/imported/neutral.png-4366c5378821355f22d625bdb0154424.ctex"]
 
 [params]
 
