@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=16 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://assets/dialogue_balloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="FontFile" uid="uid://dv0vv48mgcdcf" path="res://assets/fonts/Kenney Pixel.ttf" id="3_8qt7u"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="4_jy5qk"]
+[ext_resource type="Texture2D" uid="uid://b3qe7vgffv5nf" path="res://assets/dialogue_balloon/arrow.png" id="6_f2crm"]
+[ext_resource type="AudioStream" uid="uid://erw654br3iiw" path="res://assets/sounds/bleep.mp3" id="6_qvlsa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0.168627, 0.168627, 0.168627, 1)
@@ -48,10 +50,6 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font = ExtResource("3_8qt7u")
@@ -65,6 +63,54 @@ MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
+
+[sub_resource type="Animation" id="Animation_hmr0h"]
+resource_name = "blink"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/Arrow:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.9, 1.6)
+}
+
+[sub_resource type="Animation" id="Animation_5aihg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/Arrow:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Balloon/Arrow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tdso"]
+_data = {
+"RESET": SubResource("Animation_5aihg"),
+"blink": SubResource("Animation_hmr0h")
+}
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
@@ -83,14 +129,15 @@ theme = SubResource("Theme_qq3yp")
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 21.0
-offset_top = -183.0
-offset_right = -19.0
-offset_bottom = -19.0
+offset_left = -759.0
+offset_top = -191.0
+offset_right = 759.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
@@ -162,5 +209,32 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
+[node name="Arrow" type="TextureRect" parent="Balloon"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.879
+anchor_top = 0.948
+anchor_right = 0.879
+anchor_bottom = 0.948
+offset_left = -9.68018
+offset_top = -9.84009
+offset_right = 10.3198
+offset_bottom = 10.1599
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_f2crm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/Arrow"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_0tdso")
+}
+autoplay = "blink"
+
+[node name="DialogueSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qvlsa")
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

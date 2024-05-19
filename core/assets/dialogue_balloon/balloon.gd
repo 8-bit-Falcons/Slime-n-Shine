@@ -11,6 +11,8 @@ extends CanvasLayer
 @onready var portrait = %Portrait
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var dialogue_sound = $DialogueSound
+@onready var arrow = $Balloon/Arrow
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -19,7 +21,12 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set(value):
+		is_waiting_for_input = value
+		arrow.visible = value
+	get:
+		return is_waiting_for_input
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
@@ -103,6 +110,7 @@ var dialogue_line: DialogueLine:
 
 func _ready() -> void:
 	balloon.hide()
+	arrow.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# If the responses menu doesn't have a next action set, use this one
@@ -165,3 +173,9 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+
+
+func _on_dialogue_label_spoke(letter, letter_index, speed):
+	if letter not in [".", "!", "?", " "]:
+		dialogue_sound.pitch_scale = randf_range(0.9, 1.0)
+		dialogue_sound.play()
