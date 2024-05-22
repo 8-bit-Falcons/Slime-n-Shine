@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://nwy5nrmvb35l"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_yucyp"]
-[ext_resource type="Texture2D" uid="uid://pjhvmw6ixgpy" path="res://assets/slimes.png" id="2_vbrr5"]
+[ext_resource type="Texture2D" uid="uid://pjhvmw6ixgpy" path="res://assets/sprites/slimes/slimes.png" id="2_vbrr5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcrbi"]
 atlas = ExtResource("2_vbrr5")
@@ -231,6 +231,3 @@ debug_color = Color(0.956863, 0, 0.52549, 0.419608)
 libraries = {
 "": SubResource("AnimationLibrary_wfjlg")
 }
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3forddk0rn4m"]
 
-[ext_resource type="Texture2D" uid="uid://3v71rn2bhtra" path="res://assets/tilesets.png" id="1_grpg1"]
+[ext_resource type="Texture2D" uid="uid://3v71rn2bhtra" path="res://assets/tilesets/tilesets.png" id="1_grpg1"]
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="2_c8ai2"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="3_ucxgl"]
 
