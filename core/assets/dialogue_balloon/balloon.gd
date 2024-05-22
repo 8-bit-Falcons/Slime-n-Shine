@@ -14,6 +14,7 @@ extends CanvasLayer
 @onready var dialogue_sound = $DialogueSound
 @onready var arrow = $Balloon/Arrow
 
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -25,6 +26,7 @@ var is_waiting_for_input: bool = false:
 	set(value):
 		is_waiting_for_input = value
 		arrow.visible = value
+		arrow.get_child(0).seek(0, true)
 	get:
 		return is_waiting_for_input
 
@@ -180,5 +182,4 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 func _on_dialogue_label_spoke(letter, letter_index, speed):
 	if letter not in [".", "!", "?", " "]:
-		dialogue_sound.pitch_scale = randf_range(0.9, 1.0)
 		dialogue_sound.play()

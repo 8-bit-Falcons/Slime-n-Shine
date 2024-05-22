@@ -1,40 +1,40 @@
 ~ intro
-You: man! i can’t wait to play games with my slime homies after my long day at the unemployment factory! i hope no cats try to bother me 😠 [#emotion=neutral]
+You: man! i can't wait to play games with my slime homies after my long day at the unemployment factory! i hope no cats try to bother me[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😠[/font_size][/font] [#emotion=neutral]
 Do you see that?
 You: what? [#emotion=neutral]
 That cat.
-You: oh my lanta! look at that shiny thing! i want that shiny thing so bad. i wonder what i have to do to get that shiny thing! [#emotion=surprised]
+You: oh my lanta! look at that [color=cyan]SHINY THING[/color]! i want that [color=cyan]SHINY THING[/color] so bad. i wonder what i have to do to get that [color=cyan]SHINY THING[/color]! [#emotion=surprised]
 - Write a letter => letter
 - Vehicular manslaughter
-	You: hmmm, maybe writing a letter would work better than a felony! [#emotion=neutral]
+	You: hmmm, maybe writing a [color=cyan]LETTER[/color] would work better than a felony! [#emotion=neutral]
 	=> letter
 => END
 
 ~ letter
-You: luckily, i already have a [color=cyan]PENCIL[/color] and [color=cyan]PAPER[/color]!
-You: i just need to [color=yellow]COMBINE[/color] them to create a letter!
+You: luckily, i already have a [color=cyan]PENCIL[/color] and [color=cyan]PAPER[/color]! [#emotion=neutral]
+You: i just need to [color=yellow]COMBINE[/color] them to create a [color=cyan]LETTER[/color]!
 Press a number key to select an item from your inventory.
 Pressing 1 selects the first item, and so on.
 When an item is selected, you can select another item to try [color=yellow]COMBINING[/color] them.
 => END
 
 ~ initiate_quest
-You: hi cat friend! i have a letter for you! 😋 [#emotion=neutral]
+You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]
 Meowzers: oh. thanks. [#emotion=neutral]
-Your cat “friend” takes the letter and starts to read it. They squint. Maybe they’re dyslexic.
-Meowzers: i don’t like this letter. [#emotion=unamused]
+Your cat “friend” takes the [color=cyan]LETTER[/color] and starts to read it. They squint. Maybe they're dyslexic.
+Meowzers: i don't like this [color=cyan]LETTER[/color]. [#emotion=unamused]
 You: oh. why not? [#emotion=surprised]
-Meowzers: i don’t understand it. [#emotion=unamused]
+Meowzers: i don't understand it. [#emotion=unamused]
 You: oh. what do you understand. [#emotion=neutral]
-Meowzers: fish. [#emotion=neutral]
-You: oh. that’s nice! [#emotion=happy]
-Meowzers: and i’m really hungry right now [#emotion=hungry]
+Meowzers: [color=cyan]FISH[/color]. [#emotion=neutral]
+You: oh. that's nice! [#emotion=happy]
+Meowzers: and i'm really hungry right now [#emotion=hungry]
 You blink.
 Meowzers: like i really want some [color=cyan]FISH[/color] right now. [#emotion=hungry]
-You still don’t get it.
+You still don't get it.
 Meowzers: like some [color=cyan]FISH[/color] would realllllyyyyyy make my day right now [#emotion=hungry]
 Are you being serious right now.
-You: oh! i’ll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
+You: oh! i'll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
 => END
 
 ~ meowzers_quest_incomplete
@@ -49,19 +49,19 @@ Maybe you can wake him up somehow...
 => END
 
 ~ banana_awoken
-You tickle Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
+You [color=yellow]TICKLE[/color] Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
 Banana: H...hmmmnn? [#emotion=sleepy]
 Banana: What...?
 You: hi banana. [#emotion=neutral]
 Banana: ... [#emotion=slightly_annoyed]
-Banana: What’s the big idea? What’d you wake me up for?? [#emotion=angry]
+Banana: What's the big idea? What'd you wake me up for?? [#emotion=angry]
 (if interacted with key)
 => ask_for_key
 (else)
 Hm... why DID you do that?
 You: um... for funsies? [#emotion=neutral]
-Banana: What… [#emotion=slightly_annoyed]
-Banana: Ugh. Now I won’t be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
+Banana: What... [#emotion=slightly_annoyed]
+Banana: Ugh. Now I won't be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
 => END
 	
 ~ ask_for_key
@@ -69,9 +69,9 @@ You: can you get that [color=cyan]KEY[/color] for me? [speed=0.3] pleaaaaase? [#
 You summon your best puppy dog eyes.
 You seem to have forgotten that you are talking to a cat.
 Banana: What? No! Why would I do something for you?? [#emotion=angry]
-You: well i [#emotion=surprised] [next=auto]
-Banana: Don’t think I’ve forgotten what you did to me last summer… [#emotion=angry]
-You: umm… [#emotion=sad]
+You: well i- [#emotion=surprised] [next=auto]
+Banana: Don't think I've forgotten what you did to me last summer... [#emotion=angry]
+You: umm... [#emotion=sad]
 Banana turns away from you.
 => END 
 
@@ -82,12 +82,12 @@ You: hey- [next=auto] [#emotion=sad]
 => END 
 
 ~ banana_meowzers
-Banana: OMG cool shiny thing! [#emotion=happy]
+Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
 Meowzers: thanks! [#emotion=happy]
 Banana: What's it about? [#emotion=happy]
 Meowzers: huh? [#emotion=neutral]
 Banana: What's it about? [#emotion=happy]
-Meowzers: what's my shiny thing about? [#emotion=neutral]
+Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
 Banana: Yeah! [#emotion=happy]
 Meowzers: i don't- what does that mean? [#emotion=neutral]
 Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
@@ -95,7 +95,6 @@ Meowzers: hmm... [#emotion=neutral]
 => END
 
 ~ banana_magnifying_glass
-
 You shine light at the wall using the [color=cyan]MAGNIFYING GLASS[/color], creating a faux laser pointer.
 Banana: Moving light!? [#emotion=happy]
 Banana: Must catch!!
@@ -104,13 +103,17 @@ You: nice! [#emotion=neutral]
 => END
 
 ~ banana_post_quest
-You: hey nanna, how’s it going! [#emotion=happy]
-Banana: DON’T [#emotion=angry]
+You: hey nanna, how's it going! [#emotion=happy]
+Banana: DON'T [#emotion=angry]
 Banana: call me that.
 => END 
 
 ~ ending
-You: oh em gee! thank you so much cat friend! i will cherish this shiny thing forever! 🥰 [#emotion=happy]
+You: meowzers! i brought you some [color=cyan]FISH[/color]! [#emotion=neutral]
+Meowzers: [color=cyan]FISH[/color]? finally! [#emotion=hungry]
+Meowzers: here. you can have this now. [#emotion=neutral]
+Meowzers rolls the [color=cyan]SHINY THING[/color] towards you.
+You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥰[/font_size][/font] [#emotion=happy]
 Meowzers: okay. you can leave now. [#emotion=neutral]
 You leave.
 => END

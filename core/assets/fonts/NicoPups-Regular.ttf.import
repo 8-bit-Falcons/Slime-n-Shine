@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dst1eiuknjv66"
-path="res://.godot/imported/Kenney Pixel Square.ttf-64bdf49ba5e0eb79f81157a4c2d9cf94.fontdata"
+uid="uid://csk5gkm3y16ya"
+path="res://.godot/imported/NicoPups-Regular.ttf-46693a18ec8d972d9036b4bf4a28c1d9.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Kenney Pixel Square.ttf"
-dest_files=["res://.godot/imported/Kenney Pixel Square.ttf-64bdf49ba5e0eb79f81157a4c2d9cf94.fontdata"]
+source_file="res://assets/fonts/NicoPups-Regular.ttf"
+dest_files=["res://.godot/imported/NicoPups-Regular.ttf-46693a18ec8d972d9036b4bf4a28c1d9.fontdata"]
 
 [params]
 

@@ -7,20 +7,20 @@ You: ? [#emotion=neutral]
 Martha: And I just finished up the sandwiches... [#emotion=mad]
 You: oh, well- [#emotion=surprised] [next=auto]
 Martha: *grumble grumble* I came here with a whole plan to just make something simple and get it done... *grumble grumble* [#emotion=mad]
-You: you don’t have to- [#emotion=sad] [next=auto]
-Martha: *grumble grumble* I’m just so tired from working long hours every day, I’m so busy all the time, it’s just hard for me to change plans last minute... *grumble grumble* [#emotion=mad]
+You: you don't have to- [#emotion=sad] [next=auto]
+Martha: *grumble grumble* I'm just so tired from working long hours every day, I'm so busy all the time, it's just hard for me to change plans last minute... *grumble grumble* [#emotion=mad]
 You: i- [#emotion=sad] [next=auto]
 Martha: *sigh* What kind of [color=cyan]FISH[/color] do you want? [#emotion=mad]
-You: you... you don’t have to make [color=cyan]FISH[/color] if you don’t want to... [#emotion=sad]
-Martha: No, I’ll make it—what kind of [color=cyan]FISH[/color] do you want? [#emotion=mad]
-You: i’ll just get [color=cyan]FISH[/color] from somewhere else... [#emotion=sad]
+You: you... you don't have to make [color=cyan]FISH[/color] if you don't want to... [#emotion=sad]
+Martha: No, I'll make it—what kind of [color=cyan]FISH[/color] do you want? [#emotion=mad]
+You: i'll just get [color=cyan]FISH[/color] from somewhere else... [#emotion=sad]
 Martha: Just tell me what [color=cyan]FISH[/color] you want. [#emotion=mad]
 Martha preheats the oven and begins preparing to cook [color=cyan]FISH[/color].
 You: a-any kind of [color=cyan]FISH[/color] is fine... [#emotion=sad]
 Martha: *sigh* [#emotion=mad]
 You: ... [#emotion=sad]
-Martha: Okay, but you’re gonna need to clean up the kitchen, because I don’t have time to do that and make this [color=cyan]FISH[/color]. *grumble* Running around all day doing things... *grumble* [#emotion=mad]
-Martha: Go get a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color], [color=yellow]CLEAN UP[/color] the kitchen, and by the time you’re done, the [color=cyan]FISH[/color] will be ready.
+Martha: Okay, but you're gonna need to clean up the kitchen, because I don't have time to do that and make this [color=cyan]FISH[/color]. *grumble* Running around all day doing things... *grumble* [#emotion=mad]
+Martha: Go get a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color], [color=yellow]CLEAN UP[/color] the kitchen, and by the time you're done, the [color=cyan]FISH[/color] will be ready.
 You: o..okay... [#emotion=sad]
 => END 
 
@@ -29,48 +29,48 @@ You: o..okay... [#emotion=sad]
 Martha: Well, if you have what you need, go ahead and start cleaning the floor. [#emotion=neutral]
 (else)
 Martha: What? [#emotion=mad]
-You: um... it’s nothing... [#emotion=sad]
+You: um... it's nothing... [#emotion=sad]
 Martha: You want something. What do you want. [#emotion=mad]
 It may be best to just walk away.
 => END
 
 ~ quest_complete
- Martha: Thanks for cleaning up the kitchen. [#emotion=neutral]
+ Martha: Thanks for [color=yellow]CLEANING[/color] up the kitchen. [#emotion=neutral]
  You: no problem! [#emotion=neutral]
- Martha: Here’s your fish. [#emotion=neutral]
+ Martha: Here's your [color=cyan]FISH[/color]. [#emotion=neutral]
  You: thanks! [#emotion=neutral]
- You absorb the fish.
+ You absorb the [color=cyan]FISH[/color].
 => END
 
 ~ postquest
-Martha: How’s your fish? [#emotion=neutral]
-You: um... it’s good! [#emotion=neutral]
-You don’t think you want to tell them that it wasn’t for you.
+Martha: How's your [color=cyan]FISH[/color]? [#emotion=neutral]
+You: um... it's good! [#emotion=neutral]
+You don't think you want to tell them that it wasn't for you.
 => END 
 
 ~ eggy
 First conversation
-You: what’s cookin’ good-lookin’! [#emotion=happy]
-Eggy: you think I’m good-looking? [#emotion=surprised]
+You: what's cookin' good-lookin'! [#emotion=happy]
+Eggy: you think I'm good-looking? [#emotion=surprised]
 You: oh [#emotion=surprised]
 You: well, it was like, a figure of speech. [#emotion=neutral]
 Eggy: huh? [#emotion=neutral]
 You: like... [#emotion=neutral]
 You: um...
-Eggy: so you don’t think I’m good-looking? [#emotion=sad]
-You: well like... i don’t NOT think that... [#emotion=surprised]
-You: but i don’t, like... especially think it... either... [#emotion=neutral]
+Eggy: so you don't think I'm good-looking? [#emotion=sad]
+You: well like... i don't NOT think that... [#emotion=surprised]
+You: but i don't, like... especially think it... either... [#emotion=neutral]
 Eggy: oh. [#emotion=sad]
 You: ... [#emotion=neutral]
-You: so what’s cooking?
-Eggy: I’m baking something. [#emotion=neutral]
+You: so what's cooking?
+Eggy: I'm baking something. [#emotion=neutral]
 You: oh! cool! [#emotion=neutral]
 Eggy: yeah. [#emotion=neutral]
 You: love baking! haha. [#emotion=neutral]
 Eggy: yeah. [#emotion=neutral]
 You: ... [#emotion=neutral]
 After
-You: what’s your favorite thing to bake? i like cookies! [#emotion=neutral]
+You: what's your favorite thing to bake? i like cookies! [#emotion=neutral]
 Eggy: yeah, those are pretty good. [#emotion=neutral]
 You: cool. [#emotion=neutral]
 => END 
@@ -84,6 +84,6 @@ You: um... [#emotion=neutral]
 You: nevermind.
 Parfait: Okay! [#emotion=neutral]
 After
-Parfait: Hey, tomorrow I’ll let you sample my cheesy bread if you want! [#emotion=neutral]
+Parfait: Hey, tomorrow I'll let you sample my cheesy bread if you want! [#emotion=neutral]
 You: wow! really? thanks! [#emotion=happy]
 => END

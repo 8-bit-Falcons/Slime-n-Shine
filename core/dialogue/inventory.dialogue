@@ -3,18 +3,17 @@ You cannot combine these items.
 => END
 
 ~ letter
- You combine the pencil and paper to write a [color=cyan]LETTER[/color]:
+ You combine the [color=cyan]PENCIL[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
 [color=orange]My dearest friend Meowzers,
-	Upon your arrival, I noticed that shiny thing you were clutching so tightly to your chest. Wowzers Meowzers! That shiny thing is simply divine.[/color]
-[color=orange]Although our respective clans clash from birth ‘til death, I wondered if we might put such frivolous matters aside for a moment to share in our mutual love for shiny.
-	Prithee, may I have the shiny?[/color]
+	‎ ‎ ‎ Upon your arrival, I noticed that shiny thing you were clutching so tightly to your chest. Wowzers Meowzers! That shiny thing is simply divine.[/color]
+‎ ‎ ‎ [color=orange]Although our respective clans clash from birth ‘til death, I wondered if we might put such frivolous matters aside for a moment to share in our mutual love for shiny. Prithee, may I have the shiny?[/color]
 [color=orange]Yours truly,
 	{{Global.MC_name}}[/color]
-You: there, it’s perfect! a formal [color=cyan]LETTER OF REQUEST[/color]! [#emotion=happy]
+You: there, it's perfect! a formal [color=cyan]LETTER OF REQUEST[/color]! [#emotion=happy]
 You: is it weird to call them my friend when we're kind of mortal enemies? [#emotion=neutral]
-You: well, who cares!? i'll try anything for the shiny thing! [#emotion=neutral]
+You: well, who cares!? i'll try anything for the [color=cyan]SHINY THING[/color]! [#emotion=neutral]
 You: i guess it's time to give the [color=cyan]LETTER[/color] to meowzers. [#emotion=neutral]
-Along with combining items together, you can also use items on objects or people by interacting with them while an inventory item is selected.
+Along with combining items together, you can also use items on objects or people by [color=yellow]INTERACTING[/color] with them while an inventory item is selected.
 Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTING[/color] with him while the [color=cyan]LETTER[/color] is selected!
 => END
 
@@ -39,18 +38,18 @@ There is [color=cyan]WATER[/color] in the toilet.
 	Take it?
 - Yes
 	(if MC has other items in their inventory)
-	While you’ve absorbed other items? Really?
+	While you've absorbed other items? Really?
 	- Yes
-		You absorbed the [color=cyan]WATER[/color].
+		You absorb the [color=cyan]WATER[/color].
 	- No
 - No
 => END
 
 ~ key
 (if hanging)
-There’s a [color=cyan]KEY[/color] hanging on the wall here, but you can’t reach it.
+There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
 (if fallen)
-There’s a [color=cyan]KEY[/color] hanging on the wall here.
+There is a [color=cyan]KEY[/color] on the ground.
 	Take it?
 - Yes
 	You absorb the [color=cyan]KEY[/color].
@@ -59,7 +58,7 @@ There’s a [color=cyan]KEY[/color] hanging on the wall here.
 
 ~ drawer
 (if locked)
-It’s locked.
+It's locked.
 (if unlockable)
 You use the [color=cyan]KEY[/color] to unlock the drawer.
 Inside is a [color=cyan]BOX OF MARKERS[/color].
