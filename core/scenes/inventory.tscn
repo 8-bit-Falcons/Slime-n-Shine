@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cty6audfq85ai"]
+
+[ext_resource type="PackedScene" uid="uid://bl4yb02emekor" path="res://scenes/inventory_item.tscn" id="1_u64ek"]
+[ext_resource type="Texture2D" uid="uid://o80jnfif6w0i" path="res://assets/inventory_sprites/mop.png" id="2_sc4go"]
+[ext_resource type="Texture2D" uid="uid://djh74bbtxmv5n" path="res://assets/inventory_sprites/paper.png" id="3_kyha7"]
+
+[node name="Inventory" type="CanvasLayer"]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InventoryItem" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_u64ek")]
+layout_mode = 2
+icon = ExtResource("2_sc4go")
+
+[node name="InventoryItem2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_u64ek")]
+layout_mode = 2
+icon = ExtResource("3_kyha7")
