@@ -39,11 +39,14 @@ icon = ExtResource("2_f188o")
 [node name="InventoryItem2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_u64ek")]
 layout_mode = 2
 icon = ExtResource("3_kyha7")
+_id = 1
 
 [node name="InventoryItem3" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_u64ek")]
 layout_mode = 2
 icon = ExtResource("2_sc4go")
+_id = 2
 
 [node name="InventoryItem4" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_u64ek")]
 layout_mode = 2
 icon = ExtResource("2_sc4go")
+_id = 3

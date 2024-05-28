@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl4yb02emekor"]
+[gd_scene load_steps=7 format=3 uid="uid://bl4yb02emekor"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
 
@@ -16,15 +16,39 @@ border_color = Color(0, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tpw"]
 
+[sub_resource type="GDScript" id="GDScript_ns6os"]
+resource_name = "InventoryItem"
+script/source = "extends Button
+
+@export var _id: int = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var sc: Shortcut = Shortcut.new()
+	var key: InputEventKey = InputEventKey.new()
+	key.set_keycode(49 + _id)
+	key.set_unicode(49 + _id)
+	sc.events.append(key)
+	self.set_shortcut(sc)
+
+
+func set_id(id: int):
+	if (id >= 0 and id < 9):
+		_id = id
+"
+
 [node name="InventoryItem" type="Button"]
 texture_filter = 1
 custom_minimum_size = Vector2(42, 42)
 offset_right = 42.0
 offset_bottom = 42.0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vhjxv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1842u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2vrpy")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_m8bf2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_i1tpw")
 toggle_mode = true
+button_mask = 0
 icon_alignment = 1
+script = SubResource("GDScript_ns6os")
