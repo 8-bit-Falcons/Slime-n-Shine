@@ -1,0 +1,58 @@
+~ yarn
+There is [color=cyan]YARN[/color] on the ground.
+	Take it?
+- Yes
+	You absorb the [color=cyan]YARN[/color].
+- No
+=> END
+
+~ stick
+There is a [color=cyan]STICK[/color] on the ground.
+	Take it?
+- Yes
+	You absorb the [color=cyan]STICK[/color].
+- No
+=> END
+
+~ water
+There is [color=cyan]WATER[/color] in the toilet.
+	Take it?
+- Yes
+	(if MC has other items in their inventory)
+	While you've absorbed other items? Really?
+	- Yes
+		You absorb the [color=cyan]WATER[/color].
+	- No
+- No
+=> END
+
+~ key
+(if hanging)
+There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
+(if fallen)
+There is a [color=cyan]KEY[/color] on the ground.
+	Take it?
+- Yes
+	You absorb the [color=cyan]KEY[/color].
+- No
+=> END 
+
+~ drawer
+(if locked)
+It's locked.
+(if unlockable)
+You use the [color=cyan]KEY[/color] to unlock the drawer.
+Inside is a [color=cyan]BOX OF MARKERS[/color].
+Take the [color=cyan]MARKERS[/color]?
+- Yes
+	You absorb the [color=cyan]MARKERS[/color].
+- No
+(if unlocked + markers)
+Inside the drawer is a [color=cyan]BOX OF MARKERS[/color].
+Take the [color=cyan]MARKERS[/color]?
+- Yes
+	You absorb the [color=cyan]MARKERS[/color].
+- No
+(if unlocked + empty)
+The drawer is empty.
+=> END

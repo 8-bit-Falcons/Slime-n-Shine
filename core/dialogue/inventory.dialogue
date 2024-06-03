@@ -1,9 +1,62 @@
 ~ invalid
-You cannot combine these items.
+% These items don't quite combine into anything.
+% Are you seriously trying to combine these?
 => END
 
+~ bucket
+Empty
+=> END 
+
+~ fish
+Empty
+=> END 
+
+~ key
+Empty
+=> END 
+
 ~ letter
- You combine the [color=cyan]PEN[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
+Empty
+=> END 
+
+~ magnifying_glass
+Emoty
+=> END 
+
+~ markers
+empty
+=> END 
+
+~ mop
+empty
+=> END 
+
+~ paper
+ejoty
+=> END 
+
+~ pen
+empty
+=> END 
+
+~ stick
+empty
+=> END 
+
+~ tickler
+empty
+=> END 
+
+~ water
+emptu
+=> END 
+
+~ yarn
+empty
+=> END
+
+~ create_letter
+ You combine the [color=cyan]PENCIL[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
 [color=orange]My dearest friend Meowzers,
 	‎ ‎ ‎ Upon your arrival, I noticed that shiny thing you were clutching so tightly to your chest. Wowzers Meowzers! That shiny thing is simply divine.[/color]
 ‎ ‎ ‎ [color=orange]Although our respective clans clash from birth ‘til death, I wondered if we might put such frivolous matters aside for a moment to share in our mutual love for shiny. Prithee, may I have the shiny?[/color]
@@ -17,66 +70,7 @@ Along with combining items together, you can also use items on objects or people
 Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTING[/color] with him while the [color=cyan]LETTER[/color] is selected!
 => END
 
-~ yarn
-There is [color=cyan]YARN[/color] on the ground.
-	Take it?
-- Yes
-	You absorb the [color=cyan]YARN[/color].
-- No
-=> END
-
-~ stick
-There is a [color=cyan]STICK[/color] on the ground.
-	Take it?
-- Yes
-	You absorb the [color=cyan]STICK[/color].
-- No
-=> END
-
-~ water
-There is [color=cyan]WATER[/color] in the toilet.
-	Take it?
-- Yes
-	(if MC has other items in their inventory)
-	While you've absorbed other items? Really?
-	- Yes
-		You absorb the [color=cyan]WATER[/color].
-	- No
-- No
-=> END
-
-~ key
-(if hanging)
-There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
-(if fallen)
-There is a [color=cyan]KEY[/color] on the ground.
-	Take it?
-- Yes
-	You absorb the [color=cyan]KEY[/color].
-- No
-=> END 
-
-~ drawer
-(if locked)
-It's locked.
-(if unlockable)
-You use the [color=cyan]KEY[/color] to unlock the drawer.
-Inside is a [color=cyan]BOX OF MARKERS[/color].
-Take the [color=cyan]MARKERS[/color]?
-- Yes
-	You absorb the [color=cyan]MARKERS[/color].
-- No
-(if unlocked + markers)
-Inside the drawer is a [color=cyan]BOX OF MARKERS[/color].
-Take the [color=cyan]MARKERS[/color]?
-- Yes
-	You absorb the [color=cyan]MARKERS[/color].
-- No
-(if unlocked + empty)
-The drawer is empty.
-=> END
-
-~ tickler
+~ create_tickler
 You tie the [color=cyan]YARN[/color] onto the [color=cyan]STICK[/color].
 Maybe you could [color=yellow]TICKLE[/color] someone with this...
 => END

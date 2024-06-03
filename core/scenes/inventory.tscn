@@ -1,0 +1,163 @@
+[gd_scene load_steps=5 format=3 uid="uid://cty6audfq85ai"]
+
+[ext_resource type="Texture2D" uid="uid://bhw4rp0upah3o" path="res://assets/tilesets/inventory.png" id="1_pofon"]
+[ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="2_mtf6t"]
+
+[sub_resource type="GDScript" id="GDScript_01qxi"]
+resource_name = "Inventory"
+script/source = "extends CanvasLayer
+
+@onready var hbox = %HBoxContainer
+@onready var panel = %Panel
+@onready var item_label = %ItemLabel
+const InventoryItem = preload(\"res://scenes/inventory_item.tscn\")
+enum Item {BUCKET, FISH, KEY, LETTER, MAGNIFYING_GLASS, MARKERS, MOP, PAPER, PEN, STICK, TICKLER, WATER, YARN}
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	panel.visible = false
+	DialogueManager.got_dialogue.connect(_on_dialogue_manager_got_dialogue)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_manager_dialogue_ended)
+	
+	# TODO: remove this test code
+	add_item(Item.FISH)
+	add_item(Item.MAGNIFYING_GLASS)
+	add_item(Item.PAPER)
+	add_item(Item.PEN)
+	#for item in Item:
+		#add_item(Item[item])
+
+
+# Add an item to the inventory
+func add_item(item: Item):
+	panel.visible = true
+	
+	var inventory_item = InventoryItem.instantiate()
+	inventory_item.configure(get_item_name(item), hbox.get_child_count())
+	hbox.add_child(inventory_item)
+	inventory_item.toggled2.connect(_on_inventory_item_toggled)
+
+
+# Remove an item from the inventory
+func remove_item(item: Item):
+	hbox.find_child(get_item_name(item), false, false).queue_free()
+	if hbox.get_child_count() == 0:
+		panel.visible = false
+
+
+# Gets the string name of the given Item
+# for use in file path and naming nodes
+func get_item_name(item: Item):
+	return Item.keys()[item].to_lower()
+
+
+# Returns a list of all selected inventory items
+func selected():
+	var selected_items = []
+	for item in hbox.get_children():
+		if item.button_pressed:
+			selected_items.append(item)
+	
+	return selected_items
+
+
+# Deselect all selected inventory items
+func deselect_all():
+	for item in selected():
+		item.set_pressed(false)
+
+
+# Format an item's name for use in the ItemLabel
+func format_name(name: String):
+	return \"[right]%s[/right]\" % name.capitalize()
+
+
+# Set the ItemLabel's text to the currently-selected item's name
+func _on_inventory_item_toggled(item_name, toggled_on):
+	if toggled_on:
+		item_label.text = format_name(item_name)
+	elif not selected():
+		item_label.text = \"\"
+	else:
+		item_label.text = format_name(selected()[0].name)
+
+
+func _on_dialogue_manager_got_dialogue(line: DialogueLine):
+	item_label.visible = false
+	
+
+func _on_dialogue_manager_dialogue_ended(resource: DialogueResource):
+	item_label.visible = true
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mb2b5"]
+texture = ExtResource("1_pofon")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.1892
+texture_margin_bottom = 16.0
+modulate_color = Color(0.545098, 0.572549, 0.862745, 1)
+
+[node name="Inventory" type="CanvasLayer"]
+script = SubResource("GDScript_01qxi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mb2b5")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -451.0
+offset_top = -83.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ItemLabel" type="RichTextLabel" parent="MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0.87451, 0.67451, 0.121569, 1)
+theme_override_fonts/normal_font = ExtResource("2_mtf6t")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+shortcut_keys_enabled = false

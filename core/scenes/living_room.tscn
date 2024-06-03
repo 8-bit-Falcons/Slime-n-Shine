@@ -2,9 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_qcgtd"]
-[ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets_new.png" id="3_c2k08"]
+[ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tilesets_new.png" id="3_c2k08"]
 [ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="4_1wb8c"]
-[ext_resource type="Resource" uid="uid://b4t8xmyh130uo" path="res://dialogue/inventory.dialogue" id="5_kslf0"]
+[ext_resource type="Resource" uid="uid://b6pw4kkfgecv1" path="res://dialogue/test.dialogue" id="4_mhneh"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -58,8 +58,8 @@ position = Vector2(319, 221)
 texture = SubResource("AtlasTexture_o460m")
 
 [node name="Actionable" parent="StaticBody2D/Yarn" instance=ExtResource("4_1wb8c")]
-dialogue_resource = ExtResource("5_kslf0")
-dialogue_start = "yarn"
+dialogue_resource = ExtResource("4_mhneh")
+dialogue_start = "test"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Yarn/Actionable"]
 position = Vector2(0, 1)
@@ -144,3 +144,7 @@ shape = SubResource("RectangleShape2D_gne3j")
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(496, 176)
 shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
