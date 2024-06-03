@@ -1,4 +1,4 @@
-# Godot Game
+# Contributing
 
 ## Conventions to follow
 - Name your branch after what you're working on. Use lowercase letters and separate words with hyphens. Examples: level1, level2, music-integration
