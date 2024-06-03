@@ -66,7 +66,7 @@ down={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/living_room.dialogue", "res://dialogue/kitchen.dialogue", "res://dialogue/bathroom.dialogue", "res://dialogue/garden.dialogue", "res://dialogue/study.dialogue", "res://dialogue/inventory.dialogue", "res://dialogue/test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/living_room.dialogue", "res://dialogue/kitchen.dialogue", "res://dialogue/bathroom.dialogue", "res://dialogue/garden.dialogue", "res://dialogue/study.dialogue", "res://dialogue/inventory.dialogue", "res://dialogue/test.dialogue", "res://dialogue/interactables.dialogue")
 
 [layer_names]
 
@@ -172,7 +172,7 @@ boards={
 }],
 "id": "10ae34e0d2",
 "label": "Puzzles",
-"scroll_offset": Vector2(-836.051, 133.863),
+"scroll_offset": Vector2(-836.051, -19.3564),
 "things": [{
 "id": &"7b3e684b03",
 "position_offset": Vector2(1080, 440),
