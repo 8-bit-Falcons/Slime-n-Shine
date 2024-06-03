@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cty6audfq85ai"]
+[gd_scene load_steps=6 format=3 uid="uid://cty6audfq85ai"]
 
+[ext_resource type="Resource" uid="uid://b4t8xmyh130uo" path="res://dialogue/inventory.dialogue" id="1_ifm3h"]
 [ext_resource type="Texture2D" uid="uid://bhw4rp0upah3o" path="res://assets/tilesets/inventory.png" id="1_pofon"]
 [ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="2_mtf6t"]
 
@@ -7,11 +8,16 @@
 resource_name = "Inventory"
 script/source = "extends CanvasLayer
 
+@export var dialogue_resource: DialogueResource
+
 @onready var hbox = %HBoxContainer
 @onready var panel = %Panel
 @onready var item_label = %ItemLabel
+
 const InventoryItem = preload(\"res://scenes/inventory_item.tscn\")
 enum Item {BUCKET, FISH, KEY, LETTER, MAGNIFYING_GLASS, MARKERS, MOP, PAPER, PEN, STICK, TICKLER, WATER, YARN}
+# A list of items that can combine with another item, where the key is an item and the value is what it creates
+const combos: Dictionary = {\"pen\": \"letter\", \"paper\": \"letter\", \"stick\": \"tickler\", \"yarn\": \"tickler\"}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,9 +27,11 @@ func _ready():
 	
 	# TODO: remove this test code
 	add_item(Item.FISH)
+	add_item(Item.STICK)
 	add_item(Item.MAGNIFYING_GLASS)
 	add_item(Item.PAPER)
 	add_item(Item.PEN)
+	add_item(Item.YARN)
 	#for item in Item:
 		#add_item(Item[item])
 
@@ -100,6 +108,7 @@ modulate_color = Color(0.545098, 0.572549, 0.862745, 1)
 
 [node name="Inventory" type="CanvasLayer"]
 script = SubResource("GDScript_01qxi")
+dialogue_resource = ExtResource("1_ifm3h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
