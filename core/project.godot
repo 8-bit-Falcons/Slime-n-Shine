@@ -15,18 +15,31 @@ run/main_scene="res://scenes/living_room.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Global="*res://scripts/Global.gd"
+
+[dialogue_manager]
+
+general/balloon_path="res://assets/dialogue_balloon/balloon.tscn"
+
 [display]
 
-window/size/viewport_width=544
-window/size/viewport_height=352
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/CC362/Downloads/slimeshine.avi"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/puzzle_dependencies/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/puzzle_dependencies/plugin.cfg")
 
 [input]
 
@@ -50,6 +63,14 @@ down={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/living_room.dialogue", "res://dialogue/kitchen.dialogue", "res://dialogue/bathroom.dialogue", "res://dialogue/garden.dialogue", "res://dialogue/study.dialogue", "res://dialogue/inventory.dialogue", "res://dialogue/test.dialogue")
+
+[layer_names]
+
+2d_physics/layer_3="Actionable"
 
 [puzzle_dependencies]
 
@@ -151,23 +172,23 @@ boards={
 }],
 "id": "10ae34e0d2",
 "label": "Puzzles",
-"scroll_offset": Vector2(-1186.89, -14.1693),
+"scroll_offset": Vector2(-836.051, 133.863),
 "things": [{
 "id": &"7b3e684b03",
 "position_offset": Vector2(1080, 440),
-"size": Vector2(150, 80),
+"size": Vector2(150.001, 80.0001),
 "text": "Give cat fish",
 "type": 0
 }, {
 "id": &"c9ecc30d06",
 "position_offset": Vector2(860, 440),
-"size": Vector2(190.386, 84.6602),
+"size": Vector2(190.386, 84.6601),
 "text": "Talk to kitchen slimes & acquire fish",
 "type": 2
 }, {
 "id": &"88f4dd7a84",
 "position_offset": Vector2(680, 440),
-"size": Vector2(150.002, 80),
+"size": Vector2(150.002, 80.0001),
 "text": "Clean kitchen",
 "type": 0
 }, {
@@ -185,43 +206,43 @@ boards={
 }, {
 "id": &"baf064e913",
 "position_offset": Vector2(260, 400),
-"size": Vector2(150, 80),
+"size": Vector2(150, 80.0001),
 "text": "Pull weeds",
 "type": 0
 }, {
 "id": &"518543c558",
 "position_offset": Vector2(40, 400),
-"size": Vector2(205.918, 88.5434),
+"size": Vector2(205.919, 88.5433),
 "text": "Ask garden slimes for bucket to receive quest",
 "type": 1
 }, {
 "id": &"9db4e15917",
 "position_offset": Vector2(-280, 460),
-"size": Vector2(217.571, 84.66),
+"size": Vector2(217.572, 84.66),
 "text": "Talk to kitchen slimes to receive quest",
 "type": 1
 }, {
 "id": &"e3db7e47c7",
 "position_offset": Vector2(240, 700),
-"size": Vector2(165.533, 86.9902),
+"size": Vector2(165.533, 86.9901),
 "text": "Open drawer + acquire markers",
 "type": 2
 }, {
 "id": &"7f02a853c6",
 "position_offset": Vector2(-20, 700),
-"size": Vector2(220.675, 90.7878),
+"size": Vector2(220.676, 90.7877),
 "text": "Shine magnifying glass at key + acquire key",
 "type": 2
 }, {
 "id": &"5622442928",
 "position_offset": Vector2(40, 500),
-"size": Vector2(209.024, 85.4367),
+"size": Vector2(209.025, 85.4367),
 "text": "Ask bathroom slimes for mop to receive quest ",
 "type": 1
 }, {
 "id": &"dc26cec237",
 "position_offset": Vector2(-280, 640),
-"size": Vector2(234.58, 90.2521),
+"size": Vector2(234.581, 90.2518),
 "text": "Give science slimes water + acquire magnifying glass",
 "type": 2
 }, {
@@ -233,31 +254,31 @@ boards={
 }, {
 "id": &"454c7bda62",
 "position_offset": Vector2(-680, 640),
-"size": Vector2(201.261, 87.6891),
+"size": Vector2(201.261, 87.6888),
 "text": "Talk to science slimes to receive quest",
 "type": 1
 }, {
 "id": &"c9224103fd",
 "position_offset": Vector2(-260, 820),
-"size": Vector2(214.092, 82.0673),
+"size": Vector2(214.092, 82.0674),
 "text": "Tickle sleeping cat",
 "type": 0
 }, {
 "id": &"6af2286b3c",
 "position_offset": Vector2(-500, 820),
-"size": Vector2(208.924, 86.2023),
+"size": Vector2(208.924, 86.2022),
 "text": "Combine yarn with stick",
 "type": 0
 }, {
 "id": &"01f631a2a2",
 "position_offset": Vector2(-680, 780),
-"size": Vector2(150, 80.0002),
+"size": Vector2(150, 80.0001),
 "text": "Pick up yarn",
 "type": 2
 }, {
 "id": &"29232b9113",
 "position_offset": Vector2(-680, 860),
-"size": Vector2(150, 80.0002),
+"size": Vector2(150, 80),
 "text": "Pick up stick",
 "type": 2
 }, {
@@ -273,7 +294,7 @@ boards={
 "text": "Combine pencil with paper",
 "type": 0
 }],
-"zoom": 0.967349
+"zoom": 0.879408
 }
 }
 minimap_enabled=true
@@ -286,3 +307,5 @@ current_board_id="10ae34e0d2"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

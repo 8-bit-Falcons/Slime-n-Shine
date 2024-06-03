@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://c46eq8tw08h08"
+path="res://.godot/imported/bathroom.dialogue-11640e3e1aac29173f9bd213d7d359e4.tres"
+
+[deps]
+
+source_file="res://dialogue/bathroom.dialogue"
+dest_files=["res://.godot/imported/bathroom.dialogue-11640e3e1aac29173f9bd213d7d359e4.tres"]
+
+[params]
+
+defaults=true

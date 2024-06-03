@@ -1,0 +1,70 @@
+~ prequest
+Shore: I really love to garden! [#emotion=happy]
+You: me too! [#emotion=neutral]
+You: on my phone. i have an app with a virtual plant.
+Shore: Oh! [#emotion=neutral]
+=> END 
+
+~ initiate_quest
+You: hi garden friend! i was wondering if i could borrow a [color=cyan]BUCKET OF WATER[/color]? [#emotion=neutral]
+Shore: Oh, sure thing, sweetheart! [#emotion=neutral]
+Shore: But if you don't mind, could you [color=yellow]PULL SOME WEEDS[/color] for us first? [#emotion=neutral]
+You: shore Shore! [#emotion=neutral]
+Shore: ? [#emotion=neutral]
+You: sure [#emotion=neutral]
+=> END 
+
+~ quest_incomplete
+Shore: I know, gardening can be tiring work! But if you could just [color=yellow]PULL THOSE WEEDS[/color] over there, I'd appreciate it greatly. [#emotion=neutral]
+You: i'll get right to it! [#emotion=neutral]
+Shore: Thank you, darling. [#emotion=happy]
+=> END 
+
+~ quest_complete
+Shore: Hey there, sweetheart! You finish up? [#emotion=neutral]
+You: yup yup! [#emotion=neutral]
+Shore: Perfect. Here ya go, one [color=cyan]BUCKET OF WATER[/color]! [#emotion=neutral]
+You: thanks, Shore! [#emotion=happy]
+You absorb the [color=cyan]BUCKET OF WATER[/color].
+=> END 
+
+~ postquest
+first conversation
+Shore: How's it going, hon? [#emotion=neutral]
+- You: pretty good! [#emotion=neutral]
+- You: not great [#emotion=sad]
+Shore: You seem a little tired. Running around doing errands for everyone? [#emotion=neutral]
+You: yeah, but i should be done soon! [#emotion=neutral]
+Shore: Alright. Just remember to get your rest! [#emotion=neutral]
+Shore: I don't want you overworking yourself.
+You: of course! thank you! [#emotion=neutral]
+after
+Shore: Remember to take breaks every now and then! [#emotion=neutral]
+=> END 
+
+~ mud_pie
+ First conversation
+ Mud Pie: Gardening can be hard work. But it's a rewarding job! [#emotion=neutral]
+ You: you ever feel like you're melting out here? [#emotion=neutral]
+ Mud Pie: Oh, yeah. Slimes weren't meant for being out in the sun all day. [#emotion=neutral]
+ Mud Pie: But that's not really the worst part of the job... [#emotion=sad]
+ You: oh? [#emotion=surprised]
+ Mud Pie: You don't wanna know... [#emotion=sad]
+ After
+ Mud Pie: Don't know why those bathroom slimes gotta make a mess of the place all the time. [#emotion=neutral]
+ Mud Pie: Makes it hard for a slime to simply take a shower... [#emotion=sad]
+ You: i'm sorry for your loss[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😔[/font_size][/font] [#emotion=neutral]
+=> END
+
+~ sherbet
+First conversation
+Sherbet: Yesterday, a bird pooped straight onto Mud Pie's head. [#emotion=neutral]
+You: luh-mao! [#emotion=happy]
+Sherbet: ...What are those noises you just made? [#emotion=neutral]
+You: L.M.A.O. [#emotion=neutral]
+Sherbet: Oh, so you're one of those. [#emotion=neutral]
+You: ? [#emotion=neutral]
+After
+Sherbet: Wow, I am just so lol'ing out loud at your presence. [#emotion=neutral]
+You: uh. okay. thanks? [#emotion=neutral]
+=> END

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://b4t8xmyh130uo"
+path="res://.godot/imported/inventory.dialogue-bed37aaa8f1d780c09798bd93c45d744.tres"
+
+[deps]
+
+source_file="res://dialogue/inventory.dialogue"
+dest_files=["res://.godot/imported/inventory.dialogue-bed37aaa8f1d780c09798bd93c45d744.tres"]
+
+[params]
+
+defaults=true

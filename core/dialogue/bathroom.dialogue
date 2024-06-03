@@ -1,0 +1,97 @@
+~ prequest
+Sticky: hihi! [#emotion=happy]
+This slime seriously stinks.
+PEE-YEW!
+You: when is the last time you showered? [#emotion=surprised]
+Sticky: ummm... [#emotion=neutral]
+Sticky: i dunno, i don't really have time to...
+You: you are literally a bathroom slime. [#emotion=neutral]
+Sticky: why r u being mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#emotion=sad]
+You: *sigh* [#emotion=neutral]
+=> END 
+
+~ initiate_quest
+You: hi bathroom friends! do you have a [color=cyan]MOP[/color] in here perchance? [#emotion=neutral]
+Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in here?[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
+You: no! i'm going to [color=yellow]CLEAN[/color] the kitchen! [#emotion=neutral]
+Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in the kitchen?[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
+You: yeah! is that okay? [#emotion=neutral]
+Bathroom Slimes: we no no wanna[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
+You: what do i have to do for you to let me? [#emotion=surprised]
+Bathroom Slimes: can we draw on the cabinets first! [#char=bathroom_slimes, #emotion=neutral]
+You: ummm. i don't know about that... [#emotion=neutral]
+They all frown and start to sniffle.
+You: wait- [#emotion=surprised]
+They all start crying!
+You: okay okay fine you can draw on the cabinets! [#emotion=surprised]
+Bathroom Slimes: yayyyyy! [#char=bathroom_slimes, #emotion=happy]
+Sticky: I'm gonna draw a pony! [#emotion=happy]
+Slorp: I'm gonna draw a rainbow! [#emotion=happy]
+Lint: I'm gonna draw a house on fire! [#emotion=happy]
+You: ...alright, i'll get you [color=cyan]SOMETHING TO DRAW WITH[/color]... [#emotion=neutral]
+=> END 
+
+~ quest_incomplete
+Sticky: oh yes... i can sense it... [#emotion=surprised]
+You: what? [#emotion=surprised]
+Sticky: you feel like... *sniff* [#emotion=neutral]
+You: did you just sniff me? [#emotion=surprised]
+Sticky: you feel like someone who is looking to obtain... something stinky... [#emotion=neutral]
+Sticky: hm... but not stinky like what's in here...
+You: and you would really know because of that big sniff you just did. right at me. the sniff you did at me. [#emotion=neutral]
+You: against me, even.
+You: that really felt like an attack and violation against me.
+Sticky: where are my [color=cyan]MARKERS[/color]? [#emotion=sad]
+You: ... [#emotion=neutral]
+=> END 
+
+~ quest_complete
+You: hey bathroom friends! i brought you some [color=cyan]MARKERS[/color]! [#emotion=happy]
+(if you have water)
+You pull out the soggy [color=cyan]MARKERS[/color].
+Bathroom Slimes: yayyyyy! [#char=bathroom_slimes, #emotion=happy]
+They give you a [color=cyan]MOP[/color], which you absorb.
+Sticky: thanks so much, my slimy friend! [#emotion=neutral]
+You: slimy? [#emotion=neutral]
+You: am i especially slimy?
+You: i mean, aren't all slimes slimy? haha
+You: am i more slimy than usual
+Sticky: hehe, pony :3 [#emotion=happy]
+=> END
+
+~ postquest
+Sticky: this is my ponysona... do you like them..... [#emotion=neutral]
+You: wow! that's a neat design! love all the colors. [#emotion=neutral]
+Sticky: rainbow pony... their name is rainbow! [#emotion=happy]
+You: very unique! [#emotion=neutral]
+=> END 
+
+~ slorp
+First conversation
+Slorp: ur not allowed to clean the bathroom after. [#emotion=neutral]
+Slorp: u can't take my mess away from me! my mess is special!! [#emotion=sad]
+Slorp: it means so much to me... [#emotion=sad]
+You: i mean, it'll probably have to be cleaned eventually... [#emotion=neutral]
+Slorp: h-how could someone do that to me... [#emotion=sad]
+Slorp sniffles.
+After
+You: isn't it your job to clean the bathroom? [#emotion=neutral]
+Slorp: says who? [#emotion=neutral]
+You: compelling point. [#emotion=neutral]
+=> END 
+
+~ lint
+First conversation
+Lint: heheheh... >:) [#emotion=neutral]
+You: what are you chuckling ominously about? [#emotion=surprised]
+Lint: heheh... that's a secret... >:) [#emotion=neutral]
+You: why would you chuckle out loud if you're not gonna tell me... [#emotion=sad]
+Lint: can't help it... my mischief just overflows... heheheh >:) [#emotion=neutral]
+After
+You: should i be scared? [#emotion=surprised]
+Lint: i dunno... should u? >:) [#emotion=neutral]
+You: hey! that's what I'M asking! [#emotion=neutral]
+Lint: well... [#emotion=neutral]
+Lint: i can be a little scary... if u know what i mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😏[/font_size][/font]
+You: um. [#emotion=neutral]
+=> END
