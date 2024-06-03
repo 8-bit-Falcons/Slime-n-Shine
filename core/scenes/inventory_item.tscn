@@ -1,6 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl4yb02emekor"]
-
-[ext_resource type="Resource" uid="uid://b4t8xmyh130uo" path="res://dialogue/inventory.dialogue" id="1_8w01y"]
+[gd_scene load_steps=7 format=3 uid="uid://bl4yb02emekor"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
 
@@ -24,7 +22,6 @@ script/source = "extends Button
 
 # The ID (and thus the shortcut key) can be set from the editor for testing purposes
 @export var _id: int = 0
-@export var dialogue_resource: DialogueResource
 
 signal toggled2(item_name, toggled_on)
 
@@ -37,11 +34,19 @@ func _ready():
 func _toggled(toggled_on):
 	toggled2.emit(name, toggled_on)
 	
-	if toggled_on:
-		if Inventory.selected().size() > 1:
-			DialogueManager.show_dialogue_balloon(dialogue_resource, name)
-			if button_pressed:
-				set_pressed(false)
+	# Handle item combinations
+	if toggled_on and Inventory.selected().size() > 1:
+		var selected_items = Inventory.selected()
+		# If the items can be combined, start a special dialogue
+		if Inventory.combos.has_all([selected_items[0].name, selected_items[1].name]) and \\
+			Inventory.combos[selected_items[0].name] == Inventory.combos[selected_items[1].name]:
+			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, Inventory.combos[name])
+		else:
+			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, \"invalid\")
+		
+		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
+		if button_pressed:
+			set_pressed(false)
 
 
 # Initialize the name and the key used to select this item.
@@ -83,4 +88,3 @@ toggle_mode = true
 button_mask = 0
 icon_alignment = 1
 script = SubResource("GDScript_ns6os")
-dialogue_resource = ExtResource("1_8w01y")

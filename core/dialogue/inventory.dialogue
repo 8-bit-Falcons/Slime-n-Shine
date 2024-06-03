@@ -3,60 +3,8 @@
 % Are you seriously trying to combine these?
 => END
 
-~ bucket
-Empty
-=> END 
-
-~ fish
-Empty
-=> END 
-
-~ key
-Empty
-=> END 
-
 ~ letter
-Empty
-=> END 
-
-~ magnifying_glass
-Emoty
-=> END 
-
-~ markers
-empty
-=> END 
-
-~ mop
-empty
-=> END 
-
-~ paper
-ejoty
-=> END 
-
-~ pen
-empty
-=> END 
-
-~ stick
-empty
-=> END 
-
-~ tickler
-empty
-=> END 
-
-~ water
-emptu
-=> END 
-
-~ yarn
-empty
-=> END
-
-~ create_letter
- You combine the [color=cyan]PENCIL[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
+ You combine the [color=cyan]PEN[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
 [color=orange]My dearest friend Meowzers,
 	‎ ‎ ‎ Upon your arrival, I noticed that shiny thing you were clutching so tightly to your chest. Wowzers Meowzers! That shiny thing is simply divine.[/color]
 ‎ ‎ ‎ [color=orange]Although our respective clans clash from birth ‘til death, I wondered if we might put such frivolous matters aside for a moment to share in our mutual love for shiny. Prithee, may I have the shiny?[/color]
@@ -70,7 +18,7 @@ Along with combining items together, you can also use items on objects or people
 Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTING[/color] with him while the [color=cyan]LETTER[/color] is selected!
 => END
 
-~ create_tickler
+~ tickler
 You tie the [color=cyan]YARN[/color] onto the [color=cyan]STICK[/color].
 Maybe you could [color=yellow]TICKLE[/color] someone with this...
 => END

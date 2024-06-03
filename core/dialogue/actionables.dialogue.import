@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://dsmvhnfuqbvua"
+path="res://.godot/imported/actionables.dialogue-131d8fdc5b3bbb803d72badbb68c02c3.tres"
+
+[deps]
+
+source_file="res://dialogue/actionables.dialogue"
+dest_files=["res://.godot/imported/actionables.dialogue-131d8fdc5b3bbb803d72badbb68c02c3.tres"]
+
+[params]
+
+defaults=true
