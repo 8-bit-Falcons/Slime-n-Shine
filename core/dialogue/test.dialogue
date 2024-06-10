@@ -9,3 +9,8 @@ Lime: I have important Science to do! YAY[#emotion=happy]
 - Ok
 - Ok
 => END
+
+~ effect_test
+Banana: [shake rate=10.0 level=10.0 connected=0]grrr grrr grrr!! >:([/shake] [#emotion=angry]
+Meowzers: [tornado radius=10.0 freq=3.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]whoa im tripping bro...[/rainbow][/tornado] [#emotion=hungry]
+=> END
