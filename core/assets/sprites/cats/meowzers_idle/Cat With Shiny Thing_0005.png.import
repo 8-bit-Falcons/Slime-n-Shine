@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nj1wrrmve68n"
-path="res://.godot/imported/tilesets_new.png-c8062e8850e352101f62632f87edbb12.ctex"
+uid="uid://blykpeyddiykq"
+path="res://.godot/imported/Cat With Shiny Thing_0005.png-ab31941d4e036983567fd79e0c6e96c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/tilesets_new.png"
-dest_files=["res://.godot/imported/tilesets_new.png-c8062e8850e352101f62632f87edbb12.ctex"]
+source_file="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0005.png"
+dest_files=["res://.godot/imported/Cat With Shiny Thing_0005.png-ab31941d4e036983567fd79e0c6e96c3.ctex"]
 
 [params]
 
