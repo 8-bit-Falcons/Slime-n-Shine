@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ftw6lnht42e"]
+
+[ext_resource type="AudioStream" uid="uid://cmp7wllql7mps" path="res://assets/music/Puzzled.mp3" id="1_4jepg"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_4jepg")
+autoplay = true

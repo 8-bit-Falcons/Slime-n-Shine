@@ -20,6 +20,7 @@ config/windows_native_icon="res://icon.ico"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Global="*res://scripts/Global.gd"
 Inventory="*res://scenes/inventory.tscn"
+Music="*res://scenes/music.tscn"
 
 [dialogue_manager]
 
