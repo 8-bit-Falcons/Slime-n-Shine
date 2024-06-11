@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Puzzled.mp3-3f2b89a2baf8972177b988cfb8bf4f65.
 [params]
 
 loop=true
-loop_offset=19.0
+loop_offset=0.0
 bpm=0
 beat_count=0
 bar_beats=4
