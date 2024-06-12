@@ -33,11 +33,14 @@
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
 
-[sub_resource type="Gradient" id="Gradient_jhfax"]
+[sub_resource type="Gradient" id="Gradient_r1f3c"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j01xm"]
-gradient = SubResource("Gradient_jhfax")
+gradient = SubResource("Gradient_r1f3c")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gne3j"]
+size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkag3"]
 atlas = ExtResource("3_c2k08")
@@ -119,10 +122,8 @@ height = 31.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w8uck"]
 
-[sub_resource type="Animation" id="Animation_pj5fp"]
-resource_name = "idle"
-length = 4.6
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_i1jw0"]
+resource_name = "back"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,10 +131,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_srnyp"), ExtResource("6_aht18"), ExtResource("7_7uf5q"), ExtResource("8_t7sjc"), ExtResource("9_00uow"), ExtResource("10_n5e7s"), ExtResource("11_hn6u4"), ExtResource("12_vdqrx"), ExtResource("13_hkrvm"), ExtResource("14_fdc4f"), ExtResource("15_iamwk"), ExtResource("16_ma5sx"), ExtResource("17_im06x"), ExtResource("18_1rhtt"), ExtResource("19_oio0a"), ExtResource("20_tkgsm"), ExtResource("21_crdv3"), ExtResource("22_5jweb"), ExtResource("23_cxmh7"), ExtResource("24_kyki3"), ExtResource("25_nrnrt"), ExtResource("26_x8v0v"), ExtResource("27_iuiqd"), ExtResource("28_l71l7")]
+"values": [ExtResource("6_yib4y")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -145,7 +146,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -157,7 +158,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [2]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -169,7 +170,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [9]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -181,7 +182,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -62)]
+"values": [Vector2(62, -60)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -193,7 +194,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -202,10 +203,10 @@ tracks/6/path = NodePath("ShinyCollision:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 4.2, 4.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(84, -13), Vector2(76, -13), Vector2(74, -13), Vector2(74, -13), Vector2(63, -13), Vector2(63, -13), Vector2(57, -12), Vector2(57, -12), Vector2(53, -12), Vector2(53, -12), Vector2(47, -11), Vector2(47, -11), Vector2(46, -11), Vector2(46, -11), Vector2(43, -11), Vector2(43, -11), Vector2(47, -10), Vector2(47, -10), Vector2(43, -10), Vector2(43, -10), Vector2(41, -10), Vector2(41, -10), Vector2(84, -13)]
+"values": [Vector2(44, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_jvmqh"]
@@ -295,8 +296,10 @@ tracks/6/keys = {
 "values": [Vector2(44, -11)]
 }
 
-[sub_resource type="Animation" id="Animation_i1jw0"]
-resource_name = "back"
+[sub_resource type="Animation" id="Animation_pj5fp"]
+resource_name = "idle"
+length = 4.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -304,10 +307,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("6_yib4y")]
+"values": [ExtResource("5_srnyp"), ExtResource("6_aht18"), ExtResource("7_7uf5q"), ExtResource("8_t7sjc"), ExtResource("9_00uow"), ExtResource("10_n5e7s"), ExtResource("11_hn6u4"), ExtResource("12_vdqrx"), ExtResource("13_hkrvm"), ExtResource("14_fdc4f"), ExtResource("15_iamwk"), ExtResource("16_ma5sx"), ExtResource("17_im06x"), ExtResource("18_1rhtt"), ExtResource("19_oio0a"), ExtResource("20_tkgsm"), ExtResource("21_crdv3"), ExtResource("22_5jweb"), ExtResource("23_cxmh7"), ExtResource("24_kyki3"), ExtResource("25_nrnrt"), ExtResource("26_x8v0v"), ExtResource("27_iuiqd"), ExtResource("28_l71l7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -319,7 +322,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -331,7 +334,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -343,7 +346,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9]
+"values": [0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -355,7 +358,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(62, -60)]
+"values": [Vector2(0, -62)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -367,7 +370,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -376,10 +379,10 @@ tracks/6/path = NodePath("ShinyCollision:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 4.2, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(44, -11)]
+"values": [Vector2(84, -13), Vector2(76, -13), Vector2(74, -13), Vector2(74, -13), Vector2(63, -13), Vector2(63, -13), Vector2(57, -12), Vector2(57, -12), Vector2(53, -12), Vector2(53, -12), Vector2(47, -11), Vector2(47, -11), Vector2(46, -11), Vector2(46, -11), Vector2(43, -11), Vector2(43, -11), Vector2(47, -10), Vector2(47, -10), Vector2(43, -10), Vector2(43, -10), Vector2(41, -10), Vector2(41, -10), Vector2(84, -13)]
 }
 
 [sub_resource type="Animation" id="Animation_32o61"]
@@ -829,9 +832,6 @@ _data = {
 "right": SubResource("Animation_rjpx7")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gne3j"]
-size = Vector2(32, 32)
-
 [node name="LivingRoom" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
@@ -853,9 +853,90 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 tile_set = ExtResource("1_kv8y8")
 format = 2
-layer_0/name = "Floor"
+layer_0/name = "background"
 layer_0/tile_data = PackedInt32Array(65539, 196609, 3, 131075, 196609, 3, 196611, 262145, 0, 262147, 262145, 0, 327683, 262145, 0, 65540, 196609, 3, 131076, 196609, 3, 196612, 262145, 0, 262148, 262145, 0, 327684, 262145, 0, 65541, 196609, 3, 131077, 196609, 3, 196613, 262145, 0, 262149, 262145, 0, 327685, 262145, 0, 65542, 196609, 3, 131078, 196609, 3, 196614, 262145, 0, 262150, 262145, 0, 327686, 262145, 0, 65543, 196609, 3, 131079, 196609, 3, 196615, 262145, 0, 262151, 262145, 0, 327687, 196609, 1, 65544, 196609, 3, 131080, 196609, 3, 196616, 262145, 0, 262152, 262145, 0, 327688, 262145, 1, 65545, 196609, 3, 131081, 196609, 3, 196617, 262145, 0, 262153, 262145, 0, 327689, 262145, 0, 65546, 196609, 3, 131082, 196609, 3, 196618, 262145, 0, 262154, 262145, 0, 327690, 262145, 0, 65547, 196609, 3, 131083, 196609, 3, 196619, 262145, 0, 262155, 262145, 0, 327691, 262145, 0, 65548, 196609, 3, 131084, 196609, 3, 196620, 262145, 0, 262156, 262145, 0, 327692, 262145, 0, 65549, 196609, 3, 131085, 196609, 3, 196621, 262145, 0, 262157, 262145, 0, 327693, 262145, 0, 393223, 196609, 2, 458759, 262145, 0, 393224, 262145, 2, 458760, 262145, 0, 393225, 262145, 0, 458761, 262145, 0, 393226, 262145, 0, 458762, 262145, 0, 393227, 262145, 0, 458763, 262145, 0, 393228, 262145, 0, 458764, 262145, 0, 393229, 262145, 0, 458765, 262145, 0, 327681, 262145, 0, 327682, 262145, 0, 196609, 196609, 3, 262145, 196609, 3, 196610, 196609, 3, 262146, 196609, 3, 262158, 262145, 0, 131086, 196609, 3, 196622, 196609, 3, 131087, 196609, 3, 196623, 196609, 3, 524296, 262145, 0, 524297, 262145, 0, 393230, 196609, 3, 393231, 196609, 3, 458766, 196609, 3, 458767, 196609, 3, 524302, 262145, 0, 524303, 262145, 0, 262159, 262145, 0, 524295, 262145, 0, 524298, 262145, 0, 524299, 262145, 0, 524300, 262145, 0, 524301, 262145, 0, 589832, 262145, 0, 589833, 262145, 0, 393219, 262145, 0, 393220, 262145, 0, 393221, 262145, 0, 393222, 262145, 0, 458758, 262145, 0, 458757, 262145, 0, 458756, 262145, 0, 458755, 262145, 0, 524291, 262145, 0, 524292, 262145, 0, 524293, 262145, 0, 524294, 262145, 0)
+layer_1/name = "foreground"
 layer_1/tile_data = PackedInt32Array()
+
+[node name="BetweenTiles" type="TileMap" parent="TileMap"]
+position = Vector2(0, 16)
+tile_set = ExtResource("1_kv8y8")
+format = 2
+layer_0/tile_data = PackedInt32Array(65544, 262145, 4, 65541, 262145, 4)
+
+[node name="InvisibleWalls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(48, 208)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(80, 208)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(80, 240)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(80, 272)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(112, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(144, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(176, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(208, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(240, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(336, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(368, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(400, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(432, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(464, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(496, 304)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(464, 176)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(496, 176)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
 
 [node name="key" type="AnimatedSprite2D" parent="."]
 position = Vector2(400, 48)
@@ -987,77 +1068,3 @@ polygon = PackedVector2Array(32, 11, -32, 12, -32, 9, -21, 5, -21, -1, -6, -1, -
 
 [node name="player" parent="." instance=ExtResource("2_qcgtd")]
 position = Vector2(167, 232)
-
-[node name="InvisibleWalls" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(48, 208)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(80, 208)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(80, 240)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(80, 272)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(112, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(144, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(176, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(208, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(240, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(336, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(368, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(400, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(432, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(464, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(496, 304)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(464, 176)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(496, 176)
-shape = SubResource("RectangleShape2D_gne3j")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(270, 160)
-zoom = Vector2(3, 3)
