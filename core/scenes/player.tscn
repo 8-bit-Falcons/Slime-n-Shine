@@ -55,7 +55,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04gmk"]
-size = Vector2(24, 4)
+size = Vector2(24, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6fgb"]
 
@@ -201,7 +201,7 @@ animation = &"down"
 offset = Vector2(0, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_04gmk")
 
 [node name="Direction" type="Marker2D" parent="."]
