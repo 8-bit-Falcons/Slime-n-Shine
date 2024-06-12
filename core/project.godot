@@ -238,7 +238,7 @@ boards={
 }],
 "id": "10ae34e0d2",
 "label": "Puzzles",
-"scroll_offset": Vector2(-1000.41, 10.9351),
+"scroll_offset": Vector2(-1000.41, -27.5056),
 "things": [{
 "id": &"7b3e684b03",
 "position_offset": Vector2(1080, 440),
@@ -260,7 +260,7 @@ boards={
 }, {
 "id": &"d806012784",
 "position_offset": Vector2(440, 560),
-"size": Vector2(206.273, 86.9195),
+"size": Vector2(206.273, 86.9196),
 "text": "Give bathroom slimes markers + acquire mop",
 "type": 2
 }, {

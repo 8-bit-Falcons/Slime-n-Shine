@@ -1,16 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://0ma3kkj328i7"]
+[gd_scene load_steps=16 format=3 uid="uid://0ma3kkj328i7"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_257rj"]
-[ext_resource type="Texture2D" uid="uid://pjhvmw6ixgpy" path="res://assets/sprites/slimes/slimes.png" id="3_hkc1t"]
-[ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="4_6q48d"]
+[ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_rfijq"]
 [ext_resource type="Resource" uid="uid://kbk5afhybtlw" path="res://dialogue/kitchen.dialogue" id="5_f5i2q"]
 
-[sub_resource type="Gradient" id="Gradient_jhfax"]
+[sub_resource type="Gradient" id="Gradient_g2tq5"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_euo5o"]
-gradient = SubResource("Gradient_jhfax")
+gradient = SubResource("Gradient_g2tq5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0isfs"]
 size = Vector2(20, 120)
@@ -19,9 +18,12 @@ size = Vector2(20, 120)
 size = Vector2(20, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebgkv"]
-size = Vector2(288, 19)
+size = Vector2(288, 18.5)
 
-[sub_resource type="Animation" id="Animation_83dfx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo6ed"]
+size = Vector2(45, 18.5)
+
+[sub_resource type="Animation" id="Animation_yrct1"]
 resource_name = "back"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -36,7 +38,7 @@ tracks/0/keys = {
 "values": [3]
 }
 
-[sub_resource type="Animation" id="Animation_3iuft"]
+[sub_resource type="Animation" id="Animation_816op"]
 resource_name = "forward"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -51,7 +53,7 @@ tracks/0/keys = {
 "values": [2]
 }
 
-[sub_resource type="Animation" id="Animation_uc5ec"]
+[sub_resource type="Animation" id="Animation_gduqo"]
 resource_name = "left"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -66,32 +68,28 @@ tracks/0/keys = {
 "values": [13]
 }
 
-[sub_resource type="Animation" id="Animation_3mwdw"]
+[sub_resource type="Animation" id="Animation_pl2vq"]
 resource_name = "right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(2, 1)]
+"values": [12]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_415ru"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mo4gv"]
 _data = {
-"back": SubResource("Animation_83dfx"),
-"forward": SubResource("Animation_3iuft"),
-"left": SubResource("Animation_uc5ec"),
-"right": SubResource("Animation_3mwdw")
+"back": SubResource("Animation_yrct1"),
+"forward": SubResource("Animation_816op"),
+"left": SubResource("Animation_gduqo"),
+"right": SubResource("Animation_pl2vq")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_al4ef"]
-radius = 8.0
-height = 28.0
 
 [node name="Kitchen" type="Node2D"]
 y_sort_enabled = true
@@ -135,8 +133,12 @@ position = Vector2(394, 240)
 shape = SubResource("RectangleShape2D_y2oeo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(240, 297)
+position = Vector2(240, 297.25)
 shape = SubResource("RectangleShape2D_ebgkv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(426, 201)
+shape = SubResource("RectangleShape2D_jo6ed")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
@@ -145,86 +147,51 @@ zoom = Vector2(3, 3)
 [node name="player" parent="." instance=ExtResource("2_257rj")]
 position = Vector2(432, 181)
 
-[node name="Martha" type="CharacterBody2D" parent="."]
-position = Vector2(176, 110)
-metadata/_edit_group_ = true
+[node name="Martha" parent="." instance=ExtResource("3_rfijq")]
+position = Vector2(175, 110)
 
-[node name="Sprite2D" type="Sprite2D" parent="Martha"]
-texture = ExtResource("3_hkc1t")
-hframes = 10
-vframes = 2
+[node name="Sprite2D" parent="Martha" index="0"]
 frame = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Martha"]
-polygon = PackedVector2Array(-2, -6, 4, -6, 12, 4, 12, 11, -12, 11, -12, 3, -5, -5)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Martha"]
+[node name="AnimationPlayer" parent="Martha" index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_415ru")
+"": SubResource("AnimationLibrary_mo4gv")
 }
 
-[node name="Actionable" parent="Martha" instance=ExtResource("4_6q48d")]
+[node name="Actionable" parent="Martha" index="3"]
 dialogue_resource = ExtResource("5_f5i2q")
 dialogue_start = "initiate_quest"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Martha/Actionable"]
-position = Vector2(0, 3)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_al4ef")
-debug_color = Color(0.956863, 0, 0.537255, 0.419608)
+[node name="Eggy" parent="." instance=ExtResource("3_rfijq")]
+position = Vector2(310, 110)
 
-[node name="Eggy" type="CharacterBody2D" parent="."]
-position = Vector2(310.69, 110)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Eggy"]
-texture = ExtResource("3_hkc1t")
-hframes = 10
-vframes = 2
+[node name="Sprite2D" parent="Eggy" index="0"]
 frame = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Eggy"]
-polygon = PackedVector2Array(-2, -6, 4, -6, 12, 4, 12, 11, -12, 11, -12, 3, -5, -5)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Eggy"]
+[node name="AnimationPlayer" parent="Eggy" index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_415ru")
+"": SubResource("AnimationLibrary_mo4gv")
 }
 
-[node name="Actionable" parent="Eggy" instance=ExtResource("4_6q48d")]
+[node name="Actionable" parent="Eggy" index="3"]
 dialogue_resource = ExtResource("5_f5i2q")
 dialogue_start = "eggy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Eggy/Actionable"]
-position = Vector2(0, 3)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_al4ef")
-debug_color = Color(0.956863, 0, 0.537255, 0.419608)
-
-[node name="Parfait" type="CharacterBody2D" parent="."]
+[node name="Parfait" parent="." instance=ExtResource("3_rfijq")]
 position = Vector2(175, 159)
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Parfait"]
-texture = ExtResource("3_hkc1t")
-hframes = 10
-vframes = 2
+[node name="Sprite2D" parent="Parfait" index="0"]
 frame = 13
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parfait"]
-polygon = PackedVector2Array(-2, -6, 4, -6, 12, 4, 12, 11, -12, 11, -12, 3, -5, -5)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Parfait"]
+[node name="AnimationPlayer" parent="Parfait" index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_415ru")
+"": SubResource("AnimationLibrary_mo4gv")
 }
 
-[node name="Actionable" parent="Parfait" instance=ExtResource("4_6q48d")]
+[node name="Actionable" parent="Parfait" index="3"]
 dialogue_resource = ExtResource("5_f5i2q")
 dialogue_start = "parfait"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parfait/Actionable"]
-position = Vector2(0, 3)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_al4ef")
-debug_color = Color(0.956863, 0, 0.537255, 0.419608)
+[editable path="Martha"]
+[editable path="Eggy"]
+[editable path="Parfait"]
