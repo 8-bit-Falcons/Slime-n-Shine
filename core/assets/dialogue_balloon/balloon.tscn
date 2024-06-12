@@ -61,7 +61,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
+MarginContainer/constants/margin_top = 10
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [sub_resource type="Animation" id="Animation_5aihg"]
@@ -137,7 +137,7 @@ anchor_bottom = 1.0
 offset_left = -759.0
 offset_top = -212.0
 offset_right = 759.0
-offset_bottom = -27.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
