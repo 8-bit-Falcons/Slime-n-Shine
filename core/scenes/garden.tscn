@@ -1,0 +1,207 @@
+[gd_scene load_steps=16 format=3 uid="uid://cljskrsbssk1n"]
+
+[ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_chdeo"]
+[ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_6kqp5"]
+[ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
+[ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
+
+[sub_resource type="Gradient" id="Gradient_jhfax"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iye3b"]
+gradient = SubResource("Gradient_jhfax")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wi41"]
+size = Vector2(20, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8odt6"]
+size = Vector2(20, 193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj1sm"]
+size = Vector2(288, 32.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti5bf"]
+size = Vector2(323, 32.625)
+
+[sub_resource type="Animation" id="Animation_42c3i"]
+resource_name = "back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_tifok"]
+resource_name = "forward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_5hsdu"]
+resource_name = "left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_fqs4r"]
+resource_name = "right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcjuj"]
+_data = {
+"back": SubResource("Animation_42c3i"),
+"forward": SubResource("Animation_tifok"),
+"left": SubResource("Animation_5hsdu"),
+"right": SubResource("Animation_fqs4r")
+}
+
+[node name="Garden" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_iye3b")
+metadata/_edit_lock_ = true
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+position = Vector2(-50, -125)
+tile_set = ExtResource("1_chdeo")
+format = 2
+layer_0/name = "background"
+layer_0/tile_data = PackedInt32Array(524288, 393217, 0, 524289, 393217, 0, 524290, 393217, 0, 524291, 393217, 0, 524292, 393217, 0, 524293, 393217, 0, 524294, 393217, 0, 524295, 393217, 0, 524296, 393217, 0, 524297, 393217, 0, 524298, 393217, 0, 524299, 393217, 0, 524300, 393217, 0, 524301, 393217, 0, 524302, 393217, 0, 524303, 393217, 0, 524304, 393217, 0, 524305, 393217, 0, 524306, 393217, 0, 524307, 393217, 0, 524308, 393217, 0, 589844, 393217, 0, 655380, 393217, 0, 720916, 393217, 0, 786452, 393217, 0, 851988, 393217, 0, 851987, 393217, 0, 851986, 393217, 0, 851985, 393217, 0, 786448, 393217, 0, 786447, 393217, 0, 786446, 393217, 0, 786445, 393217, 0, 786444, 393217, 0, 851983, 393217, 0, 851984, 393217, 0, 851982, 393217, 0, 851981, 393217, 0, 851980, 393217, 0, 851979, 393217, 0, 851978, 393217, 0, 851977, 393217, 0, 851976, 393217, 0, 851975, 393217, 0, 851974, 393217, 0, 851973, 393217, 0, 851972, 393217, 0, 851971, 393217, 0, 786435, 393217, 0, 786434, 393217, 0, 851970, 393217, 0, 851969, 393217, 0, 851968, 393217, 0, 786433, 393217, 0, 720896, 393217, 0, 655360, 393217, 0, 589824, 393217, 0, 786432, 393217, 0, 589825, 393217, 0, 655361, 393217, 0, 720897, 393217, 0, 589826, 393217, 0, 655362, 393217, 0, 720898, 393217, 0, 589827, 393217, 0, 655363, 393217, 0, 720899, 393217, 0, 589828, 393217, 0, 655364, 393217, 0, 720900, 393217, 0, 786436, 393217, 0, 589829, 393217, 0, 655365, 393217, 0, 720901, 393217, 0, 786437, 393217, 0, 589830, 393217, 0, 655366, 393217, 0, 720902, 393217, 0, 786438, 393217, 0, 589831, 393217, 0, 655367, 393217, 0, 720903, 393217, 0, 786439, 393217, 0, 589832, 393217, 0, 655368, 393217, 0, 720904, 393217, 0, 786440, 393217, 0, 589833, 393217, 0, 655369, 393217, 0, 720905, 393217, 0, 786441, 393217, 0, 589834, 393217, 0, 655370, 393217, 0, 720906, 393217, 0, 786442, 393217, 0, 589835, 393217, 0, 655371, 393217, 0, 720907, 393217, 0, 786443, 393217, 0, 589836, 393217, 0, 655372, 393217, 0, 720908, 393217, 0, 589837, 393217, 0, 655373, 393217, 0, 720909, 393217, 0, 655374, 393217, 0, 720910, 393217, 0, 589839, 393217, 0, 655375, 393217, 0, 720911, 393217, 0, 589840, 393217, 0, 655376, 393217, 0, 720912, 393217, 0, 589841, 393217, 0, 655377, 393217, 0, 720913, 393217, 0, 786449, 393217, 0, 589842, 393217, 0, 655378, 393217, 0, 720914, 393217, 0, 786450, 393217, 0, 589843, 393217, 0, 655379, 393217, 0, 720915, 393217, 0, 786451, 393217, 0, 327680, 393217, 3, 393216, 393217, 3, 458752, 393217, 3, 327681, 393217, 3, 393217, 393217, 3, 458753, 393217, 3, 327682, 393217, 3, 393218, 393217, 3, 327683, 393217, 3, 393219, 393217, 3, 458755, 393217, 3, 327684, 393217, 3, 393220, 393217, 3, 458756, 393217, 3, 327685, 393217, 3, 393221, 393217, 3, 458757, 393217, 3, 327686, 393217, 3, 393222, 393217, 3, 458758, 393217, 3, 327687, 393217, 3, 393223, 393217, 3, 458759, 393217, 3, 327688, 393217, 3, 393224, 393217, 3, 458760, 393217, 3, 327689, 393217, 3, 393225, 393217, 3, 458761, 393217, 3, 327690, 393217, 3, 393226, 393217, 3, 458762, 393217, 3, 327691, 393217, 3, 393227, 393217, 3, 458763, 393217, 3, 327692, 393217, 3, 393228, 393217, 3, 458764, 393217, 3, 327693, 393217, 3, 393229, 393217, 3, 458765, 393217, 3, 327694, 393217, 3, 393230, 393217, 3, 458766, 393217, 3, 327695, 393217, 3, 393231, 393217, 3, 458767, 393217, 3, 327696, 393217, 3, 393232, 393217, 3, 458768, 393217, 3, 327697, 393217, 3, 393233, 393217, 3, 458769, 393217, 3, 327698, 393217, 3, 393234, 393217, 3, 458770, 393217, 3, 327699, 393217, 3, 393235, 393217, 3, 458771, 393217, 3, 327700, 393217, 3, 393236, 393217, 3, 458772, 393217, 3, 262144, 393217, 3, 262145, 393217, 3, 262146, 393217, 3, 262147, 393217, 3, 262148, 393217, 3, 262149, 393217, 3, 262150, 393217, 3, 262151, 393217, 3, 262152, 393217, 3, 262153, 393217, 3, 262154, 393217, 3, 262155, 393217, 3, 262156, 393217, 3, 262157, 393217, 3, 262158, 393217, 3, 262159, 393217, 3, 262160, 393217, 3, 262161, 393217, 3, 262162, 393217, 3, 262163, 393217, 3, 262164, 393217, 3, 458754, 393217, 3, 917514, 393217, 0, 917513, 393217, 0, 589838, 393217, 0)
+layer_1/name = "foreground"
+layer_1/tile_data = PackedInt32Array(327683, 458753, 3, 393226, 393217, 4, 393227, 458753, 4, 393228, 524289, 4, 327697, 393217, 4, 327698, 524289, 4, 655361, 458753, 0, 720898, 458753, 0, 786438, 458753, 0, 720903, 458753, 0, 851975, 458753, 0, 589832, 458753, 0, 786440, 458753, 0, 720905, 458753, 0, 589837, 458753, 0, 655375, 458753, 0, 524304, 458753, 0, 786452, 458753, 0)
+
+[node name="BetweenTiles" type="TileMap" parent="TileMap"]
+texture_filter = 1
+position = Vector2(0, 8)
+tile_set = ExtResource("1_chdeo")
+format = 2
+layer_0/tile_data = PackedInt32Array(327683, 393217, 4, 327684, 458753, 4, 327685, 524289, 4)
+
+[node name="BetweenTiles2" type="TileMap" parent="TileMap"]
+texture_filter = 1
+position = Vector2(0, 16)
+tile_set = ExtResource("1_chdeo")
+format = 2
+layer_0/tile_data = PackedInt32Array(458752, 393217, 1, 458753, 458753, 1, 458755, 393217, 1, 458756, 393217, 1, 458757, 393217, 1, 458759, 393217, 1, 458760, 458753, 1, 458762, 393217, 1, 458763, 393217, 1, 458764, 393217, 1, 458766, 393217, 1, 458767, 393217, 1, 458769, 458753, 1, 458770, 458753, 1, 458771, 393217, 1, 655378, 458753, 2, 655379, 458753, 2, 655377, 458753, 2, 720913, 458753, 1, 720914, 458753, 1, 720915, 458753, 1, 589841, 458753, 2, 589842, 458753, 2, 589843, 458753, 2, 589834, 458753, 2, 589835, 458753, 2, 589836, 458753, 2, 655372, 458753, 2, 655371, 458753, 2, 655370, 458753, 2, 720906, 458753, 1, 720907, 458753, 1, 720908, 458753, 1, 720899, 458753, 1, 720900, 458753, 1, 720901, 458753, 1, 589827, 458753, 2, 589828, 458753, 2, 589829, 458753, 2, 655365, 458753, 2, 655364, 458753, 2, 655363, 458753, 2, 589838, 524289, 3)
+
+[node name="InvisibleWalls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(-60, 233)
+shape = SubResource("RectangleShape2D_2wi41")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(632, 226.5)
+shape = SubResource("RectangleShape2D_8odt6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(94, 339.688)
+shape = SubResource("RectangleShape2D_rj1sm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(463.5, 339)
+shape = SubResource("RectangleShape2D_ti5bf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
+
+[node name="Shore" parent="." instance=ExtResource("3_ecdiu")]
+position = Vector2(176, 145)
+
+[node name="Sprite2D" parent="Shore" index="0"]
+frame = 7
+
+[node name="AnimationPlayer" parent="Shore" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_qcjuj")
+}
+
+[node name="Actionable" parent="Shore" index="3"]
+dialogue_resource = ExtResource("4_j4hx5")
+dialogue_start = "prequest"
+
+[node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
+position = Vector2(-22, 240)
+
+[node name="Sprite2D" parent="Mud Pie" index="0"]
+frame = 6
+
+[node name="AnimationPlayer" parent="Mud Pie" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_qcjuj")
+}
+
+[node name="Actionable" parent="Mud Pie" index="3"]
+dialogue_resource = ExtResource("4_j4hx5")
+dialogue_start = "mud_pie"
+
+[node name="Sherbet" parent="." instance=ExtResource("3_ecdiu")]
+position = Vector2(477, 257)
+
+[node name="Sprite2D" parent="Sherbet" index="0"]
+frame = 16
+
+[node name="AnimationPlayer" parent="Sherbet" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_qcjuj")
+}
+
+[node name="Actionable" parent="Sherbet" index="3"]
+dialogue_resource = ExtResource("4_j4hx5")
+dialogue_start = "sherbet"
+
+[node name="player" parent="." instance=ExtResource("2_6kqp5")]
+position = Vector2(270, 348)
+
+[editable path="Shore"]
+[editable path="Mud Pie"]
+[editable path="Sherbet"]

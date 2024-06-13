@@ -33,11 +33,11 @@
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
 
-[sub_resource type="Gradient" id="Gradient_r1f3c"]
+[sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j01xm"]
-gradient = SubResource("Gradient_r1f3c")
+gradient = SubResource("Gradient_ajcr1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gne3j"]
 size = Vector2(32, 32)

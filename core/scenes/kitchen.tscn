@@ -144,9 +144,6 @@ shape = SubResource("RectangleShape2D_jo6ed")
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
 
-[node name="player" parent="." instance=ExtResource("2_257rj")]
-position = Vector2(432, 181)
-
 [node name="Martha" parent="." instance=ExtResource("3_rfijq")]
 position = Vector2(175, 110)
 
@@ -191,6 +188,9 @@ libraries = {
 [node name="Actionable" parent="Parfait" index="3"]
 dialogue_resource = ExtResource("5_f5i2q")
 dialogue_start = "parfait"
+
+[node name="player" parent="." instance=ExtResource("2_257rj")]
+position = Vector2(432, 181)
 
 [editable path="Martha"]
 [editable path="Eggy"]
