@@ -1,0 +1,206 @@
+[gd_scene load_steps=16 format=3 uid="uid://486ue1nxggp5"]
+
+[ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_ii3gf"]
+[ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_eaopm"]
+[ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_oc4o4"]
+[ext_resource type="Resource" uid="uid://b48kdsjxiyys5" path="res://dialogue/study.dialogue" id="4_mfnvq"]
+
+[sub_resource type="Gradient" id="Gradient_r1f3c"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xqrlj"]
+gradient = SubResource("Gradient_r1f3c")
+
+[sub_resource type="Animation" id="Animation_8op37"]
+resource_name = "back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_npcgs"]
+resource_name = "forward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_6cxgs"]
+resource_name = "left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_a5x3l"]
+resource_name = "right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrdpf"]
+_data = {
+"back": SubResource("Animation_8op37"),
+"forward": SubResource("Animation_npcgs"),
+"left": SubResource("Animation_6cxgs"),
+"right": SubResource("Animation_a5x3l")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj7ur"]
+size = Vector2(64, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2hii"]
+size = Vector2(291, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q82eb"]
+size = Vector2(23.5, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4gyo"]
+size = Vector2(23, 225)
+
+[node name="Study" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_xqrlj")
+metadata/_edit_lock_ = true
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+tile_set = ExtResource("1_ii3gf")
+format = 2
+layer_0/name = "background"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(131075, 196609, 3, 196611, 196609, 3, 262147, 262145, 0, 131076, 196609, 3, 196612, 196609, 3, 262148, 262145, 0, 65541, 196609, 3, 131077, 196609, 3, 196613, 262145, 0, 262149, 262145, 0, 327685, 262145, 0, 393221, 262145, 0, 458757, 262145, 0, 524293, 262145, 0, 589829, 262145, 0, 65542, 196609, 3, 131078, 196609, 3, 196614, 262145, 0, 262150, 262145, 0, 327686, 262145, 0, 393222, 262145, 0, 458758, 262145, 0, 524294, 262145, 0, 589830, 262145, 0, 65543, 196609, 3, 131079, 196609, 3, 196615, 262145, 0, 262151, 262145, 0, 327687, 262145, 0, 393223, 262145, 0, 458759, 262145, 0, 524295, 262145, 0, 589831, 262145, 0, 65544, 196609, 3, 131080, 196609, 3, 196616, 262145, 0, 262152, 262145, 0, 327688, 262145, 0, 393224, 262145, 0, 458760, 262145, 0, 524296, 262145, 0, 589832, 262145, 0, 65545, 196609, 3, 131081, 196609, 3, 196617, 262145, 0, 262153, 262145, 0, 327689, 262145, 0, 393225, 262145, 0, 458761, 262145, 0, 524297, 262145, 0, 589833, 262145, 0, 65546, 196609, 3, 131082, 196609, 3, 196618, 262145, 0, 262154, 262145, 0, 327690, 262145, 0, 393226, 262145, 0, 458762, 262145, 0, 524298, 262145, 0, 589834, 262145, 0, 65547, 196609, 3, 131083, 196609, 3, 196619, 262145, 0, 262155, 262145, 0, 327691, 262145, 0, 393227, 262145, 0, 458763, 262145, 0, 524299, 262145, 0, 589835, 262145, 0, 65548, 196609, 3, 131084, 196609, 3, 196620, 262145, 0, 262156, 262145, 0, 327692, 262145, 0, 393228, 262145, 0, 458764, 262145, 0, 524300, 262145, 0, 589836, 262145, 0, 65549, 196609, 3, 131085, 196609, 3, 196621, 262145, 0, 262157, 262145, 0, 327693, 262145, 0, 393229, 262145, 0, 458765, 262145, 0, 524301, 262145, 0, 589837, 262145, 0)
+layer_1/name = "foreground"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(131079, 196609, 6, 262154, 196609, 6, 393226, 196609, 6, 327689, 262145, 7, 524294, 262145, 7, 524295, 262145, 7)
+
+[node name="Dew" parent="TileMap" instance=ExtResource("3_oc4o4")]
+position = Vector2(212, 108)
+
+[node name="Sprite2D" parent="TileMap/Dew" index="0"]
+frame = 5
+
+[node name="AnimationPlayer" parent="TileMap/Dew" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_rrdpf")
+}
+
+[node name="Actionable" parent="TileMap/Dew" index="3"]
+dialogue_resource = ExtResource("4_mfnvq")
+dialogue_start = "initiate_quest"
+
+[node name="Lime" parent="TileMap" instance=ExtResource("3_oc4o4")]
+position = Vector2(336, 236)
+
+[node name="Sprite2D" parent="TileMap/Lime" index="0"]
+frame = 5
+
+[node name="AnimationPlayer" parent="TileMap/Lime" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_rrdpf")
+}
+
+[node name="Actionable" parent="TileMap/Lime" index="3"]
+dialogue_resource = ExtResource("4_mfnvq")
+dialogue_start = "lime"
+
+[node name="Minus" parent="TileMap" instance=ExtResource("3_oc4o4")]
+position = Vector2(243, 288)
+
+[node name="Sprite2D" parent="TileMap/Minus" index="0"]
+frame = 5
+
+[node name="AnimationPlayer" parent="TileMap/Minus" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_rrdpf")
+}
+
+[node name="Actionable" parent="TileMap/Minus" index="3"]
+dialogue_resource = ExtResource("4_mfnvq")
+dialogue_start = "minus"
+
+[node name="player" parent="TileMap" instance=ExtResource("2_eaopm")]
+position = Vector2(113, 147)
+
+[node name="BetweenTiles" type="TileMap" parent="TileMap"]
+position = Vector2(0, 16)
+tile_set = ExtResource("1_ii3gf")
+format = 2
+layer_0/name = "background"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(131078, 262145, 6, 131079, 327681, 6, 262154, 262145, 6, 262155, 327681, 6, 393226, 262145, 6, 393227, 327681, 6, 65545, 393217, 5, 131081, 393217, 6, 131082, 393217, 6, 65546, 393217, 5, 65547, 393217, 5, 131083, 393217, 6, 65548, 393217, 5, 131084, 393217, 6, 131085, 393217, 6, 65549, 393217, 5, 196614, 262145, 5, 196615, 327681, 5, 196621, 262145, 7)
+layer_1/name = "foreground"
+layer_1/tile_data = PackedInt32Array(65546, 458753, 6, 10, 458753, 5, 13, 458753, 5, 65549, 458753, 6, 65541, 393217, 5, 131077, 393217, 6, 65544, 196609, 7)
+
+[node name="InvisibleWalls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(128, 170)
+shape = SubResource("RectangleShape2D_nj7ur")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(304.5, 330)
+shape = SubResource("RectangleShape2D_w2hii")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(148.25, 250)
+shape = SubResource("RectangleShape2D_q82eb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(459, 207.5)
+shape = SubResource("RectangleShape2D_b4gyo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
+
+[editable path="TileMap/Dew"]
+[editable path="TileMap/Lime"]
+[editable path="TileMap/Minus"]
