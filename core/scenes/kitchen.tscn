@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://0ma3kkj328i7"]
+[gd_scene load_steps=18 format=3 uid="uid://0ma3kkj328i7"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_257rj"]
+[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="2_ebea2"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_rfijq"]
 [ext_resource type="Resource" uid="uid://kbk5afhybtlw" path="res://dialogue/kitchen.dialogue" id="5_f5i2q"]
 
@@ -22,6 +23,9 @@ size = Vector2(288, 18.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo6ed"]
 size = Vector2(45, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u0ly"]
+size = Vector2(18.5, 33.25)
 
 [sub_resource type="Animation" id="Animation_yrct1"]
 resource_name = "back"
@@ -140,6 +144,14 @@ shape = SubResource("RectangleShape2D_ebgkv")
 position = Vector2(426, 201)
 shape = SubResource("RectangleShape2D_jo6ed")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(457, 176)
+shape = SubResource("RectangleShape2D_6u0ly")
+
+[node name="LivingRoomDoor" parent="." instance=ExtResource("2_ebea2")]
+position = Vector2(448, 176)
+next_scene = "res://scenes/living_room.tscn"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
@@ -190,8 +202,16 @@ dialogue_resource = ExtResource("5_f5i2q")
 dialogue_start = "parfait"
 
 [node name="player" parent="." instance=ExtResource("2_257rj")]
-position = Vector2(432, 181)
+position = Vector2(406, 181)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="player" index="0"]
+animation = &"left"
+
+[node name="Direction" parent="player" index="2"]
+rotation = 1.5708
 
 [editable path="Martha"]
 [editable path="Eggy"]
 [editable path="Parfait"]
+[editable path="player"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cljskrsbssk1n"]
+[gd_scene load_steps=20 format=3 uid="uid://cljskrsbssk1n"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_chdeo"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_6kqp5"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_ofufa"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
 [ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
+[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="6_ag44c"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -23,6 +24,12 @@ size = Vector2(288, 32.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ti5bf"]
 size = Vector2(323, 32.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63vp4"]
+size = Vector2(65.875, 32.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emvp5"]
+size = Vector2(65, 32)
 
 [sub_resource type="Animation" id="Animation_42c3i"]
 resource_name = "back"
@@ -151,6 +158,18 @@ shape = SubResource("RectangleShape2D_rj1sm")
 position = Vector2(463.5, 339)
 shape = SubResource("RectangleShape2D_ti5bf")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(270.063, 371)
+shape = SubResource("RectangleShape2D_63vp4")
+
+[node name="LivingRoomDoor" parent="." instance=ExtResource("6_ag44c")]
+position = Vector2(271, 365)
+next_scene = "res://scenes/living_room.tscn"
+
+[node name="CollisionShape2D" parent="LivingRoomDoor" index="0"]
+position = Vector2(-0.5, -10)
+shape = SubResource("RectangleShape2D_emvp5")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
@@ -208,8 +227,14 @@ dialogue_resource = ExtResource("4_j4hx5")
 dialogue_start = "sherbet"
 
 [node name="player" parent="." instance=ExtResource("2_6kqp5")]
-position = Vector2(270, 348)
+position = Vector2(270, 331)
+metadata/_edit_group_ = true
 
+[node name="Sprite2D" parent="player" index="0"]
+animation = &"up"
+
+[editable path="LivingRoomDoor"]
 [editable path="Shore"]
 [editable path="Mud Pie"]
 [editable path="Sherbet"]
+[editable path="player"]

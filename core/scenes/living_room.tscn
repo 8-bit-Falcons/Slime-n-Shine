@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=65 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_qcgtd"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bos61svf4tag5" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0022.png" id="27_iuiqd"]
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
+[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="33_t0uhi"]
 
 [sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -41,6 +42,12 @@ gradient = SubResource("Gradient_ajcr1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gne3j"]
 size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doo7b"]
+size = Vector2(66, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da5jh"]
+size = Vector2(65, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkag3"]
 atlas = ExtResource("3_c2k08")
@@ -871,6 +878,10 @@ layer_0/tile_data = PackedInt32Array(65544, 262145, 4, 65541, 262145, 4)
 position = Vector2(48, 208)
 shape = SubResource("RectangleShape2D_gne3j")
 
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(16, 176)
+shape = SubResource("RectangleShape2D_gne3j")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(80, 208)
 shape = SubResource("RectangleShape2D_gne3j")
@@ -903,6 +914,10 @@ shape = SubResource("RectangleShape2D_gne3j")
 position = Vector2(240, 304)
 shape = SubResource("RectangleShape2D_gne3j")
 
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(289, 336)
+shape = SubResource("RectangleShape2D_doo7b")
+
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(336, 304)
 shape = SubResource("RectangleShape2D_gne3j")
@@ -927,6 +942,14 @@ shape = SubResource("RectangleShape2D_gne3j")
 position = Vector2(496, 304)
 shape = SubResource("RectangleShape2D_gne3j")
 
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(528, 272)
+shape = SubResource("RectangleShape2D_gne3j")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(528, 144)
+shape = SubResource("RectangleShape2D_gne3j")
+
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(464, 176)
 shape = SubResource("RectangleShape2D_gne3j")
@@ -935,66 +958,90 @@ shape = SubResource("RectangleShape2D_gne3j")
 position = Vector2(496, 176)
 shape = SubResource("RectangleShape2D_gne3j")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(270, 160)
-zoom = Vector2(3, 3)
+[node name="Doors" type="Node2D" parent="."]
 
-[node name="key" type="AnimatedSprite2D" parent="."]
+[node name="BathroomDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
+position = Vector2(512, 144)
+next_scene = "res://scenes/bathroom.tscn"
+
+[node name="StudyDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
+position = Vector2(512, 272)
+next_scene = "res://scenes/study.tscn"
+
+[node name="KitchenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
+position = Vector2(32, 176)
+next_scene = "res://scenes/kitchen.tscn"
+
+[node name="GardenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
+position = Vector2(271, 365)
+next_scene = "res://scenes/garden.tscn"
+
+[node name="CollisionShape2D" parent="Doors/GardenDoor" index="0"]
+position = Vector2(17, -45)
+shape = SubResource("RectangleShape2D_da5jh")
+
+[node name="Actionables" type="Node2D" parent="."]
+
+[node name="key" type="AnimatedSprite2D" parent="Actionables"]
 position = Vector2(400, 48)
 sprite_frames = SubResource("SpriteFrames_mti8q")
 
-[node name="Actionable" parent="key" instance=ExtResource("4_1wb8c")]
+[node name="Actionable" parent="Actionables/key" instance=ExtResource("4_1wb8c")]
 dialogue_resource = ExtResource("4_3y24s")
 dialogue_start = "key"
 
-[node name="ActionArea" type="CollisionShape2D" parent="key/Actionable"]
+[node name="ActionArea" type="CollisionShape2D" parent="Actionables/key/Actionable"]
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_mhdb0")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
-[node name="drawer" type="StaticBody2D" parent="."]
+[node name="drawer" type="StaticBody2D" parent="Actionables"]
 position = Vector2(339, 84)
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="drawer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Actionables/drawer"]
 sprite_frames = SubResource("SpriteFrames_1e55o")
 animation = &"closed"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="drawer"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/drawer"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_f0n6o")
 
-[node name="Actionable" parent="drawer" instance=ExtResource("4_1wb8c")]
+[node name="Actionable" parent="Actionables/drawer" instance=ExtResource("4_1wb8c")]
 dialogue_resource = ExtResource("4_3y24s")
 dialogue_start = "drawer"
 
-[node name="ActionArea" type="CollisionShape2D" parent="drawer/Actionable"]
+[node name="ActionArea" type="CollisionShape2D" parent="Actionables/drawer/Actionable"]
 position = Vector2(0, 15)
 shape = SubResource("CircleShape2D_qtkas")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
-[node name="Yarn" type="StaticBody2D" parent="."]
+[node name="Yarn" type="StaticBody2D" parent="Actionables"]
 position = Vector2(407, 197)
 metadata/_edit_group_ = true
 
-[node name="Yarn" type="Sprite2D" parent="Yarn"]
+[node name="Yarn" type="Sprite2D" parent="Actionables/Yarn"]
 texture = SubResource("AtlasTexture_o460m")
 offset = Vector2(0, -2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Yarn"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Yarn"]
 position = Vector2(-1, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ch3t0")
 
-[node name="Actionable" parent="Yarn" instance=ExtResource("4_1wb8c")]
+[node name="Actionable" parent="Actionables/Yarn" instance=ExtResource("4_1wb8c")]
 dialogue_resource = ExtResource("4_3y24s")
 dialogue_start = "yarn"
 
-[node name="ActionArea" type="CollisionShape2D" parent="Yarn/Actionable"]
+[node name="ActionArea" type="CollisionShape2D" parent="Actionables/Yarn/Actionable"]
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ebesy")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
 
 [node name="Meowzers" type="CharacterBody2D" parent="."]
 position = Vector2(108, 152)
@@ -1070,3 +1117,5 @@ polygon = PackedVector2Array(32, 11, -32, 12, -32, 9, -21, 5, -21, -1, -6, -1, -
 
 [node name="player" parent="." instance=ExtResource("2_qcgtd")]
 position = Vector2(167, 232)
+
+[editable path="Doors/GardenDoor"]

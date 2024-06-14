@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://486ue1nxggp5"]
+[gd_scene load_steps=18 format=3 uid="uid://486ue1nxggp5"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_ii3gf"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_eaopm"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_oc4o4"]
 [ext_resource type="Resource" uid="uid://b48kdsjxiyys5" path="res://dialogue/study.dialogue" id="4_mfnvq"]
+[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="5_781lc"]
 
 [sub_resource type="Gradient" id="Gradient_6hxl2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -81,6 +82,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj7ur"]
 size = Vector2(64, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elft2"]
+size = Vector2(20, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2hii"]
 size = Vector2(291, 20)
@@ -176,13 +180,24 @@ dialogue_resource = ExtResource("4_mfnvq")
 dialogue_start = "minus"
 
 [node name="player" parent="TileMap" instance=ExtResource("2_eaopm")]
-position = Vector2(113, 147)
+position = Vector2(145, 150)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="TileMap/player" index="0"]
+animation = &"right"
+
+[node name="Direction" parent="TileMap/player" index="2"]
+rotation = -1.5708
 
 [node name="InvisibleWalls" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(128, 170)
 shape = SubResource("RectangleShape2D_nj7ur")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(86, 144)
+shape = SubResource("RectangleShape2D_elft2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(304.5, 330)
@@ -196,6 +211,10 @@ shape = SubResource("RectangleShape2D_q82eb")
 position = Vector2(459, 207.5)
 shape = SubResource("RectangleShape2D_b4gyo")
 
+[node name="LivingRoomDoor" parent="." instance=ExtResource("5_781lc")]
+position = Vector2(96, 144)
+next_scene = "res://scenes/living_room.tscn"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
@@ -203,3 +222,4 @@ zoom = Vector2(3, 3)
 [editable path="TileMap/Dew"]
 [editable path="TileMap/Lime"]
 [editable path="TileMap/Minus"]
+[editable path="TileMap/player"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsu8jaullk6de"]
+[gd_scene load_steps=14 format=3 uid="uid://dsu8jaullk6de"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_wufae"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_citok"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="3_umkle"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="4_x835n"]
 [ext_resource type="Resource" uid="uid://c46eq8tw08h08" path="res://dialogue/bathroom.dialogue" id="5_m38ow"]
+[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="6_klr83"]
 
 [sub_resource type="Gradient" id="Gradient_r1f3c"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -14,6 +15,9 @@ gradient = SubResource("Gradient_r1f3c")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fk8o0"]
 size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3aic"]
+size = Vector2(28, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15ypc"]
 size = Vector2(290, 19)
@@ -67,6 +71,10 @@ layer_0/tile_data = PackedInt32Array(262153, 1, 6)
 position = Vector2(96, 208)
 shape = SubResource("RectangleShape2D_fk8o0")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(50, 176)
+shape = SubResource("RectangleShape2D_f3aic")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
 position = Vector2(272, 233)
 shape = SubResource("RectangleShape2D_15ypc")
@@ -75,9 +83,9 @@ shape = SubResource("RectangleShape2D_15ypc")
 position = Vector2(427, 175.75)
 shape = SubResource("RectangleShape2D_ck4rp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(270, 160)
-zoom = Vector2(3, 3)
+[node name="LivingRoomDoor" parent="." instance=ExtResource("6_klr83")]
+position = Vector2(64, 176)
+next_scene = "res://scenes/living_room.tscn"
 
 [node name="Broom" type="StaticBody2D" parent="."]
 position = Vector2(400, 113)
@@ -92,6 +100,10 @@ frame = 29
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Broom"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_redln")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
 
 [node name="Sticky" parent="." instance=ExtResource("4_x835n")]
 position = Vector2(380, 145)
@@ -124,8 +136,16 @@ dialogue_resource = ExtResource("5_m38ow")
 dialogue_start = "lint"
 
 [node name="player" parent="." instance=ExtResource("3_umkle")]
-position = Vector2(92, 178)
+position = Vector2(106, 183)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="player" index="0"]
+animation = &"right"
+
+[node name="Direction" parent="player" index="2"]
+rotation = -1.5708
 
 [editable path="Sticky"]
 [editable path="Slorp"]
 [editable path="Lint"]
+[editable path="player"]
