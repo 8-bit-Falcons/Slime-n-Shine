@@ -207,6 +207,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="player" index="0"]
 animation = &"left"
+frame_progress = 0.0
 
 [node name="Direction" parent="player" index="2"]
 rotation = 1.5708

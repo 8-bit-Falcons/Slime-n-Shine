@@ -1040,7 +1040,7 @@ shape = SubResource("CapsuleShape2D_ebesy")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(270, 160)
+offset = Vector2(280, 160)
 zoom = Vector2(3, 3)
 
 [node name="Meowzers" type="CharacterBody2D" parent="."]

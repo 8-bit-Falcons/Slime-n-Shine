@@ -3,5 +3,6 @@
 [ext_resource type="AudioStream" uid="uid://cmp7wllql7mps" path="res://assets/music/Puzzled.mp3" id="1_4jepg"]
 
 [node name="Music" type="AudioStreamPlayer"]
+process_mode = 3
 stream = ExtResource("1_4jepg")
 autoplay = true

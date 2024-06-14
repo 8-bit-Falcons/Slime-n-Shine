@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var maxSpeed = 200
+@export var maxSpeed = 130
 @export var acceleration = 1000
 @export var friction = 20000
 
@@ -31,6 +31,7 @@ func move(delta):
 	
 	if axis == Vector2.ZERO:
 		apply_friction(friction * delta)
+		sprite_2d.stop()
 	else:
 		apply_movement(axis * acceleration * delta)
 
@@ -66,5 +67,5 @@ func move_down():
 		update_anim()
 		
 func update_anim():
-	sprite_2d.animation = direction
+	sprite_2d.play(direction)
 	dir_anim.play(direction)

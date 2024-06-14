@@ -112,7 +112,8 @@ _data = {
 "blink": SubResource("Animation_hmr0h")
 }
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="Balloon" type="CanvasLayer"]
+process_mode = 3
 layer = 100
 script = ExtResource("1_36de5")
 
