@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsu8jaullk6de"]
+
+[ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_wufae"]
+[ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_citok"]
+[ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="3_umkle"]
+[ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="4_x835n"]
+[ext_resource type="Resource" uid="uid://c46eq8tw08h08" path="res://dialogue/bathroom.dialogue" id="5_m38ow"]
+
+[sub_resource type="Gradient" id="Gradient_r1f3c"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8r8m0"]
+gradient = SubResource("Gradient_r1f3c")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fk8o0"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15ypc"]
+size = Vector2(290, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck4rp"]
+size = Vector2(22, 95.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_redln"]
+size = Vector2(33, 64)
+
+[node name="Bathroom" type="Node2D"]
+texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_8r8m0")
+metadata/_edit_lock_ = true
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_wufae")
+format = 2
+layer_0/name = "background"
+layer_0/tile_data = PackedInt32Array(196610, 196609, 3, 262146, 196609, 3, 196611, 196609, 3, 262147, 196609, 3, 327683, 1, 4, 131076, 196609, 3, 196612, 196609, 3, 262148, 1, 4, 327684, 1, 4, 393220, 1, 4, 131077, 196609, 3, 196613, 196609, 3, 327685, 1, 4, 393221, 1, 4, 131078, 196609, 3, 196614, 196609, 3, 262150, 1, 4, 327686, 1, 4, 393222, 1, 4, 131079, 196609, 3, 196615, 196609, 3, 262151, 1, 4, 327687, 1, 4, 393223, 1, 4, 131080, 196609, 3, 196616, 196609, 3, 262152, 1, 4, 327688, 1, 4, 393224, 1, 4, 131081, 196609, 3, 196617, 196609, 3, 262153, 1, 4, 327689, 1, 4, 393225, 1, 4, 131082, 196609, 3, 196618, 196609, 3, 262154, 1, 4, 327690, 1, 4, 393226, 1, 4, 131083, 196609, 3, 196619, 196609, 3, 262155, 1, 4, 327691, 1, 4, 393227, 1, 4, 327682, 1, 4, 131084, 196609, 3, 196620, 196609, 3, 327692, 1, 4, 393228, 1, 4, 262149, 1, 4, 262156, 1, 4)
+layer_1/name = "foreground"
+layer_1/tile_data = PackedInt32Array(262150, 1, 6)
+
+[node name="OffsetTiles" type="TileMap" parent="TileMap"]
+position = Vector2(0, 16)
+tile_set = ExtResource("1_wufae")
+format = 2
+layer_0/tile_data = PackedInt32Array(196613, 1, 5, 196615, 65537, 4, 131079, 131073, 4, 196617, 65537, 5, 196618, 131073, 5, 196619, 65537, 6, 327687, 1, 6)
+
+[node name="OffsetTiles2" type="TileMap" parent="TileMap"]
+position = Vector2(0, 8)
+tile_set = ExtResource("1_wufae")
+format = 2
+layer_0/tile_data = PackedInt32Array(262153, 1, 6)
+
+[node name="InvisibleWalls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(96, 208)
+shape = SubResource("RectangleShape2D_fk8o0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(272, 233)
+shape = SubResource("RectangleShape2D_15ypc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(427, 175.75)
+shape = SubResource("RectangleShape2D_ck4rp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(270, 160)
+zoom = Vector2(3, 3)
+
+[node name="Broom" type="StaticBody2D" parent="."]
+position = Vector2(400, 113)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Broom"]
+texture = ExtResource("2_citok")
+hframes = 9
+vframes = 4
+frame = 29
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Broom"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_redln")
+
+[node name="Sticky" parent="." instance=ExtResource("4_x835n")]
+position = Vector2(380, 145)
+
+[node name="Sprite2D" parent="Sticky" index="0"]
+frame = 0
+
+[node name="Actionable" parent="Sticky" index="3"]
+dialogue_resource = ExtResource("5_m38ow")
+dialogue_start = "prequest"
+
+[node name="Slorp" parent="." instance=ExtResource("4_x835n")]
+position = Vector2(276, 149)
+
+[node name="Sprite2D" parent="Slorp" index="0"]
+frame = 10
+
+[node name="Actionable" parent="Slorp" index="3"]
+dialogue_resource = ExtResource("5_m38ow")
+dialogue_start = "slorp"
+
+[node name="Lint" parent="." instance=ExtResource("4_x835n")]
+position = Vector2(147, 133)
+
+[node name="Sprite2D" parent="Lint" index="0"]
+frame = 0
+
+[node name="Actionable" parent="Lint" index="3"]
+dialogue_resource = ExtResource("5_m38ow")
+dialogue_start = "lint"
+
+[node name="player" parent="." instance=ExtResource("3_umkle")]
+position = Vector2(92, 178)
+
+[editable path="Sticky"]
+[editable path="Slorp"]
+[editable path="Lint"]
