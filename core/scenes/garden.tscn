@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cljskrsbssk1n"]
+[gd_scene load_steps=17 format=3 uid="uid://cljskrsbssk1n"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_chdeo"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_6kqp5"]
+[ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_ofufa"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
 [ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
 
@@ -118,19 +119,19 @@ layer_0/tile_data = PackedInt32Array(524288, 393217, 0, 524289, 393217, 0, 52429
 layer_1/name = "foreground"
 layer_1/tile_data = PackedInt32Array(327683, 458753, 3, 393226, 393217, 4, 393227, 458753, 4, 393228, 524289, 4, 327697, 393217, 4, 327698, 524289, 4, 655361, 458753, 0, 720898, 458753, 0, 786438, 458753, 0, 720903, 458753, 0, 851975, 458753, 0, 589832, 458753, 0, 786440, 458753, 0, 720905, 458753, 0, 589837, 458753, 0, 655375, 458753, 0, 524304, 458753, 0, 786452, 458753, 0)
 
-[node name="BetweenTiles" type="TileMap" parent="TileMap"]
+[node name="OffsetTiles" type="TileMap" parent="TileMap"]
 texture_filter = 1
 position = Vector2(0, 8)
 tile_set = ExtResource("1_chdeo")
 format = 2
 layer_0/tile_data = PackedInt32Array(327683, 393217, 4, 327684, 458753, 4, 327685, 524289, 4)
 
-[node name="BetweenTiles2" type="TileMap" parent="TileMap"]
+[node name="OffsetTiles2" type="TileMap" parent="TileMap"]
 texture_filter = 1
 position = Vector2(0, 16)
 tile_set = ExtResource("1_chdeo")
 format = 2
-layer_0/tile_data = PackedInt32Array(458752, 393217, 1, 458753, 458753, 1, 458755, 393217, 1, 458756, 393217, 1, 458757, 393217, 1, 458759, 393217, 1, 458760, 458753, 1, 458762, 393217, 1, 458763, 393217, 1, 458764, 393217, 1, 458766, 393217, 1, 458767, 393217, 1, 458769, 458753, 1, 458770, 458753, 1, 458771, 393217, 1, 655378, 458753, 2, 655379, 458753, 2, 655377, 458753, 2, 720913, 458753, 1, 720914, 458753, 1, 720915, 458753, 1, 589841, 458753, 2, 589842, 458753, 2, 589843, 458753, 2, 589834, 458753, 2, 589835, 458753, 2, 589836, 458753, 2, 655372, 458753, 2, 655371, 458753, 2, 655370, 458753, 2, 720906, 458753, 1, 720907, 458753, 1, 720908, 458753, 1, 720899, 458753, 1, 720900, 458753, 1, 720901, 458753, 1, 589827, 458753, 2, 589828, 458753, 2, 589829, 458753, 2, 655365, 458753, 2, 655364, 458753, 2, 655363, 458753, 2, 589838, 524289, 3)
+layer_0/tile_data = PackedInt32Array(458752, 393217, 1, 458753, 458753, 1, 458755, 393217, 1, 458756, 393217, 1, 458757, 393217, 1, 458759, 393217, 1, 458760, 458753, 1, 458762, 393217, 1, 458763, 393217, 1, 458764, 393217, 1, 458766, 393217, 1, 458767, 393217, 1, 458769, 458753, 1, 458770, 458753, 1, 458771, 393217, 1, 655378, 458753, 2, 655379, 458753, 2, 655377, 458753, 2, 720913, 458753, 1, 720914, 458753, 1, 720915, 458753, 1, 589841, 458753, 2, 589842, 458753, 2, 589843, 458753, 2, 589834, 458753, 2, 589835, 458753, 2, 589836, 458753, 2, 655372, 458753, 2, 655371, 458753, 2, 655370, 458753, 2, 720906, 458753, 1, 720907, 458753, 1, 720908, 458753, 1, 720899, 458753, 1, 720900, 458753, 1, 720901, 458753, 1, 589827, 458753, 2, 589828, 458753, 2, 589829, 458753, 2, 655365, 458753, 2, 655364, 458753, 2, 655363, 458753, 2)
 
 [node name="InvisibleWalls" type="StaticBody2D" parent="."]
 
@@ -153,6 +154,13 @@ shape = SubResource("RectangleShape2D_ti5bf")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
+
+[node name="Stick" type="Sprite2D" parent="."]
+position = Vector2(393, 213)
+texture = ExtResource("2_ofufa")
+hframes = 9
+vframes = 8
+frame = 35
 
 [node name="Shore" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(176, 145)

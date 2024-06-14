@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_oc4o4"]
 [ext_resource type="Resource" uid="uid://b48kdsjxiyys5" path="res://dialogue/study.dialogue" id="4_mfnvq"]
 
-[sub_resource type="Gradient" id="Gradient_r1f3c"]
+[sub_resource type="Gradient" id="Gradient_6hxl2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xqrlj"]
-gradient = SubResource("Gradient_r1f3c")
+gradient = SubResource("Gradient_6hxl2")
 
 [sub_resource type="Animation" id="Animation_8op37"]
 resource_name = "back"
@@ -97,7 +97,6 @@ texture_filter = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
@@ -120,6 +119,16 @@ layer_0/tile_data = PackedInt32Array(131075, 196609, 3, 196611, 196609, 3, 26214
 layer_1/name = "foreground"
 layer_1/y_sort_enabled = true
 layer_1/tile_data = PackedInt32Array(131079, 196609, 6, 262154, 196609, 6, 393226, 196609, 6, 327689, 262145, 7, 524294, 262145, 7, 524295, 262145, 7)
+
+[node name="OffsetTiles" type="TileMap" parent="TileMap"]
+position = Vector2(0, 16)
+tile_set = ExtResource("1_ii3gf")
+format = 2
+layer_0/name = "background"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(131078, 262145, 6, 131079, 327681, 6, 262154, 262145, 6, 262155, 327681, 6, 393226, 262145, 6, 393227, 327681, 6, 65545, 393217, 5, 131081, 393217, 6, 131082, 393217, 6, 65546, 393217, 5, 65547, 393217, 5, 131083, 393217, 6, 65548, 393217, 5, 131084, 393217, 6, 131085, 393217, 6, 65549, 393217, 5, 196614, 262145, 5, 196615, 327681, 5, 196621, 262145, 7)
+layer_1/name = "foreground"
+layer_1/tile_data = PackedInt32Array(65546, 458753, 6, 10, 458753, 5, 13, 458753, 5, 65549, 458753, 6, 65541, 393217, 5, 131077, 393217, 6, 65544, 196609, 7)
 
 [node name="Dew" parent="TileMap" instance=ExtResource("3_oc4o4")]
 position = Vector2(212, 108)
@@ -168,16 +177,6 @@ dialogue_start = "minus"
 
 [node name="player" parent="TileMap" instance=ExtResource("2_eaopm")]
 position = Vector2(113, 147)
-
-[node name="BetweenTiles" type="TileMap" parent="TileMap"]
-position = Vector2(0, 16)
-tile_set = ExtResource("1_ii3gf")
-format = 2
-layer_0/name = "background"
-layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(131078, 262145, 6, 131079, 327681, 6, 262154, 262145, 6, 262155, 327681, 6, 393226, 262145, 6, 393227, 327681, 6, 65545, 393217, 5, 131081, 393217, 6, 131082, 393217, 6, 65546, 393217, 5, 65547, 393217, 5, 131083, 393217, 6, 65548, 393217, 5, 131084, 393217, 6, 131085, 393217, 6, 65549, 393217, 5, 196614, 262145, 5, 196615, 327681, 5, 196621, 262145, 7)
-layer_1/name = "foreground"
-layer_1/tile_data = PackedInt32Array(65546, 458753, 6, 10, 458753, 5, 13, 458753, 5, 65549, 458753, 6, 65541, 393217, 5, 131077, 393217, 6, 65544, 196609, 7)
 
 [node name="InvisibleWalls" type="StaticBody2D" parent="."]
 

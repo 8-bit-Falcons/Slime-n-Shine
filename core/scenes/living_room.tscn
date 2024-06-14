@@ -858,7 +858,7 @@ layer_0/tile_data = PackedInt32Array(65539, 196609, 3, 131075, 196609, 3, 196611
 layer_1/name = "foreground"
 layer_1/tile_data = PackedInt32Array()
 
-[node name="BetweenTiles" type="TileMap" parent="TileMap"]
+[node name="OffsetTiles" type="TileMap" parent="TileMap"]
 texture_filter = 1
 position = Vector2(0, 16)
 tile_set = ExtResource("1_kv8y8")
