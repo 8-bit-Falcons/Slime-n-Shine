@@ -61,7 +61,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
+MarginContainer/constants/margin_top = 10
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [sub_resource type="Animation" id="Animation_5aihg"]
@@ -112,7 +112,8 @@ _data = {
 "blink": SubResource("Animation_hmr0h")
 }
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="Balloon" type="CanvasLayer"]
+process_mode = 3
 layer = 100
 script = ExtResource("1_36de5")
 
@@ -137,7 +138,7 @@ anchor_bottom = 1.0
 offset_left = -759.0
 offset_top = -212.0
 offset_right = 759.0
-offset_bottom = -27.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
@@ -236,6 +237,7 @@ autoplay = "blink"
 
 [node name="DialogueSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qvlsa")
+volume_db = 2.537
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]

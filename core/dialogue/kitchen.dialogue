@@ -6,9 +6,9 @@ Martha: *sigh* [#emotion=mad]
 You: ? [#emotion=neutral]
 Martha: And I just finished up the sandwiches... [#emotion=mad]
 You: oh, well- [#emotion=surprised] [next=auto]
-Martha: *grumble grumble* I came here with a whole plan to just make something simple and get it done... *grumble grumble* [#emotion=mad]
+Martha: [shake rate=10.0 level=10.0 connected=0]*grumble grumble*[/shake] I came here with a whole plan to just make something simple and get it done... [shake rate=10.0 level=10.0 connected=0]*grumble grumble*[/shake] [#emotion=mad]
 You: you don't have to- [#emotion=sad] [next=auto]
-Martha: *grumble grumble* I'm just so tired from working long hours every day, I'm so busy all the time, it's just hard for me to change plans last minute... *grumble grumble* [#emotion=mad]
+Martha: [shake rate=10.0 level=10.0 connected=0]*grumble grumble*[/shake] I'm just so tired from working long hours every day, I'm so busy all the time, it's just hard for me to change plans last minute... [shake rate=10.0 level=10.0 connected=0]*grumble grumble*[/shake] [#emotion=mad]
 You: i- [#emotion=sad] [next=auto]
 Martha: *sigh* What kind of [color=cyan]FISH[/color] do you want? [#emotion=mad]
 You: you... you don't have to make [color=cyan]FISH[/color] if you don't want to... [#emotion=sad]
@@ -17,9 +17,9 @@ You: i'll just get [color=cyan]FISH[/color] from somewhere else... [#emotion=sad
 Martha: Just tell me what [color=cyan]FISH[/color] you want. [#emotion=mad]
 Martha preheats the oven and begins preparing to cook [color=cyan]FISH[/color].
 You: a-any kind of [color=cyan]FISH[/color] is fine... [#emotion=sad]
-Martha: *sigh* [#emotion=mad]
+Martha: [shake rate=10.0 level=10.0 connected=0]*sigh*[/shake] [#emotion=mad]
 You: ... [#emotion=sad]
-Martha: Okay, but you're gonna need to clean up the kitchen, because I don't have time to do that and make this [color=cyan]FISH[/color]. *grumble* Running around all day doing things... *grumble* [#emotion=mad]
+Martha: Okay, but you're gonna need to clean up the kitchen, because I don't have time to do that and make this [color=cyan]FISH[/color]. [shake rate=10.0 level=10.0 connected=0]*grumble*[/shake] Running around all day doing things... [shake rate=10.0 level=10.0 connected=0]*grumble*[/shake] [#emotion=mad]
 Martha: Go get a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color], [color=yellow]CLEAN UP[/color] the kitchen, and by the time you're done, the [color=cyan]FISH[/color] will be ready.
 You: o..okay... [#emotion=sad]
 => END 
