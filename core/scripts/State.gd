@@ -23,3 +23,4 @@ const slime_to_sprite = {"sticky": "bathroom_slimes", \
 						"lime": "science_slimes"}
 
 var MC_name: String = "MC"
+var in_dialogue = 0

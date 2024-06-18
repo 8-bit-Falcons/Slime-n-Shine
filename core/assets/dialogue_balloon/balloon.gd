@@ -42,6 +42,7 @@ var dialogue_line: DialogueLine:
 
 		# The dialogue has finished so close the balloon
 		if not next_dialogue_line:
+			State.in_dialogue = false
 			queue_free()
 			return
 
@@ -65,9 +66,9 @@ var dialogue_line: DialogueLine:
 			char_title = dialogue_line.get_tag_value("char")
 		if dialogue_line.get_tag_value("emotion"):
 			emotion = dialogue_line.get_tag_value("emotion")
-		for name in Global.slime_to_sprite.keys():
+		for name in State.slime_to_sprite.keys():
 			if char_title == name:
-				char_title = Global.slime_to_sprite.get(name)
+				char_title = State.slime_to_sprite.get(name)
 				break
 		var portrait_path: String = "res://assets/character_portraits/%s/%s.png" % [char_title, emotion]
 			
@@ -78,9 +79,9 @@ var dialogue_line: DialogueLine:
 			portrait.texture = null
 			portrait.hide()
 			
-		if char_title not in Global.colors.keys():
+		if char_title not in State.colors.keys():
 			char_title = ""
-		character_label.set_modulate(Global.colors.get(char_title))
+		character_label.set_modulate(State.colors.get(char_title))
 			
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line
@@ -130,6 +131,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 ## Start some dialogue
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	State.in_dialogue = true
 	temporary_game_states =  [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource

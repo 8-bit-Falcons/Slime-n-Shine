@@ -12,7 +12,10 @@ extends CharacterBody2D
 var direction = "down"
 
 func _physics_process(delta):
-	move(delta)
+	if State.in_dialogue:
+		sprite_2d.stop()
+	else:
+		move(delta)
 	
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
