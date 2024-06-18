@@ -19,11 +19,10 @@ func _unhandled_input(event):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
 			actionables[0].action()
-			return
 	
 func get_input_axis():
-	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))	
-	axis.y = int(Input.is_action_pressed("down"))	- int(Input.is_action_pressed("up"))	
+	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))
+	axis.y = int(Input.is_action_pressed("down"))	- int(Input.is_action_pressed("up"))
 	return axis.normalized()
 
 func move(delta):
@@ -47,8 +46,11 @@ func apply_friction(amount):
 func apply_movement(accel):
 	velocity += accel
 	velocity = velocity.limit_length(maxSpeed)
-	move_left()
-	move_down()
+
+	if abs(velocity.x) >= abs(velocity.y):
+		move_left()
+	else:
+		move_down()
 	
 func move_left():
 	if velocity.x < 0:

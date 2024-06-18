@@ -337,7 +337,7 @@ script = ExtResource("1_yucyp")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_udolc")
 animation = &"down"
-frame_progress = 0.541294
+frame_progress = 0.62501
 offset = Vector2(0, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
