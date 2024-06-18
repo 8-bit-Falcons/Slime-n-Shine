@@ -26,10 +26,12 @@ State="*res://scripts/State.gd"
 Inventory="*res://scenes/inventory.tscn"
 Music="*res://scenes/music.tscn"
 StageManager="*res://scenes/stage_manager.tscn"
+Characters="*res://scripts/Characters.gd"
 
 [dialogue_manager]
 
 general/balloon_path="res://assets/dialogue_balloon/balloon.tscn"
+general/states=["Characters", "Inventory", "State"]
 
 [display]
 
