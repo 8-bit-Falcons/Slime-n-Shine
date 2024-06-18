@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var friction = 20000
 
 @onready var axis = Vector2.ZERO
-@onready var sprite_2d = $Sprite2D
 @onready var dir_anim = $Direction/AnimationPlayer
 @onready var actionable_finder = $Direction/ActionableFinder
 
@@ -13,7 +12,7 @@ var direction = "down"
 
 func _physics_process(delta):
 	if State.in_dialogue:
-		sprite_2d.stop()
+		dir_anim.stop()
 	else:
 		move(delta)
 	
@@ -21,7 +20,7 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
-			actionables[0].action()
+			actionables[0].action(direction)
 	
 func get_input_axis():
 	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))
@@ -33,7 +32,7 @@ func move(delta):
 	
 	if axis == Vector2.ZERO:
 		apply_friction(friction * delta)
-		sprite_2d.stop()
+		dir_anim.stop()
 	else:
 		apply_movement(axis * acceleration * delta)
 
@@ -72,5 +71,4 @@ func move_down():
 		update_anim()
 		
 func update_anim():
-	sprite_2d.play(direction)
 	dir_anim.play(direction)

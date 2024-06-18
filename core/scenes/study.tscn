@@ -184,10 +184,16 @@ position = Vector2(145, 150)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="TileMap/player" index="0"]
-animation = &"right"
+frame = 4
+
+[node name="CollisionShape2D" parent="TileMap/player" index="1"]
+position = Vector2(1.5, -5)
 
 [node name="Direction" parent="TileMap/player" index="2"]
 rotation = -1.5708
+
+[node name="CollisionShape2D" parent="TileMap/player/Direction/ActionableFinder" index="0"]
+position = Vector2(8, 5)
 
 [node name="InvisibleWalls" type="StaticBody2D" parent="."]
 

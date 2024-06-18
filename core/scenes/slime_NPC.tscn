@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1c2r2jqkdhdo"]
+[gd_scene load_steps=10 format=3 uid="uid://c1c2r2jqkdhdo"]
 
 [ext_resource type="Texture2D" uid="uid://pjhvmw6ixgpy" path="res://assets/sprites/slimes/slimes.png" id="1_nokel"]
+[ext_resource type="Script" path="res://scripts/NPC.gd" id="1_riw81"]
 [ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="2_wue1h"]
 
 [sub_resource type="Animation" id="Animation_83dfx"]
@@ -77,7 +78,8 @@ height = 28.0
 
 [node name="Slime" type="CharacterBody2D"]
 texture_filter = 1
-metadata/_edit_group_ = true
+script = ExtResource("1_riw81")
+idle_anim = "back"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nokel")
@@ -93,7 +95,8 @@ libraries = {
 "": SubResource("AnimationLibrary_415ru")
 }
 
-[node name="Actionable" parent="." instance=ExtResource("2_wue1h")]
+[node name="Actionable" parent="." node_paths=PackedStringArray("NPC") instance=ExtResource("2_wue1h")]
+NPC = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
 visible = false

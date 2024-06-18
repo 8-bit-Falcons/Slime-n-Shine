@@ -107,6 +107,7 @@ zoom = Vector2(3, 3)
 
 [node name="Sticky" parent="." instance=ExtResource("4_x835n")]
 position = Vector2(380, 145)
+idle_anim = "forward"
 
 [node name="Sprite2D" parent="Sticky" index="0"]
 frame = 0
@@ -117,6 +118,7 @@ dialogue_start = "prequest"
 
 [node name="Slorp" parent="." instance=ExtResource("4_x835n")]
 position = Vector2(276, 149)
+idle_anim = "right"
 
 [node name="Sprite2D" parent="Slorp" index="0"]
 frame = 10
@@ -127,6 +129,7 @@ dialogue_start = "slorp"
 
 [node name="Lint" parent="." instance=ExtResource("4_x835n")]
 position = Vector2(147, 133)
+idle_anim = "forward"
 
 [node name="Sprite2D" parent="Lint" index="0"]
 frame = 0
@@ -140,10 +143,16 @@ position = Vector2(106, 183)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="player" index="0"]
-animation = &"right"
+frame = 4
+
+[node name="CollisionShape2D" parent="player" index="1"]
+position = Vector2(1.5, -5)
 
 [node name="Direction" parent="player" index="2"]
 rotation = -1.5708
+
+[node name="CollisionShape2D" parent="player/Direction/ActionableFinder" index="0"]
+position = Vector2(8, 5)
 
 [editable path="Sticky"]
 [editable path="Slorp"]

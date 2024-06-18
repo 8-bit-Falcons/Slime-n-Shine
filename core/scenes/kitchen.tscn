@@ -188,6 +188,7 @@ dialogue_start = "eggy"
 
 [node name="Parfait" parent="." instance=ExtResource("3_rfijq")]
 position = Vector2(175, 159)
+idle_anim = "left"
 
 [node name="Sprite2D" parent="Parfait" index="0"]
 frame = 13
@@ -206,11 +207,16 @@ position = Vector2(406, 181)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="player" index="0"]
-animation = &"left"
-frame_progress = 0.0
+frame = 5
+
+[node name="CollisionShape2D" parent="player" index="1"]
+position = Vector2(-1, -5)
 
 [node name="Direction" parent="player" index="2"]
 rotation = 1.5708
+
+[node name="CollisionShape2D" parent="player/Direction/ActionableFinder" index="0"]
+position = Vector2(-8, 5)
 
 [editable path="Martha"]
 [editable path="Eggy"]

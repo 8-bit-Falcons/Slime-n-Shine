@@ -201,6 +201,7 @@ dialogue_start = "prequest"
 
 [node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(-22, 240)
+idle_anim = "forward"
 
 [node name="Sprite2D" parent="Mud Pie" index="0"]
 frame = 6
@@ -216,6 +217,7 @@ dialogue_start = "mud_pie"
 
 [node name="Sherbet" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(477, 257)
+idle_anim = "right"
 
 [node name="Sprite2D" parent="Sherbet" index="0"]
 frame = 16
@@ -234,8 +236,13 @@ position = Vector2(270, 331)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="player" index="0"]
-animation = &"up"
-frame_progress = 0.0
+frame = 1
+
+[node name="Direction" parent="player" index="2"]
+rotation = 3.14159
+
+[node name="CollisionShape2D" parent="player/Direction/ActionableFinder" index="0"]
+position = Vector2(0, 11)
 
 [editable path="LivingRoomDoor"]
 [editable path="Shore"]
