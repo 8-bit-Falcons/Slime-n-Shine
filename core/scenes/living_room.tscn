@@ -77,6 +77,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhdb0"]
+size = Vector2(20, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5ec1"]
 atlas = ExtResource("3_c2k08")
@@ -991,7 +992,7 @@ dialogue_resource = ExtResource("4_3y24s")
 dialogue_start = "key"
 
 [node name="ActionArea" type="CollisionShape2D" parent="Actionables/key/Actionable"]
-position = Vector2(0, 24)
+position = Vector2(0, 25.5)
 shape = SubResource("RectangleShape2D_mhdb0")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
@@ -1043,17 +1044,15 @@ debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 offset = Vector2(280, 160)
 zoom = Vector2(3, 3)
 
-[node name="Meowzers" type="CharacterBody2D" parent="."]
+[node name="Meowzers" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos")]
 position = Vector2(108, 152)
 script = ExtResource("5_6ve0k")
+center_pos = NodePath("CenterPos")
 
 [node name="Sprite2D" type="Sprite2D" parent="Meowzers"]
-texture = ExtResource("6_yib4y")
+texture = ExtResource("5_srnyp")
 centered = false
-offset = Vector2(62, -60)
-hframes = 8
-vframes = 2
-frame = 9
+offset = Vector2(0, -62)
 
 [node name="MeowzersCollision" type="CollisionShape2D" parent="Meowzers"]
 position = Vector2(78, -12)
@@ -1061,6 +1060,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ruddd")
 
 [node name="ShinyThing" type="Sprite2D" parent="Meowzers"]
+visible = false
 position = Vector2(44, -11)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_c2k08")
@@ -1069,7 +1069,7 @@ vframes = 8
 frame = 48
 
 [node name="ShinyCollision" type="CollisionShape2D" parent="Meowzers"]
-position = Vector2(44, -11)
+position = Vector2(84, -13)
 shape = SubResource("CircleShape2D_w8uck")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Meowzers"]
@@ -1083,11 +1083,15 @@ dialogue_start = "initiate_quest"
 NPC = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Meowzers/Actionable"]
-polygon = PackedVector2Array(67, -1, 91, -2, 93, -23, 90, -41, 81, -59, 63, -56, 62, -39, 69, -35, 69, -25, 65, -14, 65, -7)
+polygon = PackedVector2Array(67, -1, 91, -2, 94, -12, 93, -23, 90, -41, 81, -59, 63, -56, 62, -39, 69, -35, 69, -25, 65, -14, 65, -7)
 
-[node name="Banana" type="CharacterBody2D" parent="."]
+[node name="CenterPos" type="Marker2D" parent="Meowzers"]
+position = Vector2(78, -12)
+
+[node name="Banana" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos")]
 position = Vector2(256, 191)
 script = ExtResource("5_6ve0k")
+center_pos = NodePath("CenterPos")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Banana"]
@@ -1119,6 +1123,9 @@ dialogue_start = "banana_sleeping"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Banana/Actionable"]
 polygon = PackedVector2Array(32, 11, -32, 12, -32, 9, -21, 5, -21, -1, -6, -1, -6, 3, 16, 3, 31, 9)
+
+[node name="CenterPos" type="Marker2D" parent="Banana"]
+position = Vector2(0, -3)
 
 [node name="player" parent="." instance=ExtResource("2_qcgtd")]
 position = Vector2(167, 232)

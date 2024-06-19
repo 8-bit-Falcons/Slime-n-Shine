@@ -1,4 +1,4 @@
-~ test
+~ display_test
 Meowzers: hello, i am typing a lot of stuff![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#emotion=happy]
 Banana: Wow, yes, this is happening![#emotion=happy]
 You: pretty cool! i am so happy! well—yes![#emotion=happy]
@@ -14,3 +14,6 @@ Lime: I have important Science to do! YAY[#emotion=happy]
 Banana: [shake rate=10.0 level=10.0 connected=0]grrr grrr grrr!! >:([/shake] [#emotion=angry]
 Meowzers: [tornado radius=10.0 freq=3.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]whoa im tripping bro...[/rainbow][/tornado] [#emotion=hungry]
 => END
+
+~ test
+test

@@ -4,9 +4,9 @@ extends Area2D
 @export var dialogue_start: String = "start"
 @export var NPC: Node
 
-func action(player_dir: String) -> void:
+func action(player) -> void:
 	if NPC:
-		NPC.look_at_player(player_dir)
+		NPC.look_at_player(player)
 		
 	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 	

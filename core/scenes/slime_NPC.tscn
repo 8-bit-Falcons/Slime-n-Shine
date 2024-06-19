@@ -76,10 +76,11 @@ _data = {
 radius = 8.0
 height = 28.0
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("center_pos")]
 texture_filter = 1
 script = ExtResource("1_riw81")
 idle_anim = "back"
+center_pos = NodePath(".")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nokel")

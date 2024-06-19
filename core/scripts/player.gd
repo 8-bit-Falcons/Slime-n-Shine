@@ -20,7 +20,7 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
-			actionables[0].action(direction)
+			actionables[0].action(self)
 	
 func get_input_axis():
 	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))
