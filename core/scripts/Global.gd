@@ -1,6 +1,6 @@
 extends Node
 
-
+const user_input = preload("res://scenes/user_input_panel.tscn")
 const colors = {"banana": Color8(255, 248, 164), \
 				"meowzers": Color8(251, 115, 255), \
 				"you": Color8(204, 230, 255), \
@@ -24,3 +24,15 @@ const slime_to_sprite = {"sticky": "bathroom_slimes", \
 						"lime": "science_slimes"}
 
 var MC_name: String = "MC"
+
+func prompt_name():
+	var input_node = user_input.instantiate()
+	get_tree().get_root().add_child(input_node)
+	await input_node.input_submitted
+	
+	var input = input_node.get_input()
+	if input:
+		MC_name = input
+		
+	input_node.queue_free()
+	

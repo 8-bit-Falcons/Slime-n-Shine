@@ -8,8 +8,10 @@
 [color=orange]My dearest friend Meowzers,
 	‎ ‎ ‎ Upon your arrival, I noticed that shiny thing you were clutching so tightly to your chest. Wowzers Meowzers! That shiny thing is simply divine.[/color]
 ‎ ‎ ‎ [color=orange]Although our respective clans clash from birth ‘til death, I wondered if we might put such frivolous matters aside for a moment to share in our mutual love for shiny. Prithee, may I have the shiny?[/color]
+[color=orange]Yours truly,[/color]
+do Global.prompt_name()
 [color=orange]Yours truly,
-	{{Characters.MC_name}}[/color]
+	{{Global.MC_name}}[/color]
 You: there, it's perfect! a formal [color=cyan]LETTER OF REQUEST[/color]! [#emotion=happy]
 You: is it weird to call them my friend when we're kind of mortal enemies? [#emotion=neutral]
 You: well, who cares!? i'll try anything for the [color=cyan]SHINY THING[/color]! [#emotion=neutral]

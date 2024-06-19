@@ -66,9 +66,9 @@ var dialogue_line: DialogueLine:
 			char_title = dialogue_line.get_tag_value("char")
 		if dialogue_line.get_tag_value("emotion"):
 			emotion = dialogue_line.get_tag_value("emotion")
-		for name in Characters.slime_to_sprite.keys():
+		for name in Global.slime_to_sprite.keys():
 			if char_title == name:
-				char_title = Characters.slime_to_sprite.get(name)
+				char_title = Global.slime_to_sprite.get(name)
 				break
 		var portrait_path: String = "res://assets/character_portraits/%s/%s.png" % [char_title, emotion]
 			
@@ -79,9 +79,9 @@ var dialogue_line: DialogueLine:
 			portrait.texture = null
 			portrait.hide()
 			
-		if char_title not in Characters.colors.keys():
+		if char_title not in Global.colors.keys():
 			char_title = ""
-		character_label.set_modulate(Characters.colors.get(char_title))
+		character_label.set_modulate(Global.colors.get(char_title))
 			
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line

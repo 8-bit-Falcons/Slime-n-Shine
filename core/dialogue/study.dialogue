@@ -1,5 +1,5 @@
 ~ initiate_quest
-Dew: Oh, perfect timing, {{Characters.MC_name}}! [#emotion=neutral]
+Dew: Oh, perfect timing, {{Global.MC_name}}! [#emotion=neutral]
 You: really? well thank you! i tried really hard! [#emotion=happy]
 Dew: Do you think you could get us some [color=cyan]H2O[/color]? [#emotion=neutral]
 You: [color=cyan]WATER[/color]? what do you need [color=cyan]WATER[/color] for? [#emotion=neutral]
@@ -10,7 +10,7 @@ Dew: And you can't spell science without [color=cyan]WATER[/color].
 You: ... [#emotion=neutral]
 Dew: ... [#emotion=neutral]
 You: i trust your expertise in this area, doctor. [#emotion=neutral]
-Dew: As you should, {{Characters.MC_name}}. As you should... [#emotion=neutral]
+Dew: As you should, {{Global.MC_name}}. As you should... [#emotion=neutral]
 Dew: But please, no need to call me “Doctor.” You know none of us have PhDs.
 You: you're right... i apologize... just another silly mistake from silly me... heh. [#emotion=neutral]
 => END
@@ -61,7 +61,7 @@ Minus: I use Minux btw. [#emotion=neutral]
 
 ~ lime
 First interaction
-Lime: Greetings, {{Characters.MC_name}}! How's the unemployment factory treating you? [#emotion=neutral]
+Lime: Greetings, {{Global.MC_name}}! How's the unemployment factory treating you? [#emotion=neutral]
 You: honestly, i don't wanna think about it... [#emotion=sad]
 Lime: Well, you've come to the right place! [#emotion=neutral]
 After
