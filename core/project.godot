@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Slime & Shine"
-run/main_scene="res://scenes/living_room.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,11 +21,11 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Global="*res://scripts/Global.gd"
 Inventory="*res://scenes/inventory.tscn"
 Music="*res://scenes/music.tscn"
 StageManager="*res://scenes/stage_manager.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
