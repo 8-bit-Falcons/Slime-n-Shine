@@ -1,0 +1,152 @@
+[gd_scene load_steps=4 format=3 uid="uid://rr8jruhgl6l8"]
+
+[sub_resource type="Animation" id="Animation_sorwe"]
+resource_name = "credits_scrolling_txt"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-598, 570), Vector2(-598, -3500)]
+}
+
+[sub_resource type="Animation" id="Animation_5i5uo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-598, 570)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwrmi"]
+_data = {
+"RESET": SubResource("Animation_5i5uo"),
+"credits_scrolling_txt": SubResource("Animation_sorwe")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(948, 519)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwrmi")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -951.0
+offset_top = -519.0
+offset_right = 974.0
+offset_bottom = 563.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -598.0
+offset_top = 570.0
+offset_right = 598.0
+offset_bottom = 4139.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Slime & Shine
+
+Made by 8-bit Falcons
+
+
+
+Executives
+
+
+Piltzintecuhtli
+Cierra O.
+Producer
+Director
+
+
+
+
+Game Design
+
+Piltzintecuhtli
+Cierra O.
+
+
+
+Art
+
+
+Piltzintecuhtli
+Art Director
+
+
+
+
+Programming
+
+
+Cierra O.
+Karla F.
+
+Programming Director
+Programmer
+
+
+
+Writing
+
+Cierra O.
+Kaleigh
+
+
+
+Music
+
+
+Thxndered
+Music Director
+
+
+
+
+Plugins
+
+
+
+Dialogue Manager
+Puzzle Dependencies
+Nathan Hoad
+Nathan Hoad
+
+
+
+MIT License
+
+Copyright (c) 2022-present Nathan Hoad and plugin contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+Thank you for playing!
+"
+horizontal_alignment = 1
+autowrap_mode = 1

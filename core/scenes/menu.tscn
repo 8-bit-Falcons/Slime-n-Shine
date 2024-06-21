@@ -5,6 +5,21 @@
 [ext_resource type="FontFile" uid="uid://csk5gkm3y16ya" path="res://assets/fonts/NicoPups-Regular.ttf" id="3_mgwyv"]
 [ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="4_goaub"]
 
+[sub_resource type="Animation" id="Animation_2btfx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(715, 251)]
+}
+
 [sub_resource type="Animation" id="Animation_put3t"]
 resource_name = "move_title"
 loop_mode = 1
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(715, 260), Vector2(715, 225)]
-}
-
-[sub_resource type="Animation" id="Animation_2btfx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(715, 251)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0mkri"]
