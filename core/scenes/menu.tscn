@@ -44,27 +44,43 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6efh"]
 bg_color = Color(0.944111, 0.577945, 0.587886, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcnd4"]
 bg_color = Color(0.940275, 0.431417, 0.542773, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbouo"]
 bg_color = Color(0.965916, 0.336079, 0.488221, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktdut"]
 bg_color = Color(0.941176, 0.431373, 0.541176, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjwtx"]
 bg_color = Color(0.445325, 0.771651, 0.897119, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vpvi"]
 bg_color = Color(0.302838, 0.69086, 0.870024, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydn6g"]
 bg_color = Color(0.146897, 0.453453, 0.573567, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk8sp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg2ig"]
 bg_color = Color(0.301961, 0.690196, 0.870588, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
 
 [node name="menu" type="Control"]
 texture_filter = 1
@@ -157,7 +173,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_sjwtx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2vpvi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ydn6g")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_xk8sp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kg2ig")
 text = "credits"
 
 [connection signal="pressed" from="VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
