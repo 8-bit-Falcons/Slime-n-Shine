@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bos61svf4tag5" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0022.png" id="27_iuiqd"]
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
-[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="33_t0uhi"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="33_t0uhi"]
 
 [sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -964,18 +964,26 @@ shape = SubResource("RectangleShape2D_gne3j")
 [node name="BathroomDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 144)
 next_scene = "res://scenes/bathroom.tscn"
+player_coords = null
+player_dir = null
 
 [node name="StudyDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 272)
 next_scene = "res://scenes/study.tscn"
+player_coords = null
+player_dir = null
 
 [node name="KitchenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(32, 176)
 next_scene = "res://scenes/kitchen.tscn"
+player_coords = null
+player_dir = null
 
 [node name="GardenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(271, 365)
 next_scene = "res://scenes/garden.tscn"
+player_coords = null
+player_dir = null
 
 [node name="CollisionShape2D" parent="Doors/GardenDoor" index="0"]
 position = Vector2(17, -45)

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var maxSpeed = 130
 @export var acceleration = 1000
@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var axis = Vector2.ZERO
 @onready var dir_anim = $Direction/AnimationPlayer
 @onready var actionable_finder = $Direction/ActionableFinder
+
+signal anim_updated
 
 var direction = "down"
 
@@ -70,5 +72,9 @@ func move_down():
 		direction = "down"
 		update_anim()
 		
-func update_anim():
-	dir_anim.play(direction)
+func update_anim(dir=direction):
+	dir_anim.play(dir)
+
+func _on_animation_player_animation_started(anim_name):
+	anim_updated.emit()
+	

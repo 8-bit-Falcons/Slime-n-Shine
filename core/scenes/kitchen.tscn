@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_257rj"]
-[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="2_ebea2"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="2_ebea2"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_rfijq"]
 [ext_resource type="Resource" uid="uid://kbk5afhybtlw" path="res://dialogue/kitchen.dialogue" id="5_f5i2q"]
 
@@ -151,6 +151,8 @@ shape = SubResource("RectangleShape2D_6u0ly")
 [node name="LivingRoomDoor" parent="." instance=ExtResource("2_ebea2")]
 position = Vector2(448, 176)
 next_scene = "res://scenes/living_room.tscn"
+player_coords = Vector2(69, 183)
+player_dir = "right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
