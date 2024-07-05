@@ -8,7 +8,7 @@ var index = -1
 var methods = []
 
 
-# Called when the node is "ready", i.e. when both the node and its children have entered the scene tree.
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	methods = get_script().get_script_method_list().map(func (x): return x.name)
 	methods = methods.filter(func (x): return not x.begins_with("_"))
@@ -16,8 +16,8 @@ func _ready():
 
 # Called during the processing step of the main loop.
 func _process(delta):
-	if Input.is_action_just_pressed("debug_toggle"):
-		_close() 
+	if Input.is_action_just_pressed("dev_console_toggle"):
+		_toggle()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,8 +27,9 @@ func _input(event):
 	_run_command(event)
 
 
-# Close the debug overlay and dev console.
-func _close():
+# Toggle the dev console.
+func _toggle():
+	input.text = ""
 	visible = !visible
 	State.in_dev_console = visible
 	if visible:
@@ -112,4 +113,4 @@ func get_states():
 
 
 func _on_close_requested():
-	_close()
+	_toggle()

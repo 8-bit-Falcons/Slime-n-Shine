@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://0kr3ar220b1f"]
+[gd_scene load_steps=8 format=3 uid="uid://0kr3ar220b1f"]
 
 [ext_resource type="Script" path="res://scripts/console.gd" id="1_m625o"]
+[ext_resource type="Script" path="res://scripts/debug_view.gd" id="2_j4mtf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eo0so"]
 bg_color = Color(0.25098, 0.25098, 0.25098, 1)
@@ -69,5 +70,35 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_15m2k")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_q4yi2")
 caret_blink = true
 caret_mid_grapheme = true
+
+[node name="DebugView" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_j4mtf")
+
+[node name="Control" type="Control" parent="DebugView"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -646.0
+offset_bottom = 1078.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugView"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -530.0
+offset_bottom = 1079.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DebugView/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
 
 [connection signal="close_requested" from="Console" to="Console" method="_on_close_requested"]
