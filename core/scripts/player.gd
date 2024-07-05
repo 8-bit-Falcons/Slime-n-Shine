@@ -13,7 +13,7 @@ signal anim_updated
 var direction = "down"
 
 func _physics_process(delta):
-	if State.in_dialogue:
+	if State.in_menu():
 		dir_anim.stop()
 	else:
 		move(delta)
