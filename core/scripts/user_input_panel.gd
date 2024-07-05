@@ -1,7 +1,7 @@
-extends Panel
+extends CanvasLayer
 
-@onready var line_edit = $MarginContainer/VBoxContainer/InputArea/MarginContainer/LineEdit
-@onready var label = $MarginContainer/VBoxContainer/Label
+@onready var line_edit = %LineEdit
+@onready var label = %Label
 
 
 signal input_submitted
@@ -9,11 +9,6 @@ signal input_submitted
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	line_edit.grab_focus()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 # Return the player's inputted text

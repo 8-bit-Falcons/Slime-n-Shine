@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cty6audfq85ai"]
+[gd_scene load_steps=6 format=3 uid="uid://cty6audfq85ai"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_hsc8c"]
 [ext_resource type="Texture2D" uid="uid://bhw4rp0upah3o" path="res://assets/tilesets/inventory.png" id="1_pofon"]
+[ext_resource type="Resource" uid="uid://b4t8xmyh130uo" path="res://dialogue/inventory.dialogue" id="2_2q2t3"]
 [ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="2_mtf6t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mb2b5"]
@@ -14,6 +15,7 @@ modulate_color = Color(0.545098, 0.572549, 0.862745, 1)
 
 [node name="Inventory" type="CanvasLayer"]
 script = ExtResource("1_hsc8c")
+dialogue_resource = ExtResource("2_2q2t3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0

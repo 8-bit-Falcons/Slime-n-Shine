@@ -5,7 +5,7 @@ var in_dev_console: bool = false
 var in_dialogue: bool = false
 
 
-# In some kind of UI menu that should disable player movement, including debugging and dialogue.
+# In some kind of UI menu that should disable player movement, including dev console and dialogue.
 func in_menu():
 	return in_dev_console or in_dialogue
 
