@@ -1,0 +1,312 @@
+[gd_scene load_steps=6 format=3 uid="uid://rr8jruhgl6l8"]
+
+[ext_resource type="FontFile" uid="uid://csk5gkm3y16ya" path="res://assets/fonts/NicoPups-Regular.ttf" id="1_gwa7l"]
+
+[sub_resource type="Animation" id="Animation_5i5uo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-660, 560)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-860, 560)]
+}
+
+[sub_resource type="Animation" id="Animation_sorwe"]
+resource_name = "credits_scrolling_txt"
+length = 20.0
+
+[sub_resource type="Animation" id="Animation_ohct1"]
+resource_name = "creds_scrolling_txt"
+length = 45.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(299.5, 1100), Vector2(299.5, -7300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(185, 1100), Vector2(185, -7300)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwrmi"]
+_data = {
+"RESET": SubResource("Animation_5i5uo"),
+"credits_scrolling_txt": SubResource("Animation_sorwe"),
+"creds_scrolling_txt": SubResource("Animation_ohct1")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(948, 519)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwrmi")
+}
+autoplay = "creds_scrolling_txt"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -951.0
+offset_top = -519.0
+offset_right = 974.0
+offset_bottom = 563.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -660.0
+offset_top = 560.0
+offset_right = 661.0
+offset_bottom = 7868.02
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_gwa7l")
+theme_override_font_sizes/normal_font_size = 71
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+
+
+
+Piltzintecuhtli
+Cierra O.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Piltzintecuhtli
+
+
+
+
+
+
+Cierra O.
+Karla F.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thxndered
+
+
+
+
+
+
+Dialogue Manager
+Puzzle Dependencies
+
+"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_gwa7l")
+theme_override_font_sizes/normal_font_size = 71
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+
+
+
+[right] Director
+Producer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Art Director
+
+
+
+
+
+
+Programming Director
+Programmer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Music Director
+
+
+
+
+
+
+Nathan Hoad
+Nathan Hoad
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -860.0
+offset_top = 560.0
+offset_right = 690.0
+offset_bottom = 7914.02
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 90
+theme_override_font_sizes/bold_font_size = 92
+bbcode_enabled = true
+text = "[center][b][font_size={120}][font=\"res://assets/fonts/NicoPups-Regular.ttf\"]Slime & Shine[/font][/font_size][/b][center]
+[center][b][font_size={120}][font=\"res://assets/fonts/NicoPups-Regular.ttf\"]Made by 8-bit Falcons[/font][/font_size][/b][center]
+
+[b][font_size={80][font=\"res://assets/fonts/Kenney Mini.ttf\"]Executive [/font][/font_size][/b]
+
+
+
+
+[b][font=\"res://assets/fonts/Kenney Mini.ttf\"][font_size={80]Game Design[/font_size][/font][/b]
+
+[font=\"res://assets/fonts/NicoPups-Regular.ttf\"][font_size={71}]Piltzintecuhtli[/font_size][/font]
+[font=\"res://assets/fonts/NicoPups-Regular.ttf\"][font_size={71}]Cierra O.[/font_size][/font]
+
+
+[b][font=\"res://assets/fonts/Kenney Mini.ttf\"][font_size={80]Art[/font_size][/font][/b]
+
+
+
+[b][font=\"res://assets/fonts/Kenney Mini.ttf\"][font_size={80]Programming[/font_size][/font][/b]
+
+
+
+
+[b][font=\"res://assets/fonts/Kenney Mini.ttf\"][font_size={80]Writing[/font_size][/font][/b]
+
+[font=\"res://assets/fonts/NicoPups-Regular.ttf\"][font_size={71}]Cierra O.[/font_size][/font]
+[font=\"res://assets/fonts/NicoPups-Regular.ttf\"][font_size={71}]Kaleigh[/font_size][/font]
+
+
+[b][font=\"res://assets/fonts/Kenney Mini.ttf\"][font_size={80]Music[/font_size][/font][/b]
+
+
+
+[b][font=\"res://assets/fonts/Kenney Mini.ttf\"][font_size={80]Plugins[/font_size][/font][/b]
+
+
+
+
+[font=\"res://assets/fonts/NicoPups-Regular.ttf\"][font_size={60}]MIT License
+
+Copyright (c) 2022-present Nathan Hoad and plugin contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[/font_size]
+
+[font_size={60}]Thank you for playing![/font_size]"
+scroll_active = false
+scroll_following = true
