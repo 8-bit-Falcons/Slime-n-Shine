@@ -4,7 +4,7 @@ extends Area2D
 @export var dialogue_start: String = "start"
 @export var NPC: Node
 
-func action(player: Player) -> void:
+func action(player) -> void:
 	if NPC:
 		NPC.look_at_player(player)
 		

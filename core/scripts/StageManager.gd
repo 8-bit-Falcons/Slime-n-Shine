@@ -24,7 +24,7 @@ func changeStage(stage_path, player_coords=null, player_dir=""):
 	get_tree().change_scene_to_file(stage_path)
 	await get_tree().tree_changed
 	
-	var player: Player = get_tree().current_scene.find_child("player")
+	var player = get_tree().current_scene.find_child("player")
 	if player:
 		if player_coords:
 			player.position = player_coords

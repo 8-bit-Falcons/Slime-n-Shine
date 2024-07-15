@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://assets/dialogue_balloon/balloon.gd" id="1_36de5"]
-[ext_resource type="Theme" uid="uid://drs83o1yjavfw" path="res://resources/dialogue_theme.tres" id="2_10cw8"]
+[ext_resource type="Theme" uid="uid://0drsmghdc0yk" path="res://resources/dialogue_theme.tres" id="2_10cw8"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="4_jy5qk"]
