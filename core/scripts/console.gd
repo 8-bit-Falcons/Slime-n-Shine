@@ -112,5 +112,9 @@ func get_states():
 	return State.get_states()
 
 
+func change_state(var_name: String, val):
+	State.set(var_name, val)
+
+
 func _on_close_requested():
 	_toggle()
