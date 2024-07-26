@@ -3,6 +3,7 @@ extends Node
 
 var in_dev_console: bool = false
 var in_dialogue: bool = false
+var is_intro: bool = true
 
 
 # In some kind of UI menu that should disable player movement, including dev console and dialogue.
