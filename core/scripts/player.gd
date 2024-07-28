@@ -12,6 +12,11 @@ signal anim_updated
 
 var direction = "down"
 
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Global.request_player_turn.connect(_on_global_request_player_turn)
+
 func _physics_process(delta):
 	if State.in_menu():
 		dir_anim.stop()
@@ -78,3 +83,5 @@ func update_anim(dir=direction):
 func _on_animation_player_animation_started(anim_name):
 	anim_updated.emit()
 	
+func _on_global_request_player_turn(dir: String):
+	update_anim(dir)

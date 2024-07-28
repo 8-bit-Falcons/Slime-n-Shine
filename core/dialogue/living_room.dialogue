@@ -3,9 +3,13 @@ You: man! i can't wait to play games with my slime homies after my long day at t
 Do you see that?
 You: what? [#emotion=neutral]
 That cat.
+do Global.request_player_turn.emit("up")
 You: oh my lanta! look at that [color=cyan]SHINY THING[/color]! i want that [color=cyan]SHINY THING[/color] so bad. i wonder what i have to do to get that [color=cyan]SHINY THING[/color]! [#emotion=surprised]
-- Write a letter => letter
+- Write a letter
+	do Global.request_player_turn.emit("down")
+	=> letter
 - Vehicular manslaughter
+	do Global.request_player_turn.emit("down")
 	You: hmmm, maybe writing a [color=cyan]LETTER[/color] would work better than a felony! [#emotion=neutral]
 	=> letter
 => END
