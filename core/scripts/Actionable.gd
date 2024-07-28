@@ -11,5 +11,5 @@ func action(player) -> void:
 	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 	
 	if NPC:
-		await State.dialogue_ended
+		await DialogueManager.dialogue_ended
 		NPC.idle()
