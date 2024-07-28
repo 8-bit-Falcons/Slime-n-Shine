@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_ofufa"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
 [ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
-[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="6_ag44c"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="6_ag44c"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -168,6 +168,8 @@ shape = SubResource("RectangleShape2D_63vp4")
 [node name="LivingRoomDoor" parent="." instance=ExtResource("6_ag44c")]
 position = Vector2(271, 365)
 next_scene = "res://scenes/living_room.tscn"
+player_coords = Vector2(289, 299)
+player_dir = "up"
 
 [node name="CollisionShape2D" parent="LivingRoomDoor" index="0"]
 position = Vector2(-0.5, -10)
@@ -201,6 +203,7 @@ dialogue_start = "prequest"
 
 [node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(-22, 240)
+idle_anim = "forward"
 
 [node name="Sprite2D" parent="Mud Pie" index="0"]
 frame = 6
@@ -216,6 +219,7 @@ dialogue_start = "mud_pie"
 
 [node name="Sherbet" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(477, 257)
+idle_anim = "right"
 
 [node name="Sprite2D" parent="Sherbet" index="0"]
 frame = 16
@@ -234,8 +238,13 @@ position = Vector2(270, 331)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="player" index="0"]
-animation = &"up"
-frame_progress = 0.0
+frame = 1
+
+[node name="Direction" parent="player" index="2"]
+rotation = 3.14159
+
+[node name="CollisionShape2D" parent="player/Direction/ActionableFinder" index="0"]
+position = Vector2(0, 11)
 
 [editable path="LivingRoomDoor"]
 [editable path="Shore"]

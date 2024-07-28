@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://ban6rwwdha1hv"]
+
+[ext_resource type="Theme" uid="uid://drs83o1yjavfw" path="res://resources/dialogue_theme.tres" id="1_gwbq4"]
+[ext_resource type="Script" path="res://scripts/user_input_panel.gd" id="2_cnwyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s06b8"]
+bg_color = Color(0.838897, 0.838897, 0.838897, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl577"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("2_cnwyl")
+
+[node name="InputPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.0
+offset_top = -135.5
+offset_right = 381.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_gwbq4")
+
+[node name="MarginContainer" type="MarginContainer" parent="InputPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Label" type="Label" parent="InputPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Enter name:"
+
+[node name="InputArea" type="PanelContainer" parent="InputPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_s06b8")
+
+[node name="MarginContainer" type="MarginContainer" parent="InputPanel/MarginContainer/VBoxContainer/InputArea"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="LineEdit" type="LineEdit" parent="InputPanel/MarginContainer/VBoxContainer/InputArea/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gl577")
+max_length = 25
+
+[connection signal="text_submitted" from="InputPanel/MarginContainer/VBoxContainer/InputArea/MarginContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

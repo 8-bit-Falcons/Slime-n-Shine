@@ -1,6 +1,7 @@
-[gd_scene load_steps=65 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=66 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
+[ext_resource type="Script" path="res://scripts/living_room.gd" id="1_xp5h6"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_qcgtd"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="3_c2k08"]
 [ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="4_1wb8c"]
@@ -32,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bos61svf4tag5" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0022.png" id="27_iuiqd"]
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
-[ext_resource type="PackedScene" uid="uid://c4ojja8gacfrk" path="res://scenes/door.tscn" id="33_t0uhi"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="33_t0uhi"]
 
 [sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -77,6 +78,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhdb0"]
+size = Vector2(20, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5ec1"]
 atlas = ExtResource("3_c2k08")
@@ -842,6 +844,8 @@ _data = {
 [node name="LivingRoom" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
+script = ExtResource("1_xp5h6")
+dialogue_resource = ExtResource("31_ror41")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -963,18 +967,26 @@ shape = SubResource("RectangleShape2D_gne3j")
 [node name="BathroomDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 144)
 next_scene = "res://scenes/bathroom.tscn"
+player_coords = null
+player_dir = null
 
 [node name="StudyDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 272)
 next_scene = "res://scenes/study.tscn"
+player_coords = null
+player_dir = null
 
 [node name="KitchenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(32, 176)
 next_scene = "res://scenes/kitchen.tscn"
+player_coords = null
+player_dir = null
 
 [node name="GardenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(271, 365)
 next_scene = "res://scenes/garden.tscn"
+player_coords = null
+player_dir = null
 
 [node name="CollisionShape2D" parent="Doors/GardenDoor" index="0"]
 position = Vector2(17, -45)
@@ -991,7 +1003,7 @@ dialogue_resource = ExtResource("4_3y24s")
 dialogue_start = "key"
 
 [node name="ActionArea" type="CollisionShape2D" parent="Actionables/key/Actionable"]
-position = Vector2(0, 24)
+position = Vector2(0, 25.5)
 shape = SubResource("RectangleShape2D_mhdb0")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
@@ -1043,9 +1055,10 @@ debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 offset = Vector2(280, 160)
 zoom = Vector2(3, 3)
 
-[node name="Meowzers" type="CharacterBody2D" parent="."]
+[node name="Meowzers" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos")]
 position = Vector2(108, 152)
 script = ExtResource("5_6ve0k")
+center_pos = NodePath("CenterPos")
 
 [node name="Sprite2D" type="Sprite2D" parent="Meowzers"]
 texture = ExtResource("5_srnyp")
@@ -1075,15 +1088,21 @@ libraries = {
 "": SubResource("AnimationLibrary_cnxqf")
 }
 
-[node name="Actionable" parent="Meowzers" instance=ExtResource("4_1wb8c")]
+[node name="Actionable" parent="Meowzers" node_paths=PackedStringArray("NPC") instance=ExtResource("4_1wb8c")]
 dialogue_resource = ExtResource("31_ror41")
 dialogue_start = "initiate_quest"
+NPC = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Meowzers/Actionable"]
-polygon = PackedVector2Array(67, -1, 91, -2, 93, -23, 90, -41, 81, -59, 63, -56, 62, -39, 69, -35, 69, -25, 65, -14, 65, -7)
+polygon = PackedVector2Array(67, -1, 91, -2, 94, -12, 93, -23, 90, -41, 81, -59, 63, -56, 62, -39, 69, -35, 69, -25, 65, -14, 65, -7)
 
-[node name="Banana" type="CharacterBody2D" parent="."]
+[node name="CenterPos" type="Marker2D" parent="Meowzers"]
+position = Vector2(78, -12)
+
+[node name="Banana" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos")]
 position = Vector2(256, 191)
+script = ExtResource("5_6ve0k")
+center_pos = NodePath("CenterPos")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Banana"]
@@ -1099,6 +1118,7 @@ polygon = PackedVector2Array(-31, 8, -31, 11, -25, 11, -25, 10, -17, 10, -17, 11
 
 [node name="TurnedCollision" type="CollisionPolygon2D" parent="Banana"]
 position = Vector2(0, -9)
+scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-21, 2, -12, 2, -3, 2, 8, 2, 14, 2, 16, 3, 22, 4, 25.913, 5.30432, 28, 6, 30, 7, 32, 9, 32, 11, 31, 11, 31, 12, 18, 12, 18, 13, 11, 13, 11, 12, 10, 12, 10, 11, -2, 11, -2, 12, -5, 12, -5, 13, -11, 13, -11, 14, -14, 14, -14, 13, -15, 13, -15, 11, -17, 11, -17, 10, -18, 10, -18, 9, -20, 9, -20, 10, -25, 10, -25, 11, -31, 11, -31, 8, -29, 8, -29, 7, -27, 7, -27, 6, -24, 6, -24, 5, -21, 5)
 disabled = true
 
@@ -1114,6 +1134,9 @@ dialogue_start = "banana_sleeping"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Banana/Actionable"]
 polygon = PackedVector2Array(32, 11, -32, 12, -32, 9, -21, 5, -21, -1, -6, -1, -6, 3, 16, 3, 31, 9)
+
+[node name="CenterPos" type="Marker2D" parent="Banana"]
+position = Vector2(0, -3)
 
 [node name="player" parent="." instance=ExtResource("2_qcgtd")]
 position = Vector2(167, 232)

@@ -1,13 +1,32 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var idle_anim: String = "idle"
+@export var center_pos: Node
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const map_player_dir_to_NPC_dir = {"left": "right", "right": "left", "up": "forward", "down": "back"}
 
 
 func _ready():
-	$AnimationPlayer.play("idle")
+	idle()
+
+func look_at_player(player):
+	var dx = center_pos.global_position.x - player.global_position.x
+	var dy = center_pos.global_position.y - player.global_position.y
+	var dir = ""
+	print("dx: ", dx, " dy: ", dy)
+	if abs(dx) > abs(dy):
+		if (dx > 0):
+			dir = "left"
+		else:
+			dir = "right"
+	else:
+		if (dy > 0):
+			dir = "back"
+		else:
+			dir = "forward"
 	
+	$AnimationPlayer.play(dir)
+
+func idle():
+	$AnimationPlayer.play(idle_anim)

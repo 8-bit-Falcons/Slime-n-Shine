@@ -1,29 +1,32 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var maxSpeed = 130
 @export var acceleration = 1000
 @export var friction = 20000
 
 @onready var axis = Vector2.ZERO
-@onready var sprite_2d = $Sprite2D
 @onready var dir_anim = $Direction/AnimationPlayer
 @onready var actionable_finder = $Direction/ActionableFinder
+
+signal anim_updated
 
 var direction = "down"
 
 func _physics_process(delta):
-	move(delta)
+	if State.in_menu():
+		dir_anim.stop()
+	else:
+		move(delta)
 	
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
 		var actionables = actionable_finder.get_overlapping_areas()
 		if actionables.size() > 0:
-			actionables[0].action()
-			return
+			actionables[0].action(self)
 	
 func get_input_axis():
-	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))	
-	axis.y = int(Input.is_action_pressed("down"))	- int(Input.is_action_pressed("up"))	
+	axis.x = int(Input.is_action_pressed("right"))	- int(Input.is_action_pressed("left"))
+	axis.y = int(Input.is_action_pressed("down"))	- int(Input.is_action_pressed("up"))
 	return axis.normalized()
 
 func move(delta):
@@ -31,7 +34,7 @@ func move(delta):
 	
 	if axis == Vector2.ZERO:
 		apply_friction(friction * delta)
-		sprite_2d.stop()
+		dir_anim.stop()
 	else:
 		apply_movement(axis * acceleration * delta)
 
@@ -47,8 +50,11 @@ func apply_friction(amount):
 func apply_movement(accel):
 	velocity += accel
 	velocity = velocity.limit_length(maxSpeed)
-	move_left()
-	move_down()
+
+	if abs(velocity.x) >= abs(velocity.y):
+		move_left()
+	else:
+		move_down()
 	
 func move_left():
 	if velocity.x < 0:
@@ -66,6 +72,9 @@ func move_down():
 		direction = "down"
 		update_anim()
 		
-func update_anim():
-	sprite_2d.play(direction)
-	dir_anim.play(direction)
+func update_anim(dir=direction):
+	dir_anim.play(dir)
+
+func _on_animation_player_animation_started(anim_name):
+	anim_updated.emit()
+	
