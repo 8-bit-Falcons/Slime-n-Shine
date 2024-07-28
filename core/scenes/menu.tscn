@@ -1,9 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1052qbk0roiu"]
+[gd_scene load_steps=16 format=3 uid="uid://b1052qbk0roiu"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_060gh"]
 [ext_resource type="Texture2D" uid="uid://cvdanuqrrx0jv" path="res://assets/menu/main_menu.png" id="2_q4ex3"]
 [ext_resource type="FontFile" uid="uid://csk5gkm3y16ya" path="res://assets/fonts/NicoPups-Regular.ttf" id="3_mgwyv"]
 [ext_resource type="FontFile" uid="uid://b2rruo8bam1f7" path="res://assets/fonts/Kenney Mini.ttf" id="4_goaub"]
+
+[sub_resource type="Animation" id="Animation_2btfx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(715, 251)]
+}
 
 [sub_resource type="Animation" id="Animation_put3t"]
 resource_name = "move_title"
@@ -21,26 +36,51 @@ tracks/0/keys = {
 "values": [Vector2(715, 260), Vector2(715, 225)]
 }
 
-[sub_resource type="Animation" id="Animation_2btfx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(715, 251)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0mkri"]
 _data = {
 "RESET": SubResource("Animation_2btfx"),
 "move_title": SubResource("Animation_put3t")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6efh"]
+bg_color = Color(0.944111, 0.577945, 0.587886, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcnd4"]
+bg_color = Color(0.940275, 0.431417, 0.542773, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbouo"]
+bg_color = Color(0.965916, 0.336079, 0.488221, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktdut"]
+bg_color = Color(0.941176, 0.431373, 0.541176, 1)
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjwtx"]
+bg_color = Color(0.445325, 0.771651, 0.897119, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vpvi"]
+bg_color = Color(0.302838, 0.69086, 0.870024, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydn6g"]
+bg_color = Color(0.146897, 0.453453, 0.573567, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg2ig"]
+bg_color = Color(0.301961, 0.690196, 0.870588, 1)
+expand_margin_left = 12.0
+expand_margin_right = 12.0
 
 [node name="menu" type="Control"]
 texture_filter = 1
@@ -113,15 +153,28 @@ grow_horizontal = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../credits_btn")
+focus_neighbor_bottom = NodePath("../credits_btn")
 theme_override_fonts/font = ExtResource("4_goaub")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_x6efh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qcnd4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dbouo")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ktdut")
 text = "start"
 
 [node name="credits_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../start_btn")
+focus_neighbor_bottom = NodePath("../start_btn")
 theme_override_fonts/font = ExtResource("4_goaub")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_sjwtx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2vpvi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ydn6g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kg2ig")
 text = "credits"
 
 [connection signal="pressed" from="VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]

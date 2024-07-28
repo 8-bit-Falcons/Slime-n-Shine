@@ -8,6 +8,7 @@ const KITCHEN = "res://scenes/kitchen.tscn"
 const GARDEN = "res://scenes/garden.tscn"
 const STUDY = "res://scenes/study.tscn"
 const BATHROOM = "res://scenes/bathroom.tscn"
+const CREDITS = "res://scenes/credits.tscn"
 
 func _ready():
 	black.hide()
