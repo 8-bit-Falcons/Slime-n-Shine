@@ -1,4 +1,4 @@
-extends Area2D
+extends "res://scripts/base_actionable.gd"
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
