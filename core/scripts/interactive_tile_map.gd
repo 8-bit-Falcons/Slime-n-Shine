@@ -3,10 +3,8 @@ extends TileMap
 @export var interactables_layer = 0
 
 var interactable_tiles = {
-	Vector2i(3, 0): "test"
+	Vector2i(3, 0): preload("res://scenes/spaghetti_tile.tscn")
 }
-
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,3 +15,7 @@ func _ready():
 		var scene_to_load = interactable_tiles.get(get_cell_atlas_coords(interactables_layer, tile))
 		if scene_to_load:
 			erase_cell(interactables_layer, tile)
+			var scene = scene_to_load.instantiate()
+			add_child(scene)
+			scene.position = map_to_local(tile)
+			
