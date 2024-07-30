@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cljskrsbssk1n"]
+[gd_scene load_steps=21 format=3 uid="uid://cljskrsbssk1n"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_chdeo"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_6kqp5"]
+[ext_resource type="Script" path="res://scripts/interactive_tile_map.gd" id="2_d3ebc"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_ofufa"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
 [ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
@@ -128,6 +129,8 @@ layer_1/tile_data = PackedInt32Array(327683, 458753, 3, 393226, 393217, 4, 39322
 layer_2/name = "inside"
 layer_2/modulate = Color(1, 1, 1, 0.4)
 layer_2/tile_data = PackedInt32Array(917504, 262145, 0, 917505, 262145, 0, 917506, 262145, 0, 917507, 262145, 0, 917508, 262145, 0, 917509, 262145, 0, 917510, 262145, 0, 917511, 262145, 0, 917512, 262145, 0, 917515, 262145, 0, 917516, 262145, 0, 917517, 262145, 0, 917518, 262145, 0, 917519, 262145, 0, 917520, 262145, 0, 917521, 262145, 0, 917522, 262145, 0, 917523, 262145, 0, 917524, 262145, 0)
+script = ExtResource("2_d3ebc")
+interactables_layer = 1
 
 [node name="OffsetTiles" type="TileMap" parent="TileMap"]
 texture_filter = 1
