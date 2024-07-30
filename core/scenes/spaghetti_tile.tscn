@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://y0nk0javjxpn"]
+
+[ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="1_tn4ea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56ymp"]
+size = Vector2(32, 32)
+
+[node name="Spaghetti Tile" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_tn4ea")
+hframes = 9
+vframes = 8
+frame = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_56ymp")
+debug_color = Color(0.956863, 0, 0.537255, 0.419608)
