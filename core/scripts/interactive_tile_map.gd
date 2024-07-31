@@ -4,7 +4,7 @@ extends TileMap
 
 var interactable_tiles = {
 	Vector2i(3, 0): preload("res://scenes/spaghetti_tile.tscn"),
-	Vector2i(7,0): preload("res://scenes/weeds_tile.tscn")
+	Vector2i(1, 0): preload("res://scenes/weeds_tile.tscn")
 }
 
 
