@@ -1,5 +1,10 @@
 extends Node
 
+
+# Request to turn the player sprite to the given direction
+# Options are "left", "right", "up", and "down"
+signal request_player_turn(dir: String)
+
 const user_input = preload("res://scenes/user_input_panel.tscn")
 const colors = {"banana": Color8(255, 248, 164), \
 				"meowzers": Color8(251, 115, 255), \
@@ -25,6 +30,8 @@ const slime_to_sprite = {"sticky": "bathroom_slimes", \
 
 var MC_name: String = "MC"
 
+
+# Prompt the player for their name
 func prompt_name():
 	var input_node = user_input.instantiate()
 	get_tree().get_root().add_child(input_node)
@@ -35,4 +42,3 @@ func prompt_name():
 		MC_name = input
 		
 	input_node.queue_free()
-	

@@ -48,7 +48,7 @@ movie_writer/movie_file="C:/Users/CC362/Downloads/slimeshine.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/puzzle_dependencies/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/puzzle_dependencies/plugin.cfg")
 
 [input]
 

@@ -11,6 +11,7 @@ enum Item {BUCKET, FISH, KEY, LETTER, MAGNIFYING_GLASS, MARKERS, MOP, PAPER, PEN
 # A list of items that can combine with another item, where the key is an item and the value is what it creates
 const combos: Dictionary = {"pen": "letter", "paper": "letter", "stick": "tickler", "yarn": "tickler"}
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	panel.visible = false
@@ -45,6 +46,15 @@ func remove_item(item: Item):
 		inv_item.queue_free()
 		if hbox.get_child_count() == 0:
 			panel.visible = false
+
+
+# Return whether the player has the given item in their inventory
+func has_item(item: Item) -> bool:
+	var inv_item = hbox.find_child(get_item_name(item), false, false)
+	if inv_item:
+		return true
+	else:
+		return false
 
 
 # Gets the string name of the given Item
@@ -84,6 +94,11 @@ func format_name(name: String):
 	return "[right]%s[/right]" % name.capitalize()
 
 
+func set_disabled(disabled: bool):
+	for item in hbox.get_children():
+		item.disabled = disabled
+
+
 # Set the ItemLabel's text to the currently-selected item's name
 func _on_inventory_item_toggled(item_name, toggled_on):
 	if toggled_on:
@@ -95,8 +110,10 @@ func _on_inventory_item_toggled(item_name, toggled_on):
 
 
 func _on_dialogue_manager_got_dialogue(line: DialogueLine):
+	set_disabled(true)
 	item_label.visible = false
 	
 
 func _on_dialogue_manager_dialogue_ended(resource: DialogueResource):
+	set_disabled(false)
 	item_label.visible = true

@@ -11,6 +11,8 @@ const BATHROOM = "res://scenes/bathroom.tscn"
 const CREDITS = "res://scenes/credits.tscn"
 const MENU = "res://scenes/menu.tscn"
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	black.hide()
 
