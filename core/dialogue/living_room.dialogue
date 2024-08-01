@@ -23,22 +23,25 @@ When an item is selected, you can select another item to try [color=yellow]COMBI
 => END
 
 ~ initiate_quest
-You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]
-Meowzers: oh. thanks. [#emotion=neutral]
-Your cat “friend” takes the [color=cyan]LETTER[/color] and starts to read it. They squint. Maybe they're dyslexic.
-Meowzers: i don't like this [color=cyan]LETTER[/color]. [#emotion=unamused]
-You: oh. why not? [#emotion=surprised]
-Meowzers: i don't understand it. [#emotion=unamused]
-You: oh. what do you understand. [#emotion=neutral]
-Meowzers: [color=cyan]FISH[/color]. [#emotion=neutral]
-You: oh. that's nice! [#emotion=happy]
-Meowzers: and i'm really hungry right now [#emotion=hungry]
-You blink.
-Meowzers: like i really want some [color=cyan]FISH[/color] right now. [#emotion=hungry]
-You still don't get it.
-Meowzers: like some [color=cyan]FISH[/color] would realllllyyyyyy make my day right now [#emotion=hungry]
-Are you being serious right now.
-You: oh! i'll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
+if Inventory.has_item(Inventory.Item.LETTER)
+	You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]
+	Meowzers: oh. thanks. [#emotion=neutral]
+	Your cat “friend” takes the [color=cyan]LETTER[/color] and starts to read it. They squint. Maybe they're dyslexic.
+	Meowzers: i don't like this [color=cyan]LETTER[/color]. [#emotion=unamused]
+	You: oh. why not? [#emotion=surprised]
+	Meowzers: i don't understand it. [#emotion=unamused]
+	You: oh. what do you understand. [#emotion=neutral]
+	Meowzers: [color=cyan]FISH[/color]. [#emotion=neutral]
+	You: oh. that's nice! [#emotion=happy]
+	Meowzers: and i'm really hungry right now [#emotion=hungry]
+	You blink.
+	Meowzers: like i really want some [color=cyan]FISH[/color] right now. [#emotion=hungry]
+	You still don't get it.
+	Meowzers: like some [color=cyan]FISH[/color] would realllllyyyyyy make my day right now [#emotion=hungry]
+	Are you being serious right now.
+	You: oh! i'll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
+else
+	You: I need to write a [color=cyan]LETTER[/color] first!
 => END
 
 ~ meowzers_quest_incomplete

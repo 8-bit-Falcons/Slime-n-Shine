@@ -48,6 +48,15 @@ func remove_item(item: Item):
 			panel.visible = false
 
 
+# Return whether the player has the given item in their inventory
+func has_item(item: Item) -> bool:
+	var inv_item = hbox.find_child(get_item_name(item), false, false)
+	if inv_item:
+		return true
+	else:
+		return false
+
+
 # Gets the string name of the given Item
 # for use in file path and naming nodes
 func get_item_name(item: Item):
@@ -83,7 +92,7 @@ func deselect_all():
 # Format an item's name for use in the ItemLabel
 func format_name(name: String):
 	return "[right]%s[/right]" % name.capitalize()
-	
+
 
 func set_disabled(disabled: bool):
 	for item in hbox.get_children():

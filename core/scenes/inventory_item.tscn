@@ -1,5 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bl4yb02emekor"]
 
+[ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_a8igr"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1842u"]
@@ -16,63 +18,6 @@ border_color = Color(0.87451, 0.67451, 0.121569, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tpw"]
 
-[sub_resource type="GDScript" id="GDScript_ns6os"]
-resource_name = "InventoryItem"
-script/source = "extends Button
-
-# The ID (and thus the shortcut key) can be set from the editor for testing purposes
-@export var _id: int = 0
-
-signal toggled2(item_name, toggled_on)
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	set_key(_id)
-
-
-# Called when the button is toggled.
-func _toggled(toggled_on):
-	toggled2.emit(name, toggled_on)
-	
-	# Handle item combinations
-	if toggled_on and Inventory.selected().size() > 1:
-		var selected_items = Inventory.selected()
-		# If the items can be combined, start a special dialogue
-		if Inventory.combos.has_all([selected_items[0].name, selected_items[1].name]) and \\
-			Inventory.combos[selected_items[0].name] == Inventory.combos[selected_items[1].name]:
-			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, Inventory.combos[name])
-		else:
-			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, \"invalid\")
-		
-		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
-		if button_pressed:
-			set_pressed(false)
-
-
-# Initialize the name and the key used to select this item.
-func configure(name: String, id: int):
-	set_name(name)
-	set_button_icon(load(\"res://assets/inventory_sprites/%s.png\" % name))
-	set_id(id)
-	
-
-func set_id(id: int):
-	if (id >= 0 and id < 9):
-		_id = id
-
-
-# Set the number key used to select this item.
-# shift: how many keys to the right of the 1 key the desired key is
-# e.g. if shift is 1, the 2 key will be associated with this item
-func set_key(shift: int):
-	var sc: Shortcut = Shortcut.new()
-	var key: InputEventKey = InputEventKey.new()
-	key.set_keycode(49 + shift)
-	key.set_unicode(49 + shift)
-	sc.events.append(key)
-	self.set_shortcut(sc)
-"
-
 [node name="InventoryItem" type="Button"]
 texture_filter = 1
 custom_minimum_size = Vector2(42, 42)
@@ -87,4 +32,4 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i1tpw")
 toggle_mode = true
 button_mask = 0
 icon_alignment = 1
-script = SubResource("GDScript_ns6os")
+script = ExtResource("1_a8igr")

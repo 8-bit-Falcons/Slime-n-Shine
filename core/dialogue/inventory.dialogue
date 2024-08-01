@@ -16,6 +16,9 @@ You: there, it's perfect! a formal [color=cyan]LETTER OF REQUEST[/color]! [#emot
 You: is it weird to call them my friend when we're kind of mortal enemies? [#emotion=neutral]
 You: well, who cares!? i'll try anything for the [color=cyan]SHINY THING[/color]! [#emotion=neutral]
 You: i guess it's time to give the [color=cyan]LETTER[/color] to meowzers. [#emotion=neutral]
+do Inventory.remove_item(Inventory.Item.PAPER)
+do Inventory.remove_item(Inventory.Item.PEN)
+do Inventory.add_item(Inventory.Item.LETTER)
 Along with combining items together, you can also use items on objects or people by [color=yellow]INTERACTING[/color] with them while an inventory item is selected.
 Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTING[/color] with them while the [color=cyan]LETTER[/color] is selected!
 => END
