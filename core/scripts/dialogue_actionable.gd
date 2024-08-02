@@ -8,22 +8,29 @@ extends "res://scripts/base_actionable.gd"
 ## Leave blank if this actionable is an item.
 @export var NPC: Node
 
-## Whether or not each inventory item can be used on this actionable.
-## Stored as an enum-bool pair.
-@export var inv_item_interactable = {
-	Inventory.Item.BUCKET: false, Inventory.Item.FISH: false, Inventory.Item.KEY: false, \
-	Inventory.Item.LETTER: false, Inventory.Item.MAGNIFYING_GLASS: false, Inventory.Item.MARKERS: false, \
-	Inventory.Item.MOP: false, Inventory.Item.PAPER: false, Inventory.Item.PEN: false, \
-	Inventory.Item.STICK: false, Inventory.Item.TICKLER: false, Inventory.Item.WATER: false, \
-	Inventory.Item.YARN: false }
+## List of inventory items that can be used on this actionable. Stored as enum values.
+@export var usable_inv_items = []
 
 
 func action(player) -> void:
 	if NPC:
 		NPC.look_at_player(player)
-		
-	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 	
+	# If an inventory item is selected, either use the item on the actionable,
+	# or trigger the "invalid use" dialogue
+	var selected_inv_items = Inventory.selected()
+	if selected_inv_items:
+		var selected_item_val = Inventory.get_item_value(selected_inv_items[0].name)
+		if usable_inv_items.has(selected_item_val):
+			DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start + "_use_item")
+		elif NPC:
+			DialogueManager.show_dialogue_balloon(dialogue_resource, "invalid")
+		else:
+			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid_use")
+	
+	else:
+		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
+		
 	if NPC:
 		await DialogueManager.dialogue_ended
 		NPC.idle()

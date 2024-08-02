@@ -18,15 +18,8 @@ func _ready():
 	DialogueManager.got_dialogue.connect(_on_dialogue_manager_got_dialogue)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_manager_dialogue_ended)
 	
-	# TODO: remove this test code
-	add_item(Item.FISH)
-	add_item(Item.STICK)
-	add_item(Item.MAGNIFYING_GLASS)
 	add_item(Item.PAPER)
 	add_item(Item.PEN)
-	add_item(Item.YARN)
-	#for item in Item:
-		#add_item(Item[item])
 
 
 # Add an item to the inventory
@@ -43,9 +36,15 @@ func add_item(item: Item):
 func remove_item(item: Item):
 	var inv_item = hbox.find_child(get_item_name(item), false, false)
 	if inv_item:
-		inv_item.queue_free()
+		var id = inv_item.get_id()
+		inv_item.free()
 		if hbox.get_child_count() == 0:
 			panel.visible = false
+		else:
+			# HACK: O(n) function; fix if used for larger-scale game
+			for it in hbox.get_children():
+				if it.get_id() > id:
+					it.set_id(it.get_id() - 1)
 
 
 # Return whether the player has the given item in their inventory
@@ -63,14 +62,11 @@ func get_item_name(item: Item):
 	return Item.keys()[item].to_lower()
 
 
-# Given an item index, find the item's name
-# If no such item exists, return null
-func get_item_index(item_name: String):
-	var i = Item.keys().find(item_name.to_snake_case().to_upper())
-	if i > -1:
-		return i
-	else:
-		return null
+# Given an Item name, find the Item's enum value
+# If no such Item exists, return null
+func get_item_value(item_name: String):
+	var i = Item.get(item_name.to_snake_case().to_upper())
+	return i
 
 
 # Returns a list of all selected inventory items

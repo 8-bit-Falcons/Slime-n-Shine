@@ -1,6 +1,12 @@
-~ invalid
+~ invalid_combo
 % These items don't quite combine into anything.
 % Are you seriously trying to combine these?
+=> END
+
+~ invalid_use
+% Not quite sure how you'd use this on that.
+% That doesn't seem right...
+% Are you feeling a bit silly?
 => END
 
 ~ letter

@@ -48,11 +48,11 @@ func _on_autocomplete(event):
 
 # Cycle through the previous commands on up or down arrow presses.
 func _on_history(event):
-	if event.is_action_released("ui_up") and history:
+	if event.is_action_released("text_ui_up") and history:
 		index = clamp(index + 1, 0, history.size() - 1)
 		input.text = history[history.size() - (index + 1)]
 		input.caret_column = input.text.length()
-	elif event.is_action_released("ui_down") and history:
+	elif event.is_action_released("text_ui_down") and history:
 		if index != -1:
 			index = clamp(index - 1, 0, history.size() - 1)
 			input.text = history[history.size() - (index + 1)]
@@ -90,7 +90,7 @@ func help():
 
 # Add an item to the inventory by name.
 func add_inventory_item(item_name):
-	var item = Inventory.get_item_index(item_name)
+	var item = Inventory.get_item_value(item_name)
 	if item:
 		Inventory.add_item(item)
 		return "Added " + item_name + " to inventory."
@@ -100,7 +100,7 @@ func add_inventory_item(item_name):
 
 # Remove an item from the inventory by name.
 func remove_inventory_item(item_name):
-	var item = Inventory.get_item_index(item_name)
+	var item = Inventory.get_item_value(item_name)
 	if item:
 		Inventory.remove_item(item)
 		return "Removed " + item_name + " from inventory."

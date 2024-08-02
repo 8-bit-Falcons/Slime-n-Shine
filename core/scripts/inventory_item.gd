@@ -7,6 +7,7 @@ signal toggled2(item_name, toggled_on)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Call here in case item is added through editor rather than code
 	set_key(_id)
 
 
@@ -22,7 +23,7 @@ func _toggled(toggled_on):
 			Inventory.combos[selected_items[0].name] == Inventory.combos[selected_items[1].name]:
 			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, Inventory.combos[name])
 		else:
-			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid")
+			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid_combo")
 		
 		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
 		if button_pressed:
@@ -39,6 +40,11 @@ func configure(name: String, id: int):
 func set_id(id: int):
 	if (id >= 0 and id < 9):
 		_id = id
+		set_key(_id)
+
+
+func get_id():
+	return _id
 
 
 # Set the number key used to select this item.
