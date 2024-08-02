@@ -271,47 +271,47 @@ boards={
 }],
 "id": "10ae34e0d2",
 "label": "Puzzles",
-"scroll_offset": Vector2(-1000.41, -27.5056),
+"scroll_offset": Vector2(-1162.73, 162.292),
 "things": [{
 "id": &"7b3e684b03",
 "position_offset": Vector2(1080, 440),
-"size": Vector2(150.001, 80.0002),
+"size": Vector2(150.002, 80),
 "text": "Give cat fish",
 "type": 0
 }, {
 "id": &"c9ecc30d06",
 "position_offset": Vector2(860, 440),
-"size": Vector2(190.386, 84.6601),
+"size": Vector2(190.387, 84.6599),
 "text": "Talk to kitchen slimes & acquire fish",
 "type": 2
 }, {
 "id": &"88f4dd7a84",
 "position_offset": Vector2(680, 440),
-"size": Vector2(150.002, 80.0002),
+"size": Vector2(150.001, 80),
 "text": "Clean kitchen",
 "type": 0
 }, {
 "id": &"d806012784",
 "position_offset": Vector2(440, 560),
-"size": Vector2(206.273, 86.9196),
+"size": Vector2(206.272, 86.9196),
 "text": "Give bathroom slimes markers + acquire mop",
 "type": 2
 }, {
 "id": &"08985cbb8d",
 "position_offset": Vector2(440, 400),
-"size": Vector2(199.425, 84.9425),
+"size": Vector2(199.424, 84.9425),
 "text": "Talk to garden slimes + acquire bucket",
 "type": 2
 }, {
 "id": &"baf064e913",
 "position_offset": Vector2(260, 400),
-"size": Vector2(150, 80.0004),
+"size": Vector2(150, 80.0005),
 "text": "Pull weeds",
 "type": 0
 }, {
 "id": &"518543c558",
 "position_offset": Vector2(40, 400),
-"size": Vector2(205.919, 88.5435),
+"size": Vector2(205.918, 88.5435),
 "text": "Ask garden slimes for bucket to receive quest",
 "type": 1
 }, {
@@ -323,13 +323,13 @@ boards={
 }, {
 "id": &"e3db7e47c7",
 "position_offset": Vector2(240, 700),
-"size": Vector2(165.533, 86.9901),
+"size": Vector2(165.533, 86.9902),
 "text": "Open drawer + acquire markers",
 "type": 2
 }, {
 "id": &"7f02a853c6",
 "position_offset": Vector2(-20, 700),
-"size": Vector2(220.675, 90.7877),
+"size": Vector2(220.675, 90.7878),
 "text": "Shine magnifying glass at key + acquire key",
 "type": 2
 }, {
@@ -341,31 +341,31 @@ boards={
 }, {
 "id": &"dc26cec237",
 "position_offset": Vector2(-280, 640),
-"size": Vector2(234.581, 90.2519),
+"size": Vector2(234.581, 90.252),
 "text": "Give science slimes water + acquire magnifying glass",
 "type": 2
 }, {
 "id": &"f1c0f316a2",
 "position_offset": Vector2(-460, 640),
-"size": Vector2(150, 80.0001),
+"size": Vector2(150, 80.0002),
 "text": "Absorb water",
 "type": 2
 }, {
 "id": &"454c7bda62",
 "position_offset": Vector2(-680, 640),
-"size": Vector2(201.261, 87.6889),
+"size": Vector2(201.261, 87.689),
 "text": "Talk to science slimes to receive quest",
 "type": 1
 }, {
 "id": &"c9224103fd",
 "position_offset": Vector2(-260, 820),
-"size": Vector2(214.092, 82.0674),
+"size": Vector2(214.092, 82.0673),
 "text": "Tickle sleeping cat",
 "type": 0
 }, {
 "id": &"6af2286b3c",
 "position_offset": Vector2(-500, 820),
-"size": Vector2(208.924, 86.2024),
+"size": Vector2(208.924, 86.2023),
 "text": "Combine yarn with stick",
 "type": 0
 }, {
@@ -383,17 +383,17 @@ boards={
 }, {
 "id": &"be1e10ac05",
 "position_offset": Vector2(-920, 480),
-"size": Vector2(150, 94.7826),
+"size": Vector2(150, 94.7827),
 "text": "Talk to cat to receive quest",
 "type": 1
 }, {
 "id": &"b7c0b66755",
 "position_offset": Vector2(-1140, 480),
-"size": Vector2(192.074, 93.6455),
+"size": Vector2(192.074, 93.6456),
 "text": "Combine pencil with paper",
 "type": 0
 }],
-"zoom": 0.799462
+"zoom": 0.96735
 }
 }
 minimap_enabled=true

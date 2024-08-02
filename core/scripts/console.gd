@@ -90,7 +90,7 @@ func help():
 
 # Add an item to the inventory by name.
 func add_inventory_item(item_name):
-	var item = Inventory.get_item_index(item_name)
+	var item = Inventory.get_item_value(item_name)
 	if item:
 		Inventory.add_item(item)
 		return "Added " + item_name + " to inventory."
@@ -100,7 +100,7 @@ func add_inventory_item(item_name):
 
 # Remove an item from the inventory by name.
 func remove_inventory_item(item_name):
-	var item = Inventory.get_item_index(item_name)
+	var item = Inventory.get_item_value(item_name)
 	if item:
 		Inventory.remove_item(item)
 		return "Removed " + item_name + " from inventory."

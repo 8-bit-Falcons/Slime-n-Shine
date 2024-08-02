@@ -23,7 +23,7 @@ func _toggled(toggled_on):
 			Inventory.combos[selected_items[0].name] == Inventory.combos[selected_items[1].name]:
 			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, Inventory.combos[name])
 		else:
-			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid")
+			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid_combo")
 		
 		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
 		if button_pressed:
