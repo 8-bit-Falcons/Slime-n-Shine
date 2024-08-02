@@ -25,8 +25,6 @@ func _ready():
 	add_item(Item.PAPER)
 	add_item(Item.PEN)
 	add_item(Item.YARN)
-	#for item in Item:
-		#add_item(Item[item])
 
 
 # Add an item to the inventory
@@ -43,9 +41,15 @@ func add_item(item: Item):
 func remove_item(item: Item):
 	var inv_item = hbox.find_child(get_item_name(item), false, false)
 	if inv_item:
-		inv_item.queue_free()
+		var id = inv_item.get_id()
+		inv_item.free()
 		if hbox.get_child_count() == 0:
 			panel.visible = false
+		else:
+			# HACK: O(n) function; fix if used for larger-scale game
+			for it in hbox.get_children():
+				if it.get_id() > id:
+					it.set_id(it.get_id() - 1)
 
 
 # Return whether the player has the given item in their inventory

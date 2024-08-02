@@ -7,6 +7,7 @@ signal toggled2(item_name, toggled_on)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Call here in case item is added through editor rather than code
 	set_key(_id)
 
 
@@ -39,6 +40,11 @@ func configure(name: String, id: int):
 func set_id(id: int):
 	if (id >= 0 and id < 9):
 		_id = id
+		set_key(_id)
+
+
+func get_id():
+	return _id
 
 
 # Set the number key used to select this item.
