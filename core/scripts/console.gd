@@ -48,11 +48,11 @@ func _on_autocomplete(event):
 
 # Cycle through the previous commands on up or down arrow presses.
 func _on_history(event):
-	if event.is_action_released("ui_up") and history:
+	if event.is_action_released("text_ui_up") and history:
 		index = clamp(index + 1, 0, history.size() - 1)
 		input.text = history[history.size() - (index + 1)]
 		input.caret_column = input.text.length()
-	elif event.is_action_released("ui_down") and history:
+	elif event.is_action_released("text_ui_down") and history:
 		if index != -1:
 			index = clamp(index - 1, 0, history.size() - 1)
 			input.text = history[history.size() - (index + 1)]
