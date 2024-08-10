@@ -145,6 +145,8 @@ func _drop_data(at_position: Vector2, data) -> void:
 
 
 func _request_code_completion(force: bool) -> void:
+	cancel_code_completion()
+	
 	var cursor: Vector2 = get_cursor()
 	var current_line: String = get_line(cursor.y)
 	
@@ -216,27 +218,24 @@ func _request_code_completion(force: bool) -> void:
 		update_code_completion_options(true)
 		return
 
-	# Find the word to the left of the cursor to complete names of game states
+	# Complete names of game states
 	var word = text_behind_cursor
 	var delimiters = ["(", "{", "[", ",", " "]
 	for d in delimiters: word = word.split(d)[-1]
 	if game_states: states = game_states.keys().filter(func (x): return matches_prompt(word, x))
+	if not word.is_empty():
+		for state in states:
+			add_code_completion_option(CodeEdit.KIND_CLASS, state, state.substr(word.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
 	
-	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(), "")
+	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(true, false), "")
 	if name_so_far != "" and name_so_far[0].to_upper() == name_so_far[0]:
 		# Only show names starting with that character
 		var names: PackedStringArray = get_character_names(name_so_far)
-		if names.size() > 0 or states.size() > 0:
+		if names.size() > 0:
 			for name in names:
 				add_code_completion_option(CodeEdit.KIND_CLASS, name + ": ", name.substr(name_so_far.length()) + ": ", theme_overrides.text_color, get_theme_icon("Sprite2D", "EditorIcons"))
-			
-			if not word.is_empty():
-				for state in states:
-					add_code_completion_option(CodeEdit.KIND_CLASS, state, state.substr(word.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
-			
-			update_code_completion_options(true)
-		else:
-			cancel_code_completion()
+	
+	update_code_completion_options(true)
 
 
 func _filter_code_completion_candidates(candidates: Array) -> Array:
