@@ -177,10 +177,20 @@ func _request_code_completion(force: bool) -> void:
 		update_code_completion_options(true)
 		parser.free()
 		return
-
-	# Complete methods, properties, and constants from game states
+	
+	# Complete names of game states
 	var text_behind_cursor = current_line.left(cursor.x)
 	var states = []
+	
+	var word = text_behind_cursor
+	var delimiters = ["(", "{", "[", ",", " "]
+	for d in delimiters: word = word.split(d)[-1]
+	if game_states: states = game_states.keys().filter(func (x): return matches_prompt(word, x))
+	if not word.is_empty():
+		for state in states:
+			add_code_completion_option(CodeEdit.KIND_CLASS, state, state, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), word.length())
+
+	# Complete methods, properties, and constants from game states
 	if game_states: states = game_states.keys().filter(func (x): return text_behind_cursor.contains(x + "."))
 	if states:
 		for state in states:
@@ -218,15 +228,6 @@ func _request_code_completion(force: bool) -> void:
 								add_code_completion_option(CodeEdit.KIND_CLASS, enum_name, enum_name, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), p.length())
 		update_code_completion_options(true)
 		return
-
-	# Complete names of game states
-	var word = text_behind_cursor
-	var delimiters = ["(", "{", "[", ",", " "]
-	for d in delimiters: word = word.split(d)[-1]
-	if game_states: states = game_states.keys().filter(func (x): return matches_prompt(word, x))
-	if not word.is_empty():
-		for state in states:
-			add_code_completion_option(CodeEdit.KIND_CLASS, state, state, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), word.length())
 	
 	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(true, false), "")
 	if name_so_far != "" and name_so_far[0].to_upper() == name_so_far[0]:
