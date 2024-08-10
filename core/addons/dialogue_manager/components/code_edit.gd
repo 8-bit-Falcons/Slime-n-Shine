@@ -210,8 +210,8 @@ func _request_code_completion(force: bool) -> void:
 					if matches_prompt(prompt, constant):
 						add_code_completion_option(CodeEdit.KIND_CLASS, constant, constant.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
 					# Complete enum names
-					elif prompt.ends_with(constant + "."):
-						var p = prompt.split(constant + ".")[1]
+					elif prompt.contains(constant + "."):
+						var p = prompt.split(constant + ".")[-1]
 						for enum_name in constants[constant].keys():
 							if matches_prompt(p, enum_name):
 								add_code_completion_option(CodeEdit.KIND_CLASS, enum_name, enum_name.substr(p.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
