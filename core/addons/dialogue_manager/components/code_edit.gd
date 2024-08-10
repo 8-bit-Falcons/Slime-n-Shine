@@ -2,6 +2,9 @@
 extends CodeEdit
 
 
+const DialogueSettings = preload("../settings.gd")
+
+
 signal active_title_change(title: String)
 signal error_clicked(line_number: int)
 signal external_file_requested(path: String, title: String)
@@ -12,6 +15,9 @@ const DialogueSyntaxHighlighter = preload("./code_edit_syntax_highlighter.gd")
 
 # A link back to the owner MainView
 var main_view
+
+# The dict of autoloads in the current project
+var game_states = {}
 
 # Theme overrides for syntax highlighting, etc
 var theme_overrides: Dictionary:
@@ -67,6 +73,15 @@ func _ready() -> void:
 		add_comment_delimiter("#", "", true)
 
 	syntax_highlighter = DialogueSyntaxHighlighter.new()
+	
+	# Get autoloads
+	var project = ConfigFile.new()
+	var err = project.load("res://project.godot")
+	assert(err == OK, "Could not find the project file")
+	if project.has_section("autoload"):
+		for key in project.get_section_keys("autoload"):
+			if key != "DialogueManager":
+				game_states[key] = project.get_value("autoload", key).trim_prefix("*")
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -132,7 +147,7 @@ func _drop_data(at_position: Vector2, data) -> void:
 func _request_code_completion(force: bool) -> void:
 	var cursor: Vector2 = get_cursor()
 	var current_line: String = get_line(cursor.y)
-
+	
 	if ("=> " in current_line or "=>< " in current_line) and (cursor.x > current_line.find("=>")):
 		var prompt: String = current_line.split("=>")[1]
 		if prompt.begins_with("< "):
@@ -160,13 +175,65 @@ func _request_code_completion(force: bool) -> void:
 		parser.free()
 		return
 
+	# Complete methods, properties, and constants from game states
+	var text_behind_cursor = current_line.left(cursor.x)
+	var states = []
+	if game_states: states = game_states.keys().filter(func (x): return text_behind_cursor.contains(x + "."))
+	if states:
+		for state in states:
+			var script_path = game_states[state]
+			
+			if ResourceLoader.exists(script_path):
+				var prompt: String = text_behind_cursor.split(state + ".")[-1]
+				
+				# Get the game state's script
+				var state_script = load(script_path)
+				if not state_script.is_class("Script"):
+					state_script = state_script.instantiate().get_script()
+				if state_script == null: continue
+				
+				var methods = state_script.get_script_method_list().map(func (x): return {"name": x.name, "args": x.args.map(func (y): return y.name)})
+				var properties = state_script.get_script_property_list().map(func(x): return x.name).filter(func(x): return not x.ends_with(".gd"))
+				var constants = state_script.get_script_constant_map()
+				
+				for method in methods:
+					if matches_prompt(prompt, method["name"]):
+						var m_display_text = method["name"] + "(" + ", ".join(method["args"]) + ")"
+						var m_insert_text = method["name"] + "()"
+						add_code_completion_option(CodeEdit.KIND_CLASS, m_display_text, m_insert_text.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberMethod", "EditorIcons"))
+				for property in properties:
+					if matches_prompt(prompt, property):
+						add_code_completion_option(CodeEdit.KIND_CLASS, property, property.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberProperty", "EditorIcons"))
+				for constant in constants.keys():
+					if matches_prompt(prompt, constant):
+						add_code_completion_option(CodeEdit.KIND_CLASS, constant, constant.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
+					# Complete enum names
+					elif prompt.ends_with(constant + "."):
+						var p = prompt.split(constant + ".")[1]
+						for enum_name in constants[constant].keys():
+							if matches_prompt(p, enum_name):
+								add_code_completion_option(CodeEdit.KIND_CLASS, enum_name, enum_name.substr(p.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
+		update_code_completion_options(true)
+		return
+
+	# Find the word to the left of the cursor to complete names of game states
+	var word = text_behind_cursor
+	var delimiters = ["(", "{", "[", ",", " "]
+	for d in delimiters: word = word.split(d)[-1]
+	if game_states: states = game_states.keys().filter(func (x): return matches_prompt(word, x))
+	
 	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(), "")
 	if name_so_far != "" and name_so_far[0].to_upper() == name_so_far[0]:
 		# Only show names starting with that character
 		var names: PackedStringArray = get_character_names(name_so_far)
-		if names.size() > 0:
+		if names.size() > 0 or states.size() > 0:
 			for name in names:
 				add_code_completion_option(CodeEdit.KIND_CLASS, name + ": ", name.substr(name_so_far.length()) + ": ", theme_overrides.text_color, get_theme_icon("Sprite2D", "EditorIcons"))
+			
+			if not word.is_empty():
+				for state in states:
+					add_code_completion_option(CodeEdit.KIND_CLASS, state, state.substr(word.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
+			
 			update_code_completion_options(true)
 		else:
 			cancel_code_completion()
@@ -179,7 +246,7 @@ func _filter_code_completion_candidates(candidates: Array) -> Array:
 
 func _confirm_code_completion(replace: bool) -> void:
 	var completion = get_code_completion_option(get_code_completion_selected_index())
-	begin_complex_operation()
+	begin_complex_operation()	
 	# Delete any part of the text that we've already typed
 	for i in range(0, completion.display_text.length() - completion.insert_text.length()):
 		backspace()
