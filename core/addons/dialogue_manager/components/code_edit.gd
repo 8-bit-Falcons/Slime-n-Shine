@@ -61,6 +61,7 @@ var font_size: int:
 		return font_size
 
 var WEIGHTED_RANDOM_PREFIX: RegEx = RegEx.create_from_string("^\\%[\\d.]+\\s")
+var FUNCTION_PARAMS_SUFFIX: RegEx = RegEx.create_from_string("\\([\\w\\s,]+\\)$")
 
 
 func _ready() -> void:
@@ -86,7 +87,7 @@ func _ready() -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	# Handle shortcuts that come from the editor
-	if event is InputEventKey and event.is_pressed():
+	if event is InputEventKey and event.is_pressed():	
 		var shortcut: String = Engine.get_meta("DialogueManagerPlugin").get_editor_shortcut(event)
 		match shortcut:
 			"toggle_comment":
@@ -159,9 +160,9 @@ func _request_code_completion(force: bool) -> void:
 
 		if "=> " in current_line:
 			if matches_prompt(prompt, "end"):
-				add_code_completion_option(CodeEdit.KIND_CLASS, "END", "END".substr(prompt.length()), theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"))
+				add_code_completion_option(CodeEdit.KIND_CLASS, "END", "END", theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"), prompt.length())
 			if matches_prompt(prompt, "end!"):
-				add_code_completion_option(CodeEdit.KIND_CLASS, "END!", "END!".substr(prompt.length()), theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"))
+				add_code_completion_option(CodeEdit.KIND_CLASS, "END!", "END!", theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"), prompt.length())
 
 		# Get all titles, including those in imports
 		var parser: DialogueManagerParser = DialogueManagerParser.new()
@@ -170,9 +171,9 @@ func _request_code_completion(force: bool) -> void:
 			if "/" in title:
 				var bits = title.split("/")
 				if matches_prompt(prompt, bits[0]) or matches_prompt(prompt, bits[1]):
-					add_code_completion_option(CodeEdit.KIND_CLASS, title, title.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("CombineLines", "EditorIcons"))
+					add_code_completion_option(CodeEdit.KIND_CLASS, title, title, theme_overrides.text_color, get_theme_icon("CombineLines", "EditorIcons"), prompt.length())
 			elif matches_prompt(prompt, title):
-				add_code_completion_option(CodeEdit.KIND_CLASS, title, title.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("ArrowRight", "EditorIcons"))
+				add_code_completion_option(CodeEdit.KIND_CLASS, title, title, theme_overrides.text_color, get_theme_icon("ArrowRight", "EditorIcons"), prompt.length())
 		update_code_completion_options(true)
 		parser.free()
 		return
@@ -202,19 +203,19 @@ func _request_code_completion(force: bool) -> void:
 					if matches_prompt(prompt, method["name"]):
 						var m_display_text = method["name"] + "(" + ", ".join(method["args"]) + ")"
 						var m_insert_text = method["name"] + "()"
-						add_code_completion_option(CodeEdit.KIND_CLASS, m_display_text, m_insert_text.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberMethod", "EditorIcons"))
+						add_code_completion_option(CodeEdit.KIND_CLASS, m_display_text, m_insert_text, theme_overrides.text_color, get_theme_icon("MemberMethod", "EditorIcons"), prompt.length())
 				for property in properties:
 					if matches_prompt(prompt, property):
-						add_code_completion_option(CodeEdit.KIND_CLASS, property, property.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberProperty", "EditorIcons"))
+						add_code_completion_option(CodeEdit.KIND_CLASS, property, property, theme_overrides.text_color, get_theme_icon("MemberProperty", "EditorIcons"), prompt.length())
 				for constant in constants.keys():
 					if matches_prompt(prompt, constant):
-						add_code_completion_option(CodeEdit.KIND_CLASS, constant, constant.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
+						add_code_completion_option(CodeEdit.KIND_CLASS, constant, constant, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), prompt.length())
 					# Complete enum names
 					elif prompt.contains(constant + "."):
 						var p = prompt.split(constant + ".")[-1]
 						for enum_name in constants[constant].keys():
 							if matches_prompt(p, enum_name):
-								add_code_completion_option(CodeEdit.KIND_CLASS, enum_name, enum_name.substr(p.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
+								add_code_completion_option(CodeEdit.KIND_CLASS, enum_name, enum_name, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), p.length())
 		update_code_completion_options(true)
 		return
 
@@ -225,7 +226,7 @@ func _request_code_completion(force: bool) -> void:
 	if game_states: states = game_states.keys().filter(func (x): return matches_prompt(word, x))
 	if not word.is_empty():
 		for state in states:
-			add_code_completion_option(CodeEdit.KIND_CLASS, state, state.substr(word.length()), theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"))
+			add_code_completion_option(CodeEdit.KIND_CLASS, state, state, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), word.length())
 	
 	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(true, false), "")
 	if name_so_far != "" and name_so_far[0].to_upper() == name_so_far[0]:
@@ -233,7 +234,7 @@ func _request_code_completion(force: bool) -> void:
 		var names: PackedStringArray = get_character_names(name_so_far)
 		if names.size() > 0:
 			for name in names:
-				add_code_completion_option(CodeEdit.KIND_CLASS, name + ": ", name.substr(name_so_far.length()) + ": ", theme_overrides.text_color, get_theme_icon("Sprite2D", "EditorIcons"))
+				add_code_completion_option(CodeEdit.KIND_CLASS, name + ": ", name + ": ", theme_overrides.text_color, get_theme_icon("Sprite2D", "EditorIcons"), name_so_far.length())
 	
 	update_code_completion_options(true)
 
@@ -247,11 +248,20 @@ func _confirm_code_completion(replace: bool) -> void:
 	var completion = get_code_completion_option(get_code_completion_selected_index())
 	begin_complex_operation()	
 	# Delete any part of the text that we've already typed
-	for i in range(0, completion.display_text.length() - completion.insert_text.length()):
+	for i in range(0, completion.default_value):
 		backspace()
 	# Insert the whole match
-	insert_text_at_caret(completion.display_text)
+	insert_text_at_caret(completion.insert_text)
+	
+	# If we autocompleted a method with parameters, move the cursor in between the parentheses
+	# And set the code hint
+	if FUNCTION_PARAMS_SUFFIX.search(completion.display_text):
+		var cursor = get_cursor()
+		cursor.x -= 1
+		set_cursor(cursor)
+		call_deferred("set_code_hint", completion.display_text)
 	end_complex_operation()
+	
 
 	# Close the autocomplete menu on the next tick
 	call_deferred("cancel_code_completion")
@@ -475,6 +485,7 @@ func _on_code_edit_symbol_lookup(symbol: String, line: int, column: int) -> void
 
 
 func _on_code_edit_text_changed() -> void:
+	set_code_hint("")
 	request_code_completion(true)
 
 
@@ -483,6 +494,7 @@ func _on_code_edit_text_set() -> void:
 
 
 func _on_code_edit_caret_changed() -> void:
+	set_code_hint("")
 	check_active_title()
 	last_selected_text = get_selected_text()
 
