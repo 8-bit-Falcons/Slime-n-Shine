@@ -22,6 +22,15 @@ Pressing 1 selects the first item, and so on.
 When an item is selected, you can select another item to try [color=yellow]COMBINING[/color] them.
 => END
 
+## Meowzers hub; navigate to specific interactions from here
+~ meowzers
+if State.meowzers_quest == State.MeowzersQuest.NO_LETTER
+	You need to write them a letter first!
+=> END
+
+~ meowzers_use_item
+=> END
+
 ~ initiate_quest
 if Inventory.has_item(Inventory.Item.LETTER)
 	You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]

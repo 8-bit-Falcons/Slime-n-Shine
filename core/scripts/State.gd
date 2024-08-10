@@ -3,7 +3,11 @@ extends Node
 
 var in_dev_console: bool = false
 var in_dialogue: bool = false
+
 var is_intro: bool = true
+
+enum MeowzersQuest {NO_LETTER, QUEST_STARTED}
+var meowzers_quest = MeowzersQuest.NO_LETTER
 
 
 # In some kind of UI menu that should disable player movement, including dev console and dialogue.
