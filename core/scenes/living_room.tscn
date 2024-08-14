@@ -1130,7 +1130,7 @@ libraries = {
 [node name="Actionable" parent="Banana" instance=ExtResource("4_1wb8c")]
 position = Vector2(0, -9)
 dialogue_resource = ExtResource("31_ror41")
-dialogue_start = "banana_sleeping"
+dialogue_start = "banana"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Banana/Actionable"]
 polygon = PackedVector2Array(32, 11, -32, 12, -32, 9, -21, 5, -21, -1, -6, -1, -6, 3, 16, 3, 31, 9)

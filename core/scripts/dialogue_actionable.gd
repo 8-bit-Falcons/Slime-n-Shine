@@ -13,9 +13,15 @@ func action(player) -> void:
 	if NPC:
 		NPC.look_at_player(player)
 	
-	# TODO: check if this dialogue exists, otherwise go to a more general "use item" dialogue
+	# Using item
 	if Inventory.selected():
-		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start + "_use_item")
+		# Check if this actionable has a specific dialogue for using items on it,
+		# otherwise go to a more general "invalid item usage" dialogue
+		if dialogue_resource.titles.has(dialogue_start + "_use_item"):
+			DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start + "_use_item")
+		else:
+			DialogueManager.show_dialogue_balloon(dialogue_resource, "invalid_use")
+	# Normal interaction
 	else:
 		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 		
