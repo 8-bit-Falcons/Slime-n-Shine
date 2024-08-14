@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_ofufa"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
 [ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="6_ag44c"]
+[ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="6_ag44c"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)

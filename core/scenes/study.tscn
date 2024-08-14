@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_eaopm"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_oc4o4"]
 [ext_resource type="Resource" uid="uid://b48kdsjxiyys5" path="res://dialogue/study.dialogue" id="4_mfnvq"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="5_781lc"]
+[ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="5_781lc"]
 
 [sub_resource type="Gradient" id="Gradient_6hxl2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)

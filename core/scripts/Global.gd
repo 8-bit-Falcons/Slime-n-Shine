@@ -42,3 +42,5 @@ func prompt_name():
 		MC_name = input
 		
 	input_node.queue_free()
+
+# TODO: double #'s for documentation comments

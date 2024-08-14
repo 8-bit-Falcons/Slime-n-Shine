@@ -13,16 +13,8 @@ func action(player) -> void:
 	if NPC:
 		NPC.look_at_player(player)
 	
-	var selected_inv_items = Inventory.selected()
-	if selected_inv_items:
-		# TODO: remove
-		#var selected_item_val = Inventory.get_item_value(selected_inv_items[0].name)
-		#if usable_inv_items.has(selected_item_val):
-			#DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start + "_use_item")
-		#elif NPC:
-			#DialogueManager.show_dialogue_balloon(dialogue_resource, "invalid")
-		#else:
-			#DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid_use")
+	# TODO: check if this dialogue exists, otherwise go to a more general "use item" dialogue
+	if Inventory.selected():
 		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start + "_use_item")
 	else:
 		DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)

@@ -14,7 +14,6 @@ func look_at_player(player):
 	var dx = center_pos.global_position.x - player.global_position.x
 	var dy = center_pos.global_position.y - player.global_position.y
 	var dir = ""
-	print("dx: ", dx, " dy: ", dy)
 	if abs(dx) > abs(dy):
 		if (dx > 0):
 			dir = "left"

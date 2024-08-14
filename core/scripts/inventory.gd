@@ -36,12 +36,16 @@ func add_item(item: Item):
 func remove_item(item: Item):
 	var inv_item = hbox.find_child(get_item_name(item), false, false)
 	if inv_item:
+		if item_label.text == format_name(get_item_name(item)):
+			item_label.text = ""
 		var id = inv_item.get_id()
 		inv_item.free()
+		
 		if hbox.get_child_count() == 0:
 			panel.visible = false
 		else:
 			# HACK: O(n) function; fix if used for larger-scale game
+			# Bump down IDs of subsequent items
 			for it in hbox.get_children():
 				if it.get_id() > id:
 					it.set_id(it.get_id() - 1)
@@ -77,6 +81,15 @@ func selected():
 			selected_items.append(item)
 	
 	return selected_items
+
+
+# Returns the first selected inventory item as an Item enum value
+# If none are selected, returns -1
+func selected_item():
+	if selected():
+		return get_item_value(selected()[0].name)
+	else:
+		return -1
 
 
 # Deselect all selected inventory items

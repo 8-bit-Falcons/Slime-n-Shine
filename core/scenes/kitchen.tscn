@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_257rj"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="2_ebea2"]
+[ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="2_ebea2"]
 [ext_resource type="Script" path="res://scripts/interactive_tile_map.gd" id="2_gxfhe"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_rfijq"]
 [ext_resource type="Texture2D" uid="uid://62aqnxnln00a" path="res://assets/tilesets/toaster/toaster.png" id="4_r8nkq"]

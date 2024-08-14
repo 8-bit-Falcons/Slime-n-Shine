@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bos61svf4tag5" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0022.png" id="27_iuiqd"]
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="33_t0uhi"]
+[ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="33_t0uhi"]
 
 [sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -883,7 +883,7 @@ position = Vector2(48, 208)
 shape = SubResource("RectangleShape2D_gne3j")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(16, 176)
+position = Vector2(30, 176)
 shape = SubResource("RectangleShape2D_gne3j")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
@@ -919,7 +919,7 @@ position = Vector2(240, 304)
 shape = SubResource("RectangleShape2D_gne3j")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(289, 336)
+position = Vector2(288, 322)
 shape = SubResource("RectangleShape2D_doo7b")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="InvisibleWalls"]
@@ -947,11 +947,11 @@ position = Vector2(496, 304)
 shape = SubResource("RectangleShape2D_gne3j")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(528, 272)
+position = Vector2(514, 272)
 shape = SubResource("RectangleShape2D_gne3j")
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(528, 144)
+position = Vector2(514, 144)
 shape = SubResource("RectangleShape2D_gne3j")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="InvisibleWalls"]
@@ -967,26 +967,26 @@ shape = SubResource("RectangleShape2D_gne3j")
 [node name="BathroomDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 144)
 next_scene = "res://scenes/bathroom.tscn"
-player_coords = null
-player_dir = null
+disabled_flag = "in_tutorial"
+dialogue_resource = ExtResource("31_ror41")
 
 [node name="StudyDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 272)
 next_scene = "res://scenes/study.tscn"
-player_coords = null
-player_dir = null
+disabled_flag = "in_tutorial"
+dialogue_resource = ExtResource("31_ror41")
 
 [node name="KitchenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(32, 176)
 next_scene = "res://scenes/kitchen.tscn"
-player_coords = null
-player_dir = null
+disabled_flag = "in_tutorial"
+dialogue_resource = ExtResource("31_ror41")
 
 [node name="GardenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(271, 365)
 next_scene = "res://scenes/garden.tscn"
-player_coords = null
-player_dir = null
+disabled_flag = "in_tutorial"
+dialogue_resource = ExtResource("31_ror41")
 
 [node name="CollisionShape2D" parent="Doors/GardenDoor" index="0"]
 position = Vector2(17, -45)
@@ -1090,7 +1090,7 @@ libraries = {
 
 [node name="Actionable" parent="Meowzers" node_paths=PackedStringArray("NPC") instance=ExtResource("4_1wb8c")]
 dialogue_resource = ExtResource("31_ror41")
-dialogue_start = "initiate_quest"
+dialogue_start = "meowzers"
 NPC = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Meowzers/Actionable"]
