@@ -2,22 +2,17 @@
 extends CodeEdit
 
 
-const DialogueSettings = preload("../settings.gd")
-
-
 signal active_title_change(title: String)
 signal error_clicked(line_number: int)
 signal external_file_requested(path: String, title: String)
 
 
+const DialogueManagerParser = preload("./parser.gd")
 const DialogueSyntaxHighlighter = preload("./code_edit_syntax_highlighter.gd")
 
 
-# A link back to the owner MainView
+# A link back to the owner `MainView`
 var main_view
-
-# The dict of autoloads in the current project
-var game_states = {}
 
 # Theme overrides for syntax highlighting, etc
 var theme_overrides: Dictionary:
@@ -61,7 +56,6 @@ var font_size: int:
 		return font_size
 
 var WEIGHTED_RANDOM_PREFIX: RegEx = RegEx.create_from_string("^\\%[\\d.]+\\s")
-var FUNCTION_PARAMS_SUFFIX: RegEx = RegEx.create_from_string("\\([\\w\\s,]+\\)$")
 
 
 func _ready() -> void:
@@ -74,24 +68,18 @@ func _ready() -> void:
 		add_comment_delimiter("#", "", true)
 
 	syntax_highlighter = DialogueSyntaxHighlighter.new()
-	
-	# Get autoloads
-	var project = ConfigFile.new()
-	var err = project.load("res://project.godot")
-	assert(err == OK, "Could not find the project file")
-	if project.has_section("autoload"):
-		for key in project.get_section_keys("autoload"):
-			if key != "DialogueManager":
-				game_states[key] = project.get_value("autoload", key).trim_prefix("*")
 
 
 func _gui_input(event: InputEvent) -> void:
 	# Handle shortcuts that come from the editor
-	if event is InputEventKey and event.is_pressed():	
+	if event is InputEventKey and event.is_pressed():
 		var shortcut: String = Engine.get_meta("DialogueManagerPlugin").get_editor_shortcut(event)
 		match shortcut:
 			"toggle_comment":
 				toggle_comment()
+				get_viewport().set_input_as_handled()
+			"delete_line":
+				delete_current_line()
 				get_viewport().set_input_as_handled()
 			"move_up":
 				move_line(-1)
@@ -146,11 +134,9 @@ func _drop_data(at_position: Vector2, data) -> void:
 
 
 func _request_code_completion(force: bool) -> void:
-	cancel_code_completion()
-	
 	var cursor: Vector2 = get_cursor()
 	var current_line: String = get_line(cursor.y)
-	
+
 	if ("=> " in current_line or "=>< " in current_line) and (cursor.x > current_line.find("=>")):
 		var prompt: String = current_line.split("=>")[1]
 		if prompt.begins_with("< "):
@@ -160,9 +146,9 @@ func _request_code_completion(force: bool) -> void:
 
 		if "=> " in current_line:
 			if matches_prompt(prompt, "end"):
-				add_code_completion_option(CodeEdit.KIND_CLASS, "END", "END", theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"), prompt.length())
+				add_code_completion_option(CodeEdit.KIND_CLASS, "END", "END".substr(prompt.length()), theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"))
 			if matches_prompt(prompt, "end!"):
-				add_code_completion_option(CodeEdit.KIND_CLASS, "END!", "END!", theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"), prompt.length())
+				add_code_completion_option(CodeEdit.KIND_CLASS, "END!", "END!".substr(prompt.length()), theme_overrides.text_color, get_theme_icon("Stop", "EditorIcons"))
 
 		# Get all titles, including those in imports
 		var parser: DialogueManagerParser = DialogueManagerParser.new()
@@ -171,73 +157,23 @@ func _request_code_completion(force: bool) -> void:
 			if "/" in title:
 				var bits = title.split("/")
 				if matches_prompt(prompt, bits[0]) or matches_prompt(prompt, bits[1]):
-					add_code_completion_option(CodeEdit.KIND_CLASS, title, title, theme_overrides.text_color, get_theme_icon("CombineLines", "EditorIcons"), prompt.length())
+					add_code_completion_option(CodeEdit.KIND_CLASS, title, title.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("CombineLines", "EditorIcons"))
 			elif matches_prompt(prompt, title):
-				add_code_completion_option(CodeEdit.KIND_CLASS, title, title, theme_overrides.text_color, get_theme_icon("ArrowRight", "EditorIcons"), prompt.length())
+				add_code_completion_option(CodeEdit.KIND_CLASS, title, title.substr(prompt.length()), theme_overrides.text_color, get_theme_icon("ArrowRight", "EditorIcons"))
 		update_code_completion_options(true)
 		parser.free()
 		return
-	
-	# Complete names of game states
-	var text_behind_cursor = current_line.left(cursor.x)
-	var states = []
-	
-	var word = text_behind_cursor
-	var delimiters = ["(", "{", "[", ",", " "]
-	for d in delimiters: word = word.split(d)[-1]
-	if game_states: states = game_states.keys().filter(func (x): return matches_prompt(word, x))
-	if not word.is_empty():
-		for state in states:
-			add_code_completion_option(CodeEdit.KIND_CLASS, state, state, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), word.length())
 
-	# Complete methods, properties, and constants from game states
-	if game_states: states = game_states.keys().filter(func (x): return text_behind_cursor.contains(x + "."))
-	if states:
-		for state in states:
-			var script_path = game_states[state]
-			
-			if ResourceLoader.exists(script_path):
-				var prompt: String = text_behind_cursor.split(state + ".")[-1]
-				
-				# Get the game state's script
-				var state_script = load(script_path)
-				if not state_script.is_class("Script"):
-					state_script = state_script.instantiate().get_script()
-				if state_script == null: continue
-				
-				var methods = state_script.get_script_method_list().map(func (x): return {"name": x.name, "args": x.args.map(func (y): return y.name)})
-				var properties = state_script.get_script_property_list().map(func(x): return x.name).filter(func(x): return not x.ends_with(".gd"))
-				var constants = state_script.get_script_constant_map()
-				
-				for method in methods:
-					if matches_prompt(prompt, method["name"]):
-						var m_display_text = method["name"] + "(" + ", ".join(method["args"]) + ")"
-						var m_insert_text = method["name"] + "()"
-						add_code_completion_option(CodeEdit.KIND_CLASS, m_display_text, m_insert_text, theme_overrides.text_color, get_theme_icon("MemberMethod", "EditorIcons"), prompt.length())
-				for property in properties:
-					if matches_prompt(prompt, property):
-						add_code_completion_option(CodeEdit.KIND_CLASS, property, property, theme_overrides.text_color, get_theme_icon("MemberProperty", "EditorIcons"), prompt.length())
-				for constant in constants.keys():
-					if matches_prompt(prompt, constant):
-						add_code_completion_option(CodeEdit.KIND_CLASS, constant, constant, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), prompt.length())
-					# Complete enum names
-					elif prompt.contains(constant + "."):
-						var p = prompt.split(constant + ".")[-1]
-						for enum_name in constants[constant].keys():
-							if matches_prompt(p, enum_name):
-								add_code_completion_option(CodeEdit.KIND_CLASS, enum_name, enum_name, theme_overrides.text_color, get_theme_icon("MemberConstant", "EditorIcons"), p.length())
-		update_code_completion_options(true)
-		return
-	
-	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(true, false), "")
+	var name_so_far: String = WEIGHTED_RANDOM_PREFIX.sub(current_line.strip_edges(), "")
 	if name_so_far != "" and name_so_far[0].to_upper() == name_so_far[0]:
 		# Only show names starting with that character
 		var names: PackedStringArray = get_character_names(name_so_far)
 		if names.size() > 0:
 			for name in names:
-				add_code_completion_option(CodeEdit.KIND_CLASS, name + ": ", name + ": ", theme_overrides.text_color, get_theme_icon("Sprite2D", "EditorIcons"), name_so_far.length())
-	
-	update_code_completion_options(true)
+				add_code_completion_option(CodeEdit.KIND_CLASS, name + ": ", name.substr(name_so_far.length()) + ": ", theme_overrides.text_color, get_theme_icon("Sprite2D", "EditorIcons"))
+			update_code_completion_options(true)
+		else:
+			cancel_code_completion()
 
 
 func _filter_code_completion_candidates(candidates: Array) -> Array:
@@ -247,22 +183,13 @@ func _filter_code_completion_candidates(candidates: Array) -> Array:
 
 func _confirm_code_completion(replace: bool) -> void:
 	var completion = get_code_completion_option(get_code_completion_selected_index())
-	begin_complex_operation()	
+	begin_complex_operation()
 	# Delete any part of the text that we've already typed
-	for i in range(0, completion.default_value):
+	for i in range(0, completion.display_text.length() - completion.insert_text.length()):
 		backspace()
 	# Insert the whole match
-	insert_text_at_caret(completion.insert_text)
-	
-	# If we autocompleted a method with parameters, move the cursor in between the parentheses
-	# And set the code hint
-	if FUNCTION_PARAMS_SUFFIX.search(completion.display_text):
-		var cursor = get_cursor()
-		cursor.x -= 1
-		set_cursor(cursor)
-		call_deferred("set_code_hint", completion.display_text)
+	insert_text_at_caret(completion.display_text)
 	end_complex_operation()
-	
 
 	# Close the autocomplete menu on the next tick
 	call_deferred("cancel_code_completion")
@@ -353,7 +280,7 @@ func insert_bbcode(open_tag: String, close_tag: String = "") -> void:
 
 # Insert text at current caret position
 # Move Caret down 1 line if not => END
-func insert_text(text: String) -> void:
+func insert_text_at_cursor(text: String) -> void:
 	if text != "=> END":
 		insert_text_at_caret(text+"\n")
 		set_caret_line(get_caret_line()+1)
@@ -428,6 +355,19 @@ func toggle_comment() -> void:
 	text_changed.emit()
 
 
+# Remove the current line
+func delete_current_line() -> void:
+	var cursor = get_cursor()
+	if get_line_count() == 1:
+		select_all()
+	elif cursor.y == 0:
+		select(0, 0, 1, 0)
+	else:
+		select(cursor.y - 1, get_line_width(cursor.y - 1), cursor.y, get_line_width(cursor.y))
+	delete_selection()
+	text_changed.emit()
+
+
 # Move the selected lines up or down
 func move_line(offset: int) -> void:
 	offset = clamp(offset, -1, 1)
@@ -443,7 +383,7 @@ func move_line(offset: int) -> void:
 
 	var lines := text.split("\n")
 
-	# We can't move the lines out of bounds
+	# Prevent the lines from being out of bounds
 	if from + offset < 0 or to + offset >= lines.size(): return
 
 	var target_from_index = from - 1 if offset == -1 else to + 1
@@ -486,7 +426,6 @@ func _on_code_edit_symbol_lookup(symbol: String, line: int, column: int) -> void
 
 
 func _on_code_edit_text_changed() -> void:
-	set_code_hint("")
 	request_code_completion(true)
 
 
@@ -495,7 +434,6 @@ func _on_code_edit_text_set() -> void:
 
 
 func _on_code_edit_caret_changed() -> void:
-	set_code_hint("")
 	check_active_title()
 	last_selected_text = get_selected_text()
 
