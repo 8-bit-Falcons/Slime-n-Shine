@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx5jhcjpfwype"]
+[gd_scene load_steps=5 format=3 uid="uid://cx5jhcjpfwype"]
 
 [ext_resource type="Script" path="res://scripts/anim_actionable.gd" id="1_4h2ek"]
+[ext_resource type="Resource" uid="uid://br6ay40pqvfb2" path="res://resources/weeds_tiles_save_state.tres" id="2_6t6qg"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_oikiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56ymp"]
@@ -10,7 +11,7 @@ size = Vector2(32, 32)
 editor_description = "spaghetti"
 collision_layer = 4
 script = ExtResource("1_4h2ek")
-frames = Array[int]([6])
+save_state = ExtResource("2_6t6qg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_56ymp")

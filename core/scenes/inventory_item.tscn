@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_a8igr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tpw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8bf2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1842u"]
 
@@ -14,9 +16,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.87451, 0.67451, 0.121569, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8bf2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tpw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
 
 [node name="InventoryItem" type="Button"]
 texture_filter = 1
@@ -24,11 +24,11 @@ custom_minimum_size = Vector2(42, 42)
 offset_right = 42.0
 offset_bottom = 42.0
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_vhjxv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i1tpw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m8bf2")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1842u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2vrpy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_m8bf2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_i1tpw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vhjxv")
 toggle_mode = true
 button_mask = 0
 icon_alignment = 1

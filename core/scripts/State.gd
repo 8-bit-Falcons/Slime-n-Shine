@@ -1,6 +1,10 @@
 extends Node
 
 
+const MESS_TILES_SAVE_STATE = preload("res://resources/mess_tiles_save_state.tres")
+const WEEDS_TILES_SAVE_STATE = preload("res://resources/weeds_tiles_save_state.tres")
+
+
 var in_dev_console: bool = false
 var in_dialogue: bool = false
 
@@ -15,6 +19,13 @@ var meowzers_quest = MeowzersQuest.NO_LETTER
 enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING
 var saw_key = false
+
+var cleaned_kitchen = false:
+	get:
+		return MESS_TILES_SAVE_STATE.are_all_actions_complete()
+var pulled_weeds = false:
+	get:
+		return WEEDS_TILES_SAVE_STATE.are_all_actions_complete()
 
 # In some kind of UI menu that should disable player movement, including dev console and dialogue.
 func in_menu():
