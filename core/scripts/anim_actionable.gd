@@ -7,7 +7,7 @@ extends "res://scripts/base_actionable.gd"
 ## The resource containing this actionable's current frame (an index into the array of frames)
 @export var save_state: AnimActionableResource
 
-## The State variable that determines whether the actionable is currently enabled
+## The State method that determines whether the actionable is currently enabled
 @export var enabled_flag: String = ""
 
 
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 func action(player) -> void:
-	if enabled_flag and State.get(enabled_flag):
+	if (not State.has_method(enabled_flag)) or State.call(enabled_flag):
 		if save_state.current_frame[position] < frames.size() - 1:
 			save_state.current_frame[position] += 1
 			sprite_2d.frame = frames[save_state.current_frame[position]]

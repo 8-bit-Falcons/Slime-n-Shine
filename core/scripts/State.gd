@@ -9,9 +9,6 @@ var in_dev_console: bool = false
 var in_dialogue: bool = false
 
 var is_intro: bool = true
-var in_tutorial: bool = true:
-	get:
-		return meowzers_quest < MeowzersQuest.QUEST_STARTED
 
 enum MeowzersQuest {NO_LETTER, QUEST_STARTED}
 var meowzers_quest = MeowzersQuest.NO_LETTER
@@ -20,17 +17,16 @@ enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING
 var saw_key = false
 
-var kitchen_cleanable = false
 var cleaned_kitchen = false:
 	get:
 		return MESS_TILES_SAVE_STATE.are_all_actions_complete()
-var weeds_pullable = false
 var pulled_weeds = false:
 	get:
 		return WEEDS_TILES_SAVE_STATE.are_all_actions_complete()
 
+
 # In some kind of UI menu that should disable player movement, including dev console and dialogue.
-func in_menu():
+func in_menu() -> bool:
 	return in_dev_console or in_dialogue
 
 
@@ -39,3 +35,19 @@ func in_menu():
 func get_states():
 	var properties = get_script().get_script_property_list().map(func(x): return x.name)
 	return properties.filter(func(x): return not x.ends_with(".gd")).map(func(x): return x + ": " + str(get(x)))
+
+
+## Whether the living room doors are enabled.
+## Would be disabled in special sequences or cutscenes
+func living_room_doors_enabled() -> bool:
+	return meowzers_quest >= MeowzersQuest.QUEST_STARTED
+
+
+## Whether it is currently possible to pull weeds
+func are_weeds_pullable() -> bool:
+	return true
+
+
+## Whether it is currently possible to clean the kitchen
+func is_kitchen_cleanable() -> bool:
+	return true

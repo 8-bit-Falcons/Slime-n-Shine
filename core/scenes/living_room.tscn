@@ -966,25 +966,25 @@ shape = SubResource("RectangleShape2D_gne3j")
 [node name="BathroomDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 144)
 next_scene = "res://scenes/bathroom.tscn"
-disabled_flag = "in_tutorial"
+enabled_flag = "living_room_doors_enabled"
 dialogue_resource = ExtResource("31_ror41")
 
 [node name="StudyDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(512, 272)
 next_scene = "res://scenes/study.tscn"
-disabled_flag = "in_tutorial"
+enabled_flag = "living_room_doors_enabled"
 dialogue_resource = ExtResource("31_ror41")
 
 [node name="KitchenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(32, 176)
 next_scene = "res://scenes/kitchen.tscn"
-disabled_flag = "in_tutorial"
+enabled_flag = "living_room_doors_enabled"
 dialogue_resource = ExtResource("31_ror41")
 
 [node name="GardenDoor" parent="Doors" instance=ExtResource("33_t0uhi")]
 position = Vector2(271, 365)
 next_scene = "res://scenes/garden.tscn"
-disabled_flag = "in_tutorial"
+enabled_flag = "living_room_doors_enabled"
 dialogue_resource = ExtResource("31_ror41")
 
 [node name="CollisionShape2D" parent="Doors/GardenDoor" index="0"]

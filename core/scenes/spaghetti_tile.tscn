@@ -9,11 +9,12 @@ size = Vector2(32, 32)
 
 [node name="SpaghettiTile" type="Area2D"]
 editor_description = "spaghetti"
+modulate = Color(0.937255, 0.937255, 0.937255, 1)
 collision_layer = 4
 script = ExtResource("2_5x2w0")
 frames = Array[int]([3, 2, 1, 0])
 save_state = ExtResource("2_dy8bx")
-enabled_flag = "kitchen_cleanable"
+enabled_flag = "is_kitchen_cleanable"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_56ymp")
