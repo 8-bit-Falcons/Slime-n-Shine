@@ -20,9 +20,11 @@ enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING
 var saw_key = false
 
+var kitchen_cleanable = false
 var cleaned_kitchen = false:
 	get:
 		return MESS_TILES_SAVE_STATE.are_all_actions_complete()
+var weeds_pullable = false
 var pulled_weeds = false:
 	get:
 		return WEEDS_TILES_SAVE_STATE.are_all_actions_complete()

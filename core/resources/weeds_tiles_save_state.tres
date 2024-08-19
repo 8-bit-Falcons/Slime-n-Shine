@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_52v8p")
-frames = Array[int]([7, 6])
 current_frame = {}
+all_actions_complete = false

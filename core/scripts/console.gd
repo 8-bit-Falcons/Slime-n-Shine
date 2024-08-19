@@ -116,5 +116,10 @@ func change_state(var_name: String, val):
 	State.set(var_name, val)
 
 
+func skip_tutorial():
+	State.is_intro = false
+	State.meowzers_quest = State.MeowzersQuest.QUEST_STARTED
+
+
 func _on_close_requested():
 	_toggle()

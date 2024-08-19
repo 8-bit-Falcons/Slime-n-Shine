@@ -1,10 +1,12 @@
 class_name AnimActionableResource
 extends Resource
 
-## The frame IDs in each frame of the animation
-@export var frames: Array[int]
+
 ## A dict containing the current frame of every tile, stored as position-frame pairs
 @export var current_frame = {}
 
+## Whether or not the actionable has reached the last frame of its animation
+@export var all_actions_complete: bool = false
+
 func are_all_actions_complete() -> bool:
-	return current_frame and current_frame.values().all(func(x): return x == frames.size() - 1)
+	return all_actions_complete

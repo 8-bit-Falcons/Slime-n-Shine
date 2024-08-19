@@ -11,7 +11,9 @@ size = Vector2(32, 32)
 editor_description = "spaghetti"
 collision_layer = 4
 script = ExtResource("1_4h2ek")
+frames = Array[int]([7, 6])
 save_state = ExtResource("2_6t6qg")
+enabled_flag = "weeds_pullable"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_56ymp")
