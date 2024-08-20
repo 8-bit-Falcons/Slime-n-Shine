@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=67 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="Script" path="res://scripts/living_room.gd" id="1_xp5h6"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://clfvrgiw1qgkb" path="res://assets/sprites/cats/meowzers_idle/Cat With Shiny Thing_0023.png" id="28_l71l7"]
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="33_t0uhi"]
+[ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="34_8mwoh"]
 
 [sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -1054,15 +1055,20 @@ debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 offset = Vector2(280, 160)
 zoom = Vector2(3, 3)
 
-[node name="Meowzers" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos")]
+[node name="Meowzers" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos", "status_bubble")]
 position = Vector2(108, 152)
 script = ExtResource("5_6ve0k")
 center_pos = NodePath("CenterPos")
+status_bubble = NodePath("StatusBubble")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Meowzers"]
-texture = ExtResource("5_srnyp")
+texture = ExtResource("6_yib4y")
 centered = false
-offset = Vector2(0, -62)
+offset = Vector2(62, -60)
+hframes = 8
+vframes = 2
+frame = 8
 
 [node name="MeowzersCollision" type="CollisionShape2D" parent="Meowzers"]
 position = Vector2(78, -12)
@@ -1070,7 +1076,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ruddd")
 
 [node name="ShinyThing" type="Sprite2D" parent="Meowzers"]
-visible = false
 position = Vector2(44, -11)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_c2k08")
@@ -1079,7 +1084,7 @@ vframes = 8
 frame = 48
 
 [node name="ShinyCollision" type="CollisionShape2D" parent="Meowzers"]
-position = Vector2(84, -13)
+position = Vector2(44, -11)
 shape = SubResource("CircleShape2D_w8uck")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Meowzers"]
@@ -1098,10 +1103,14 @@ polygon = PackedVector2Array(67, -1, 91, -2, 94, -12, 93, -23, 90, -41, 81, -59,
 [node name="CenterPos" type="Marker2D" parent="Meowzers"]
 position = Vector2(78, -12)
 
-[node name="Banana" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos")]
+[node name="StatusBubble" parent="Meowzers" instance=ExtResource("34_8mwoh")]
+position = Vector2(72, -69)
+
+[node name="Banana" type="CharacterBody2D" parent="." node_paths=PackedStringArray("center_pos", "status_bubble")]
 position = Vector2(256, 191)
 script = ExtResource("5_6ve0k")
 center_pos = NodePath("CenterPos")
+status_bubble = NodePath("StatusBubble")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Banana"]
@@ -1136,6 +1145,9 @@ polygon = PackedVector2Array(32, 11, -32, 12, -32, 9, -21, 5, -21, -1, -6, -1, -
 
 [node name="CenterPos" type="Marker2D" parent="Banana"]
 position = Vector2(0, -3)
+
+[node name="StatusBubble" parent="Banana" instance=ExtResource("34_8mwoh")]
+position = Vector2(-16, -24)
 
 [node name="player" parent="." instance=ExtResource("2_qcgtd")]
 position = Vector2(167, 232)

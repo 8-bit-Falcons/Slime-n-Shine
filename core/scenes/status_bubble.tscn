@@ -1,0 +1,137 @@
+[gd_scene load_steps=31 format=3 uid="uid://dh5hixyo8dofm"]
+
+[ext_resource type="Texture2D" uid="uid://cikkjwex28x3g" path="res://assets/sprites/ellipsis_animation/speech bubble animation 1.png" id="1_fy3oy"]
+[ext_resource type="Texture2D" uid="uid://cu65j5hr506vb" path="res://assets/sprites/ellipsis_animation/speech bubble animation 2.png" id="2_kuooj"]
+[ext_resource type="Texture2D" uid="uid://dbdjej28qh1jc" path="res://assets/sprites/ellipsis_animation/speech bubble animation 3.png" id="3_2wxfs"]
+[ext_resource type="Texture2D" uid="uid://bewt338wf3jd8" path="res://assets/sprites/ellipsis_animation/speech bubble animation 4.png" id="4_7txbu"]
+[ext_resource type="Texture2D" uid="uid://dso4xkj8njqv3" path="res://assets/sprites/ellipsis_animation/speech bubble animation 5.png" id="5_0yli4"]
+[ext_resource type="Texture2D" uid="uid://c2pp2jk1bn60m" path="res://assets/sprites/ellipsis_animation/speech bubble animation 6.png" id="6_eaknd"]
+[ext_resource type="Texture2D" uid="uid://bh84te73mbwwe" path="res://assets/sprites/ellipsis_animation/speech bubble animation 7.png" id="7_bvtrt"]
+[ext_resource type="Texture2D" uid="uid://gowwxhcjhw86" path="res://assets/sprites/ellipsis_animation/speech bubble animation 8.png" id="8_u7aok"]
+[ext_resource type="Texture2D" uid="uid://b3jtqhu8aqqph" path="res://assets/sprites/ellipsis_animation/speech bubble animation 9.png" id="9_djqj3"]
+[ext_resource type="Texture2D" uid="uid://c1xw4sq0milvo" path="res://assets/sprites/ellipsis_animation/speech bubble animation 10.png" id="10_ida40"]
+[ext_resource type="Texture2D" uid="uid://b67ve0j2thd3j" path="res://assets/sprites/ellipsis_animation/speech bubble animation 11.png" id="11_sh2c6"]
+[ext_resource type="Texture2D" uid="uid://dqgc1258htt3t" path="res://assets/sprites/ellipsis_animation/speech bubble animation 12.png" id="12_nu7mr"]
+[ext_resource type="Texture2D" uid="uid://bjx05gb265y80" path="res://assets/sprites/ellipsis_animation/speech bubble animation 13.png" id="13_hy02t"]
+[ext_resource type="Texture2D" uid="uid://3k2jk5r4lnpa" path="res://assets/sprites/ellipsis_animation/speech bubble animation 14.png" id="14_ltyx7"]
+[ext_resource type="Texture2D" uid="uid://ccnbvacsjnyxj" path="res://assets/sprites/ellipsis_animation/speech bubble animation 15.png" id="15_tvwkl"]
+[ext_resource type="Texture2D" uid="uid://bhdtw72gvxw6r" path="res://assets/sprites/ellipsis_animation/speech bubble animation 16.png" id="16_ippxi"]
+[ext_resource type="Texture2D" uid="uid://bt2cpvuj1r6rm" path="res://assets/sprites/ellipsis_animation/speech bubble animation 17.png" id="17_vbmxp"]
+[ext_resource type="Texture2D" uid="uid://chc3daa0scjb7" path="res://assets/sprites/ellipsis_animation/speech bubble animation 18.png" id="18_d8q26"]
+[ext_resource type="Texture2D" uid="uid://bsjjmaaj1ea37" path="res://assets/sprites/ellipsis_animation/speech bubble animation 19.png" id="19_s5kus"]
+[ext_resource type="Texture2D" uid="uid://dksjg5tl8liuw" path="res://assets/sprites/ellipsis_animation/speech bubble animation 20.png" id="20_603bo"]
+[ext_resource type="Texture2D" uid="uid://cbano4kdh8bev" path="res://assets/sprites/exclamation_point_animation/expt1.png" id="21_jsr75"]
+[ext_resource type="Texture2D" uid="uid://dxetxhewisijq" path="res://assets/sprites/exclamation_point_animation/expt2.png" id="22_ldceq"]
+[ext_resource type="Texture2D" uid="uid://quqmt7q2452c" path="res://assets/sprites/exclamation_point_animation/expt3.png" id="23_c1ko0"]
+[ext_resource type="Texture2D" uid="uid://cvwcihr6vu0qb" path="res://assets/sprites/exclamation_point_animation/expt4.png" id="24_1lxo2"]
+[ext_resource type="Texture2D" uid="uid://bpguiuv73kn4r" path="res://assets/sprites/exclamation_point_animation/expt5.png" id="25_c4woh"]
+[ext_resource type="Texture2D" uid="uid://dq0h1rcna41q1" path="res://assets/sprites/exclamation_point_animation/expt6.png" id="26_241wd"]
+[ext_resource type="Texture2D" uid="uid://b7xsj5nui8uhj" path="res://assets/sprites/exclamation_point_animation/expt7.png" id="27_na1cl"]
+[ext_resource type="Texture2D" uid="uid://bgrybeklnp3td" path="res://assets/sprites/exclamation_point_animation/expt8.png" id="28_bvogm"]
+[ext_resource type="Texture2D" uid="uid://dxb68b7b3msqy" path="res://assets/sprites/exclamation_point_animation/expt9.png" id="29_w53p5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7n44"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_fy3oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kuooj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2wxfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7txbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0yli4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eaknd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bvtrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u7aok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_djqj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ida40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sh2c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nu7mr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hy02t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ltyx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tvwkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ippxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vbmxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_d8q26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_s5kus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_603bo")
+}],
+"loop": true,
+"name": &"in_quest",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_jsr75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ldceq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_c1ko0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_1lxo2")
+}, {
+"duration": 2.0,
+"texture": ExtResource("25_c4woh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_241wd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_na1cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_bvogm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_w53p5")
+}],
+"loop": true,
+"name": &"new_quest",
+"speed": 7.0
+}]
+
+[node name="StatusBubble" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_h7n44")
+animation = &"new_quest"
+frame_progress = 0.617309

@@ -270,7 +270,7 @@ boards={
 }],
 "id": "10ae34e0d2",
 "label": "Puzzles",
-"scroll_offset": Vector2(-1740.36, 140.371),
+"scroll_offset": Vector2(-973.147, -2.19427),
 "things": [{
 "id": &"7b3e684b03",
 "position_offset": Vector2(1080, 440),
@@ -392,7 +392,7 @@ boards={
 "text": "Combine pencil with paper",
 "type": 0
 }],
-"zoom": 1.17049
+"zoom": 0.96735
 }
 }
 minimap_enabled=true

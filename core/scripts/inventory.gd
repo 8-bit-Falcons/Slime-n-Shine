@@ -15,7 +15,7 @@ const combos: Dictionary = {"pen": "letter", "paper": "letter", "stick": "tickle
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	panel.visible = false
-	DialogueManager.got_dialogue.connect(_on_dialogue_manager_got_dialogue)
+	DialogueManager.dialogue_started.connect(_on_dialogue_manager_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_manager_dialogue_ended)
 	
 	add_item(Item.PAPER)
@@ -118,7 +118,7 @@ func _on_inventory_item_toggled(item_name, toggled_on):
 		item_label.text = format_name(selected()[0].name)
 
 
-func _on_dialogue_manager_got_dialogue(line: DialogueLine):
+func _on_dialogue_manager_dialogue_started(resource: DialogueResource):
 	set_disabled(true)
 	item_label.visible = false
 	

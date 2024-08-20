@@ -22,6 +22,9 @@ signal got_dialogue(line: DialogueLine)
 ## Emitted when a mutation is encountered.
 signal mutated(mutation: Dictionary)
 
+## Emitted when some dialogue has started.
+signal dialogue_started(resource: DialogueResource)
+
 ## Emitted when some dialogue has reached the end.
 signal dialogue_ended(resource: DialogueResource)
 

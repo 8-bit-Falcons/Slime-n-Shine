@@ -61,6 +61,7 @@ Meowzers: like some [color=cyan]FISH[/color] would realllllyyyyyy make my day ri
 Are you being serious right now.
 You: oh! i'll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
 do State.meowzers_quest = State.MeowzersQuest.QUEST_STARTED
+
 do Inventory.remove_item(Inventory.Item.LETTER)
 => END
 

@@ -10,6 +10,8 @@ var in_dialogue: bool = false
 
 var is_intro: bool = true
 
+enum NPCQuestStatus {NO_QUEST, NEW_QUEST, QUEST_IN_PROGRESS}
+
 enum MeowzersQuest {NO_LETTER, QUEST_STARTED}
 var meowzers_quest = MeowzersQuest.NO_LETTER
 
@@ -37,6 +39,24 @@ func get_states():
 	return properties.filter(func(x): return not x.ends_with(".gd")).map(func(x): return x + ": " + str(get(x)))
 
 
+## Get the current quest state (new quest, in progress, or no quest) of the given NPC.
+## npc_name: String beginning with a capital letter
+func get_NPC_quest_status(npc_name: String):
+	# TODO: implement all
+	match npc_name:
+		"Meowzers":
+			if not is_intro and Inventory.has_item(Inventory.Item.LETTER):
+				return NPCQuestStatus.NEW_QUEST
+			elif meowzers_quest == MeowzersQuest.QUEST_STARTED:
+				return NPCQuestStatus.QUEST_IN_PROGRESS
+		"Banana":
+			if banana_quest == BananaQuest.AWAKE and saw_key:
+				return NPCQuestStatus.NEW_QUEST
+			elif banana_quest == BananaQuest.ASKED_FOR_KEY:
+				return NPCQuestStatus.QUEST_IN_PROGRESS
+	return NPCQuestStatus.NO_QUEST
+
+
 ## Whether the living room doors are enabled.
 ## Would be disabled in special sequences or cutscenes
 func living_room_doors_enabled() -> bool:
@@ -45,9 +65,9 @@ func living_room_doors_enabled() -> bool:
 
 ## Whether it is currently possible to pull weeds
 func are_weeds_pullable() -> bool:
-	return true
+	return false
 
 
 ## Whether it is currently possible to clean the kitchen
 func is_kitchen_cleanable() -> bool:
-	return true
+	return false
