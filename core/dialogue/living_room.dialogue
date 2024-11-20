@@ -25,7 +25,9 @@ When an item is selected, you can select another item to try [color=yellow]COMBI
 ############################ MEOWZERS ############################
 ## Meowzers hub; navigate to specific interactions from here
 ~ meowzers
-if State.meowzers_quest == State.MeowzersQuest.NO_LETTER
+if State.meowzers_quest == State.MeowzersQuest.NO_LETTER and Inventory.has_item(Inventory.Item.LETTER)
+	You: i need to give meowzers the [color=cyan]LETTER[/color]! [#emotion=neutral]
+elif State.meowzers_quest == State.MeowzersQuest.NO_LETTER
 	You: i need to write a [color=cyan]LETTER[/color] first! [#emotion=neutral]
 elif State.meowzers_quest == State.MeowzersQuest.QUEST_STARTED
 	=> meowzers_quest_incomplete
@@ -114,13 +116,14 @@ if State.saw_key
 	=> ask_for_key
 else
 	Hm... why DID you do that?
-	You: um... for funsies? [#emotion=neutral]
+	- You: um... for funsies? [#emotion=neutral]
+	- You: to piss you off. [#emotion=neutral]
 	Banana: What... [#emotion=slightly_annoyed]
 	Banana: Ugh. Now I won't be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
 => END
 	
 ~ ask_for_key
-You: can you get that [color=cyan]KEY[/color] for me? [speed=0.3] pleaaaaase? [#emotion=neutral]
+You: can you get that [color=cyan]KEY[/color] for me? [speed=0.3]pleaaaaase? [#emotion=neutral]
 You summon your best puppy dog eyes.
 You seem to have forgotten that you are talking to a cat.
 Banana: What? No! Why would I do something for you?? [#emotion=angry]
