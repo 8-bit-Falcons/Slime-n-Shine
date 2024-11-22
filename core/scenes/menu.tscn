@@ -44,6 +44,11 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktdut"]
 bg_color = Color(0.941176, 0.431373, 0.541176, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
 expand_margin_left = 16.0
 expand_margin_right = 16.0
 
@@ -64,6 +69,11 @@ expand_margin_right = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg2ig"]
 bg_color = Color(0.301961, 0.690196, 0.870588, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
 expand_margin_left = 12.0
 expand_margin_right = 12.0
 
