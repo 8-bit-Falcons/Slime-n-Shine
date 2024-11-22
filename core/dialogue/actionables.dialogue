@@ -9,6 +9,8 @@ There is [color=cyan]YARN[/color] on the ground.
 	Take it?
 - Yes
 	You absorb the [color=cyan]YARN[/color].
+	do Inventory.add_item(Inventory.Item.YARN)
+	do State.actionable_states_add_flag(State.ActionableStates.TOOK_YARN)
 - No
 => END
 
@@ -17,50 +19,68 @@ There is a [color=cyan]STICK[/color] on the ground.
 	Take it?
 - Yes
 	You absorb the [color=cyan]STICK[/color].
+	do Inventory.add_item(Inventory.Item.STICK)
+	do State.actionable_states_add_flag(State.ActionableStates.TOOK_STICK)
 - No
 => END
 
 ~ water
-There is [color=cyan]WATER[/color] in the toilet.
-	Take it?
-- Yes
-	(if MC has other items in their inventory)
-	While you've absorbed other items? Really?
+if State.actionable_states_check_flag(State.ActionableStates.TOILET_EMPTY):
+	There is [color=cyan]WATER[/color] in the toilet.
+		Take it?
 	- Yes
-		You absorb the [color=cyan]WATER[/color].
+		if Inventory.get_num_items() > 0:
+			While you've absorbed other items? Really?
+			- Yes
+				=> take_water
+			- No
+		else:
+			=> take_water
 	- No
-- No
+else:
+	Slippery.
 => END
 
+~ take_water
+You absorb the [color=cyan]WATER[/color].
+do Inventory.add_item(Inventory.Item.WATER)
+do State.actionable_states_add_flag(State.ActionableStates.TOILET_EMPTY)
+
 ~ key
-(if hanging)
-There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
-(if fallen)
-There is a [color=cyan]KEY[/color] on the ground.
-	Take it?
-- Yes
-	You absorb the [color=cyan]KEY[/color].
-- No
+if not State.actionable_states_check_flag(State.ActionableStates.KEY_FELL):
+	There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
+elif State.actionable_states_check_flag(State.ActionableStates.KEY_FELL) and (not State.actionable_states_check_flag(State.ActionableStates.TOOK_KEY)):
+	There is a [color=cyan]KEY[/color] on the ground.
+		Take it?
+	- Yes
+		You absorb the [color=cyan]KEY[/color].
+		do Inventory.add_item(Inventory.Item.KEY)
+		do State.actionable_states_add_flag(State.ActionableStates.TOOK_KEY)
+	- No
 => END 
 
 ~ drawer
-(if locked)
-It's locked.
-(if unlockable)
-You use the [color=cyan]KEY[/color] to unlock the drawer.
-Inside is a [color=cyan]BOX OF MARKERS[/color].
-Take the [color=cyan]MARKERS[/color]?
-- Yes
-	You absorb the [color=cyan]MARKERS[/color].
-- No
-(if unlocked + markers)
+if (not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED)) and Inventory.has_item(Inventory.Item.KEY):
+	You use the [color=cyan]KEY[/color] to unlock the drawer.
+	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_UNLOCKED)
+	do Inventory.remove_item(Inventory.Item.KEY)
+	=> take_markers
+elif not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
+	It's locked.
+elif State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED) and State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
+	=> take_markers
+else:
+	The drawer is empty.
+=> END
+
+~ take_markers
 Inside the drawer is a [color=cyan]BOX OF MARKERS[/color].
 Take the [color=cyan]MARKERS[/color]?
 - Yes
 	You absorb the [color=cyan]MARKERS[/color].
+	do Inventory.add_item(Inventory.Item.MARKERS)
+	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_EMPTY)
 - No
-(if unlocked + empty)
-The drawer is empty.
 => END
 
 ~ test

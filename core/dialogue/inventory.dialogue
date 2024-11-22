@@ -24,6 +24,9 @@ Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTI
 => END
 
 ~ tickler
+do Inventory.remove_item(Inventory.Item.YARN)
+do Inventory.remove_item(Inventory.Item.STICK)
+do Inventory.add_item(Inventory.Item.TICKLER)
 You tie the [color=cyan]YARN[/color] onto the [color=cyan]STICK[/color].
 Maybe you could [color=yellow]TICKLE[/color] someone with this...
 => END

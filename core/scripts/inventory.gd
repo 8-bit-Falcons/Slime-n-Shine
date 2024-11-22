@@ -103,6 +103,10 @@ func format_name(name: String):
 	return "[right]%s[/right]" % name.capitalize()
 
 
+func get_num_items():
+	return hbox.get_child_count()
+
+
 func set_disabled(disabled: bool):
 	for item in hbox.get_children():
 		item.disabled = disabled

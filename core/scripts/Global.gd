@@ -5,6 +5,7 @@ extends Node
 # Options are "left", "right", "up", and "down"
 signal request_player_turn(dir: String)
 
+
 const user_input = preload("res://scenes/user_input_panel.tscn")
 const colors = {"banana": Color8(255, 248, 164), \
 				"meowzers": Color8(251, 115, 255), \

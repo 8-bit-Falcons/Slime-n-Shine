@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://cljskrsbssk1n"]
+[gd_scene load_steps=26 format=3 uid="uid://cljskrsbssk1n"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_chdeo"]
+[ext_resource type="Script" path="res://scripts/garden.gd" id="1_q2f3x"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_6kqp5"]
 [ext_resource type="Script" path="res://scripts/interactive_tile_map.gd" id="2_d3ebc"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_ofufa"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_ecdiu"]
 [ext_resource type="Resource" uid="uid://ckiedxvgr1vb2" path="res://dialogue/garden.dialogue" id="4_j4hx5"]
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="6_ag44c"]
+[ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="7_x3qdb"]
+[ext_resource type="Resource" uid="uid://dsmvhnfuqbvua" path="res://dialogue/actionables.dialogue" id="8_vwie5"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -31,6 +34,14 @@ size = Vector2(65.875, 32.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emvp5"]
 size = Vector2(65, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv32h"]
+radius = 3.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i47il"]
+radius = 9.0
+height = 32.0
 
 [sub_resource type="Animation" id="Animation_42c3i"]
 resource_name = "back"
@@ -103,6 +114,7 @@ _data = {
 [node name="Garden" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
+script = ExtResource("1_q2f3x")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -207,6 +219,22 @@ texture = ExtResource("2_ofufa")
 hframes = 9
 vframes = 8
 frame = 35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stick"]
+visible = false
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uv32h")
+
+[node name="Actionable" parent="Stick" instance=ExtResource("7_x3qdb")]
+dialogue_resource = ExtResource("8_vwie5")
+dialogue_start = "stick"
+
+[node name="ActionArea" type="CollisionShape2D" parent="Stick/Actionable"]
+position = Vector2(1, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i47il")
+debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
 [node name="Shore" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(176, 145)

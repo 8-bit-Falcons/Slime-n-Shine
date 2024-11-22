@@ -120,6 +120,7 @@ else
 	- You: to piss you off. [#emotion=neutral]
 	Banana: What... [#emotion=slightly_annoyed]
 	Banana: Ugh. Now I won't be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
+do Inventory.remove_item(Inventory.Item.TICKLER)
 => END
 	
 ~ ask_for_key
@@ -157,9 +158,13 @@ Meowzers: hmm... [#emotion=neutral]
 You shine light at the wall using the [color=cyan]MAGNIFYING GLASS[/color], creating a faux laser pointer.
 Banana: Moving light!? [#emotion=happy]
 Banana: Must catch!!
-Banana jumps at the light as you move it across the key on the wall, knocking it onto the floor.
+Banana jumps at the light as you move it across the [color=cyan]KEY[/color] on the wall, knocking it onto the floor.
 You: nice! [#emotion=neutral]
+You take the [color=cyan]KEY[/color].
+do Inventory.remove_item(Inventory.Item.MAGNIFYING_GLASS)
+do Inventory.add_item(Inventory.Item.KEY)
 do State.banana_quest = State.BananaQuest.GOT_KEY
+do State.actionable_states_add_flag(State.ActionableStates.KEY_FELL)
 => END
 
 ~ banana_post_quest
@@ -170,12 +175,16 @@ Banana: call me that.
 
 ~ ending
 You: meowzers! i brought you some [color=cyan]FISH[/color]! [#emotion=neutral]
+do Inventory.remove_item(Inventory.Item.FISH)
 Meowzers: [color=cyan]FISH[/color]? finally! [#emotion=hungry]
 Meowzers: here. you can have this now. [#emotion=neutral]
 Meowzers rolls the [color=cyan]SHINY THING[/color] towards you.
 You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥰[/font_size][/font] [#emotion=happy]
 Meowzers: okay. you can leave now. [#emotion=neutral]
 You leave.
+...
+But what happened between you and Banana last summer??
+Find out in Chapter 2\: Slime & Crime
 => END
 
 ~ disabled_door

@@ -994,15 +994,15 @@ shape = SubResource("RectangleShape2D_da5jh")
 
 [node name="Actionables" type="Node2D" parent="."]
 
-[node name="key" type="AnimatedSprite2D" parent="Actionables"]
+[node name="KeyHanger" type="AnimatedSprite2D" parent="Actionables"]
 position = Vector2(400, 48)
 sprite_frames = SubResource("SpriteFrames_mti8q")
 
-[node name="Actionable" parent="Actionables/key" instance=ExtResource("4_1wb8c")]
+[node name="Actionable" parent="Actionables/KeyHanger" instance=ExtResource("4_1wb8c")]
 dialogue_resource = ExtResource("4_3y24s")
 dialogue_start = "key"
 
-[node name="ActionArea" type="CollisionShape2D" parent="Actionables/key/Actionable"]
+[node name="ActionArea" type="CollisionShape2D" parent="Actionables/KeyHanger/Actionable"]
 position = Vector2(0, 25.5)
 shape = SubResource("RectangleShape2D_mhdb0")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)

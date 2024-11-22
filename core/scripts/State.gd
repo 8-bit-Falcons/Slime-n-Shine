@@ -1,6 +1,9 @@
 extends Node
 
 
+signal actionable_states_modified
+
+
 const MESS_TILES_SAVE_STATE = preload("res://resources/mess_tiles_save_state.tres")
 const WEEDS_TILES_SAVE_STATE = preload("res://resources/weeds_tiles_save_state.tres")
 
@@ -18,6 +21,9 @@ var meowzers_quest = MeowzersQuest.NO_LETTER
 enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING
 var saw_key = false
+
+enum ActionableStates {TOOK_YARN, TOOK_STICK, KEY_FELL, TOOK_KEY, DRAWER_UNLOCKED, DRAWER_OPEN, DRAWER_EMPTY, TOILET_EMPTY}
+var actionable_states = 0
 
 var cleaned_kitchen = false:
 	get:
@@ -71,3 +77,17 @@ func are_weeds_pullable() -> bool:
 ## Whether it is currently possible to clean the kitchen
 func is_kitchen_cleanable() -> bool:
 	return false
+
+
+func actionable_states_add_flag(flag):
+	actionable_states |= (1 << flag)
+	actionable_states_modified.emit()
+
+
+func actionable_states_remove_flag(flag):
+	actionable_states &= ~(1 << flag)
+	actionable_states_modified.emit()
+
+
+func actionable_states_check_flag(flag) -> bool:
+	return actionable_states & (1 << flag)
