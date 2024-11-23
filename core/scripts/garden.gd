@@ -11,5 +11,5 @@ func _ready() -> void:
 
 
 func _on_actionable_states_modified():
-	if stick and State.actionable_states_check_flag(State.ActionableStates.TOOK_STICK):
+	if is_instance_valid(stick) and State.actionable_states_check_flag(State.ActionableStates.TOOK_STICK):
 		stick.queue_free()

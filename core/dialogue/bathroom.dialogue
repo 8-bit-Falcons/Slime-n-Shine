@@ -78,6 +78,7 @@ You: i mean, aren't all slimes slimy? haha
 You: am i more slimy than usual
 Sticky: hehe, pony :3 [#emotion=happy]
 do State.bathroom_quest = State.BathroomQuest.QUEST_COMPLETE
+do Inventory.remove_item(Inventory.Item.MARKERS)
 do Inventory.add_item(Inventory.Item.MOP)
 => END
 

@@ -25,12 +25,11 @@ func _toggled(toggled_on):
 			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, Inventory.combos[name])
 		else:
 			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid_combo")
-		
-		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
-		await DialogueManager.dialogue_ended
-		# TODO: this randomly throws an error sometimes?? interal error getting property button_pressed
-		if is_instance_valid(self):
-			set_pressed(false)
+			
+			# Toggle the second selected item off if it wasn't already toggled off in the dialogue
+			await DialogueManager.dialogue_ended
+			if is_instance_valid(self):
+				set_pressed(false)
 
 
 # Initialize the name and the key used to select this item.

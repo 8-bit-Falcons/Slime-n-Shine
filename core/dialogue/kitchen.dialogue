@@ -1,10 +1,10 @@
 ~ martha
 if State.kitchen_quest == State.KitchenQuest.PRE_QUEST:
 	=> initiate_quest
+elif State.kitchen_quest == State.KitchenQuest.QUEST_IN_PROGRESS and State.cleaned_kitchen:
+	=> quest_complete
 elif State.kitchen_quest == State.KitchenQuest.QUEST_IN_PROGRESS:
 	=> quest_incomplete
-elif State.cleaned_kitchen:
-	=> quest_complete
 
 ~ initiate_quest
 You: hey, could you make me some [color=cyan]FISH[/color]? [#emotion=neutral]

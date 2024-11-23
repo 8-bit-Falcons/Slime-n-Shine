@@ -50,6 +50,7 @@ do State.actionable_states_add_flag(State.ActionableStates.TOILET_EMPTY)
 ~ key
 if not State.actionable_states_check_flag(State.ActionableStates.KEY_FELL):
 	There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
+	do State.saw_key = true
 elif State.actionable_states_check_flag(State.ActionableStates.KEY_FELL) and (not State.actionable_states_check_flag(State.ActionableStates.TOOK_KEY)):
 	There is a [color=cyan]KEY[/color] on the ground.
 		Take it?
@@ -68,7 +69,7 @@ if (not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKE
 	=> take_markers
 elif not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
 	It's locked.
-elif State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED) and State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
+elif State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED) and not State.actionable_states_check_flag(State.ActionableStates.DRAWER_EMPTY):
 	=> take_markers
 else:
 	The drawer is empty.
