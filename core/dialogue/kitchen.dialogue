@@ -103,3 +103,7 @@ else:
 	Parfait: Hey, tomorrow I'll let you sample my cheesy bread if you want! [#emotion=neutral]
 	You: wow! really? thanks! [#emotion=happy]
 => END
+
+~ invalid_use
+Not sure that they want this!
+=> END

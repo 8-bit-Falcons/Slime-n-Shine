@@ -86,3 +86,7 @@ else:
 	Sherbet: Wow, I am just so lol'ing out loud at your presence. [#emotion=neutral]
 	You: uh. okay. thanks? [#emotion=neutral]
 => END
+
+~ invalid_use
+Not sure that they want this!
+=> END

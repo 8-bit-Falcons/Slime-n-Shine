@@ -190,3 +190,7 @@ Find out in Chapter 2\: Slime & Crime
 ~ disabled_door
 You: i need to write meowzers a [color=cyan]LETTER[/color] first! [#emotion=neutral]
 => END
+
+~ invalid_use
+Not sure that they want this!
+=> END
