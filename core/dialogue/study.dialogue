@@ -9,6 +9,10 @@ else:
 ~ dew_use_item
 if Inventory.selected_item() == Inventory.Item.WATER
 	=> water
+else:
+	Dew: What is this? Will it help me do science? [#emotion=neutral]
+	You: umm... maybe not... [#emotion=neutral]
+=> END
 
 ~ initiate_quest
 Dew: Oh, perfect timing, {{Global.MC_name}}! [#emotion=neutral]
@@ -87,4 +91,8 @@ else:
 	Lime: We'll just have to fill you in on the risks, and the... benefits.
 	(Disclaimer\: The 8-bit Falcons do not promote the use of drugs.)
 	You: i'll think about it. [#emotion=neutral]
+=> END
+
+~ invalid_use
+Not sure that they want this!
 => END

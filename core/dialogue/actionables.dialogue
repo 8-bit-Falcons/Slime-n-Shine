@@ -25,7 +25,7 @@ There is a [color=cyan]STICK[/color] on the ground.
 => END
 
 ~ water
-if State.actionable_states_check_flag(State.ActionableStates.TOILET_EMPTY):
+if not State.actionable_states_check_flag(State.ActionableStates.TOILET_EMPTY):
 	There is [color=cyan]WATER[/color] in the toilet.
 		Take it?
 	- Yes

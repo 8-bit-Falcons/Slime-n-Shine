@@ -3,12 +3,18 @@ if State.bathroom_quest == State.BathroomQuest.PRE_QUEST and State.kitchen_quest
 	=> initiate_quest
 elif State.bathroom_quest == State.BathroomQuest.PRE_QUEST:
 	=> prequest
-elif State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS and Inventory.has_item(Inventory.Item.MARKERS):
-	=> quest_complete
 elif State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS:
 	=> quest_incomplete
 elif State.bathroom_quest == State.BathroomQuest.QUEST_COMPLETE:
 	=> postquest
+=> END
+
+~ sticky_use_item
+if Inventory.selected_item() == Inventory.Item.MARKERS:
+	=> quest_complete
+else:
+	Sticky: wahh... [#emotion=sad]
+	Sticky: i don't want this...
 => END
 
 ~ prequest
