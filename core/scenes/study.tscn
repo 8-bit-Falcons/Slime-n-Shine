@@ -147,7 +147,7 @@ libraries = {
 
 [node name="Actionable" parent="TileMap/Dew" index="3"]
 dialogue_resource = ExtResource("4_mfnvq")
-dialogue_start = "initiate_quest"
+dialogue_start = "dew"
 
 [node name="Lime" parent="TileMap" instance=ExtResource("3_oc4o4")]
 position = Vector2(336, 236)

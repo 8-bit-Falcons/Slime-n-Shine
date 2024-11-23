@@ -13,6 +13,7 @@ func _ready():
 
 # Called when the button is toggled.
 func _toggled(toggled_on):
+	await get_tree().create_timer(0.1).timeout
 	toggled2.emit(name, toggled_on)
 	
 	# Handle item combinations
@@ -28,7 +29,7 @@ func _toggled(toggled_on):
 		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
 		await DialogueManager.dialogue_ended
 		# TODO: this randomly throws an error sometimes?? interal error getting property button_pressed
-		if button_pressed:
+		if is_instance_valid(self):
 			set_pressed(false)
 
 

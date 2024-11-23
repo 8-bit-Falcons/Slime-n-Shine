@@ -45,6 +45,7 @@ else:
 You absorb the [color=cyan]WATER[/color].
 do Inventory.add_item(Inventory.Item.WATER)
 do State.actionable_states_add_flag(State.ActionableStates.TOILET_EMPTY)
+=> END
 
 ~ key
 if not State.actionable_states_check_flag(State.ActionableStates.KEY_FELL):

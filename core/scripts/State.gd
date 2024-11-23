@@ -22,6 +22,28 @@ enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING
 var saw_key = false
 
+enum StudyQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
+var study_quest = StudyQuest.PRE_QUEST
+var minus_interactions = 0
+var lime_interactions = 0
+
+enum KitchenQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
+var kitchen_quest = KitchenQuest.PRE_QUEST
+var martha_post = 0
+var eggy_interactions = 0
+var parfait_interactions = 0
+
+enum GardenQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
+var garden_quest = GardenQuest.PRE_QUEST
+var shore_post = 0
+var mud_pie_interactions = 0
+var sherbet_interactions = 0
+
+enum BathroomQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
+var bathroom_quest = BathroomQuest.PRE_QUEST
+var slorp_interactions = 0
+var lint_interactions = 0
+
 enum ActionableStates {TOOK_YARN, TOOK_STICK, KEY_FELL, TOOK_KEY, DRAWER_UNLOCKED, DRAWER_OPEN, DRAWER_EMPTY, TOILET_EMPTY}
 var actionable_states = 0
 
@@ -48,7 +70,6 @@ func get_states():
 ## Get the current quest state (new quest, in progress, or no quest) of the given NPC.
 ## npc_name: String beginning with a capital letter
 func get_NPC_quest_status(npc_name: String):
-	# TODO: implement all
 	match npc_name:
 		"Meowzers":
 			if not is_intro and Inventory.has_item(Inventory.Item.LETTER):
@@ -59,6 +80,28 @@ func get_NPC_quest_status(npc_name: String):
 			if banana_quest == BananaQuest.AWAKE and saw_key:
 				return NPCQuestStatus.NEW_QUEST
 			elif banana_quest == BananaQuest.ASKED_FOR_KEY:
+				return NPCQuestStatus.QUEST_IN_PROGRESS
+		"Shore":
+			if (garden_quest == GardenQuest.PRE_QUEST
+					and kitchen_quest >= KitchenQuest.QUEST_IN_PROGRESS):
+				return NPCQuestStatus.NEW_QUEST
+			elif garden_quest == GardenQuest.QUEST_IN_PROGRESS:
+				return NPCQuestStatus.QUEST_IN_PROGRESS
+		"Martha":
+			if kitchen_quest == KitchenQuest.PRE_QUEST:
+				return NPCQuestStatus.NEW_QUEST
+			elif kitchen_quest == KitchenQuest.QUEST_IN_PROGRESS:
+				return NPCQuestStatus.QUEST_IN_PROGRESS
+		"Dew":
+			if study_quest == StudyQuest.PRE_QUEST:
+				return NPCQuestStatus.NEW_QUEST
+			elif study_quest == StudyQuest.QUEST_IN_PROGRESS:
+				return NPCQuestStatus.QUEST_IN_PROGRESS
+		"Sticky":
+			if (bathroom_quest == BathroomQuest.PRE_QUEST
+					and kitchen_quest >= KitchenQuest.QUEST_IN_PROGRESS):
+				return NPCQuestStatus.NEW_QUEST
+			elif bathroom_quest == BathroomQuest.QUEST_IN_PROGRESS:
 				return NPCQuestStatus.QUEST_IN_PROGRESS
 	return NPCQuestStatus.NO_QUEST
 
@@ -71,12 +114,12 @@ func living_room_doors_enabled() -> bool:
 
 ## Whether it is currently possible to pull weeds
 func are_weeds_pullable() -> bool:
-	return false
+	return garden_quest == GardenQuest.QUEST_IN_PROGRESS
 
 
 ## Whether it is currently possible to clean the kitchen
 func is_kitchen_cleanable() -> bool:
-	return false
+	return Inventory.has_item(Inventory.Item.BUCKET) and Inventory.has_item(Inventory.Item.MOP)
 
 
 func actionable_states_add_flag(flag):

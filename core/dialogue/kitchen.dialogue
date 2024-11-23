@@ -1,3 +1,11 @@
+~ martha
+if State.kitchen_quest == State.KitchenQuest.PRE_QUEST:
+	=> initiate_quest
+elif State.kitchen_quest == State.KitchenQuest.QUEST_IN_PROGRESS:
+	=> quest_incomplete
+elif State.cleaned_kitchen:
+	=> quest_complete
+
 ~ initiate_quest
 You: hey, could you make me some [color=cyan]FISH[/color]? [#emotion=neutral]
 Martha: [color=cyan]FISH[/color]? You want [color=cyan]FISH[/color]? [#emotion=neutral]
@@ -22,24 +30,30 @@ You: ... [#emotion=sad]
 Martha: Okay, but you're gonna need to clean up the kitchen, because I don't have time to do that and make this [color=cyan]FISH[/color]. [shake rate=10.0 level=10.0 connected=0]*grumble*[/shake] Running around all day doing things... [shake rate=10.0 level=10.0 connected=0]*grumble*[/shake] [#emotion=mad]
 Martha: Go get a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color], [color=yellow]CLEAN UP[/color] the kitchen, and by the time you're done, the [color=cyan]FISH[/color] will be ready.
 You: o..okay... [#emotion=sad]
+do State.kitchen_quest = State.KitchenQuest.QUEST_IN_PROGRESS
 => END 
 
 ~ quest_incomplete
-(if has bucket and mop)
-Martha: Well, if you have what you need, go ahead and start cleaning the floor. [#emotion=neutral]
-(else)
-Martha: What? [#emotion=mad]
-You: um... it's nothing... [#emotion=sad]
-Martha: You want something. What do you want. [#emotion=mad]
-It may be best to just walk away.
+if Inventory.has_item(Inventory.Item.BUCKET) and Inventory.has_item(Inventory.Item.MOP):
+	Martha: Well, if you have what you need, go ahead and start cleaning the floor. [#emotion=neutral]
+else:
+	Martha: What? [#emotion=mad]
+	You: um... it's nothing... [#emotion=sad]
+	Martha: You want something. What do you want. [#emotion=mad]
+	It may be best to just walk away.
 => END
 
 ~ quest_complete
- Martha: Thanks for [color=yellow]CLEANING[/color] up the kitchen. [#emotion=neutral]
- You: no problem! [#emotion=neutral]
- Martha: Here's your [color=cyan]FISH[/color]. [#emotion=neutral]
- You: thanks! [#emotion=neutral]
- You absorb the [color=cyan]FISH[/color].
+if State.martha_post == 0:
+	Martha: Thanks for [color=yellow]CLEANING[/color] up the kitchen. [#emotion=neutral]
+	You: no problem! [#emotion=neutral]
+	Martha: Here's your [color=cyan]FISH[/color]. [#emotion=neutral]
+	You: thanks! [#emotion=neutral]
+	You absorb the [color=cyan]FISH[/color].
+	do Inventory.add_item(Inventory.Item.FISH)
+	do State.martha_post += 1
+else:
+	=> postquest
 => END
 
 ~ postquest
@@ -49,41 +63,43 @@ You don't think you want to tell them that it wasn't for you.
 => END 
 
 ~ eggy
-First conversation
-You: what's cookin' good-lookin'! [#emotion=happy]
-Eggy: you think I'm good-looking? [#emotion=surprised]
-You: oh [#emotion=surprised]
-You: well, it was like, a figure of speech. [#emotion=neutral]
-Eggy: huh? [#emotion=neutral]
-You: like... [#emotion=neutral]
-You: um...
-Eggy: so you don't think I'm good-looking? [#emotion=sad]
-You: well like... i don't NOT think that... [#emotion=surprised]
-You: but i don't, like... especially think it... either... [#emotion=neutral]
-Eggy: oh. [#emotion=sad]
-You: ... [#emotion=neutral]
-You: so what's cooking?
-Eggy: I'm baking something. [#emotion=neutral]
-You: oh! cool! [#emotion=neutral]
-Eggy: yeah. [#emotion=neutral]
-You: love baking! haha. [#emotion=neutral]
-Eggy: yeah. [#emotion=neutral]
-You: ... [#emotion=neutral]
-After
-You: what's your favorite thing to bake? i like cookies! [#emotion=neutral]
-Eggy: yeah, those are pretty good. [#emotion=neutral]
-You: cool. [#emotion=neutral]
+if State.eggy_interactions == 0:
+	You: what's cookin' good-lookin'! [#emotion=happy]
+	Eggy: you think I'm good-looking? [#emotion=surprised]
+	You: oh [#emotion=surprised]
+	You: well, it was like, a figure of speech. [#emotion=neutral]
+	Eggy: huh? [#emotion=neutral]
+	You: like... [#emotion=neutral]
+	You: um...
+	Eggy: so you don't think I'm good-looking? [#emotion=sad]
+	You: well like... i don't NOT think that... [#emotion=surprised]
+	You: but i don't, like... especially think it... either... [#emotion=neutral]
+	Eggy: oh. [#emotion=sad]
+	You: ... [#emotion=neutral]
+	You: so what's cooking?
+	Eggy: I'm baking something. [#emotion=neutral]
+	You: oh! cool! [#emotion=neutral]
+	Eggy: yeah. [#emotion=neutral]
+	You: love baking! haha. [#emotion=neutral]
+	Eggy: yeah. [#emotion=neutral]
+	You: ... [#emotion=neutral]
+	do State.eggy_interactions += 1
+else:
+	You: what's your favorite thing to bake? i like cookies! [#emotion=neutral]
+	Eggy: yeah, those are pretty good. [#emotion=neutral]
+	You: cool. [#emotion=neutral]
 => END 
 
 ~ parfait
-First conversation
-You: hey, i had some of those garlic bread sticks you made yesterday! you really cooked with those! [#emotion=neutral]
-Parfait: Huh? Yeah, cooking is my job! [#emotion=neutral]
-You: oh, no, i mean- [#emotion=surprised]
-You: um... [#emotion=neutral]
-You: nevermind.
-Parfait: Okay! [#emotion=neutral]
-After
-Parfait: Hey, tomorrow I'll let you sample my cheesy bread if you want! [#emotion=neutral]
-You: wow! really? thanks! [#emotion=happy]
+if State.parfait_interactions == 0:
+	You: hey, i had some of those garlic bread sticks you made yesterday! you really cooked with those! [#emotion=neutral]
+	Parfait: Huh? Yeah, cooking is my job! [#emotion=neutral]
+	You: oh, no, i mean- [#emotion=surprised]
+	You: um... [#emotion=neutral]
+	You: nevermind.
+	Parfait: Okay! [#emotion=neutral]
+	do State.parfait_interactions += 1
+else:
+	Parfait: Hey, tomorrow I'll let you sample my cheesy bread if you want! [#emotion=neutral]
+	You: wow! really? thanks! [#emotion=happy]
 => END

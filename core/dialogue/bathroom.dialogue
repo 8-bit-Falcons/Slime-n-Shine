@@ -1,3 +1,16 @@
+~ sticky
+if State.bathroom_quest == State.BathroomQuest.PRE_QUEST and State.kitchen_quest >= State.KitchenQuest.QUEST_IN_PROGRESS:
+	=> initiate_quest
+elif State.bathroom_quest == State.BathroomQuest.PRE_QUEST:
+	=> prequest
+elif State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS and Inventory.has_item(Inventory.Item.MARKERS):
+	=> quest_complete
+elif State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS:
+	=> quest_incomplete
+elif State.bathroom_quest == State.BathroomQuest.QUEST_COMPLETE:
+	=> postquest
+=> END
+
 ~ prequest
 Sticky: hihi! [#emotion=happy]
 This slime seriously stinks.
@@ -29,6 +42,7 @@ Sticky: I'm gonna draw a pony! [#emotion=happy]
 Slorp: I'm gonna draw a rainbow! [#emotion=happy]
 Lint: I'm gonna draw a house on fire! [#emotion=happy]
 You: ...alright, i'll get you [color=cyan]SOMETHING TO DRAW WITH[/color]... [#emotion=neutral]
+do State.bathroom_quest = State.BathroomQuest.QUEST_IN_PROGRESS
 => END 
 
 ~ quest_incomplete
@@ -47,8 +61,8 @@ You: ... [#emotion=neutral]
 
 ~ quest_complete
 You: hey bathroom friends! i brought you some [color=cyan]MARKERS[/color]! [#emotion=happy]
-(if you have water)
-You pull out the soggy [color=cyan]MARKERS[/color].
+if Inventory.has_item(Inventory.Item.WATER):
+	You pull out the soggy [color=cyan]MARKERS[/color].
 Bathroom Slimes: yayyyyy! [#char=bathroom_slimes, #emotion=happy]
 They give you a [color=cyan]MOP[/color], which you absorb.
 Sticky: thanks so much, my slimy friend! [#emotion=neutral]
@@ -57,6 +71,8 @@ You: am i especially slimy?
 You: i mean, aren't all slimes slimy? haha
 You: am i more slimy than usual
 Sticky: hehe, pony :3 [#emotion=happy]
+do State.bathroom_quest = State.BathroomQuest.QUEST_COMPLETE
+do Inventory.add_item(Inventory.Item.MOP)
 => END
 
 ~ postquest
@@ -67,31 +83,37 @@ You: very unique! [#emotion=neutral]
 => END 
 
 ~ slorp
-First conversation
-Slorp: ur not allowed to clean the bathroom after. [#emotion=neutral]
-Slorp: u can't take my mess away from me! my mess is special!! [#emotion=sad]
-Slorp: it means so much to me... [#emotion=sad]
-You: i mean, it'll probably have to be cleaned eventually... [#emotion=neutral]
-Slorp: h-how could someone do that to me... [#emotion=sad]
-Slorp sniffles.
-After
-You: isn't it your job to clean the bathroom? [#emotion=neutral]
-Slorp: says who? [#emotion=neutral]
-You: compelling point. [#emotion=neutral]
+if State.bathroom_quest >= State.BathroomQuest.QUEST_IN_PROGRESS:
+	if State.slorp_interactions == 0:
+		Slorp: ur not allowed to clean the bathroom after. [#emotion=neutral]
+		Slorp: u can't take my mess away from me! my mess is special!! [#emotion=sad]
+		Slorp: it means so much to me... [#emotion=sad]
+		You: i mean, it'll probably have to be cleaned eventually... [#emotion=neutral]
+		Slorp: h-how could someone do that to me... [#emotion=sad]
+		Slorp sniffles.
+		do State.slorp_interactions += 1
+	else:
+		You: isn't it your job to clean the bathroom? [#emotion=neutral]
+		Slorp: says who? [#emotion=neutral]
+		You: compelling point. [#emotion=neutral]
+else:
+	Slorp: slorpin' it up! [#emotion=neutral]
+	You: ? [#emotion=neutral]
 => END 
 
 ~ lint
-First conversation
-Lint: heheheh... >:) [#emotion=neutral]
-You: what are you chuckling ominously about? [#emotion=surprised]
-Lint: heheh... that's a secret... >:) [#emotion=neutral]
-You: why would you chuckle out loud if you're not gonna tell me... [#emotion=sad]
-Lint: can't help it... my mischief just overflows... heheheh >:) [#emotion=neutral]
-After
-You: should i be scared? [#emotion=surprised]
-Lint: i dunno... should u? >:) [#emotion=neutral]
-You: hey! that's what I'M asking! [#emotion=neutral]
-Lint: well... [#emotion=neutral]
-Lint: i can be a little scary... if u know what i mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😏[/font_size][/font]
-You: um. [#emotion=neutral]
+if State.lint_interactions == 0:
+	Lint: heheheh... >:) [#emotion=neutral]
+	You: what are you chuckling ominously about? [#emotion=surprised]
+	Lint: heheh... that's a secret... >:) [#emotion=neutral]
+	You: why would you chuckle out loud if you're not gonna tell me... [#emotion=sad]
+	Lint: can't help it... my mischief just overflows... heheheh >:) [#emotion=neutral]
+	do State.lint_interactions += 1
+else:
+	You: should i be scared? [#emotion=surprised]
+	Lint: i dunno... should u? >:) [#emotion=neutral]
+	You: hey! that's what I'M asking! [#emotion=neutral]
+	Lint: well... [#emotion=neutral]
+	Lint: i can be a little scary... if u know what i mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😏[/font_size][/font]
+	You: um. [#emotion=neutral]
 => END

@@ -270,7 +270,7 @@ boards={
 }],
 "id": "10ae34e0d2",
 "label": "Puzzles",
-"scroll_offset": Vector2(-973.147, -2.19427),
+"scroll_offset": Vector2(-359.734, 191.147),
 "things": [{
 "id": &"7b3e684b03",
 "position_offset": Vector2(1080, 440),
@@ -309,8 +309,8 @@ boards={
 "type": 0
 }, {
 "id": &"518543c558",
-"position_offset": Vector2(40, 400),
-"size": Vector2(205.917, 88.5435),
+"position_offset": Vector2(20, 400),
+"size": Vector2(220, 100),
 "text": "Ask garden slimes for bucket to receive quest",
 "type": 1
 }, {
@@ -334,7 +334,7 @@ boards={
 }, {
 "id": &"5622442928",
 "position_offset": Vector2(40, 500),
-"size": Vector2(209.025, 85.4368),
+"size": Vector2(220, 120),
 "text": "Ask bathroom slimes for mop to receive quest ",
 "type": 1
 }, {
@@ -392,7 +392,7 @@ boards={
 "text": "Combine pencil with paper",
 "type": 0
 }],
-"zoom": 0.96735
+"zoom": 0.729898
 }
 }
 minimap_enabled=true

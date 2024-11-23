@@ -249,7 +249,7 @@ libraries = {
 
 [node name="Actionable" parent="Shore" index="3"]
 dialogue_resource = ExtResource("4_j4hx5")
-dialogue_start = "prequest"
+dialogue_start = "shore"
 
 [node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(-22, 240)
