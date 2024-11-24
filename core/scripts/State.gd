@@ -2,6 +2,7 @@ extends Node
 
 
 signal actionable_states_modified
+signal banana_quest_progressed(state: int)
 
 
 const MESS_TILES_SAVE_STATE = preload("res://resources/mess_tiles_save_state.tres")
@@ -19,7 +20,10 @@ enum MeowzersQuest {NO_LETTER, QUEST_STARTED}
 var meowzers_quest = MeowzersQuest.NO_LETTER
 
 enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
-var banana_quest = BananaQuest.SLEEPING
+var banana_quest = BananaQuest.SLEEPING:
+	set(state):
+		banana_quest = state
+		banana_quest_progressed.emit(state)
 var saw_key = false
 
 enum StudyQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
