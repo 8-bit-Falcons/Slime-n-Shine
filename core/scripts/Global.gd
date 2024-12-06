@@ -45,4 +45,41 @@ func prompt_name():
 		
 	input_node.queue_free()
 
+
+# TODO: perhaps make State a Resource so this poorly-scalable function can be avoided.
+# See: https://forum.godotengine.org/t/resetting-multiple-variables-on-game-restart/57401/3
+func reset_game():
+	MC_name = "MC"
+	
+	State.is_intro = true
+	State.meowzers_quest = State.MeowzersQuest.NO_LETTER
+	
+	State.banana_quest = State.BananaQuest.SLEEPING
+	State.saw_key = false
+	
+	State.study_quest = State.StudyQuest.PRE_QUEST
+	State.dew_interactions = 0
+	State.minus_interactions = 0
+	State.lime_interactions = 0
+	
+	State.kitchen_quest = State.KitchenQuest.PRE_QUEST
+	State.martha_interactions = 0
+	State.eggy_interactions = 0
+	State.parfait_interactions = 0
+	
+	State.garden_quest = State.GardenQuest.PRE_QUEST
+	State.shore_post = 0
+	State.mud_pie_interactions = 0
+	State.sherbet_interactions = 0
+	
+	State.bathroom_quest = State.BathroomQuest.PRE_QUEST
+	State.sticky_interactions = 0
+	State.slorp_interactions = 0
+	State.lint_interactions = 0
+	
+	State.actionable_states = 0
+	
+	State.cleaned_kitchen = false
+	State.pulled_weeds = false
+
 # TODO: double #'s for documentation comments

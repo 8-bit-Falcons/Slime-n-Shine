@@ -185,9 +185,12 @@ Meowzers rolls the [color=cyan]SHINY THING[/color] towards you.
 You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥰[/font_size][/font] [#emotion=happy]
 Meowzers: okay. you can leave now. [#emotion=neutral]
 You leave.
+do StageManager.fade_to_black()
 ...
 But what happened between you and Banana last summer??
 Find out in Chapter 2\: Slime & Crime
+do Global.reset_game()
+do StageManager.changeStage(StageManager.CREDITS)
 => END
 
 ~ disabled_door
