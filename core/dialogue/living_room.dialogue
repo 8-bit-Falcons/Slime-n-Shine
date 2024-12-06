@@ -109,6 +109,7 @@ if Inventory.has_item(Inventory.Item.WATER):
 	You pull out the soggy [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Banana.
 else:
 	You [color=yellow]TICKLE[/color] Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
+do Inventory.remove_item(Inventory.Item.TICKLER)
 Banana: H...hmmmnn? [#emotion=sleepy]
 Banana: What...?
 You: hi banana. [#emotion=neutral]
@@ -123,7 +124,6 @@ else
 	- You: to piss you off. [#emotion=neutral]
 	Banana: What... [#emotion=slightly_annoyed]
 	Banana: Ugh. Now I won't be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
-do Inventory.remove_item(Inventory.Item.TICKLER)
 => END
 	
 ~ ask_for_key
@@ -163,9 +163,7 @@ Banana: Moving light!? [#emotion=happy]
 Banana: Must catch!!
 Banana jumps at the light as you move it across the [color=cyan]KEY[/color] on the wall, knocking it onto the floor.
 You: nice! [#emotion=neutral]
-You take the [color=cyan]KEY[/color].
 do Inventory.remove_item(Inventory.Item.MAGNIFYING_GLASS)
-do Inventory.add_item(Inventory.Item.KEY)
 do State.banana_quest = State.BananaQuest.GOT_KEY
 do State.actionable_states_add_flag(State.ActionableStates.KEY_FELL)
 => END

@@ -5,6 +5,7 @@ extends Node2D
 @onready var yarn: StaticBody2D = $Actionables/Yarn
 @onready var key: AnimatedSprite2D = $Actionables/KeyHanger
 @onready var key_actionable: Area2D = $Actionables/KeyHanger/Actionable
+@onready var key_action_area: CollisionShape2D = $Actionables/KeyHanger/Actionable/ActionArea
 @onready var banana: CharacterBody2D = $Banana
 
 
@@ -32,9 +33,17 @@ func _on_actionable_states_modified():
 		yarn.queue_free()
 	
 	if State.actionable_states_check_flag(State.ActionableStates.KEY_FELL):
-		key.play("taken")
-		if is_instance_valid(key_actionable):
-			key_actionable.queue_free()
+		# If the key fell, move the sprite to the floor
+		if not State.actionable_states_check_flag(State.ActionableStates.TOOK_KEY):
+			key.position.y = 112
+			key.play("fallen")
+			key_action_area.position.y = 0
+		# If the key was taken, hide the key
+		else:
+			key.position.y = 48
+			key.play("taken")
+			if is_instance_valid(key_actionable):
+				key_actionable.queue_free()
 
 
 func _on_banana_quest_progressed(state):
