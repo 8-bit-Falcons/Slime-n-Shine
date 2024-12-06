@@ -39,10 +39,14 @@ do State.kitchen_quest = State.KitchenQuest.QUEST_IN_PROGRESS
 if Inventory.has_item(Inventory.Item.BUCKET) and Inventory.has_item(Inventory.Item.MOP):
 	Martha: Well, if you have what you need, go ahead and start cleaning the floor. [#emotion=neutral]
 else:
-	Martha: What? [#emotion=mad]
-	You: um... it's nothing... [#emotion=sad]
-	Martha: You want something. What do you want. [#emotion=mad]
-	It may be best to just walk away.
+	if State.martha_interactions == 0:
+		Martha: What? [#emotion=mad]
+		You: um... it's nothing... [#emotion=sad]
+		Martha: You want something. What do you want. [#emotion=mad]
+		It may be best to just walk away.
+		do State.martha_interactions += 1
+	else:
+		Yeah... maybe you should leave them be for now.
 => END
 
 ~ quest_complete

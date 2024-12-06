@@ -33,15 +33,15 @@ do State.study_quest = State.StudyQuest.QUEST_IN_PROGRESS
 => END
 
 ~ quest_incomplete
-Dew: H2Oh my gosh, where is my [color=cyan]WATER[/color]? [#emotion=surprised]
-You: i used to love that game! [#emotion=happy]
-Dew: Huh? [#emotion=neutral]
-You: what? [#emotion=neutral]
-Dew: ... [#emotion=neutral]
-You: ... [#emotion=neutral]
-Dew: Um. [#emotion=neutral]
-Dew: Have you acquired the [color=cyan]WATER[/color] I requested?
-You: sorry... working on it. [#emotion=neutral]
+if State.dew_interactions == 0:
+	Dew: H2Oh my gosh, where is my [color=cyan]WATER[/color]? [#emotion=surprised]
+	You: i used to love that game! [#emotion=happy]
+	Dew: Huh? [#emotion=neutral]
+	You: what? [#emotion=neutral]
+	do State.dew_interactions += 1
+else:
+	Dew: Have you acquired the [color=cyan]WATER[/color] I requested? [#emotion=neutral]
+	You: sorry... working on it. [#emotion=neutral]
 => END
 
 ~ water

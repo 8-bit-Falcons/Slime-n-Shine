@@ -62,18 +62,21 @@ elif State.actionable_states_check_flag(State.ActionableStates.KEY_FELL) and (no
 => END 
 
 ~ drawer
-if (not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED)) and Inventory.has_item(Inventory.Item.KEY):
-	You use the [color=cyan]KEY[/color] to unlock the drawer.
-	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_UNLOCKED)
-	do Inventory.remove_item(Inventory.Item.KEY)
-	=> take_markers
-elif not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
+if not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
 	It's locked.
 elif State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED) and not State.actionable_states_check_flag(State.ActionableStates.DRAWER_EMPTY):
 	=> take_markers
 else:
 	The drawer is empty.
 => END
+
+~ drawer_use_item
+if Inventory.selected_item() == Inventory.Item.KEY:
+	You use the [color=cyan]KEY[/color] to unlock the drawer.
+	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_UNLOCKED)
+	do Inventory.remove_item(Inventory.Item.KEY)
+	=> take_markers
+	=> END
 
 ~ take_markers
 Inside the drawer is a [color=cyan]BOX OF MARKERS[/color].

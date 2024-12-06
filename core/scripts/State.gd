@@ -28,11 +28,13 @@ var saw_key = false
 
 enum StudyQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
 var study_quest = StudyQuest.PRE_QUEST
+var dew_interactions = 0
 var minus_interactions = 0
 var lime_interactions = 0
 
 enum KitchenQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
 var kitchen_quest = KitchenQuest.PRE_QUEST
+var martha_interactions = 0
 var eggy_interactions = 0
 var parfait_interactions = 0
 
@@ -44,6 +46,7 @@ var sherbet_interactions = 0
 
 enum BathroomQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
 var bathroom_quest = BathroomQuest.PRE_QUEST
+var sticky_interactions = 0
 var slorp_interactions = 0
 var lint_interactions = 0
 

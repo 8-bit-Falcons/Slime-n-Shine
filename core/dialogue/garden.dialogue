@@ -20,7 +20,7 @@ Shore: Oh! [#emotion=neutral]
 ~ initiate_quest
 You: hi garden friend! i was wondering if i could borrow a [color=cyan]BUCKET OF WATER[/color]? [#emotion=neutral]
 Shore: Oh, sure thing, sweetheart! [#emotion=neutral]
-Shore: But if you don't mind, could you [color=yellow]PULL SOME WEEDS[/color] for us first? [#emotion=neutral]
+Shore: But if you don't mind, could you [color=yellow]PULL SOME WEEDS[/color] for us first? They're purple and all over the garden. [#emotion=neutral]
 You: shore Shore! [#emotion=neutral]
 Shore: ? [#emotion=neutral]
 You: sure [#emotion=neutral]
@@ -28,7 +28,7 @@ do State.garden_quest = State.GardenQuest.QUEST_IN_PROGRESS
 => END 
 
 ~ quest_incomplete
-Shore: I know, gardening can be tiring work! But if you could just [color=yellow]PULL THOSE WEEDS[/color] over there, I'd appreciate it greatly. [#emotion=neutral]
+Shore: I know, gardening can be tiring work! But if you could just [color=yellow]PULL THOSE PURPLE WEEDS[/color] over there, I'd appreciate it greatly. [#emotion=neutral]
 You: i'll get right to it! [#emotion=neutral]
 Shore: Thank you, darling. [#emotion=happy]
 => END 

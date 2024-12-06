@@ -105,7 +105,10 @@ Maybe you can wake him up somehow...
 => END
 
 ~ banana_awoken
-You [color=yellow]TICKLE[/color] Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
+if Inventory.has_item(Inventory.Item.WATER):
+	You pull out the soggy [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Banana.
+else:
+	You [color=yellow]TICKLE[/color] Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
 Banana: H...hmmmnn? [#emotion=sleepy]
 Banana: What...?
 You: hi banana. [#emotion=neutral]

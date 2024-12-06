@@ -18,18 +18,25 @@ else:
 => END
 
 ~ prequest
-Sticky: hihi! [#emotion=happy]
-This slime seriously stinks.
-PEE-YEW!
-You: when is the last time you showered? [#emotion=surprised]
-Sticky: ummm... [#emotion=neutral]
-Sticky: i dunno, i don't really have time to...
-You: you are literally a bathroom slime. [#emotion=neutral]
-Sticky: why r u being mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#emotion=sad]
-You: *sigh* [#emotion=neutral]
+if State.sticky_interactions == 0:
+	Sticky: hihi! [#emotion=happy]
+	This slime seriously stinks.
+	PEE-YEW!
+	You: when is the last time you showered? [#emotion=surprised]
+	Sticky: ummm... [#emotion=neutral]
+	Sticky: i dunno, i don't really have time to...
+	You: you are literally a bathroom slime. [#emotion=neutral]
+	Sticky: why r u being mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#emotion=sad]
+	You: *sigh* [#emotion=neutral]
+	do State.sticky_interactions += 1
+else:
+	Sticky: *BIG SNIFFLE* guys... {{Global.MC_name}} is bullying me!! [#emotion=sad]
+	You: i... [#emotion=neutral]
+	You: okay.
 => END 
 
 ~ initiate_quest
+do State.sticky_interactions = 0
 You: hi bathroom friends! do you have a [color=cyan]MOP[/color] in here perchance? [#emotion=neutral]
 Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in here?[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
 You: no! i'm going to [color=yellow]CLEAN[/color] the kitchen! [#emotion=neutral]
@@ -52,17 +59,24 @@ do State.bathroom_quest = State.BathroomQuest.QUEST_IN_PROGRESS
 => END 
 
 ~ quest_incomplete
-Sticky: oh yes... i can sense it... [#emotion=surprised]
-You: what? [#emotion=surprised]
-Sticky: you feel like... *sniff* [#emotion=neutral]
-You: did you just sniff me? [#emotion=surprised]
-Sticky: you feel like someone who is looking to obtain... something stinky... [#emotion=neutral]
-Sticky: hm... but not stinky like what's in here...
-You: and you would really know because of that big sniff you just did. right at me. the sniff you did at me. [#emotion=neutral]
-You: against me, even.
-You: that really felt like an attack and violation against me.
-Sticky: where are my [color=cyan]MARKERS[/color]? [#emotion=sad]
-You: ... [#emotion=neutral]
+if State.sticky_interactions == 0:
+	Sticky: oh yes... i can sense it... [#emotion=surprised]
+	You: what? [#emotion=surprised]
+	Sticky: you feel like... *sniff* [#emotion=neutral]
+	You: did you just sniff me? [#emotion=surprised]
+	Sticky: you feel like someone who is looking to obtain... something stinky... [#emotion=neutral]
+	Sticky: hm... but not stinky like what's in here...
+	You: and you would really know because of that big sniff you just did. right at me. the sniff you did at me. [#emotion=neutral]
+	You: against me, even.
+	You: that really felt like an attack and violation against me.
+	Sticky: where are my [color=cyan]MARKERS[/color]? [#emotion=sad]
+	You: ... [#emotion=neutral]
+	do State.sticky_interactions += 1
+else:
+	Sticky starts to sing a little song.
+	Sticky: oh, [color=cyan]MARKERS[/color], i miss you... [#emotion=sad]
+	Sticky: i'm...
+	Sticky: starker?... without you...
 => END 
 
 ~ quest_complete
