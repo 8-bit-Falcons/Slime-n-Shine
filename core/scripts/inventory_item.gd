@@ -3,12 +3,15 @@ extends Button
 # The ID (and thus the shortcut key) can be set from the editor for testing purposes
 @export var _id: int = 0
 
+@onready var id_label: Label = %IDLabel
+
 signal toggled2(item_name, toggled_on)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Call here in case item is added through editor rather than code
 	set_key(_id)
+	id_label.text = str(_id + 1)
 
 
 # Called when the button is toggled.
@@ -43,6 +46,9 @@ func set_id(id: int):
 	if (id >= 0 and id < 9):
 		_id = id
 		set_key(_id)
+		
+	if id_label:
+		id_label.text = str(_id + 1)
 
 
 func get_id():
