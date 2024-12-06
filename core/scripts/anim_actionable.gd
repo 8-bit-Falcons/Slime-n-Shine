@@ -30,3 +30,4 @@ func action(player) -> void:
 			
 			if save_state.current_frame.values().all(func(x): return x == frames.size() - 1):
 				save_state.all_actions_complete = true
+		Global.animated_actionable_interacted_with.emit()

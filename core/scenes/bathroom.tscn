@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dsu8jaullk6de"]
+[gd_scene load_steps=19 format=3 uid="uid://dsu8jaullk6de"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_wufae"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_citok"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="3_umkle"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="4_x835n"]
 [ext_resource type="Resource" uid="uid://c46eq8tw08h08" path="res://dialogue/bathroom.dialogue" id="5_m38ow"]
+[ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="6_ab1u5"]
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="6_klr83"]
 [ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="7_vjfur"]
 [ext_resource type="Resource" uid="uid://dsmvhnfuqbvua" path="res://dialogue/actionables.dialogue" id="8_wk72y"]
@@ -117,9 +118,10 @@ shape = SubResource("RectangleShape2D_redln")
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
 
-[node name="Sticky" parent="." instance=ExtResource("4_x835n")]
+[node name="Sticky" parent="." node_paths=PackedStringArray("status_bubble") instance=ExtResource("4_x835n")]
 position = Vector2(380, 145)
 idle_anim = "forward"
+status_bubble = NodePath("StatusBubble")
 
 [node name="Sprite2D" parent="Sticky" index="0"]
 frame = 0
@@ -127,6 +129,9 @@ frame = 0
 [node name="Actionable" parent="Sticky" index="3"]
 dialogue_resource = ExtResource("5_m38ow")
 dialogue_start = "sticky"
+
+[node name="StatusBubble" parent="Sticky" instance=ExtResource("6_ab1u5")]
+position = Vector2(0, -22)
 
 [node name="Slorp" parent="." instance=ExtResource("4_x835n")]
 position = Vector2(276, 149)

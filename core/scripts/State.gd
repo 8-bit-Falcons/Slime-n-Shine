@@ -33,7 +33,6 @@ var lime_interactions = 0
 
 enum KitchenQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
 var kitchen_quest = KitchenQuest.PRE_QUEST
-var martha_post = 0
 var eggy_interactions = 0
 var parfait_interactions = 0
 
@@ -89,10 +88,16 @@ func get_NPC_quest_status(npc_name: String):
 			if (garden_quest == GardenQuest.PRE_QUEST
 					and kitchen_quest >= KitchenQuest.QUEST_IN_PROGRESS):
 				return NPCQuestStatus.NEW_QUEST
+			elif (garden_quest == GardenQuest.QUEST_IN_PROGRESS
+					and pulled_weeds):
+				return NPCQuestStatus.NEW_QUEST
 			elif garden_quest == GardenQuest.QUEST_IN_PROGRESS:
 				return NPCQuestStatus.QUEST_IN_PROGRESS
 		"Martha":
 			if kitchen_quest == KitchenQuest.PRE_QUEST:
+				return NPCQuestStatus.NEW_QUEST
+			elif (kitchen_quest == KitchenQuest.QUEST_IN_PROGRESS
+					and cleaned_kitchen):
 				return NPCQuestStatus.NEW_QUEST
 			elif kitchen_quest == KitchenQuest.QUEST_IN_PROGRESS:
 				return NPCQuestStatus.QUEST_IN_PROGRESS

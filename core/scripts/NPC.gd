@@ -17,6 +17,7 @@ const map_player_dir_to_NPC_dir = {"left": "right", "right": "left", "up": "forw
 func _ready():
 	DialogueManager.dialogue_started.connect(_on_dialogue_manager_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_manager_dialogue_ended)
+	Global.animated_actionable_interacted_with.connect(update_status_bubble)
 	
 	idle()
 	update_status_bubble()

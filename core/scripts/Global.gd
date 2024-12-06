@@ -4,6 +4,7 @@ extends Node
 # Request to turn the player sprite to the given direction
 # Options are "left", "right", "up", and "down"
 signal request_player_turn(dir: String)
+signal animated_actionable_interacted_with
 
 
 const user_input = preload("res://scenes/user_input_panel.tscn")
