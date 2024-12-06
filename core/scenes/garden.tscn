@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cljskrsbssk1n"]
+[gd_scene load_steps=27 format=3 uid="uid://cljskrsbssk1n"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_chdeo"]
 [ext_resource type="Script" path="res://scripts/garden.gd" id="1_q2f3x"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="6_ag44c"]
 [ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="7_x3qdb"]
 [ext_resource type="Resource" uid="uid://dsmvhnfuqbvua" path="res://dialogue/actionables.dialogue" id="8_vwie5"]
+[ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="11_lj1al"]
 
 [sub_resource type="Gradient" id="Gradient_jhfax"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -236,8 +237,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_i47il")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
-[node name="Shore" parent="." instance=ExtResource("3_ecdiu")]
+[node name="Shore" parent="." node_paths=PackedStringArray("status_bubble") instance=ExtResource("3_ecdiu")]
 position = Vector2(176, 145)
+status_bubble = NodePath("StatusBubble")
 
 [node name="Sprite2D" parent="Shore" index="0"]
 frame = 7
@@ -250,6 +252,9 @@ libraries = {
 [node name="Actionable" parent="Shore" index="3"]
 dialogue_resource = ExtResource("4_j4hx5")
 dialogue_start = "shore"
+
+[node name="StatusBubble" parent="Shore" instance=ExtResource("11_lj1al")]
+position = Vector2(0, -22)
 
 [node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
 position = Vector2(-22, 240)

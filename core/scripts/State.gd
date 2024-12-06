@@ -136,5 +136,15 @@ func actionable_states_remove_flag(flag):
 	actionable_states_modified.emit()
 
 
-func actionable_states_check_flag(flag) -> bool:
+## Check whether the given flag is true. Must be a member of the ActionableStates enum.
+func actionable_states_check_flag(flag: ActionableStates) -> bool:
 	return actionable_states & (1 << flag)
+
+
+## Check whether all flags in the given array are true.
+func actionable_states_check_flags(flags: Array) -> bool:
+	var flag_check = 0
+	for flag in flags:
+		flag_check |= (1 << flag)
+	
+	return actionable_states & flag_check == flag_check
