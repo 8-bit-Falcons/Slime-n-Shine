@@ -3,6 +3,7 @@ extends Node
 
 signal actionable_states_modified
 signal banana_quest_progressed(state: int)
+signal toaster_started(heat: ToasterStates)
 
 
 const MESS_TILES_SAVE_STATE = preload("res://resources/mess_tiles_save_state.tres")
@@ -52,6 +53,9 @@ var lint_interactions = 0
 
 enum ActionableStates {TOOK_YARN, TOOK_STICK, KEY_FELL, TOOK_KEY, DRAWER_UNLOCKED, DRAWER_OPEN, DRAWER_EMPTY, TOILET_EMPTY}
 var actionable_states = 0
+
+enum ToasterStates {EMPTY, BREAD, TOAST, BURNT_TOAST}
+var toaster = ToasterStates.EMPTY
 
 var cleaned_kitchen = false:
 	get:

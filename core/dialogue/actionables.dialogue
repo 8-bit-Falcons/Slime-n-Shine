@@ -88,6 +88,30 @@ Take the [color=cyan]MARKERS[/color]?
 - No
 => END
 
+~ toaster
+if State.toaster == State.ToasterStates.EMPTY:
+	It's a toaster.
+		Make toast?
+	- Yes
+		What heat setting?
+		- No heat
+			do State.toaster_started.emit(State.ToasterStates.BREAD)
+			do State.toaster = State.ToasterStates.BREAD
+		- Low heat
+			do State.toaster_started.emit(State.ToasterStates.TOAST)
+			do State.toaster = State.ToasterStates.TOAST
+		- High heat
+			do State.toaster_started.emit(State.ToasterStates.BURNT_TOAST)
+			do State.toaster = State.ToasterStates.BURNT_TOAST
+	- No
+elif State.toaster == State.ToasterStates.BREAD:
+	It's bread.
+elif State.toaster == State.ToasterStates.TOAST:
+	You made toast.
+elif State.toaster == State.ToasterStates.BURNT_TOAST:
+	It's burnt toast.
+=> END
+
 ~ test
 hi
 => END

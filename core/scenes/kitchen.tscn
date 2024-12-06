@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://0ma3kkj328i7"]
+[gd_scene load_steps=38 format=3 uid="uid://0ma3kkj328i7"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_257rj"]
@@ -7,8 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_rfijq"]
 [ext_resource type="Texture2D" uid="uid://62aqnxnln00a" path="res://assets/tilesets/toaster/toaster.png" id="4_r8nkq"]
 [ext_resource type="Texture2D" uid="uid://pxv75fxc5rko" path="res://assets/tilesets/kitchen_addons.png" id="5_2ey0h"]
+[ext_resource type="Texture2D" uid="uid://cwmg66rtnwuf1" path="res://assets/tilesets/toaster/toaster w bread no heat.png" id="5_ccw5g"]
 [ext_resource type="Resource" uid="uid://kbk5afhybtlw" path="res://dialogue/kitchen.dialogue" id="5_f5i2q"]
+[ext_resource type="Texture2D" uid="uid://bp1rwrxentuge" path="res://assets/tilesets/toaster/cooking 1 no heat.png" id="6_krtc2"]
+[ext_resource type="Texture2D" uid="uid://bt70abn6w4kgl" path="res://assets/tilesets/toaster/toaster w bread high heat.png" id="7_cav8s"]
 [ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="8_qlqk1"]
+[ext_resource type="Texture2D" uid="uid://bx5monv4lh0at" path="res://assets/tilesets/toaster/cooking 1 high heat.png" id="8_t3qnc"]
+[ext_resource type="Texture2D" uid="uid://dluj6ouh76jo2" path="res://assets/tilesets/toaster/cooking 2 high heat.png" id="9_4l25n"]
+[ext_resource type="Texture2D" uid="uid://txotoir0ydn1" path="res://assets/tilesets/toaster/cooking 3 high heat.png" id="10_fb6qk"]
+[ext_resource type="Texture2D" uid="uid://bm742sop5or62" path="res://assets/tilesets/toaster/burnt toast.png" id="11_th1rq"]
+[ext_resource type="Texture2D" uid="uid://n001nyeovpiv" path="res://assets/tilesets/toaster/toaster w bread low heat.png" id="12_0i42q"]
+[ext_resource type="Texture2D" uid="uid://jabtx6lnvktc" path="res://assets/tilesets/toaster/cooking 1 low heat.png" id="13_d5f1t"]
+[ext_resource type="Texture2D" uid="uid://ds1b8bkuxxls2" path="res://assets/tilesets/toaster/cooking 2 low heat.png" id="14_p1obg"]
+[ext_resource type="Texture2D" uid="uid://b7yoidgtvw1cp" path="res://assets/tilesets/toaster/normal toast.png" id="15_84hhl"]
+[ext_resource type="Script" path="res://scripts/toaster.gd" id="16_3gbqf"]
+[ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="16_76bct"]
+[ext_resource type="Resource" uid="uid://dsmvhnfuqbvua" path="res://dialogue/actionables.dialogue" id="17_isabq"]
 
 [sub_resource type="Gradient" id="Gradient_g2tq5"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -30,6 +44,95 @@ size = Vector2(45, 18.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6u0ly"]
 size = Vector2(18.5, 33.25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyucx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ccw5g")
+}],
+"loop": true,
+"name": &"bread",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_th1rq")
+}],
+"loop": true,
+"name": &"burnt_toast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_r8nkq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ccw5g")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_krtc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ccw5g")
+}],
+"loop": false,
+"name": &"make_bread",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("7_cav8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t3qnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4l25n")
+}, {
+"duration": 2.0,
+"texture": ExtResource("10_fb6qk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_th1rq")
+}],
+"loop": false,
+"name": &"make_burnt_toast",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("12_0i42q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d5f1t")
+}, {
+"duration": 2.0,
+"texture": ExtResource("14_p1obg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_84hhl")
+}],
+"loop": false,
+"name": &"make_toast",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_84hhl")
+}],
+"loop": true,
+"name": &"toast",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7gm4"]
+height = 42.0
 
 [sub_resource type="Animation" id="Animation_yrct1"]
 resource_name = "back"
@@ -168,9 +271,17 @@ next_scene = "res://scenes/living_room.tscn"
 player_coords = Vector2(69, 183)
 player_dir = "right"
 
-[node name="Toaster" type="Sprite2D" parent="."]
+[node name="Toaster" type="AnimatedSprite2D" parent="."]
 position = Vector2(333, 83)
-texture = ExtResource("4_r8nkq")
+sprite_frames = SubResource("SpriteFrames_wyucx")
+script = ExtResource("16_3gbqf")
+
+[node name="Actionable" parent="Toaster" instance=ExtResource("16_76bct")]
+dialogue_resource = ExtResource("17_isabq")
+dialogue_start = "toaster"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toaster/Actionable"]
+shape = SubResource("CapsuleShape2D_h7gm4")
 
 [node name="Microwave" type="Sprite2D" parent="."]
 position = Vector2(304, 83)
