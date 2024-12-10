@@ -45,6 +45,12 @@ func idle():
 	$AnimationPlayer.play(idle_anim)
 
 
+func play_anim(anim: String):
+	$AnimationPlayer.play(anim)
+	await $AnimationPlayer.animation_finished
+	idle()
+
+
 func hide_status_bubble():
 	if status_bubble:
 		status_bubble.visible = false

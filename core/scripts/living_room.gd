@@ -46,8 +46,13 @@ func _on_actionable_states_modified():
 				key_actionable.queue_free()
 
 
+## Set up for being able to trigger magnifying glass scene
 func _on_banana_quest_progressed(state):
-	if state == State.BananaQuest.AWAKE:
+	if state >= State.BananaQuest.AWAKE:
 		banana.idle_anim = "forward"
 		banana.idle()
 		banana.get_node("Actionable").set("NPC", banana)
+
+
+func _drop_key():
+	State.actionable_states_add_flag(State.ActionableStates.KEY_FELL)

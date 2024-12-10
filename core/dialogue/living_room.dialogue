@@ -161,10 +161,13 @@ Meowzers: hmm... [#emotion=neutral]
 You shine light at the wall using the [color=cyan]MAGNIFYING GLASS[/color], creating a faux laser pointer.
 Banana: Moving light!? [#emotion=happy]
 Banana: Must catch!!
-Banana jumps at the light as you move it across the [color=cyan]KEY[/color] on the wall, knocking it onto the floor.
+You move the light across the [color=cyan]KEY[/color] on the wall, prompting Banana to jump at it.
+do banana.play_anim("get_key")
+The [color=cyan]KEY[/color] is knocked to the floor.
+do banana.play_anim("walk_back_to_rug")
 You: nice! [#emotion=neutral]
 do Inventory.remove_item(Inventory.Item.MAGNIFYING_GLASS)
-do State.banana_quest = State.BananaQuest.GOT_KEY
+do State.banana_quest = State.BananaQuest.GOT_KEY # just means you won't ask for key again
 do State.actionable_states_add_flag(State.ActionableStates.KEY_FELL)
 => END
 

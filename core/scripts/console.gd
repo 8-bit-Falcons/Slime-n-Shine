@@ -121,5 +121,11 @@ func skip_tutorial():
 	State.meowzers_quest = State.MeowzersQuest.QUEST_STARTED
 
 
+func banana_magnifying_glass_setup():
+	skip_tutorial()
+	add_inventory_item("magnifying glass")
+	State.banana_quest = State.BananaQuest.ASKED_FOR_KEY
+
+
 func _on_close_requested():
 	_toggle()

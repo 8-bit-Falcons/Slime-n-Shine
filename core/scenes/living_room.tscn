@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=80 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="Script" path="res://scripts/living_room.gd" id="1_xp5h6"]
@@ -36,6 +36,10 @@
 [ext_resource type="Resource" uid="uid://cij6120cci4hh" path="res://dialogue/living_room.dialogue" id="31_ror41"]
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="33_t0uhi"]
 [ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="34_8mwoh"]
+[ext_resource type="Texture2D" uid="uid://d3ul4pmxywjwl" path="res://assets/sprites/walk_cycle/1.png" id="36_m88jh"]
+[ext_resource type="Texture2D" uid="uid://bw3lepa0fhbiv" path="res://assets/sprites/walk_cycle/1a.png" id="37_prn3j"]
+[ext_resource type="Texture2D" uid="uid://b71w3m6liabqs" path="res://assets/sprites/walk_cycle/2.png" id="38_d1lch"]
+[ext_resource type="AudioStream" uid="uid://bqtuj0v5j5dqm" path="res://assets/sounds/slide-whistle-down.mp3" id="39_01ywe"]
 
 [sub_resource type="Gradient" id="Gradient_ajcr1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -591,6 +595,43 @@ _data = {
 "right": SubResource("Animation_13qj3")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qux3k"]
+atlas = ExtResource("36_m88jh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ogpr"]
+atlas = ExtResource("37_prn3j")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn5wm"]
+atlas = ExtResource("38_d1lch")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ve1g3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qux3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ogpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn5wm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn5wm")
+}],
+"loop": true,
+"name": &"still",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_6ple0"]
 resource_name = "asleep"
 tracks/0/type = "value"
@@ -744,6 +785,99 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_8diqf"]
+resource_name = "get_key"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WalkingSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WalkingSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.86667, 2.03333, 2.1, 2.2, 2.36667, 2.5, 2.56667, 2.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -23), Vector2(110, -94.067), Vector2(120, -118), Vector2(124, -121), Vector2(128, -124), Vector2(139, -129), Vector2(150, -127), Vector2(155, -120), Vector2(159, -103)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WalkingSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"default", &"still"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WalkingSprite2D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_drop_key"
+}]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SFX")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("39_01ywe")
+}],
+"times": PackedFloat32Array(1.8)
+}
+tracks/6/use_blend = true
+
 [sub_resource type="Animation" id="Animation_r4op6"]
 resource_name = "left"
 tracks/0/type = "value"
@@ -846,13 +980,143 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_jj7b0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WalkingSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WalkingSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -23)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WalkingSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"still"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WalkingSprite2D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kij3j"]
+resource_name = "walk_back_to_rug"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WalkingSprite2D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WalkingSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WalkingSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(159, -103), Vector2(5, -26)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WalkingSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_27nrv"]
 _data = {
+"RESET": SubResource("Animation_jj7b0"),
 "asleep": SubResource("Animation_6ple0"),
 "back": SubResource("Animation_mgfvk"),
 "forward": SubResource("Animation_c3rnv"),
+"get_key": SubResource("Animation_8diqf"),
 "left": SubResource("Animation_r4op6"),
-"right": SubResource("Animation_rjpx7")
+"right": SubResource("Animation_rjpx7"),
+"walk_back_to_rug": SubResource("Animation_kij3j")
 }
 
 [node name="LivingRoom" type="Node2D"]
@@ -1123,14 +1387,21 @@ script = ExtResource("5_6ve0k")
 idle_anim = "asleep"
 center_pos = NodePath("CenterPos")
 status_bubble = NodePath("StatusBubble")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Banana"]
 texture = ExtResource("6_yib4y")
 offset = Vector2(0, -9)
 hframes = 4
 vframes = 4
-frame = 5
+frame = 2
+
+[node name="WalkingSprite2D" type="AnimatedSprite2D" parent="Banana"]
+visible = false
+position = Vector2(0, -23)
+sprite_frames = SubResource("SpriteFrames_ve1g3")
+animation = &"still"
+autoplay = "default"
+flip_h = true
 
 [node name="NeutralCollision" type="CollisionPolygon2D" parent="Banana"]
 position = Vector2(0, -9)
@@ -1146,6 +1417,8 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_27nrv")
 }
+
+[node name="SFX" type="AudioStreamPlayer" parent="Banana"]
 
 [node name="Actionable" parent="Banana" instance=ExtResource("4_1wb8c")]
 position = Vector2(0, -9)
