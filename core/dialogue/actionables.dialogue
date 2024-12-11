@@ -1,3 +1,5 @@
+import "res://dialogue/living_room.dialogue" as living_room
+
 ~ invalid_use
 % Not quite sure how you'd use this on that.
 % That doesn't seem right...
@@ -59,7 +61,17 @@ elif State.actionable_states_check_flag(State.ActionableStates.KEY_FELL) and (no
 		do Inventory.add_item(Inventory.Item.KEY)
 		do State.actionable_states_add_flag(State.ActionableStates.TOOK_KEY)
 	- No
-=> END 
+=> END
+
+~ key_use_item
+if Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.ASKED_FOR_KEY:
+	=> living_room/banana_magnifying_glass
+elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS:
+	It looks like you can reflect light onto the wall with this.
+	You: wow! i wonder if that'll come in handy for something! [#emotion=neutral]
+else:
+	=> invalid_use
+=> END
 
 ~ drawer
 if not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
@@ -76,7 +88,9 @@ if Inventory.selected_item() == Inventory.Item.KEY:
 	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_UNLOCKED)
 	do Inventory.remove_item(Inventory.Item.KEY)
 	=> take_markers
-	=> END
+else:
+	=> invalid_use
+=> END
 
 ~ take_markers
 Inside the drawer is a [color=cyan]BOX OF MARKERS[/color].
