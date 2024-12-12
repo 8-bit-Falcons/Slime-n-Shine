@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsu8jaullk6de"]
+[gd_scene load_steps=20 format=3 uid="uid://dsu8jaullk6de"]
 
+[ext_resource type="Script" path="res://scripts/bathroom.gd" id="1_t8yyf"]
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_wufae"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_citok"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="3_umkle"]
@@ -41,6 +42,7 @@ height = 54.0
 
 [node name="Bathroom" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_t8yyf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

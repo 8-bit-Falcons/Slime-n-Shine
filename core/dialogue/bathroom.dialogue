@@ -39,6 +39,9 @@ else:
 => END 
 
 ~ initiate_quest
+do sticky.look_at_player(player)
+do slorp.look_at_player(player)
+do lint.look_at_player(player)
 do State.sticky_interactions = 0
 You: hi bathroom friends! do you have a [color=cyan]MOP[/color] in here perchance? [#emotion=neutral]
 Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in here?[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
@@ -83,6 +86,9 @@ else:
 => END 
 
 ~ quest_complete
+do sticky.look_at_player(player)
+do slorp.look_at_player(player)
+do lint.look_at_player(player)
 You: hey bathroom friends! i brought you some [color=cyan]MARKERS[/color]! [#emotion=happy]
 if Inventory.has_item(Inventory.Item.WATER):
 	You pull out the soggy [color=cyan]MARKERS[/color].
@@ -125,6 +131,16 @@ else:
 	You: ? [#emotion=neutral]
 => END 
 
+~ slorp_use_item
+if Inventory.selected_item() == Inventory.Item.MARKERS:
+	if State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS:
+		=> quest_complete
+	else:
+		You: to be honest, i fear what mess would be created if i gave these to the bathroom slimes...[#emotion=neutral]
+else:
+	=> invalid_use
+=> END
+
 ~ lint
 if State.lint_interactions == 0:
 	Lint: heheheh... >:) [#emotion=neutral]
@@ -140,6 +156,16 @@ else:
 	Lint: well... [#emotion=neutral]
 	Lint: i can be a little scary... if u know what i mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😏[/font_size][/font]
 	You: um. [#emotion=neutral]
+=> END
+
+~ lint_use_item
+if Inventory.selected_item() == Inventory.Item.MARKERS:
+	if State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS:
+		=> quest_complete
+	else:
+		You: to be honest, i fear what mess would be created if i gave these to the bathroom slimes...[#emotion=neutral]
+else:
+	=> invalid_use
 => END
 
 ~ invalid_use
