@@ -146,6 +146,8 @@ do State.banana_quest = State.BananaQuest.ASKED_FOR_KEY
 You: hey- [next=auto] [#emotion=sad]
 % Banana: Go away. [#emotion=slightly_annoyed]
 % Banana: ... [#emotion=slightly_annoyed]
+if (State.banana_quest == State.BananaQuest.ASKED_FOR_KEY and Inventory.has_item(Inventory.Item.MAGNIFYING_GLASS)):
+	You: (i wonder if there's a way to make a cat go where i want them to...) [#emotion=neutral]
 => END 
 
 ~ banana_meowzers

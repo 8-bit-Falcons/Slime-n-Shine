@@ -90,7 +90,11 @@ func get_NPC_quest_status(npc_name: String):
 			elif meowzers_quest == MeowzersQuest.QUEST_STARTED:
 				return NPCQuestStatus.QUEST_IN_PROGRESS
 		"Banana":
-			if banana_quest == BananaQuest.AWAKE and saw_key:
+			if (actionable_states_check_flag(ActionableStates.KEY_FELL)):
+				return NPCQuestStatus.NO_QUEST
+			elif ((banana_quest != BananaQuest.ASKED_FOR_KEY and saw_key)
+					or (banana_quest == BananaQuest.ASKED_FOR_KEY
+					and Inventory.has_item(Inventory.Item.MAGNIFYING_GLASS))):
 				return NPCQuestStatus.NEW_QUEST
 			elif banana_quest == BananaQuest.ASKED_FOR_KEY:
 				return NPCQuestStatus.QUEST_IN_PROGRESS

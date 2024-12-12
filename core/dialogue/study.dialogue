@@ -69,7 +69,7 @@ else:
 => END
 
 ~ get_magnifying_glass
-Dew: Here, as a token of my gratitude, take this [color=cyan]MAGNIFYING GLASS[/color].
+Dew: Here, as a token of my gratitude, take this [color=cyan]MAGNIFYING GLASS[/color]. It can be used to see things more closely... or to reflect light! [#emotion=neutral]
 You: oh! thanks! [#emotion=neutral]
 You absorb the [color=cyan]MAGNIFYING GLASS[/color].
 do State.study_quest = State.StudyQuest.QUEST_COMPLETE
