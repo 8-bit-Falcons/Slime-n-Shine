@@ -27,6 +27,9 @@ var banana_quest = BananaQuest.SLEEPING:
 		banana_quest_progressed.emit(state)
 var saw_key = false
 
+enum ChanceInteractionStates {NOT_SEEN, OCCURRING, SEEN_AND_OCCURRING, SEEN}
+var chance_interaction = ChanceInteractionStates.NOT_SEEN
+
 enum StudyQuest {PRE_QUEST, QUEST_IN_PROGRESS, QUEST_COMPLETE}
 var study_quest = StudyQuest.PRE_QUEST
 var dew_interactions = 0

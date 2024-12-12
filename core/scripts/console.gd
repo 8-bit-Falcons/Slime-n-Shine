@@ -120,7 +120,7 @@ func skip_tutorial():
 	State.is_intro = false
 	State.meowzers_quest = State.MeowzersQuest.QUEST_STARTED
 
-
+## Setup for being able to trigger magnifying glass scene
 func banana_magnifying_glass_setup():
 	skip_tutorial()
 	add_inventory_item("magnifying glass")

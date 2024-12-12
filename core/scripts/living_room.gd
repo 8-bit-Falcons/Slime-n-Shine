@@ -6,7 +6,23 @@ extends Node2D
 @onready var key: AnimatedSprite2D = $Actionables/KeyHanger
 @onready var key_actionable: Area2D = $Actionables/KeyHanger/Actionable
 @onready var key_action_area: CollisionShape2D = $Actionables/KeyHanger/Actionable/ActionArea
+@onready var meowzers: CharacterBody2D = $Meowzers
 @onready var banana: CharacterBody2D = $Banana
+
+var chance_interaction = false
+
+
+func _enter_tree() -> void:
+	# Determine whether there will be a chance interaction
+	if (not (State.is_intro
+			or Inventory.has_item(Inventory.Item.MAGNIFYING_GLASS)
+			or Inventory.has_item(Inventory.Item.KEY)
+			or State.banana_quest == State.BananaQuest.SLEEPING)
+			and State.chance_interaction == State.ChanceInteractionStates.NOT_SEEN):
+		var rand = randi_range(1, 3)
+		if rand == 1:
+			chance_interaction = true
+			State.chance_interaction = State.ChanceInteractionStates.OCCURRING
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,14 +34,26 @@ func _ready():
 		State.is_intro = false
 	
 	_on_actionable_states_modified()
-	_on_banana_quest_progressed(State.banana_quest)
 	State.actionable_states_modified.connect(_on_actionable_states_modified)
 	State.banana_quest_progressed.connect(_on_banana_quest_progressed)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _exit_tree() -> void:
+	if State.chance_interaction == State.ChanceInteractionStates.OCCURRING:
+		State.chance_interaction = State.ChanceInteractionStates.NOT_SEEN
+	elif State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+		State.chance_interaction = State.ChanceInteractionStates.SEEN
+
+
+func _on_child_entered_tree(node: Node) -> void:
+	if node.name == "Banana":
+		_on_banana_quest_progressed(State.banana_quest, node)
+	
+	# Set up chance interaction between Banana and Meowzers
+	if (chance_interaction and (node.name == "Banana" or node.name == "Meowzers")):
+		node.get_node("Actionable").set("NPC", null)
+		node.idle_anim = "chance_interaction"
+		node.play_anim("chance_interaction")
 
 
 func _on_actionable_states_modified():
@@ -46,12 +74,11 @@ func _on_actionable_states_modified():
 				key_actionable.queue_free()
 
 
-## Set up for being able to trigger magnifying glass scene
-func _on_banana_quest_progressed(state):
+func _on_banana_quest_progressed(state, b=banana):
 	if state >= State.BananaQuest.AWAKE:
-		banana.idle_anim = "forward"
-		banana.idle()
-		banana.get_node("Actionable").set("NPC", banana)
+		b.idle_anim = "forward"
+		b.idle()
+		b.get_node("Actionable").set("NPC", b)
 
 
 func _drop_key():

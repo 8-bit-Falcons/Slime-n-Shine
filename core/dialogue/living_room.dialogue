@@ -29,6 +29,8 @@ if State.meowzers_quest == State.MeowzersQuest.NO_LETTER and Inventory.has_item(
 	You: i need to give meowzers the [color=cyan]LETTER[/color]! [#emotion=neutral]
 elif State.meowzers_quest == State.MeowzersQuest.NO_LETTER
 	You: i need to write a [color=cyan]LETTER[/color] first! [#emotion=neutral]
+elif State.chance_interaction == State.ChanceInteractionStates.OCCURRING or State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+	=> banana_meowzers
 elif State.meowzers_quest == State.MeowzersQuest.QUEST_STARTED
 	=> meowzers_quest_incomplete
 => END
@@ -78,6 +80,8 @@ do Inventory.remove_item(Inventory.Item.LETTER)
 ~ banana
 if State.meowzers_quest == State.MeowzersQuest.NO_LETTER:
 	You: i want to write meowzers a [color=cyan]LETTER[/color] right away! [#emotion=neutral]
+elif State.chance_interaction == State.ChanceInteractionStates.OCCURRING or State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+	=> banana_meowzers
 elif State.banana_quest == State.BananaQuest.SLEEPING:
 	=> banana_sleeping
 elif State.banana_quest < State.BananaQuest.ASKED_FOR_KEY and State.saw_key
@@ -145,16 +149,20 @@ You: hey- [next=auto] [#emotion=sad]
 => END 
 
 ~ banana_meowzers
-Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
-Meowzers: thanks! [#emotion=happy]
-Banana: What's it about? [#emotion=happy]
-Meowzers: huh? [#emotion=neutral]
-Banana: What's it about? [#emotion=happy]
-Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
-Banana: Yeah! [#emotion=happy]
-Meowzers: i don't- what does that mean? [#emotion=neutral]
-Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
-Meowzers: hmm... [#emotion=neutral]
+if State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+	You: i don't want to interrupt their... riveting conversation. [#emotion=neutral]
+else:
+	Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
+	Meowzers: thanks! [#emotion=happy]
+	Banana: What's it about? [#emotion=happy]
+	Meowzers: huh? [#emotion=neutral]
+	Banana: What's it about? [#emotion=happy]
+	Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
+	Banana: Yeah! [#emotion=happy]
+	Meowzers: i don't- what does that mean? [#emotion=neutral]
+	Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
+	Meowzers: hmm... [#emotion=neutral]
+	set State.chance_interaction = State.ChanceInteractionStates.SEEN_AND_OCCURRING
 => END
 
 ~ banana_magnifying_glass

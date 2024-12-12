@@ -57,6 +57,8 @@ func reset_game():
 	State.banana_quest = State.BananaQuest.SLEEPING
 	State.saw_key = false
 	
+	State.chance_interaction = State.ChanceInteractionStates.NOT_SEEN
+	
 	State.study_quest = State.StudyQuest.PRE_QUEST
 	State.dew_interactions = 0
 	State.minus_interactions = 0
