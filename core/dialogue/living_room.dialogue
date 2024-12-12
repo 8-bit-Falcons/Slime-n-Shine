@@ -124,8 +124,47 @@ elif State.banana_quest == State.BananaQuest.SLEEPING and Inventory.selected_ite
 	You: but maybe i can wake him up another way...
 elif State.banana_quest == State.BananaQuest.SLEEPING
 	You: he's sleeping! i don't think this will wake him up! [#emotion=neutral]
+elif Inventory.selected_item() == Inventory.Item.FISH:
+	=> give_banana_fish
 else
 	Banana: ... [#emotion=slightly_annoyed]
+=> END
+
+~ give_banana_fish
+if not State.tried_giving_banana_fish:
+	You: all this time, i've been chasing...[#emotion=neutral]
+	You: chasing a rush... the rush of a [color=cyan]SHINY THING[/color]...
+		but will that rush last?
+	You: what if, instead...
+	You: i repaired a relationship that has long been broken?[#emotion=sad]
+else:
+	You: unless...[#emotion=neutral]
+Will you give the [color=cyan]FISH[/color] to Banana?
+- Yes
+	You: hey, banana...[#emotion=neutral]
+	Banana: Go away. [#emotion=slightly_annoyed]
+	You: no, wait—i have something for you.[#emotion=neutral]
+	You present Banana with the [color=cyan]FISH[/color].
+	Banana: [color=cyan]FISH[/color]!?[#emotion=happy]
+	Banana: But why? [#emotion=neutral]
+	You: take it as an apology for waking you up,
+		...and for what happened last summer...[#emotion=neutral]
+	You: i hope that from now on, we can co-exist peacefully...
+	Banana: ... [#emotion=neutral]
+	Banana: I never thought you'd apologize.
+	Banana: ...I'll think about it.
+		Thanks.
+	do Inventory.remove_item(Inventory.Item.FISH)
+	Banana: ...[#emotion=happy]
+	You: (even though i didn't get a [color=cyan]SHINY THING[/color]...)[#emotion=neutral]
+	You: i did a [color=cyan]GOOD THING[/color]. [#emotion=happy]
+	=> ending_fade
+- No
+	if not State.tried_giving_banana_fish:
+		You: haha why would i do that? i hate cats![#emotion=neutral]
+		set State.tried_giving_banana_fish = true
+	else:
+		You: jkjk[#emotion=neutral]
 => END
 
 ~ banana_sleeping
@@ -233,6 +272,10 @@ Meowzers rolls the [color=cyan]SHINY THING[/color] towards you.
 You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥰[/font_size][/font] [#emotion=happy]
 Meowzers: okay. you can leave now. [#emotion=neutral]
 You leave.
+=> ending_fade
+=> END
+
+~ ending_fade
 do StageManager.fade_to_black()
 ...
 But what happened between you and Banana last summer??

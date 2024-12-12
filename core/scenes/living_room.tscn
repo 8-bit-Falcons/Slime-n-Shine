@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=84 format=3 uid="uid://bmmst0fey36mw"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="Script" path="res://scripts/living_room.gd" id="1_xp5h6"]

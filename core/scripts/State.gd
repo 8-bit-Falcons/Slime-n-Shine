@@ -27,6 +27,7 @@ var banana_quest = BananaQuest.SLEEPING:
 		banana_quest = state
 		banana_quest_progressed.emit(state)
 var saw_key = false
+var tried_giving_banana_fish = false
 
 enum ChanceInteractionStates {NOT_SEEN, OCCURRING, SEEN_AND_OCCURRING, SEEN}
 var chance_interaction = ChanceInteractionStates.NOT_SEEN
