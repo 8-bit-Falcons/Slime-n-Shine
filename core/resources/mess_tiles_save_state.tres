@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AnimActionableResource" load_steps=2 format=3 uid="uid://cb8tqyxrc2nkj"]
+
+[ext_resource type="Script" path="res://scripts/anim_actionable_save_state.gd" id="1_i1xi6"]
+
+[resource]
+script = ExtResource("1_i1xi6")
+current_frame = {}
+all_actions_complete = false

@@ -1,8 +1,18 @@
+import "res://dialogue/living_room.dialogue" as living_room
+
+~ invalid_use
+% Not quite sure how you'd use this on that.
+% That doesn't seem right...
+% Are you feeling a bit silly?
+=> END
+
 ~ yarn
 There is [color=cyan]YARN[/color] on the ground.
 	Take it?
 - Yes
 	You absorb the [color=cyan]YARN[/color].
+	do Inventory.add_item(Inventory.Item.YARN)
+	do State.actionable_states_add_flag(State.ActionableStates.TOOK_YARN)
 - No
 => END
 
@@ -11,50 +21,109 @@ There is a [color=cyan]STICK[/color] on the ground.
 	Take it?
 - Yes
 	You absorb the [color=cyan]STICK[/color].
+	do Inventory.add_item(Inventory.Item.STICK)
+	do State.actionable_states_add_flag(State.ActionableStates.TOOK_STICK)
 - No
 => END
 
 ~ water
-There is [color=cyan]WATER[/color] in the toilet.
-	Take it?
-- Yes
-	(if MC has other items in their inventory)
-	While you've absorbed other items? Really?
+if not State.actionable_states_check_flag(State.ActionableStates.TOILET_EMPTY):
+	There is [color=cyan]WATER[/color] in the toilet.
+		Take it?
 	- Yes
-		You absorb the [color=cyan]WATER[/color].
+		if Inventory.get_num_items() > 0:
+			While you've absorbed other items? Really?
+			- Yes
+				=> take_water
+			- No
+		else:
+			=> take_water
 	- No
-- No
+else:
+	Slippery.
+=> END
+
+~ take_water
+You absorb the [color=cyan]WATER[/color].
+do Inventory.add_item(Inventory.Item.WATER)
+do State.actionable_states_add_flag(State.ActionableStates.TOILET_EMPTY)
 => END
 
 ~ key
-(if hanging)
-There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
-(if fallen)
-There is a [color=cyan]KEY[/color] on the ground.
-	Take it?
-- Yes
-	You absorb the [color=cyan]KEY[/color].
-- No
-=> END 
+if not State.actionable_states_check_flag(State.ActionableStates.KEY_FELL):
+	There is a [color=cyan]KEY[/color] hanging on the wall here, but you can't reach it.
+	do State.saw_key = true
+elif State.actionable_states_check_flag(State.ActionableStates.KEY_FELL) and (not State.actionable_states_check_flag(State.ActionableStates.TOOK_KEY)):
+	There is a [color=cyan]KEY[/color] on the ground.
+		Take it?
+	- Yes
+		You absorb the [color=cyan]KEY[/color].
+		do Inventory.add_item(Inventory.Item.KEY)
+		do State.actionable_states_add_flag(State.ActionableStates.TOOK_KEY)
+	- No
+=> END
+
+~ key_use_item
+if Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.ASKED_FOR_KEY:
+	=> living_room/banana_magnifying_glass
+elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS:
+	It looks like you can reflect light onto the wall with this.
+	You: wow! i wonder if that'll come in handy for something! [#emotion=neutral]
+else:
+	=> invalid_use
+=> END
 
 ~ drawer
-(if locked)
-It's locked.
-(if unlockable)
-You use the [color=cyan]KEY[/color] to unlock the drawer.
-Inside is a [color=cyan]BOX OF MARKERS[/color].
-Take the [color=cyan]MARKERS[/color]?
-- Yes
-	You absorb the [color=cyan]MARKERS[/color].
-- No
-(if unlocked + markers)
+if not State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED):
+	It's locked.
+elif State.actionable_states_check_flag(State.ActionableStates.DRAWER_UNLOCKED) and not State.actionable_states_check_flag(State.ActionableStates.DRAWER_EMPTY):
+	=> take_markers
+else:
+	The drawer is empty.
+=> END
+
+~ drawer_use_item
+if Inventory.selected_item() == Inventory.Item.KEY:
+	You use the [color=cyan]KEY[/color] to unlock the drawer.
+	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_UNLOCKED)
+	do Inventory.remove_item(Inventory.Item.KEY)
+	=> take_markers
+else:
+	=> invalid_use
+=> END
+
+~ take_markers
 Inside the drawer is a [color=cyan]BOX OF MARKERS[/color].
 Take the [color=cyan]MARKERS[/color]?
 - Yes
 	You absorb the [color=cyan]MARKERS[/color].
+	do Inventory.add_item(Inventory.Item.MARKERS)
+	do State.actionable_states_add_flag(State.ActionableStates.DRAWER_EMPTY)
 - No
-(if unlocked + empty)
-The drawer is empty.
+=> END
+
+~ toaster
+if State.toaster == State.ToasterStates.EMPTY:
+	It's a toaster.
+		Make toast?
+	- Yes
+		What heat setting?
+		- No heat
+			do State.toaster_started.emit(State.ToasterStates.BREAD)
+			do State.toaster = State.ToasterStates.BREAD
+		- Low heat
+			do State.toaster_started.emit(State.ToasterStates.TOAST)
+			do State.toaster = State.ToasterStates.TOAST
+		- High heat
+			do State.toaster_started.emit(State.ToasterStates.BURNT_TOAST)
+			do State.toaster = State.ToasterStates.BURNT_TOAST
+	- No
+elif State.toaster == State.ToasterStates.BREAD:
+	It's bread.
+elif State.toaster == State.ToasterStates.TOAST:
+	You made toast.
+elif State.toaster == State.ToasterStates.BURNT_TOAST:
+	It's burnt toast.
 => END
 
 ~ test

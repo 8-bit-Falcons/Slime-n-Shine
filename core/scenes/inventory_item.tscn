@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl4yb02emekor"]
+[gd_scene load_steps=8 format=3 uid="uid://bl4yb02emekor"]
 
 [ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_a8igr"]
+[ext_resource type="FontFile" uid="uid://csk5gkm3y16ya" path="res://assets/fonts/NicoPups-Regular.ttf" id="2_8xovq"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tpw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8bf2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1842u"]
 
@@ -14,9 +17,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.87451, 0.67451, 0.121569, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8bf2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tpw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhjxv"]
 
 [node name="InventoryItem" type="Button"]
 texture_filter = 1
@@ -24,12 +25,34 @@ custom_minimum_size = Vector2(42, 42)
 offset_right = 42.0
 offset_bottom = 42.0
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_vhjxv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i1tpw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_m8bf2")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1842u")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2vrpy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_m8bf2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_i1tpw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vhjxv")
 toggle_mode = true
 button_mask = 0
 icon_alignment = 1
 script = ExtResource("1_a8igr")
+
+[node name="IDLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -22.0
+offset_right = -2.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.190762, 0.190762, 0.190762, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_8xovq")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2

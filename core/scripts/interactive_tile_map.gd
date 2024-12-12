@@ -17,6 +17,6 @@ func _ready():
 		if scene_to_load:
 			erase_cell(interactables_layer, tile)
 			var scene = scene_to_load.instantiate()
-			add_child(scene)
 			scene.position = map_to_local(tile)
+			add_child(scene)
 			

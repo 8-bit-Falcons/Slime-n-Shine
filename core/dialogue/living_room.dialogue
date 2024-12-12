@@ -22,26 +22,51 @@ Pressing 1 selects the first item, and so on.
 When an item is selected, you can select another item to try [color=yellow]COMBINING[/color] them.
 => END
 
-~ initiate_quest
-if Inventory.has_item(Inventory.Item.LETTER)
-	You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]
-	Meowzers: oh. thanks. [#emotion=neutral]
-	Your cat “friend” takes the [color=cyan]LETTER[/color] and starts to read it. They squint. Maybe they're dyslexic.
-	Meowzers: i don't like this [color=cyan]LETTER[/color]. [#emotion=unamused]
-	You: oh. why not? [#emotion=surprised]
-	Meowzers: i don't understand it. [#emotion=unamused]
-	You: oh. what do you understand. [#emotion=neutral]
-	Meowzers: [color=cyan]FISH[/color]. [#emotion=neutral]
-	You: oh. that's nice! [#emotion=happy]
-	Meowzers: and i'm really hungry right now [#emotion=hungry]
-	You blink.
-	Meowzers: like i really want some [color=cyan]FISH[/color] right now. [#emotion=hungry]
-	You still don't get it.
-	Meowzers: like some [color=cyan]FISH[/color] would realllllyyyyyy make my day right now [#emotion=hungry]
-	Are you being serious right now.
-	You: oh! i'll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
+############################ MEOWZERS ############################
+## Meowzers hub; navigate to specific interactions from here
+~ meowzers
+if State.meowzers_quest == State.MeowzersQuest.NO_LETTER and Inventory.has_item(Inventory.Item.LETTER)
+	You: i need to give meowzers the [color=cyan]LETTER[/color]! [#emotion=neutral]
+elif State.meowzers_quest == State.MeowzersQuest.NO_LETTER
+	You: i need to write a [color=cyan]LETTER[/color] first! [#emotion=neutral]
+elif State.chance_interaction == State.ChanceInteractionStates.OCCURRING or State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+	=> banana_meowzers
+elif State.meowzers_quest == State.MeowzersQuest.QUEST_STARTED
+	=> meowzers_quest_incomplete
+=> END
+
+~ meowzers_use_item
+if Inventory.selected_item() == Inventory.Item.LETTER
+	=> initiate_quest
+elif Inventory.selected_item() == Inventory.Item.FISH
+	=> ending
 else
-	You: I need to write a [color=cyan]LETTER[/color] first!
+	Meowzers: ... [#emotion=neutral]
+	Meowzers: is this a fish?
+	You: ..no... [#emotion=neutral]
+	Meowzers: then i don't want it. [#emotion=unamused]
+=> END
+
+~ initiate_quest
+You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]
+Meowzers: oh. thanks. [#emotion=neutral]
+Your cat “friend” takes the [color=cyan]LETTER[/color] and starts to read it. They squint. Maybe they're dyslexic.
+Meowzers: i don't like this [color=cyan]LETTER[/color]. [#emotion=unamused]
+You: oh. why not? [#emotion=surprised]
+Meowzers: i don't understand it. [#emotion=unamused]
+You: oh. what do you understand. [#emotion=neutral]
+Meowzers: [color=cyan]FISH[/color]. [#emotion=neutral]
+You: oh. that's nice! [#emotion=happy]
+Meowzers: and i'm really hungry right now [#emotion=hungry]
+You blink.
+Meowzers: like i really want some [color=cyan]FISH[/color] right now. [#emotion=hungry]
+You still don't get it.
+Meowzers: like some [color=cyan]FISH[/color] would realllllyyyyyy make my day right now [#emotion=hungry]
+Are you being serious right now.
+You: oh! i'll get you some [color=cyan]FISH[/color], cat friend! [#emotion=neutral]
+do State.meowzers_quest = State.MeowzersQuest.QUEST_STARTED
+
+do Inventory.remove_item(Inventory.Item.LETTER)
 => END
 
 ~ meowzers_quest_incomplete
@@ -50,29 +75,63 @@ else
 % Meowzers: boy i would really like if SOMEONE could get me some [color=cyan]FISH[/color]. [#emotion=hungry]
 => END
 
+############################ BANANA ############################
+# Banana hub
+~ banana
+if State.meowzers_quest == State.MeowzersQuest.NO_LETTER:
+	You: i want to write meowzers a [color=cyan]LETTER[/color] right away! [#emotion=neutral]
+elif State.chance_interaction == State.ChanceInteractionStates.OCCURRING or State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+	=> banana_meowzers
+elif State.banana_quest == State.BananaQuest.SLEEPING:
+	=> banana_sleeping
+elif State.banana_quest < State.BananaQuest.ASKED_FOR_KEY and State.saw_key
+	=> ask_for_key
+elif State.banana_quest == State.BananaQuest.GOT_KEY
+	=> banana_post_quest
+else
+	=> banana_quest_incomplete
+=> END
+
+~ banana_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER and State.banana_quest == State.BananaQuest.SLEEPING
+	=> banana_awoken
+elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.ASKED_FOR_KEY
+	=> banana_magnifying_glass
+elif State.banana_quest == State.BananaQuest.SLEEPING
+	You: he's sleeping! i don't think this will wake him up! [#emotion=neutral]
+else
+	Banana: ... [#emotion=slightly_annoyed]
+=> END
+
 ~ banana_sleeping
 This cat is sleeping.
 Maybe you can wake him up somehow...
 => END
 
 ~ banana_awoken
-You [color=yellow]TICKLE[/color] Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
+if Inventory.has_item(Inventory.Item.WATER):
+	You pull out the soggy [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Banana.
+else:
+	You [color=yellow]TICKLE[/color] Banana using the [color=aqua]STICK[/color] and [color=aqua]YARN[/color].
+do Inventory.remove_item(Inventory.Item.TICKLER)
 Banana: H...hmmmnn? [#emotion=sleepy]
 Banana: What...?
 You: hi banana. [#emotion=neutral]
 Banana: ... [#emotion=slightly_annoyed]
 Banana: What's the big idea? What'd you wake me up for?? [#emotion=angry]
-(if interacted with key)
-=> ask_for_key
-(else)
-Hm... why DID you do that?
-You: um... for funsies? [#emotion=neutral]
-Banana: What... [#emotion=slightly_annoyed]
-Banana: Ugh. Now I won't be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
+do State.banana_quest = State.BananaQuest.AWAKE
+if State.saw_key
+	=> ask_for_key
+else
+	Hm... why DID you do that?
+	- You: um... for funsies? [#emotion=neutral]
+	- You: to piss you off. [#emotion=neutral]
+	Banana: What... [#emotion=slightly_annoyed]
+	Banana: Ugh. Now I won't be able to fall asleep again for the next 72 hours....... [#emotion=uneasy]
 => END
 	
 ~ ask_for_key
-You: can you get that [color=cyan]KEY[/color] for me? [speed=0.3] pleaaaaase? [#emotion=neutral]
+You: can you get that [color=cyan]KEY[/color] for me? [speed=0.3]pleaaaaase? [#emotion=neutral]
 You summon your best puppy dog eyes.
 You seem to have forgotten that you are talking to a cat.
 Banana: What? No! Why would I do something for you?? [#emotion=angry]
@@ -80,33 +139,46 @@ You: well i- [#emotion=surprised] [next=auto]
 Banana: Don't think I've forgotten what you did to me last summer... [#emotion=angry]
 You: umm... [#emotion=sad]
 Banana turns away from you.
+do State.banana_quest = State.BananaQuest.ASKED_FOR_KEY
 => END 
 
 ~ banana_quest_incomplete
 You: hey- [next=auto] [#emotion=sad]
 % Banana: Go away. [#emotion=slightly_annoyed]
 % Banana: ... [#emotion=slightly_annoyed]
+if (State.banana_quest == State.BananaQuest.ASKED_FOR_KEY and Inventory.has_item(Inventory.Item.MAGNIFYING_GLASS)):
+	You: (i wonder if there's a way to make a cat go where i want them to...) [#emotion=neutral]
 => END 
 
 ~ banana_meowzers
-Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
-Meowzers: thanks! [#emotion=happy]
-Banana: What's it about? [#emotion=happy]
-Meowzers: huh? [#emotion=neutral]
-Banana: What's it about? [#emotion=happy]
-Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
-Banana: Yeah! [#emotion=happy]
-Meowzers: i don't- what does that mean? [#emotion=neutral]
-Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
-Meowzers: hmm... [#emotion=neutral]
+if State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
+	You: i don't want to interrupt their... riveting conversation. [#emotion=neutral]
+else:
+	Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
+	Meowzers: thanks! [#emotion=happy]
+	Banana: What's it about? [#emotion=happy]
+	Meowzers: huh? [#emotion=neutral]
+	Banana: What's it about? [#emotion=happy]
+	Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
+	Banana: Yeah! [#emotion=happy]
+	Meowzers: i don't- what does that mean? [#emotion=neutral]
+	Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
+	Meowzers: hmm... [#emotion=neutral]
+	set State.chance_interaction = State.ChanceInteractionStates.SEEN_AND_OCCURRING
 => END
 
 ~ banana_magnifying_glass
 You shine light at the wall using the [color=cyan]MAGNIFYING GLASS[/color], creating a faux laser pointer.
 Banana: Moving light!? [#emotion=happy]
 Banana: Must catch!!
-Banana jumps at the light as you move it across the key on the wall, knocking it onto the floor.
+You move the light across the [color=cyan]KEY[/color] on the wall, prompting Banana to jump at it.
+do banana.play_anim("get_key")
+The [color=cyan]KEY[/color] is knocked to the floor.
+do banana.play_anim("walk_back_to_rug")
 You: nice! [#emotion=neutral]
+do Inventory.remove_item(Inventory.Item.MAGNIFYING_GLASS)
+do State.banana_quest = State.BananaQuest.GOT_KEY # just means you won't ask for key again
+do State.actionable_states_add_flag(State.ActionableStates.KEY_FELL)
 => END
 
 ~ banana_post_quest
@@ -117,10 +189,25 @@ Banana: call me that.
 
 ~ ending
 You: meowzers! i brought you some [color=cyan]FISH[/color]! [#emotion=neutral]
+do Inventory.remove_item(Inventory.Item.FISH)
 Meowzers: [color=cyan]FISH[/color]? finally! [#emotion=hungry]
 Meowzers: here. you can have this now. [#emotion=neutral]
 Meowzers rolls the [color=cyan]SHINY THING[/color] towards you.
 You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥰[/font_size][/font] [#emotion=happy]
 Meowzers: okay. you can leave now. [#emotion=neutral]
 You leave.
+do StageManager.fade_to_black()
+...
+But what happened between you and Banana last summer??
+Find out in Chapter 2\: Slime & Crime
+do Global.reset_game()
+do StageManager.changeStage(StageManager.CREDITS)
+=> END
+
+~ disabled_door
+You: i need to write meowzers a [color=cyan]LETTER[/color] first! [#emotion=neutral]
+=> END
+
+~ invalid_use
+Not sure that they want this!
 => END

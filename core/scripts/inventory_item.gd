@@ -3,16 +3,20 @@ extends Button
 # The ID (and thus the shortcut key) can be set from the editor for testing purposes
 @export var _id: int = 0
 
+@onready var id_label: Label = %IDLabel
+
 signal toggled2(item_name, toggled_on)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Call here in case item is added through editor rather than code
 	set_key(_id)
+	id_label.text = str(_id + 1)
 
 
 # Called when the button is toggled.
 func _toggled(toggled_on):
+	await get_tree().create_timer(0.1).timeout
 	toggled2.emit(name, toggled_on)
 	
 	# Handle item combinations
@@ -24,10 +28,11 @@ func _toggled(toggled_on):
 			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, Inventory.combos[name])
 		else:
 			DialogueManager.show_dialogue_balloon(Inventory.dialogue_resource, "invalid_combo")
-		
-		# Toggle the second selected item off if it wasn't already toggled off in the dialogue
-		if button_pressed:
-			set_pressed(false)
+			
+			# Toggle the second selected item off if it wasn't already toggled off in the dialogue
+			await DialogueManager.dialogue_ended
+			if is_instance_valid(self):
+				set_pressed(false)
 
 
 # Initialize the name and the key used to select this item.
@@ -41,6 +46,9 @@ func set_id(id: int):
 	if (id >= 0 and id < 9):
 		_id = id
 		set_key(_id)
+		
+	if id_label:
+		id_label.text = str(_id + 1)
 
 
 func get_id():

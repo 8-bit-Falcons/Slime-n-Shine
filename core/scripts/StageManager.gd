@@ -40,3 +40,15 @@ func changeStage(stage_path, player_coords=null, player_dir=""):
 	await animations.animation_finished
 	black.hide()
 	get_tree().paused = false
+
+
+func fade_to_black():
+	black.show()
+	animations.play("fade_in")
+	await animations.animation_finished
+
+
+func fade_from_black():
+	animations.play("fade_out")
+	await animations.animation_finished
+	black.hide()

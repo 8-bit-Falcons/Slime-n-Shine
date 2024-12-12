@@ -131,6 +131,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 ## Start some dialogue
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	DialogueManager.dialogue_started.emit(dialogue_resource)
 	State.in_dialogue = true
 	temporary_game_states =  [self] + extra_game_states
 	is_waiting_for_input = false

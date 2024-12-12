@@ -15,7 +15,7 @@ const combos: Dictionary = {"pen": "letter", "paper": "letter", "stick": "tickle
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	panel.visible = false
-	DialogueManager.got_dialogue.connect(_on_dialogue_manager_got_dialogue)
+	DialogueManager.dialogue_started.connect(_on_dialogue_manager_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_manager_dialogue_ended)
 	
 	add_item(Item.PAPER)
@@ -36,12 +36,16 @@ func add_item(item: Item):
 func remove_item(item: Item):
 	var inv_item = hbox.find_child(get_item_name(item), false, false)
 	if inv_item:
+		if item_label.text == format_name(get_item_name(item)):
+			item_label.text = ""
 		var id = inv_item.get_id()
 		inv_item.free()
+		
 		if hbox.get_child_count() == 0:
 			panel.visible = false
 		else:
 			# HACK: O(n) function; fix if used for larger-scale game
+			# Bump down IDs of subsequent items
 			for it in hbox.get_children():
 				if it.get_id() > id:
 					it.set_id(it.get_id() - 1)
@@ -79,6 +83,15 @@ func selected():
 	return selected_items
 
 
+# Returns the first selected inventory item as an Item enum value
+# If none are selected, returns -1
+func selected_item():
+	if selected():
+		return get_item_value(selected()[0].name)
+	else:
+		return -1
+
+
 # Deselect all selected inventory items
 func deselect_all():
 	for item in selected():
@@ -88,6 +101,10 @@ func deselect_all():
 # Format an item's name for use in the ItemLabel
 func format_name(name: String):
 	return "[right]%s[/right]" % name.capitalize()
+
+
+func get_num_items():
+	return hbox.get_child_count()
 
 
 func set_disabled(disabled: bool):
@@ -105,7 +122,7 @@ func _on_inventory_item_toggled(item_name, toggled_on):
 		item_label.text = format_name(selected()[0].name)
 
 
-func _on_dialogue_manager_got_dialogue(line: DialogueLine):
+func _on_dialogue_manager_dialogue_started(resource: DialogueResource):
 	set_disabled(true)
 	item_label.visible = false
 	

@@ -3,14 +3,11 @@
 % Are you seriously trying to combine these?
 => END
 
-~ invalid_use
-% Not quite sure how you'd use this on that.
-% That doesn't seem right...
-% Are you feeling a bit silly?
-=> END
-
 ~ letter
- You combine the [color=cyan]PEN[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
+do Inventory.remove_item(Inventory.Item.PAPER)
+do Inventory.remove_item(Inventory.Item.PEN)
+do Inventory.add_item(Inventory.Item.LETTER)
+You combine the [color=cyan]PEN[/color] and [color=cyan]PAPER[/color] to write a [color=cyan]LETTER[/color]:
 [color=orange]My dearest friend Meowzers,
 	‎ ‎ ‎ Upon your arrival, I noticed that shiny thing you were clutching so tightly to your chest. Wowzers Meowzers! That shiny thing is simply divine.[/color]
 ‎ ‎ ‎ [color=orange]Although our respective clans clash from birth ‘til death, I wondered if we might put such frivolous matters aside for a moment to share in our mutual love for shiny. Prithee, may I have the shiny?[/color]
@@ -22,14 +19,14 @@ You: there, it's perfect! a formal [color=cyan]LETTER OF REQUEST[/color]! [#emot
 You: is it weird to call them my friend when we're kind of mortal enemies? [#emotion=neutral]
 You: well, who cares!? i'll try anything for the [color=cyan]SHINY THING[/color]! [#emotion=neutral]
 You: i guess it's time to give the [color=cyan]LETTER[/color] to meowzers. [#emotion=neutral]
-do Inventory.remove_item(Inventory.Item.PAPER)
-do Inventory.remove_item(Inventory.Item.PEN)
-do Inventory.add_item(Inventory.Item.LETTER)
 Along with combining items together, you can also use items on objects or people by [color=yellow]INTERACTING[/color] with them while an inventory item is selected.
 Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTING[/color] with them while the [color=cyan]LETTER[/color] is selected!
 => END
 
 ~ tickler
+do Inventory.remove_item(Inventory.Item.YARN)
+do Inventory.remove_item(Inventory.Item.STICK)
+do Inventory.add_item(Inventory.Item.TICKLER)
 You tie the [color=cyan]YARN[/color] onto the [color=cyan]STICK[/color].
 Maybe you could [color=yellow]TICKLE[/color] someone with this...
 => END

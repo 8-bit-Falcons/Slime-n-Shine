@@ -7,6 +7,10 @@ resource_name = "credits"
 script/source = "extends Node2D
 
 
+func _ready() -> void:
+	Inventory.hide()
+
+
 # Return to the main menu.
 func return_to_menu():
 	StageManager.changeStage(StageManager.MENU)

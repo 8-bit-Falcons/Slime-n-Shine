@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://486ue1nxggp5"]
+[gd_scene load_steps=19 format=3 uid="uid://486ue1nxggp5"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_ii3gf"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_eaopm"]
 [ext_resource type="PackedScene" uid="uid://c1c2r2jqkdhdo" path="res://scenes/slime_NPC.tscn" id="3_oc4o4"]
+[ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="4_eef3f"]
 [ext_resource type="Resource" uid="uid://b48kdsjxiyys5" path="res://dialogue/study.dialogue" id="4_mfnvq"]
-[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="5_781lc"]
+[ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="5_781lc"]
 
 [sub_resource type="Gradient" id="Gradient_6hxl2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -134,8 +135,9 @@ layer_0/tile_data = PackedInt32Array(131078, 262145, 6, 131079, 327681, 6, 26215
 layer_1/name = "foreground"
 layer_1/tile_data = PackedInt32Array(65546, 458753, 6, 10, 458753, 5, 13, 458753, 5, 65549, 458753, 6, 65541, 393217, 5, 131077, 393217, 6, 65544, 196609, 7)
 
-[node name="Dew" parent="TileMap" instance=ExtResource("3_oc4o4")]
+[node name="Dew" parent="TileMap" node_paths=PackedStringArray("status_bubble") instance=ExtResource("3_oc4o4")]
 position = Vector2(212, 108)
+status_bubble = NodePath("StatusBubble")
 
 [node name="Sprite2D" parent="TileMap/Dew" index="0"]
 frame = 5
@@ -147,7 +149,10 @@ libraries = {
 
 [node name="Actionable" parent="TileMap/Dew" index="3"]
 dialogue_resource = ExtResource("4_mfnvq")
-dialogue_start = "initiate_quest"
+dialogue_start = "dew"
+
+[node name="StatusBubble" parent="TileMap/Dew" instance=ExtResource("4_eef3f")]
+position = Vector2(0, -22)
 
 [node name="Lime" parent="TileMap" instance=ExtResource("3_oc4o4")]
 position = Vector2(336, 236)
