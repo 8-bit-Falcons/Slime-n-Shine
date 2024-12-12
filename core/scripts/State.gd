@@ -19,6 +19,7 @@ enum NPCQuestStatus {NO_QUEST, NEW_QUEST, QUEST_IN_PROGRESS}
 
 enum MeowzersQuest {NO_LETTER, QUEST_STARTED}
 var meowzers_quest = MeowzersQuest.NO_LETTER
+var asked_meowzers_for_key = false
 
 enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING:

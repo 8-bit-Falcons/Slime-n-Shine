@@ -31,6 +31,18 @@ elif State.meowzers_quest == State.MeowzersQuest.NO_LETTER
 	You: i need to write a [color=cyan]LETTER[/color] first! [#emotion=neutral]
 elif State.chance_interaction == State.ChanceInteractionStates.OCCURRING or State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
 	=> banana_meowzers
+elif State.banana_quest < State.BananaQuest.GOT_KEY and State.saw_key and not State.asked_meowzers_for_key:
+	You: can you get that [color=cyan]KEY[/color] for me? [#emotion=neutral]
+	Meowzers: i'm a bit occupied here. tbh.[#emotion=neutral]
+	You: oh... but it would help me get you [color=cyan]FISH[/color]! [#emotion=neutral]
+	Meowzers: mmm... fish..... [#emotion=hungry]
+	Meowzers: ...[#emotion=neutral]
+	Meowzers: ...but i'm not sure what a [color=cyan]KEY[/color] has to do with [color=cyan]FISH[/color] [#emotion=unamused]
+	You: well i-[#emotion=neutral][next=auto]
+	Meowzers: i'm sure you can figure it out yourself. hey, why don't you build a rocket and blast yourself off?[#emotion=unamused]
+	You: oh, good idea! [#emotion=happy]
+	Bad idea.
+	set State.asked_meowzers_for_key = true
 elif State.meowzers_quest == State.MeowzersQuest.QUEST_STARTED
 	=> meowzers_quest_incomplete
 => END
@@ -40,6 +52,14 @@ if Inventory.selected_item() == Inventory.Item.LETTER
 	=> initiate_quest
 elif Inventory.selected_item() == Inventory.Item.FISH
 	=> ending
+elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS
+	You shine light at the floor using the [color=cyan]MAGNIFYING GLASS[/color], creating a faux laser pointer.
+	But Meowzers does not need the pretty light.
+	Meowzers has Shiny.
+elif Inventory.selected_item() == Inventory.Item.TICKLER
+	You approach with the [color=cyan]TICKLER[/color].
+	You: i know what'll improve your mood! [#emotion=neutral]
+	Meowzers: don't even think about it.
 else
 	Meowzers: ... [#emotion=neutral]
 	Meowzers: is this a fish?
@@ -97,6 +117,11 @@ if Inventory.selected_item() == Inventory.Item.TICKLER and State.banana_quest ==
 	=> banana_awoken
 elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.ASKED_FOR_KEY
 	=> banana_magnifying_glass
+elif State.banana_quest == State.BananaQuest.SLEEPING and Inventory.selected_item() == Inventory.Item.BUCKET:
+	You: ooh! i can pour this water on him to wake him up! [#emotion=neutral]
+	You must have forgotten that you need to use this water to clean the kitchen.
+	You: oh, right... [#emotion=neutral]
+	You: but maybe i can wake him up another way...
 elif State.banana_quest == State.BananaQuest.SLEEPING
 	You: he's sleeping! i don't think this will wake him up! [#emotion=neutral]
 else
