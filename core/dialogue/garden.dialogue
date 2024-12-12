@@ -10,6 +10,15 @@ elif State.garden_quest == State.GardenQuest.QUEST_IN_PROGRESS:
 elif State.garden_quest == State.GardenQuest.QUEST_COMPLETE:
 	=> postquest
 
+~ shore_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Shore.
+	You: tickle, tickle![#emotion=happy]
+	Shore: Haha!! Oh, honey, you are a riot![#emotion=happy]
+else:
+	=> invalid_use
+=> END
+
 ~ prequest
 Shore: I really love to garden! [#emotion=happy]
 You: me too! [#emotion=neutral]
@@ -73,6 +82,16 @@ else:
 	You: i'm sorry for your loss[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😔[/font_size][/font] [#emotion=neutral]
 => END
 
+~ mud_pie_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Mud Pie.
+	You: tickle, tickle![#emotion=happy]
+	Mud Pie: Harharhar!![#emotion=happy]
+	Mud Pie: Ah... Thanks for brightening my day.[#emotion=neutral]
+else:
+	=> invalid_use
+=> END
+
 ~ sherbet
 if State.sherbet_interactions == 0:
 	Sherbet: Yesterday, a bird pooped straight onto Mud Pie's head. [#emotion=neutral]
@@ -85,6 +104,19 @@ if State.sherbet_interactions == 0:
 else:
 	Sherbet: Wow, I am just so lol'ing out loud at your presence. [#emotion=neutral]
 	You: uh. okay. thanks? [#emotion=neutral]
+=> END
+
+~ sherbet_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Sherbet.
+	You: tickle, tickle![#emotion=happy]
+	if State.sherbet_interactions == 0:
+		Sherbet: Teeheehee! Oh, you![#emotion=happy]
+	else:
+		Sherbet: lolololol![#emotion=neutral]
+			Is that how you kids would react?
+else:
+	=> invalid_use
 => END
 
 ~ invalid_use

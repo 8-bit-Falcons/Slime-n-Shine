@@ -126,6 +126,117 @@ elif State.toaster == State.ToasterStates.BURNT_TOAST:
 	It's burnt toast.
 => END
 
+~ window
+You: it's a nice day out![#emotion=happy]
+=> END
+
+~ microwave
+You: a fancy microwave![#emotion=neutral]
+do eggy.look_at_player(player)
+Eggy: it's very useful! [#emotion=neutral]
+do eggy.idle()
+=> END
+
+~ sink
+It's a sink! You can't reach the faucet.
+Actually, you're not sure how any of the slimes can reach it.
+You: maybe they have advanced mobility! [#emotion=neutral]
+You: unfortunately, i really totally cannot exert myself after the incident.
+=> END
+
+~ stove
+if State.kitchen_quest == State.KitchenQuest.QUEST_IN_PROGRESS:
+	It smells like [color=cyan]FISH[/color].
+else:
+	It [color=magenta][u]does not[/u][/color] smell like [color=cyan]FISH[/color].
+=> END
+
+~ fruit
+You: cromchy! [#emotion=neutral]
+=> END
+
+~ fridge
+You: there's lots of food in here... [#emotion=neutral]
+	like...
+You: MEULK?!?!?!?[#emotion=surprised]
+=> END
+
+~ flowers
+You: pretty flowers![#emotion=happy]
+=> END
+
+~ hedge
+You: pretty hedge![#emotion=happy]
+=> END
+
+~ rat
+do sfx.play()
+=> END
+
+~ sleepy_rat
+You: aww, this rat is sleepy. [#emotion=neutral]
+=> END
+
+~ confident_rat
+do sfx.play()
+You: this rat is confident! [#emotion=surprised]
+=> END
+
+~ rats_in_love
+do sfx.play()
+You: rats in love! [#emotion=happy]
+=> END
+
+~ melon
+You: a melon. [#emotion=neutral]
+	how strange!
+=> END
+
+~ tub
+if not State.actionable_states_check_flag(State.ActionableStates.TOILET_EMPTY):
+	There is [color=cyan]WATER[/color] in the bathtub.
+		Take it?
+	- Yes
+		if Inventory.get_num_items() > 0:
+			While you've absorbed other items? Really?
+			- Yes
+				=> take_water
+			- No
+		else:
+			=> take_water
+	- No
+else:
+	Slippery.
+=> END
+
+~ soap
+You: there's soap everywhere...[#emotion=neutral]
+You: how clean![#emotion=happy]
+=> END
+
+~ puddle
+%3 You: [do sfx.play()]rubber ducky![#emotion=happy]
+% You: it's wet![#emotion=neutral]
+% You: small puddles are useless! not even fun![#emotion=neutral]
+=> END
+
+~ bookshelves
+You: lots of books on all sorts of sciencey stuff i cannot understand...[#emotion=neutral]
+=> END
+
+~ plants
+You: what a pretty plant![#emotion=happy]
+=> END
+
+~ poster
+You: it's a picture of a plant! the science slimes really like plants![#emotion=neutral]
+You: i wonder why they don't work in the garden?
+=> END
+
+~ test_tubes
+You: several apertures and instruments and other such things.[#emotion=neutral]
+You: hehe![#emotion=happy]
+
 ~ test
 hi
 => END

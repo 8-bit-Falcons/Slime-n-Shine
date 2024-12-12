@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsu8jaullk6de"]
+[gd_scene load_steps=26 format=3 uid="uid://dsu8jaullk6de"]
 
+[ext_resource type="Script" path="res://scripts/bathroom.gd" id="1_t8yyf"]
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_wufae"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_citok"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="3_umkle"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="6_klr83"]
 [ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="7_vjfur"]
 [ext_resource type="Resource" uid="uid://dsmvhnfuqbvua" path="res://dialogue/actionables.dialogue" id="8_wk72y"]
+[ext_resource type="AudioStream" uid="uid://2ld81f4oggpu" path="res://assets/sounds/squeak.mp3" id="11_7cscu"]
 
 [sub_resource type="Gradient" id="Gradient_r1f3c"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -39,8 +41,23 @@ height = 12.0
 radius = 27.0
 height = 54.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0uap"]
+size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks0hq"]
+size = Vector2(62, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfqqa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10o41"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp5xb"]
+radius = 6.0
+height = 24.0
+
 [node name="Bathroom" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_t8yyf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -168,23 +185,84 @@ rotation = -1.5708
 [node name="CollisionShape2D" parent="player/Direction/ActionableFinder" index="0"]
 position = Vector2(8, 5)
 
-[node name="Toilet" type="StaticBody2D" parent="."]
+[node name="Actionables" type="Node2D" parent="."]
+
+[node name="Toilet" type="StaticBody2D" parent="Actionables"]
 position = Vector2(176, 121)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Toilet"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Toilet"]
 position = Vector2(-1, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_afxsa")
 
-[node name="Actionable" parent="Toilet" instance=ExtResource("7_vjfur")]
+[node name="Actionable" parent="Actionables/Toilet" instance=ExtResource("7_vjfur")]
 dialogue_resource = ExtResource("8_wk72y")
 dialogue_start = "water"
 
-[node name="ActionArea" type="CollisionShape2D" parent="Toilet/Actionable"]
+[node name="ActionArea" type="CollisionShape2D" parent="Actionables/Toilet/Actionable"]
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jkajf")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
+
+[node name="Sink" parent="Actionables" instance=ExtResource("7_vjfur")]
+position = Vector2(234, 134)
+dialogue_resource = ExtResource("8_wk72y")
+dialogue_start = "sink"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Sink"]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_d0uap")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Bath" parent="Actionables" instance=ExtResource("7_vjfur")]
+position = Vector2(298, 134)
+dialogue_resource = ExtResource("8_wk72y")
+dialogue_start = "tub"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Bath"]
+position = Vector2(21, 0)
+shape = SubResource("RectangleShape2D_ks0hq")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Soap" parent="Actionables" instance=ExtResource("7_vjfur")]
+position = Vector2(365, 131)
+dialogue_resource = ExtResource("8_wk72y")
+dialogue_start = "soap"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Soap"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gfqqa")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Puddles" parent="Actionables" instance=ExtResource("7_vjfur")]
+position = Vector2(239, 197)
+dialogue_resource = ExtResource("8_wk72y")
+dialogue_start = "puddle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Puddles"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_10o41")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Actionables/Puddles"]
+position = Vector2(-32, -48)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_10o41")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Actionables/Puddles"]
+position = Vector2(65, -39)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fp5xb")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_7cscu")
+volume_db = 14.512
 
 [editable path="Sticky"]
 [editable path="Slorp"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://486ue1nxggp5"]
+[gd_scene load_steps=25 format=3 uid="uid://486ue1nxggp5"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_ii3gf"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_eaopm"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dh5hixyo8dofm" path="res://scenes/status_bubble.tscn" id="4_eef3f"]
 [ext_resource type="Resource" uid="uid://b48kdsjxiyys5" path="res://dialogue/study.dialogue" id="4_mfnvq"]
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="5_781lc"]
+[ext_resource type="PackedScene" uid="uid://i7xe4scjaoia" path="res://scenes/actionable.tscn" id="7_k7jpo"]
+[ext_resource type="Resource" uid="uid://dsmvhnfuqbvua" path="res://dialogue/actionables.dialogue" id="8_ymtce"]
 
 [sub_resource type="Gradient" id="Gradient_6hxl2"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -95,6 +97,18 @@ size = Vector2(23.5, 140)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4gyo"]
 size = Vector2(23, 225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j05l7"]
+size = Vector2(30, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2a5k"]
+size = Vector2(29, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb8g0"]
+size = Vector2(28, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww2y8"]
+size = Vector2(23, 23)
 
 [node name="Study" type="Node2D"]
 y_sort_enabled = true
@@ -231,6 +245,99 @@ player_dir = "left"
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
 zoom = Vector2(3, 3)
+
+[node name="Actionables" type="Node2D" parent="."]
+position = Vector2(100, 100)
+
+[node name="Bookshelves" parent="Actionables" instance=ExtResource("7_k7jpo")]
+dialogue_resource = ExtResource("8_ymtce")
+dialogue_start = "bookshelves"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Bookshelves"]
+position = Vector2(76, 1)
+shape = SubResource("RectangleShape2D_j05l7")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Actionables/Bookshelves"]
+position = Vector2(204, 1)
+shape = SubResource("RectangleShape2D_j05l7")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Actionables/Bookshelves"]
+position = Vector2(236, 1)
+shape = SubResource("RectangleShape2D_j05l7")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Actionables/Bookshelves"]
+position = Vector2(268, 1)
+shape = SubResource("RectangleShape2D_j05l7")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Actionables/Bookshelves"]
+position = Vector2(300, 1)
+shape = SubResource("RectangleShape2D_j05l7")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Actionables/Bookshelves"]
+position = Vector2(332, 1)
+shape = SubResource("RectangleShape2D_j05l7")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="WeedPlants" parent="Actionables" instance=ExtResource("7_k7jpo")]
+position = Vector2(229, 37)
+dialogue_resource = ExtResource("8_ymtce")
+dialogue_start = "plants"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/WeedPlants"]
+position = Vector2(6.5, 13.5)
+shape = SubResource("RectangleShape2D_b2a5k")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Actionables/WeedPlants"]
+position = Vector2(7, 77)
+shape = SubResource("RectangleShape2D_b2a5k")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Actionables/WeedPlants"]
+position = Vector2(-91, -50)
+shape = SubResource("RectangleShape2D_b2a5k")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="WeedPoster" parent="Actionables" instance=ExtResource("7_k7jpo")]
+position = Vector2(168, -22)
+dialogue_resource = ExtResource("8_ymtce")
+dialogue_start = "poster"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/WeedPoster"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_cb8g0")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="TestTubes" parent="Actionables" instance=ExtResource("7_k7jpo")]
+position = Vector2(109, 170)
+dialogue_resource = ExtResource("8_ymtce")
+dialogue_start = "test_tubes"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/TestTubes"]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_ww2y8")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Actionables/TestTubes"]
+position = Vector2(34, 1)
+shape = SubResource("RectangleShape2D_ww2y8")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Actionables/TestTubes"]
+position = Vector2(98, -94)
+shape = SubResource("RectangleShape2D_ww2y8")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Actionables/TestTubes"]
+position = Vector2(225, -141)
+shape = SubResource("RectangleShape2D_ww2y8")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
 
 [editable path="TileMap/Dew"]
 [editable path="TileMap/Lime"]

@@ -8,6 +8,23 @@ elif State.kitchen_quest == State.KitchenQuest.QUEST_IN_PROGRESS:
 elif State.kitchen_quest == State.KitchenQuest.QUEST_COMPLETE:
 	=> postquest
 
+~ martha_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Martha.
+	You: tickle, tickle![#emotion=happy]
+	Martha: Wha-[#emotion=mad][next=auto]
+	Martha: Can you just go keep to yourself? I'm trying to get dinner done.
+	You: oh... yeah...[#emotion=sad]
+	Did you really think that was a good idea?
+elif Inventory.selected_item() == Inventory.Item.FISH:
+	Martha: What? Is something wrong with the [color=cyan]FISH[/color]?[#emotion=mad]
+	You: no!! nothing! haha... [#emotion=sad]
+	Martha: What's wrong with it?[#emotion=mad]
+	You: nothing's wrong with it, i swear![#emotion=sad]
+else:
+	=> invalid_use
+=> END
+
 ~ initiate_quest
 You: hey, could you make me some [color=cyan]FISH[/color]? [#emotion=neutral]
 Martha: [color=cyan]FISH[/color]? You want [color=cyan]FISH[/color]? [#emotion=neutral]
@@ -44,9 +61,11 @@ else:
 		You: um... it's nothing... [#emotion=sad]
 		Martha: You want something. What do you want. [#emotion=mad]
 		It may be best to just walk away.
+		You: (i just need to clean the kitchen using a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color]...) [#emotion=neutral]
 		do State.martha_interactions += 1
 	else:
 		Yeah... maybe you should leave them be for now.
+		You: (i just need to clean the kitchen using a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color]...) [#emotion=neutral]
 => END
 
 ~ quest_complete
@@ -93,6 +112,18 @@ else:
 	You: cool. [#emotion=neutral]
 => END 
 
+~ eggy_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Eggy.
+	You: tickle, tickle![#emotion=happy]
+	if State.eggy_interactions == 0:
+		Eggy: hehe! oh, you![#emotion=happy]
+	else:
+		Eggy: ahah... real silly of you.[#emotion=neutral]
+else:
+	=> invalid_use
+=> END
+
 ~ parfait
 if State.parfait_interactions == 0:
 	You: hey, i had some of those garlic bread sticks you made yesterday! you really cooked with those! [#emotion=neutral]
@@ -105,6 +136,16 @@ if State.parfait_interactions == 0:
 else:
 	Parfait: Hey, tomorrow I'll let you sample my cheesy bread if you want! [#emotion=neutral]
 	You: wow! really? thanks! [#emotion=happy]
+=> END
+
+~ parfait_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Parfait.
+	You: tickle, tickle![#emotion=happy]
+	Parfait: Oh, my! [#emotion=neutral]
+	Parfait: You gave me a startle, there![#emotion=happy]
+else:
+	=> invalid_use
 => END
 
 ~ invalid_use

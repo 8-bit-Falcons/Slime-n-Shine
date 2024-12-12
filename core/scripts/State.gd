@@ -19,6 +19,7 @@ enum NPCQuestStatus {NO_QUEST, NEW_QUEST, QUEST_IN_PROGRESS}
 
 enum MeowzersQuest {NO_LETTER, QUEST_STARTED}
 var meowzers_quest = MeowzersQuest.NO_LETTER
+var asked_meowzers_for_key = false
 
 enum BananaQuest {SLEEPING, AWAKE, ASKED_FOR_KEY, GOT_KEY}
 var banana_quest = BananaQuest.SLEEPING:
@@ -85,7 +86,8 @@ func get_states():
 func get_NPC_quest_status(npc_name: String):
 	match npc_name:
 		"Meowzers":
-			if not is_intro and Inventory.has_item(Inventory.Item.LETTER):
+			if ((not is_intro and Inventory.has_item(Inventory.Item.LETTER))
+					or Inventory.has_item(Inventory.Item.KEY)):
 				return NPCQuestStatus.NEW_QUEST
 			elif meowzers_quest == MeowzersQuest.QUEST_STARTED:
 				return NPCQuestStatus.QUEST_IN_PROGRESS

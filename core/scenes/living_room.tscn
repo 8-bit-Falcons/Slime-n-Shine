@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dakvtgg3sha83"]
+[gd_scene load_steps=84 format=3 uid="uid://dakvtgg3sha83"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_kv8y8"]
 [ext_resource type="Script" path="res://scripts/living_room.gd" id="1_xp5h6"]
@@ -142,6 +142,9 @@ height = 12.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebesy"]
 radius = 5.0
 height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45a68"]
+size = Vector2(23.5, 24)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruddd"]
 radius = 12.0
@@ -1744,6 +1747,26 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ebesy")
 debug_color = Color(0.956863, 0, 0.537255, 0.419608)
 
+[node name="Window" parent="Actionables" instance=ExtResource("4_1wb8c")]
+position = Vector2(176, 73)
+dialogue_resource = ExtResource("4_3y24s")
+dialogue_start = "window"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Window"]
+shape = SubResource("RectangleShape2D_45a68")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Window2" parent="Actionables" instance=ExtResource("4_1wb8c")]
+position = Vector2(272, 73)
+dialogue_resource = ExtResource("4_3y24s")
+dialogue_start = "window"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Window2"]
+shape = SubResource("RectangleShape2D_45a68")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(280, 160)
 zoom = Vector2(3, 3)
@@ -1754,6 +1777,7 @@ script = ExtResource("5_6ve0k")
 center_pos = NodePath("CenterPos")
 status_bubble = NodePath("StatusBubble")
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Meowzers"]
 texture = ExtResource("5_srnyp")
@@ -1789,7 +1813,7 @@ dialogue_start = "meowzers"
 NPC = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Meowzers/Actionable"]
-polygon = PackedVector2Array(67, -1, 91, -2, 94, -12, 93, -23, 90, -41, 81, -59, 63, -56, 62, -39, 69, -35, 69, -25, 65, -14, 65, -7)
+polygon = PackedVector2Array(67, -1, 91, -2, 94, -12, 93, -23, 90, -41, 80, -43, 66, -43, 62, -39, 69, -35, 69, -25, 65, -14, 65, -7)
 
 [node name="CenterPos" type="Marker2D" parent="Meowzers"]
 position = Vector2(78, -12)

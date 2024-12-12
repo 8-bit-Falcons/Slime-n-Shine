@@ -1,7 +1,8 @@
 extends Node2D
 
 
-@onready var stick: Sprite2D = $Stick
+@onready var stick: StaticBody2D = $Actionables/Stick
+@onready var sfx: AudioStreamPlayer = $SFX
 
 
 # Called when the node enters the scene tree for the first time.
