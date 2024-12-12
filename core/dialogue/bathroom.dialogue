@@ -39,7 +39,7 @@ if State.sticky_interactions == 0:
 	Sticky: ummm... [#emotion=neutral]
 	Sticky: i dunno, i don't really have time to...
 	You: you are literally a bathroom slime. [#emotion=neutral]
-	Sticky: why r u being mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#emotion=sad]
+	Sticky: why r u being mean [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]🥺[/font_size][/font] [#emotion=sad]
 	You: *sigh* [#emotion=neutral]
 	do State.sticky_interactions += 1
 else:
@@ -54,11 +54,11 @@ do slorp.look_at_player(player)
 do lint.look_at_player(player)
 do State.sticky_interactions = 0
 You: hi bathroom friends! do you have a [color=cyan]MOP[/color] in here perchance? [#emotion=neutral]
-Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in here?[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
+Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in here? [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
 You: no! i'm going to [color=yellow]CLEAN[/color] the kitchen! [#emotion=neutral]
-Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in the kitchen?[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
+Bathroom Slimes: ur gonna [color=yellow]CLEAN[/color] in the kitchen? [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
 You: yeah! is that okay? [#emotion=neutral]
-Bathroom Slimes: we no no wanna[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
+Bathroom Slimes: we no no wanna [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]🥺[/font_size][/font] [#char=bathroom_slimes, #emotion=sad]
 You: what do i have to do for you to let me? [#emotion=surprised]
 Bathroom Slimes: can we draw on the cabinets first! [#char=bathroom_slimes, #emotion=neutral]
 You: ummm. i don't know about that... [#emotion=neutral]
@@ -175,7 +175,7 @@ else:
 	Lint: i dunno... should u? >:) [#emotion=neutral]
 	You: hey! that's what I'M asking! [#emotion=neutral]
 	Lint: well... [#emotion=neutral]
-	Lint: i can be a little scary... if u know what i mean[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😏[/font_size][/font]
+	Lint: i can be a little scary... if u know what i mean [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]😏[/font_size][/font]
 	You: um. [#emotion=neutral]
 => END
 
