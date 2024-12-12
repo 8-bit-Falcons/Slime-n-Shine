@@ -5,3 +5,4 @@ extends Node2D
 @onready var slorp: CharacterBody2D = $Slorp
 @onready var lint: CharacterBody2D = $Lint
 @onready var player: Player = $player
+@onready var sfx: AudioStreamPlayer = $SFX

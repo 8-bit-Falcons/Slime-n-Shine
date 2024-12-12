@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3uaytcs7vtao"]
+
+[ext_resource type="Script" path="res://scripts/anim_actionable.gd" id="1_xuguv"]
+[ext_resource type="Texture2D" uid="uid://cwd6mhiw3loll" path="res://assets/tilesets/new_garden_tiles.png" id="2_4pbru"]
+[ext_resource type="Resource" uid="uid://4i67rgcvjq2r" path="res://resources/rat_house_save_state.tres" id="2_qowd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nhoe"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pciu"]
+size = Vector2(32, 32)
+
+[node name="RatHouse" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8nhoe")
+
+[node name="Actionable" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_xuguv")
+frames = Array[int]([4, 3])
+save_state = ExtResource("2_qowd3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Actionable"]
+unique_name_in_owner = true
+texture_filter = 1
+texture = ExtResource("2_4pbru")
+hframes = 6
+vframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+shape = SubResource("RectangleShape2D_4pciu")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)

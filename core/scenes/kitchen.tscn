@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://0ma3kkj328i7"]
+[gd_scene load_steps=42 format=3 uid="uid://0ma3kkj328i7"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
+[ext_resource type="Script" path="res://scripts/kitchen.gd" id="1_vdq1t"]
 [ext_resource type="PackedScene" uid="uid://nwy5nrmvb35l" path="res://scenes/player.tscn" id="2_257rj"]
 [ext_resource type="PackedScene" uid="uid://cc2cgycx3swux" path="res://scenes/door.tscn" id="2_ebea2"]
 [ext_resource type="Script" path="res://scripts/interactive_tile_map.gd" id="2_gxfhe"]
@@ -134,6 +135,15 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7gm4"]
 height = 42.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfqut"]
+size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt7k6"]
+size = Vector2(44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cl7gf"]
+size = Vector2(32, 20)
+
 [sub_resource type="Animation" id="Animation_yrct1"]
 resource_name = "back"
 tracks/0/type = "value"
@@ -205,6 +215,7 @@ _data = {
 [node name="Kitchen" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
+script = ExtResource("1_vdq1t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -271,24 +282,78 @@ next_scene = "res://scenes/living_room.tscn"
 player_coords = Vector2(69, 183)
 player_dir = "right"
 
-[node name="Toaster" type="AnimatedSprite2D" parent="."]
+[node name="Actionables" type="Node2D" parent="."]
+
+[node name="Toaster" type="AnimatedSprite2D" parent="Actionables"]
 position = Vector2(333, 83)
 sprite_frames = SubResource("SpriteFrames_wyucx")
 script = ExtResource("16_3gbqf")
 
-[node name="Actionable" parent="Toaster" instance=ExtResource("16_76bct")]
+[node name="Actionable" parent="Actionables/Toaster" instance=ExtResource("16_76bct")]
 dialogue_resource = ExtResource("17_isabq")
 dialogue_start = "toaster"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Toaster/Actionable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Toaster/Actionable"]
 shape = SubResource("CapsuleShape2D_h7gm4")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
 
-[node name="Microwave" type="Sprite2D" parent="."]
+[node name="Microwave" type="Sprite2D" parent="Actionables"]
 position = Vector2(304, 83)
 texture = ExtResource("5_2ey0h")
 hframes = 3
 vframes = 4
 frame = 8
+
+[node name="Actionable" parent="Actionables/Microwave" instance=ExtResource("16_76bct")]
+position = Vector2(-8, 7)
+dialogue_resource = ExtResource("17_isabq")
+dialogue_start = "microwave"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Microwave/Actionable"]
+shape = SubResource("CapsuleShape2D_h7gm4")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Sink" parent="Actionables" instance=ExtResource("16_76bct")]
+position = Vector2(234, 102)
+dialogue_resource = ExtResource("17_isabq")
+dialogue_start = "sink"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Sink"]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_sfqut")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Stove" parent="Actionables" instance=ExtResource("16_76bct")]
+position = Vector2(164, 103)
+dialogue_resource = ExtResource("17_isabq")
+dialogue_start = "stove"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Stove"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_xt7k6")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Fruit" parent="Actionables" instance=ExtResource("16_76bct")]
+position = Vector2(144, 142)
+dialogue_resource = ExtResource("17_isabq")
+dialogue_start = "fruit"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Fruit"]
+shape = SubResource("RectangleShape2D_cl7gf")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
+
+[node name="Fridge" parent="Actionables" instance=ExtResource("16_76bct")]
+position = Vector2(368, 102)
+dialogue_resource = ExtResource("17_isabq")
+dialogue_start = "fridge"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Fridge"]
+shape = SubResource("RectangleShape2D_cl7gf")
+debug_color = Color(0.956863, 0, 0.52549, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(270, 160)
@@ -297,6 +362,8 @@ zoom = Vector2(3, 3)
 [node name="Martha" parent="." node_paths=PackedStringArray("status_bubble") instance=ExtResource("3_rfijq")]
 position = Vector2(175, 110)
 status_bubble = NodePath("StatusBubble")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Martha" index="0"]
 frame = 3

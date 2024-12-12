@@ -72,6 +72,9 @@ Slorp: I'm gonna draw a rainbow! [#emotion=happy]
 Lint: I'm gonna draw a house on fire! [#emotion=happy]
 You: ...alright, i'll get you [color=cyan]SOMETHING TO DRAW WITH[/color]... [#emotion=neutral]
 do State.bathroom_quest = State.BathroomQuest.QUEST_IN_PROGRESS
+do sticky.idle()
+do slorp.idle()
+do lint.idle()
 => END 
 
 ~ quest_incomplete
@@ -113,6 +116,9 @@ Sticky: hehe, pony :3 [#emotion=happy]
 do State.bathroom_quest = State.BathroomQuest.QUEST_COMPLETE
 do Inventory.remove_item(Inventory.Item.MARKERS)
 do Inventory.add_item(Inventory.Item.MOP)
+do sticky.idle()
+do slorp.idle()
+do lint.idle()
 => END
 
 ~ postquest

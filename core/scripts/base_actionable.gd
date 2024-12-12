@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 # The action an actionable should take when interacted with

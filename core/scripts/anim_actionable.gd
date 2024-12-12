@@ -10,23 +10,34 @@ extends "res://scripts/base_actionable.gd"
 ## The State method that determines whether the actionable is currently enabled
 @export var enabled_flag: String = ""
 
-
 @onready var sprite_2d = %Sprite2D
 
 
 func _ready() -> void:
 	# Check if the resource contains this tile's current frame
-	if save_state.current_frame.has(position):
-		sprite_2d.frame = frames[save_state.current_frame[position]]
+	if save_state.current_frame.has(global_position):
+		sprite_2d.frame = frames[save_state.current_frame[global_position]]
 	else:
-		save_state.current_frame[position] = 0
+		save_state.current_frame[global_position] = 0
+
+
+# HACK: is there a better way of doing this?
+# disables monitoring so you can interact with actionables whose collision shapes
+# overlap with this tile. difficult to use signal because whether or not this is
+# enabled could depend on multiple different types of variables (states,
+# inventory items, etc.).
+# this seems a bit inefficient. also, monitoring won't necessarily disable again
+# after this actionable has completed its animation.
+func _process(delta: float) -> void:
+	if State.has_method(enabled_flag):
+		monitorable = State.call(enabled_flag)
 
 
 func action(player) -> void:
 	if (not State.has_method(enabled_flag)) or State.call(enabled_flag):
-		if save_state.current_frame[position] < frames.size() - 1:
-			save_state.current_frame[position] += 1
-			sprite_2d.frame = frames[save_state.current_frame[position]]
+		if save_state.current_frame[global_position] < frames.size() - 1:
+			save_state.current_frame[global_position] += 1
+			sprite_2d.frame = frames[save_state.current_frame[global_position]]
 			
 			if save_state.current_frame.values().all(func(x): return x == frames.size() - 1):
 				save_state.all_actions_complete = true

@@ -70,6 +70,7 @@ func get_item_name(item: Item):
 # If no such Item exists, return null
 func get_item_value(item_name: String):
 	var i = Item.get(item_name.to_snake_case().to_upper())
+	print(i)
 	return i
 
 
