@@ -179,17 +179,29 @@ if (State.banana_quest == State.BananaQuest.ASKED_FOR_KEY and Inventory.has_item
 if State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
 	You: i don't want to interrupt their... riveting conversation. [#emotion=neutral]
 else:
-	Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
-	Meowzers: thanks! [#emotion=happy]
-	Banana: What's it about? [#emotion=happy]
-	Meowzers: huh? [#emotion=neutral]
-	Banana: What's it about? [#emotion=happy]
-	Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
-	Banana: Yeah! [#emotion=happy]
-	Meowzers: i don't- what does that mean? [#emotion=neutral]
-	Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
-	Meowzers: hmm... [#emotion=neutral]
-	set State.chance_interaction = State.ChanceInteractionStates.SEEN_AND_OCCURRING
+	% => banana_meowzers1
+	% => banana_meowzers2
+
+~ banana_meowzers1
+Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
+Meowzers: thanks! [#emotion=happy]
+Banana: What's it about? [#emotion=happy]
+Meowzers: huh? [#emotion=neutral]
+Banana: What's it about? [#emotion=happy]
+Meowzers: what's my [color=cyan]SHINY THING[/color] about? [#emotion=neutral]
+Banana: Yeah! [#emotion=happy]
+Meowzers: i don't- what does that mean? [#emotion=neutral]
+Banana: Oh... I dunno, I just thought it might be about something... [#emotion=neutral]
+Meowzers: hmm... [#emotion=neutral]
+set State.chance_interaction = State.ChanceInteractionStates.SEEN_AND_OCCURRING
+=> END
+
+~ banana_meowzers2
+Banana: You know what else is good for you? Fish oil. One a day will really help. [#emotion=neutral]
+Meowzers: one fish?[#emotion=neutral]
+Banana: One fish oil.[#emotion=neutral]
+Meowzers: oh.[#emotion=neutral]
+set State.chance_interaction = State.ChanceInteractionStates.SEEN_AND_OCCURRING
 => END
 
 ~ banana_magnifying_glass
