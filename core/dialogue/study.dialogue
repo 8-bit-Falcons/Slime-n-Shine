@@ -45,10 +45,30 @@ else:
 => END
 
 ~ water
-You un-absorb the [color=cyan]WATER[/color] for the science slimes.
-Dew: Thanks for the [color=cyan]GOOEY WATER[/color], buddy! [#emotion=neutral]
-You: you're welcome(?) [#emotion=neutral]
-Dew: Yes(!) [#emotion=neutral]
+if State.study_quest == State.StudyQuest.QUEST_IN_PROGRESS:
+	You un-absorb the [color=cyan]WATER[/color] for the science slimes.
+	Dew: Thanks for the [color=cyan]GOOEY WATER[/color], buddy! [#emotion=neutral]
+	You: you're welcome(?) [#emotion=neutral]
+	Dew: Yes(!) [#emotion=neutral]
+	=> get_magnifying_glass
+else:
+	You: check this out! [#emotion=neutral]
+	You un-absorb the [color=cyan]WATER[/color], creating a gooey puddle beneath you.
+	Dew: Oh! Perfect! How did you know I needed [color=cyan]WATER[/color]? [#emotion=happy]
+	You: umm... [#emotion=neutral]
+	- You: lucky guess.
+		Dew: Your deductive skills are quite impressive! Let me know if you'd ever like to work for us! [#emotion=neutral]
+		You: oh... the coveted employment factory... [#emotion=neutral]
+		You: i'll consider this deeply...
+	- You: i'm psychic.
+		Dew: Haha, have you been participating in our... experiments? [#emotion=neutral]
+		You: no? not that i know of... [#emotion=neutral]
+		Dew: A shame. [#emotion=neutral]
+	Dew: Anyway, thanks for the assistance! [#emotion=neutral]
+	=> get_magnifying_glass
+=> END
+
+~ get_magnifying_glass
 Dew: Here, as a token of my gratitude, take this [color=cyan]MAGNIFYING GLASS[/color].
 You: oh! thanks! [#emotion=neutral]
 You absorb the [color=cyan]MAGNIFYING GLASS[/color].
@@ -59,7 +79,7 @@ do Inventory.add_item(Inventory.Item.MAGNIFYING_GLASS)
 
 ~ postquest
 Dew: Thank you for your contributions to science! [#emotion=neutral]
-=> END	
+=> END
 
 ~ minus
 if (State.minus_interactions == 0):

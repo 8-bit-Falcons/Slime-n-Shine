@@ -11,7 +11,10 @@ elif State.bathroom_quest == State.BathroomQuest.QUEST_COMPLETE:
 
 ~ sticky_use_item
 if Inventory.selected_item() == Inventory.Item.MARKERS:
-	=> quest_complete
+	if State.bathroom_quest == State.BathroomQuest.QUEST_IN_PROGRESS:
+		=> quest_complete
+	else:
+		You: to be honest, i fear what mess would be created if i gave these to the bathroom slimes...[#emotion=neutral]
 else:
 	Sticky: wahh... [#emotion=sad]
 	Sticky: i don't want this...
