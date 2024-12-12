@@ -79,7 +79,7 @@ if State.mud_pie_interactions == 0:
 else:
 	Mud Pie: Don't know why those bathroom slimes gotta make a mess of the place all the time. [#emotion=neutral]
 	Mud Pie: Makes it hard for a slime to simply take a shower... [#emotion=sad]
-	You: i'm sorry for your loss[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😔[/font_size][/font] [#emotion=neutral]
+	You: i'm sorry for your loss [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]😔[/font_size][/font] [#emotion=neutral]
 => END
 
 ~ mud_pie_use_item

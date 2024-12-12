@@ -1,5 +1,5 @@
 ~ intro
-You: man! i can't wait to play games with my slime homies after my long day at the unemployment factory! i hope no cats try to bother me[font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😠[/font_size][/font] [#emotion=neutral]
+You: man! i can't wait to play games with my slime homies after my long day at the unemployment factory! i hope no cats try to bother me [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]😠[/font_size][/font] [#emotion=neutral]
 Do you see that?
 You: what? [#emotion=neutral]
 That cat.
@@ -68,7 +68,7 @@ else
 => END
 
 ~ initiate_quest
-You: hi cat friend! i have a [color=cyan]LETTER[/color] for you![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 😋[/font_size][/font] [#emotion=neutral]
+You: hi cat friend! i have a [color=cyan]LETTER[/color] for you! [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]😋[/font_size][/font] [#emotion=neutral]
 Meowzers: oh. thanks. [#emotion=neutral]
 Your cat “friend” takes the [color=cyan]LETTER[/color] and starts to read it. They squint. Maybe they're dyslexic.
 Meowzers: i don't like this [color=cyan]LETTER[/color]. [#emotion=unamused]
@@ -230,7 +230,7 @@ do Inventory.remove_item(Inventory.Item.FISH)
 Meowzers: [color=cyan]FISH[/color]? finally! [#emotion=hungry]
 Meowzers: here. you can have this now. [#emotion=neutral]
 Meowzers rolls the [color=cyan]SHINY THING[/color] towards you.
-You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever![font=res://assets/fonts/Kenney Mini.ttf][font_size=30] 🥰[/font_size][/font] [#emotion=happy]
+You: oh em gee! thank you so much cat friend! i will cherish this [color=cyan]SHINY THING[/color] forever! [font=res://assets/fonts/NotoColorEmoji-Regular.ttf][font_size=28]🥰[/font_size][/font] [#emotion=happy]
 Meowzers: okay. you can leave now. [#emotion=neutral]
 You leave.
 do StageManager.fade_to_black()
