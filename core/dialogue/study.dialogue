@@ -12,6 +12,10 @@ if Inventory.selected_item() == Inventory.Item.WATER:
 elif Inventory.selected_item() == Inventory.Item.BUCKET:
 	You: (i kind of need this clean water in order to clean the kitchen...) [#emotion=neutral]
 	You: (but maybe i can get more water somewhere else...)
+elif Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Dew.
+	You: tickle, tickle![#emotion=happy]
+	Dew: Hohohoh... what a sensation...[#emotion=happy]
 else:
 	Dew: What is this? Will it help me do science? [#emotion=neutral]
 	You: umm... maybe not... [#emotion=neutral]
@@ -103,6 +107,16 @@ else:
 	Minus: I use Minux btw. [#emotion=neutral]
 => END 
 
+~ minus_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Minus.
+	You: tickle, tickle![#emotion=happy]
+	Minus: Hahaha!! Noooo you found my vulnerability![#emotion=happy]
+	Minus: Please submit a bug report at your earliest convenience.[#emotion=neutral]
+else:
+	=> invalid_use
+=> END
+
 ~ lime
 if State.lime_interactions == 0:
 	Lime: Greetings, {{Global.MC_name}}! How's the unemployment factory treating you? [#emotion=neutral]
@@ -112,8 +126,17 @@ if State.lime_interactions == 0:
 else:
 	Lime: Let us know if you want to be a test subject! [#emotion=neutral]
 	Lime: We'll just have to fill you in on the risks, and the... benefits.
-	(Disclaimer\: The 8-bit Falcons do not promote the use of drugs.)
 	You: i'll think about it. [#emotion=neutral]
+=> END
+
+~ lime_use_item
+if Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Lime.
+	You: tickle, tickle![#emotion=happy]
+	Lime: Hahaha!! [#emotion=happy]
+	Lime: How interesting... We should perform this [color=yellow]"TICKLE"[/color] procedure on a test subject.
+else:
+	=> invalid_use
 => END
 
 ~ invalid_use

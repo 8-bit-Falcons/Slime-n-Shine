@@ -15,6 +15,16 @@ if Inventory.selected_item() == Inventory.Item.MARKERS:
 		=> quest_complete
 	else:
 		You: to be honest, i fear what mess would be created if i gave these to the bathroom slimes...[#emotion=neutral]
+elif Inventory.selected_item() == Inventory.Item.FISH:
+	You pull out the [if Inventory.has_item(Inventory.Item.WATER)]soggy[/if] [color=cyan]FISH[/color].
+	You: look. this smells like you. [#emotion=neutral]
+	Sticky: oh! thanks ^_^ [#emotion=happy]
+elif Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Sticky.
+	You: tickle, tickle![#emotion=happy]
+	Sticky: hehehe!![#emotion=happy]
+	Sticky: i'm tickled pink!
+	You: so close!! you are blue.[#emotion=neutral]
 else:
 	Sticky: wahh... [#emotion=sad]
 	Sticky: i don't want this...
@@ -137,6 +147,11 @@ if Inventory.selected_item() == Inventory.Item.MARKERS:
 		=> quest_complete
 	else:
 		You: to be honest, i fear what mess would be created if i gave these to the bathroom slimes...[#emotion=neutral]
+elif Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Slorp.
+	You: tickle, tickle![#emotion=happy]
+	Slorp: hahaha!![#emotion=happy]
+	Slorp: phew... that was a real good tickle![#emotion=neutral]
 else:
 	=> invalid_use
 => END
@@ -164,6 +179,14 @@ if Inventory.selected_item() == Inventory.Item.MARKERS:
 		=> quest_complete
 	else:
 		You: to be honest, i fear what mess would be created if i gave these to the bathroom slimes...[#emotion=neutral]
+elif Inventory.selected_item() == Inventory.Item.TICKLER:
+	You pull out the [color=cyan]TICKLER[/color] and [color=yellow]TICKLE[/color] Lint.
+	You: tickle, tickle![#emotion=happy]
+	Lint: hahahaha!! stop![#emotion=happy]
+	You: okay, that's enough for you![#emotion=neutral]
+	Lint catches their breath.
+	Lint: ...[#emotion=neutral]
+	Lint: i'm going to piss ur pants.
 else:
 	=> invalid_use
 => END
