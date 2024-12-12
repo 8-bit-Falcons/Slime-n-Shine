@@ -44,9 +44,11 @@ else:
 		You: um... it's nothing... [#emotion=sad]
 		Martha: You want something. What do you want. [#emotion=mad]
 		It may be best to just walk away.
+		You: (i just need to clean the kitchen using a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color]...) [#emotion=neutral]
 		do State.martha_interactions += 1
 	else:
 		Yeah... maybe you should leave them be for now.
+		You: (i just need to clean the kitchen using a [color=cyan]MOP[/color] and a [color=cyan]WATER BUCKET[/color]...) [#emotion=neutral]
 => END
 
 ~ quest_complete

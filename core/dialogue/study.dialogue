@@ -7,8 +7,11 @@ else:
 	=> postquest
 
 ~ dew_use_item
-if Inventory.selected_item() == Inventory.Item.WATER
+if Inventory.selected_item() == Inventory.Item.WATER:
 	=> water
+elif Inventory.selected_item() == Inventory.Item.BUCKET:
+	You: (i kind of need this clean water in order to clean the kitchen...) [#emotion=neutral]
+	You: (but maybe i can get more water somewhere else...)
 else:
 	Dew: What is this? Will it help me do science? [#emotion=neutral]
 	You: umm... maybe not... [#emotion=neutral]
