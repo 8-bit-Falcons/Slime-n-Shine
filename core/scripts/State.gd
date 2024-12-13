@@ -88,7 +88,7 @@ func get_NPC_quest_status(npc_name: String):
 	match npc_name:
 		"Meowzers":
 			if ((not is_intro and Inventory.has_item(Inventory.Item.LETTER))
-					or Inventory.has_item(Inventory.Item.KEY)):
+					or Inventory.has_item(Inventory.Item.FISH)):
 				return NPCQuestStatus.NEW_QUEST
 			elif meowzers_quest == MeowzersQuest.QUEST_STARTED:
 				return NPCQuestStatus.QUEST_IN_PROGRESS
