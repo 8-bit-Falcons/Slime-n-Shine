@@ -147,8 +147,8 @@ Will you give the [color=cyan]FISH[/color] to Banana?
 	You present Banana with the [color=cyan]FISH[/color].
 	Banana: [color=cyan]FISH[/color]!?[#emotion=happy]
 	Banana: But why? [#emotion=neutral]
-	You: take it as an apology for waking you up,
-		...and for what happened last summer...[#emotion=neutral]
+	You: take it as an apology for waking you up, [#emotion=neutral]
+		...and for what happened last summer...
 	You: i hope that from now on, we can co-exist peacefully...
 	Banana: ... [#emotion=neutral]
 	Banana: I never thought you'd apologize.
@@ -220,6 +220,7 @@ if State.chance_interaction == State.ChanceInteractionStates.SEEN_AND_OCCURRING:
 else:
 	% => banana_meowzers1
 	% => banana_meowzers2
+=> END
 
 ~ banana_meowzers1
 Banana: omg cool [color=cyan]SHINY THING[/color]! [#emotion=happy]
