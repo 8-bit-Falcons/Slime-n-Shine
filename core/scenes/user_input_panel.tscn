@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ban6rwwdha1hv"]
 
-[ext_resource type="Theme" uid="uid://drs83o1yjavfw" path="res://resources/dialogue_theme.tres" id="1_gwbq4"]
+[ext_resource type="Theme" uid="uid://0drsmghdc0yk" path="res://resources/dialogue_theme.tres" id="1_gwbq4"]
 [ext_resource type="Script" path="res://scripts/user_input_panel.gd" id="2_cnwyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s06b8"]

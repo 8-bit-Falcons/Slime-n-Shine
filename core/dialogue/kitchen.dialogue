@@ -69,6 +69,8 @@ else:
 => END
 
 ~ quest_complete
+do Inventory.remove_item(Inventory.Item.BUCKET)
+do Inventory.remove_item(Inventory.Item.MOP)
 Martha: Thanks for [color=yellow]CLEANING[/color] up the kitchen. [#emotion=neutral]
 You: no problem! [#emotion=neutral]
 Martha: Here's your [color=cyan]FISH[/color]. [#emotion=neutral]
