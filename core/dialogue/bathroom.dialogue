@@ -192,7 +192,7 @@ elif Inventory.selected_item() == Inventory.Item.TICKLER:
 	You: okay, that's enough for you![#emotion=neutral]
 	Lint catches their breath.
 	Lint: ...[#emotion=neutral]
-	Lint: i'm going to piss ur pants.
+	Lint: i'm going to [if Global.IS_PG]pee[else]piss[/if] ur pants.
 else:
 	=> invalid_use
 => END

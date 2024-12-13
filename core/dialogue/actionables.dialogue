@@ -229,8 +229,11 @@ You: what a pretty plant![#emotion=happy]
 => END
 
 ~ poster
-You: it's a picture of a plant! the science slimes really like plants![#emotion=neutral]
-You: i wonder why they don't work in the garden?
+if Global.IS_PG:
+	Please purchase the Slime & Shine Exclusive Poster DLC in order to view this poster.
+else:
+	You: it's a picture of a plant! the science slimes really like plants![#emotion=neutral]
+	You: i wonder why they don't work in the garden?
 => END
 
 ~ test_tubes
@@ -238,5 +241,5 @@ You: several apertures and instruments and other such things.[#emotion=neutral]
 You: hehe![#emotion=happy]
 
 ~ test
-hi
+hi ^_^
 => END

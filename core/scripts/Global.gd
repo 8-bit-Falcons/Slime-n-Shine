@@ -6,6 +6,8 @@ extends Node
 signal request_player_turn(dir: String)
 signal animated_actionable_interacted_with
 
+var IS_PG = true
+
 
 const user_input = preload("res://scenes/user_input_panel.tscn")
 const colors = {"banana": Color8(255, 248, 164), \
