@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://0ma3kkj328i7"]
+[gd_scene load_steps=43 format=3 uid="uid://0ma3kkj328i7"]
 
 [ext_resource type="TileSet" uid="uid://btm82y0kqhb4s" path="res://resources/tile_set.tres" id="1_fpvge"]
 [ext_resource type="Script" path="res://scripts/kitchen.gd" id="1_vdq1t"]
@@ -139,7 +139,10 @@ height = 42.0
 size = Vector2(32, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xt7k6"]
-size = Vector2(44, 20)
+size = Vector2(44, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opij2"]
+size = Vector2(32, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cl7gf"]
 size = Vector2(32, 20)
@@ -342,7 +345,8 @@ dialogue_start = "fruit"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actionables/Fruit"]
-shape = SubResource("RectangleShape2D_cl7gf")
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_opij2")
 debug_color = Color(0.956863, 0, 0.52549, 0.419608)
 
 [node name="Fridge" parent="Actionables" instance=ExtResource("16_76bct")]

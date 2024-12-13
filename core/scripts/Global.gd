@@ -53,9 +53,11 @@ func reset_game():
 	
 	State.is_intro = true
 	State.meowzers_quest = State.MeowzersQuest.NO_LETTER
+	State.asked_meowzers_for_key = false
 	
 	State.banana_quest = State.BananaQuest.SLEEPING
 	State.saw_key = false
+	State.tried_giving_banana_fish = false
 	
 	State.chance_interaction = State.ChanceInteractionStates.NOT_SEEN
 	
