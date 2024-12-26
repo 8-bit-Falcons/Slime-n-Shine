@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq8vj0g5sv2nn"]
+
+[ext_resource type="Script" path="res://scripts/drag.gd" id="1_lcxo4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7abow"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(775, 303)
+scale = Vector2(-110.008, 106.413)
+texture = SubResource("PlaceholderTexture2D_7abow")
+script = ExtResource("1_lcxo4")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_top = 0.009
+anchor_bottom = 0.009
+offset_top = -0.00900029
+offset_right = 8.0
+offset_bottom = 7.991
+scale = Vector2(0.124095, 0.123767)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 541)
+
+[connection signal="button_down" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]
