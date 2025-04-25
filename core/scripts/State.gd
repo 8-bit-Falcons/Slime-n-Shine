@@ -145,7 +145,7 @@ func are_weeds_pullable() -> bool:
 
 ## Whether it is currently possible to clean the kitchen
 func is_kitchen_cleanable() -> bool:
-	return Inventory.has_item(Inventory.Item.BUCKET) and Inventory.has_item(Inventory.Item.MOP)
+	return Inventory.selected_item() == Inventory.Item.MOP_AND_BUCKET
 
 
 func actionable_states_add_flag(flag):

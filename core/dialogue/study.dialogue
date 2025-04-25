@@ -48,7 +48,10 @@ if State.dew_interactions == 0:
 	do State.dew_interactions += 1
 else:
 	Dew: Have you acquired the [color=cyan]WATER[/color] I requested? [#emotion=neutral]
-	You: sorry... working on it. [#emotion=neutral]
+	if Inventory.has_item(Inventory.Item.WATER):
+		You: oh, yeah, one sec... [#emotion=neutral]
+	else:
+		You: sorry... working on it. [#emotion=neutral]
 => END
 
 ~ water

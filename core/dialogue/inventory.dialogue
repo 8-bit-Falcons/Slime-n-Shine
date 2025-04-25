@@ -20,6 +20,7 @@ You: is it weird to call them my friend when we're kind of mortal enemies? [#emo
 You: well, who cares!? i'll try anything for the [color=cyan]SHINY THING[/color]! [#emotion=neutral]
 You: i guess it's time to give the [color=cyan]LETTER[/color] to meowzers. [#emotion=neutral]
 Along with combining items together, you can also use items on objects or people by [color=yellow]INTERACTING[/color] with them while an inventory item is selected.
+You can [color=yellow]INTERACT[/color] by pressing SPACE or ENTER.
 Try giving the [color=cyan]LETTER[/color] to Meowzers by [color=yellow]INTERACTING[/color] with them while the [color=cyan]LETTER[/color] is selected!
 => END
 
@@ -29,4 +30,11 @@ do Inventory.remove_item(Inventory.Item.STICK)
 do Inventory.add_item(Inventory.Item.TICKLER)
 You tie the [color=cyan]YARN[/color] onto the [color=cyan]STICK[/color].
 Maybe you could [color=yellow]TICKLE[/color] someone with this...
+=> END
+
+~ mop_and_bucket
+do Inventory.remove_item(Inventory.Item.MOP)
+do Inventory.remove_item(Inventory.Item.BUCKET)
+do Inventory.add_item(Inventory.Item.MOP_AND_BUCKET)
+You dip the [color=cyan]MOP[/color] into the [color=cyan]BUCKET[/color]. Now you're ready to clean!
 => END
