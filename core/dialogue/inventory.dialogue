@@ -31,3 +31,10 @@ do Inventory.add_item(Inventory.Item.TICKLER)
 You tie the [color=cyan]YARN[/color] onto the [color=cyan]STICK[/color].
 Maybe you could [color=yellow]TICKLE[/color] someone with this...
 => END
+
+~ mop_and_bucket
+do Inventory.remove_item(Inventory.Item.MOP)
+do Inventory.remove_item(Inventory.Item.BUCKET)
+do Inventory.add_item(Inventory.Item.MOP_AND_BUCKET)
+You dip the [color=cyan]MOP[/color] into the [color=cyan]BUCKET[/color]. Now you're ready to clean!
+=> END

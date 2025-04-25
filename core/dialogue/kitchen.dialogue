@@ -54,6 +54,8 @@ do State.kitchen_quest = State.KitchenQuest.QUEST_IN_PROGRESS
 
 ~ quest_incomplete
 if Inventory.has_item(Inventory.Item.BUCKET) and Inventory.has_item(Inventory.Item.MOP):
+	Martha: Well, what are you waiting for? Dip the [color=cyan]MOP[/color] into the [color=cyan]BUCKET[/color] and start cleaning.[#emotion=mad]
+else if Inventory.has_item(Inventory.Item.MOP_AND_BUCKET):
 	Martha: Well, if you have what you need, go ahead and start cleaning the floor. [#emotion=neutral]
 else:
 	if State.martha_interactions == 0:
@@ -69,8 +71,7 @@ else:
 => END
 
 ~ quest_complete
-do Inventory.remove_item(Inventory.Item.BUCKET)
-do Inventory.remove_item(Inventory.Item.MOP)
+do Inventory.remove_item(Inventory.Item.MOP_AND_BUCKET)
 Martha: Thanks for [color=yellow]CLEANING[/color] up the kitchen. [#emotion=neutral]
 You: no problem! [#emotion=neutral]
 Martha: Here's your [color=cyan]FISH[/color]. [#emotion=neutral]
@@ -83,7 +84,7 @@ do State.kitchen_quest = State.KitchenQuest.QUEST_COMPLETE
 ~ postquest
 Martha: How's your [color=cyan]FISH[/color]? [#emotion=neutral]
 You: um... it's good! [#emotion=neutral]
-You don't think you want to tell them that it wasn't for you.
+You don't think you want to tell them that you aren't eating it.
 => END 
 
 ~ eggy

@@ -7,9 +7,13 @@ extends CanvasLayer
 @onready var item_label = %ItemLabel
 
 const InventoryItem = preload("res://scenes/inventory_item.tscn")
-enum Item {BUCKET, FISH, KEY, LETTER, MAGNIFYING_GLASS, MARKERS, MOP, PAPER, PEN, STICK, TICKLER, WATER, YARN}
+enum Item {BUCKET, FISH, KEY, LETTER, MAGNIFYING_GLASS, MARKERS, MOP, PAPER, PEN, STICK, TICKLER, WATER, YARN, MOP_AND_BUCKET}
 # A list of items that can combine with another item, where the key is an item and the value is what it creates
-const combos: Dictionary = {"pen": "letter", "paper": "letter", "stick": "tickler", "yarn": "tickler"}
+const combos: Dictionary = {
+	"pen": "letter", "paper": "letter",
+	"stick": "tickler", "yarn": "tickler",
+	"mop": "mop_and_bucket", "bucket": "mop_and_bucket"
+	}
 
 
 # Called when the node enters the scene tree for the first time.
