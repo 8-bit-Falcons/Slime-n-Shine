@@ -17,7 +17,7 @@ You: oh my lanta! look at that [color=cyan]SHINY THING[/color]! i want that [col
 ~ letter
 You: luckily, i already have a [color=cyan]PEN[/color] and [color=cyan]PAPER[/color]! [#emotion=neutral]
 You: i just need to [color=yellow]COMBINE[/color] them to create a [color=cyan]LETTER[/color]!
-Press a number key to select an item from your inventory.
+Outside of dialogue, you can press a number key to select an item from your inventory.
 Pressing 1 selects the first item, and so on.
 When an item is selected, you can select another item to try [color=yellow]COMBINING[/color] them.
 => END
@@ -117,6 +117,9 @@ if Inventory.selected_item() == Inventory.Item.TICKLER and State.banana_quest ==
 	=> banana_awoken
 elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.ASKED_FOR_KEY
 	=> banana_magnifying_glass
+elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.AWAKE
+	You: (hm, cats like laser pointers... i wonder if i could use this like one...) [#emotion=neutral]
+	You: (but for what purpose?)
 elif State.banana_quest == State.BananaQuest.SLEEPING and Inventory.selected_item() == Inventory.Item.BUCKET:
 	You: ooh! i can pour this water on him to wake him up! [#emotion=neutral]
 	You must have forgotten that you need to use this water to clean the kitchen.
