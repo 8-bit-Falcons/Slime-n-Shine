@@ -67,8 +67,14 @@ elif State.actionable_states_check_flag(State.ActionableStates.KEY_FELL) and (no
 if Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.ASKED_FOR_KEY:
 	=> living_room/banana_magnifying_glass
 elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS:
+	if not State.saw_key:
+		You hold up the [color=cyan]MAGNIFYING GLASS[/color] to inspect a [color=cyan]KEY[/color] hanging on the wall.
+		From this magnified view, the [color=cyan]KEY[/color] almost looks close enough to reach. Too bad it isn't.
+		Anyway, regarding the [color=cyan]MAGNIFYING GLASS[/color]...
 	It looks like you can reflect light onto the wall with this.
 	You: wow! i wonder if that'll come in handy for something! [#emotion=neutral]
+	
+	do State.saw_key = true
 else:
 	=> invalid_use
 => END

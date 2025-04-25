@@ -119,7 +119,11 @@ elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.bana
 	=> banana_magnifying_glass
 elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS and State.banana_quest == State.BananaQuest.AWAKE
 	You: (hm, cats like laser pointers... i wonder if i could use this like one...) [#emotion=neutral]
-	You: (but for what purpose?)
+	if State.saw_key:
+		You: (i could probably lure banana over to that [color=cyan]KEY[/color] and have him knock it down, but...)
+		You: (before being sneaky, i should try asking nicely first!)
+	else:
+		You: (but for what purpose?)
 elif State.banana_quest == State.BananaQuest.SLEEPING and Inventory.selected_item() == Inventory.Item.BUCKET:
 	You: ooh! i can pour this water on him to wake him up! [#emotion=neutral]
 	You must have forgotten that you need to use this water to clean the kitchen.
