@@ -8,6 +8,7 @@ extends Node2D
 @onready var key_action_area: CollisionShape2D = $Actionables/KeyHanger/Actionable/ActionArea
 @onready var meowzers: CharacterBody2D = $Meowzers
 @onready var banana: CharacterBody2D = $Banana
+@onready var confirmation_dialog: ConfirmationDialog = $CanvasLayer/PGModeDialogue
 
 var chance_interaction = false
 
@@ -28,6 +29,12 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if State.is_intro:
+		if not Global.IS_PG:
+			State.in_dialogue = true
+			confirmation_dialog.visible = true
+			await confirmation_dialog.visibility_changed
+			State.in_dialogue = false
+		
 		Inventory.visible = true
 		
 		DialogueManager.show_dialogue_balloon(dialogue_resource, "intro")
@@ -83,3 +90,11 @@ func _on_banana_quest_progressed(state, b=banana):
 
 func _drop_key():
 	State.actionable_states_add_flag(State.ActionableStates.KEY_FELL)
+
+
+func _on_pg_mode_dialogue_confirmed() -> void:
+	Global.IS_PG = true
+
+
+func _on_pg_mode_dialogue_canceled() -> void:
+	Global.IS_PG = false
