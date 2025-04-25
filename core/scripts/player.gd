@@ -85,3 +85,10 @@ func _on_animation_player_animation_started(anim_name):
 	
 func _on_global_request_player_turn(dir: String):
 	update_anim(dir)
+
+func getBodies(area: Area2D) -> Array:
+	await get_tree().physics_frame
+	if area:
+		return area.get_overlapping_bodies()
+	else:
+		return []

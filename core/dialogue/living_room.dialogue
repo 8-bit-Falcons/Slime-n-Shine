@@ -59,7 +59,7 @@ elif Inventory.selected_item() == Inventory.Item.MAGNIFYING_GLASS
 elif Inventory.selected_item() == Inventory.Item.TICKLER
 	You approach with the [color=cyan]TICKLER[/color].
 	You: i know what'll improve your mood! [#emotion=neutral]
-	Meowzers: don't even think about it.
+	Meowzers: don't even think about it. [#emotion=unamused]
 else
 	Meowzers: ... [#emotion=neutral]
 	Meowzers: is this a fish?
@@ -287,7 +287,7 @@ You leave.
 do StageManager.fade_to_black()
 ...
 But what happened between you and Banana last summer??
-Find out in Chapter 2\: Slime & Crime
+Find out in Chapter 2\: Slime & Crime (coming soon)!
 do Global.reset_game()
 do StageManager.changeStage(StageManager.CREDITS)
 => END

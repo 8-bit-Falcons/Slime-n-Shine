@@ -189,6 +189,7 @@ layer_0/tile_data = PackedInt32Array(458752, 2, 1, 458753, 131074, 1, 458755, 2,
 
 [node name="player" parent="TileMap" instance=ExtResource("2_6kqp5")]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(320, 456)
 metadata/_edit_group_ = true
 
@@ -398,6 +399,8 @@ shape = SubResource("CircleShape2D_7o5hv")
 debug_color = Color(0.956863, 0, 0.52549, 0.419608)
 
 [node name="Shore" parent="." node_paths=PackedStringArray("status_bubble") instance=ExtResource("3_ecdiu")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(176, 145)
 status_bubble = NodePath("StatusBubble")
 metadata/_edit_group_ = true
@@ -418,23 +421,9 @@ dialogue_start = "shore"
 [node name="StatusBubble" parent="Shore" instance=ExtResource("11_lj1al")]
 position = Vector2(0, -22)
 
-[node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
-position = Vector2(-22, 240)
-idle_anim = "forward"
-
-[node name="Sprite2D" parent="Mud Pie" index="0"]
-frame = 6
-
-[node name="AnimationPlayer" parent="Mud Pie" index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_qcjuj")
-}
-
-[node name="Actionable" parent="Mud Pie" index="3"]
-dialogue_resource = ExtResource("4_j4hx5")
-dialogue_start = "mud_pie"
-
 [node name="Sherbet" parent="." instance=ExtResource("3_ecdiu")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(255, 257)
 idle_anim = "right"
 metadata/_edit_group_ = true
@@ -451,6 +440,24 @@ libraries = {
 dialogue_resource = ExtResource("4_j4hx5")
 dialogue_start = "sherbet"
 
+[node name="Mud Pie" parent="." instance=ExtResource("3_ecdiu")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-22, 240)
+idle_anim = "forward"
+
+[node name="Sprite2D" parent="Mud Pie" index="0"]
+frame = 6
+
+[node name="AnimationPlayer" parent="Mud Pie" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_qcjuj")
+}
+
+[node name="Actionable" parent="Mud Pie" index="3"]
+dialogue_resource = ExtResource("4_j4hx5")
+dialogue_start = "mud_pie"
+
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_clusk")
 volume_db = 14.512
@@ -458,5 +465,5 @@ volume_db = 14.512
 [editable path="TileMap/player"]
 [editable path="LivingRoomDoor"]
 [editable path="Shore"]
-[editable path="Mud Pie"]
 [editable path="Sherbet"]
+[editable path="Mud Pie"]
