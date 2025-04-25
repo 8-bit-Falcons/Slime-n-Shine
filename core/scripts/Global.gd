@@ -6,7 +6,7 @@ extends Node
 signal request_player_turn(dir: String)
 signal animated_actionable_interacted_with
 
-var IS_PG = true
+var IS_PG = false
 
 
 const user_input = preload("res://scenes/user_input_panel.tscn")

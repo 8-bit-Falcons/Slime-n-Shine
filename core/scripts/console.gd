@@ -120,11 +120,18 @@ func skip_tutorial():
 	State.is_intro = false
 	State.meowzers_quest = State.MeowzersQuest.QUEST_STARTED
 
+
 ## Setup for being able to trigger magnifying glass scene
 func banana_magnifying_glass_setup():
 	skip_tutorial()
 	add_inventory_item("magnifying glass")
 	State.banana_quest = State.BananaQuest.ASKED_FOR_KEY
+
+
+## Resets all game variables and returns to menu
+func reset():
+	Global.reset_game()
+	StageManager.changeStage(StageManager.MENU)
 
 
 func _on_close_requested():
