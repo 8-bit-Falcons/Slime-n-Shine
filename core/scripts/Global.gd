@@ -7,6 +7,7 @@ signal request_player_turn(dir: String)
 signal animated_actionable_interacted_with
 
 var IS_PG = false
+var IS_DEMO = false  # Is this a demonstration build - for example, PAX - where we want a PG toggle?
 
 
 const user_input = preload("res://scenes/user_input_panel.tscn")

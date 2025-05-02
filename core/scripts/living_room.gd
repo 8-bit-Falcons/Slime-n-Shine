@@ -29,7 +29,7 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if State.is_intro:
-		if not Global.IS_PG:
+		if Global.IS_DEMO:
 			State.in_dialogue = true
 			confirmation_dialog.visible = true
 			await confirmation_dialog.visibility_changed
