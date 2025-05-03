@@ -7,7 +7,7 @@ signal request_player_turn(dir: String)
 signal animated_actionable_interacted_with
 
 var IS_PG = false
-var IS_DEMO = false  # Is this a demonstration build - for example, PAX - where we want a PG toggle?
+var IS_DEMO = true  # Is this a demonstration build - for example, PAX - where we want a PG toggle?
 
 
 const user_input = preload("res://scenes/user_input_panel.tscn")
@@ -88,5 +88,10 @@ func reset_game():
 	
 	State.cleaned_kitchen = false
 	State.pulled_weeds = false
+	
+	# Reset inventory
+	Inventory.clear_items()
+	Inventory.add_item(Inventory.Item.PAPER)
+	Inventory.add_item(Inventory.Item.PEN)
 
 # TODO: double #'s for documentation comments

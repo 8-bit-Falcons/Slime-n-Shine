@@ -108,6 +108,11 @@ func remove_inventory_item(item_name):
 		return "ERROR: No such item exists."
 
 
+# Clear all items from the inventory
+func clear_inventory():
+	Inventory.clear_items()
+
+
 func get_states():
 	return State.get_states()
 

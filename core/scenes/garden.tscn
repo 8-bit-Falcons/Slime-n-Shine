@@ -429,7 +429,7 @@ idle_anim = "right"
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Sherbet" index="0"]
-frame = 7
+frame = 16
 
 [node name="AnimationPlayer" parent="Sherbet" index="2"]
 libraries = {

@@ -55,6 +55,15 @@ func remove_item(item: Item):
 					it.set_id(it.get_id() - 1)
 
 
+# Clear all items from the inventory
+func clear_items():
+	for inv_item in hbox.get_children():
+		inv_item.free()
+		
+	item_label.text = ""
+	panel.visible = false
+
+
 # Return whether the player has the given item in their inventory
 func has_item(item: Item) -> bool:
 	var inv_item = hbox.find_child(get_item_name(item), false, false)
