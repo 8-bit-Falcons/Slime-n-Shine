@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2ftw6lnht42e"]
+[gd_scene load_steps=3 format=3 uid="uid://c2ftw6lnht42e"]
 
 [ext_resource type="AudioStream" uid="uid://cmp7wllql7mps" path="res://assets/music/Puzzled.mp3" id="1_4jepg"]
+[ext_resource type="Script" path="res://scripts/music.gd" id="2_r5cio"]
 
 [node name="Music" type="AudioStreamPlayer"]
 process_mode = 3
 stream = ExtResource("1_4jepg")
 autoplay = true
+script = ExtResource("2_r5cio")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = 14.512

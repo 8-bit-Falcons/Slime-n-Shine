@@ -154,6 +154,9 @@ position = Vector2(0, -22)
 position = Vector2(276, 149)
 idle_anim = "right"
 
+[node name="Sprite2D" parent="Slorp" index="0"]
+frame = 10
+
 [node name="Actionable" parent="Slorp" index="3"]
 dialogue_resource = ExtResource("5_m38ow")
 dialogue_start = "slorp"
