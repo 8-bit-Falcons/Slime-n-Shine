@@ -290,6 +290,7 @@ player_dir = "right"
 [node name="Toaster" type="AnimatedSprite2D" parent="Actionables"]
 position = Vector2(333, 83)
 sprite_frames = SubResource("SpriteFrames_wyucx")
+animation = &"make_burnt_toast"
 script = ExtResource("16_3gbqf")
 
 [node name="Actionable" parent="Actionables/Toaster" instance=ExtResource("16_76bct")]

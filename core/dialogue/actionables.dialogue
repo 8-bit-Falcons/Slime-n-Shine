@@ -115,12 +115,15 @@ if State.toaster == State.ToasterStates.EMPTY:
 	- Yes
 		What heat setting?
 		- No heat
+			do Music.play_sfx(Music.toast_sound)
 			do State.toaster_started.emit(State.ToasterStates.BREAD)
 			do State.toaster = State.ToasterStates.BREAD
 		- Low heat
+			do Music.play_sfx(Music.toast_sound)
 			do State.toaster_started.emit(State.ToasterStates.TOAST)
 			do State.toaster = State.ToasterStates.TOAST
 		- High heat
+			do Music.play_sfx(Music.toast_sound)
 			do State.toaster_started.emit(State.ToasterStates.BURNT_TOAST)
 			do State.toaster = State.ToasterStates.BURNT_TOAST
 	- No

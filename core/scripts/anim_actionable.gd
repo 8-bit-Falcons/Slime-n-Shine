@@ -10,6 +10,9 @@ extends "res://scripts/base_actionable.gd"
 ## The State method that determines whether the actionable is currently enabled
 @export var enabled_flag: String = ""
 
+## SFX to play on every frame
+@export var sfx: AudioStream
+
 @onready var sprite_2d = %Sprite2D
 
 
@@ -37,6 +40,8 @@ func action(player) -> void:
 		if save_state.current_frame[global_position] < (frames.size() - 1):
 			save_state.current_frame[global_position] += 1
 			sprite_2d.frame = frames[save_state.current_frame[global_position]]
+			if sfx:
+				Music.play_sfx(sfx)
 			
 			if save_state.current_frame.values().all(func(x): return x == frames.size() - 1):
 				save_state.all_actions_complete = true

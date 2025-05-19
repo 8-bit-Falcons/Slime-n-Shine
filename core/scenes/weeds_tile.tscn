@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx5jhcjpfwype"]
+[gd_scene load_steps=6 format=3 uid="uid://cx5jhcjpfwype"]
 
 [ext_resource type="Script" path="res://scripts/anim_actionable.gd" id="1_4h2ek"]
 [ext_resource type="Resource" uid="uid://br6ay40pqvfb2" path="res://resources/weeds_tiles_save_state.tres" id="2_6t6qg"]
 [ext_resource type="Texture2D" uid="uid://nj1wrrmve68n" path="res://assets/tilesets/tileset.png" id="2_oikiq"]
+[ext_resource type="AudioStream" uid="uid://b0l66pswvhrej" path="res://assets/sounds/pull-weed.wav" id="3_hr7ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56ymp"]
 size = Vector2(32, 32)
@@ -14,6 +15,7 @@ script = ExtResource("1_4h2ek")
 frames = Array[int]([7, 6])
 save_state = ExtResource("2_6t6qg")
 enabled_flag = "are_weeds_pullable"
+sfx = ExtResource("3_hr7ya")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_56ymp")

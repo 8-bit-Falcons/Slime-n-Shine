@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3uaytcs7vtao"]
+[gd_scene load_steps=7 format=3 uid="uid://b3uaytcs7vtao"]
 
 [ext_resource type="Script" path="res://scripts/anim_actionable.gd" id="1_xuguv"]
 [ext_resource type="Texture2D" uid="uid://cwd6mhiw3loll" path="res://assets/tilesets/new_garden_tiles.png" id="2_4pbru"]
 [ext_resource type="Resource" uid="uid://4i67rgcvjq2r" path="res://resources/rat_house_save_state.tres" id="2_qowd3"]
+[ext_resource type="AudioStream" uid="uid://2ld81f4oggpu" path="res://assets/sounds/squeak.mp3" id="3_ef1ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8nhoe"]
 size = Vector2(32, 32)
@@ -20,6 +21,7 @@ collision_layer = 4
 script = ExtResource("1_xuguv")
 frames = Array[int]([4, 3])
 save_state = ExtResource("2_qowd3")
+sfx = ExtResource("3_ef1ef")
 
 [node name="Sprite2D" type="Sprite2D" parent="Actionable"]
 unique_name_in_owner = true
